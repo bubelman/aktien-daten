@@ -86,6 +86,10 @@ def one(sym):
             rets = h.pct_change().dropna().iloc[-252:]
             out.update(sma200=sma, veraenderung_6m=r6, schwankung=float(rets.std() * math.sqrt(252)),
                        trend=("steigend" if c > sma and r6 > 0 else "fallend" if c < sma and r6 < 0 else "seitwärts"))
+            # Kurzfristiger Trend: 50-Tage-Schnitt und letzter Monat (ca. 21 Handelstage)
+            sma50 = float(h.iloc[-50:].mean()); r1m = c / float(h.iloc[-22]) - 1
+            out.update(sma50=sma50, veraenderung_1m=r1m,
+                       kurztrend=("steigend" if c > sma50 and r1m > 0 else "fallend" if c < sma50 and r1m < 0 else "seitwärts"))
     except Exception as e:
         out["fehler_verlauf"] = str(e)[:120]
     return out

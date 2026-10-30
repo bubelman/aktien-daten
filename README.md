@@ -12,6 +12,6 @@ Nur Spielgeld-Simulation, keine Anlageberatung.
 ## Bewertung
 
 `bewertung.py` rechnet aus `data/aktien.json` die Liste der 50 besten Aktien und das Musterdepot (feste Regeln:
-PEG, Kursziel-Abstand, Kapitalrendite, freier Cashflow, Schulden, Analystenzahl, Trend, Schätzungs-Änderungen;
+PEG, Kursziel-Abstand, Kapitalrendite, freier Cashflow, Schulden, Analystenzahl, langer und kurzer Trend, Schätzungs-Änderungen;
 Top-Treffer nur ohne Abwärtstrend, höchstens 2 je Branche, keine Speicherchip-Zykliker; kein Kauf kurz vor Quartalszahlen).
 Die geplante Aufgabe in Claude lädt diese Datei und führt sie bei jedem Lauf aus.

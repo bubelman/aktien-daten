@@ -139,11 +139,15 @@ def bewerte(y, fx, alt_by):
         + (1 if nde is not None and nde < 1.5 else 0) - (1 if an < 5 else 0) - (2 if zyk else 0)
     trend_pkt = 1 if trend == "steigend" else -1 if trend == "fallend" else 0
     rev_pkt = 1 if rev is not None and rev > 0.02 else -1 if rev is not None and rev < -0.02 else 0
-    punkte = bew + qual + trend_pkt + rev_pkt
+    kurz = y.get("kurztrend")
+    kurz_pkt = 1 if kurz == "steigend" else -1 if kurz == "fallend" else 0
+    punkte = bew + qual + trend_pkt + rev_pkt + kurz_pkt
 
     haken = []
     if trend == "fallend":
         haken.append("Kurs im Abwärtstrend")
+    elif kurz == "fallend":
+        haken.append("kurzfristig fallend")
     sw = y.get("schwankung")
     if sw and sw > 0.6:
         haken.append("schwankt sehr stark")
@@ -172,6 +176,7 @@ def bewerte(y, fx, alt_by):
         id=a.get("id"), daten_stand=None, sektor=branche(y), trend=trend, trend_pkt=trend_pkt, revision_pkt=rev_pkt,
         unter_hoch_pct=None if unter_hoch is None else round(unter_hoch * 100),
         schwankung_pct=None if sw is None else round(sw * 100), zahlen_am=y.get("zahlen_am"),
+        kurztrend=kurz, kurztrend_pkt=kurz_pkt, veraenderung_1m_pct=None if y.get("veraenderung_1m") is None else round(y["veraenderung_1m"] * 100, 1),
         analysten=an, bewertungs_pkt=bew, qualitaets_pkt=qual,
     )
     return zeile, None
@@ -183,9 +188,9 @@ def pruefe_zeile(z):
         p.append("Kurs")
     if not (z["fair_lo_eur"] <= z["fair_mitte_eur"] + 1 and z["fair_mitte_eur"] <= z["fair_hi_eur"] + 1):
         p.append("faire Spanne")
-    if not (-5 <= z["punkte"] <= 9):
+    if not (-6 <= z["punkte"] <= 10):
         p.append("Punkte")
-    if z["punkte"] != z["bewertungs_pkt"] + z["qualitaets_pkt"] + z["trend_pkt"] + z["revision_pkt"]:
+    if z["punkte"] != z["bewertungs_pkt"] + z["qualitaets_pkt"] + z["trend_pkt"] + z["revision_pkt"] + z["kurztrend_pkt"]:
         p.append("Punktesumme")
     ab = round((z["fair_mitte_eur"] / z["kurs_eur"] - 1) * 100)
     if abs(ab - z["abstand_pct"]) > 2:
