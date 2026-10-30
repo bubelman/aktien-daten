@@ -4,7 +4,7 @@ Aufruf:
   python3 bewertung.py --yahoo aktien.json --alt ALT_ORDNER --neu NEU_ORDNER --jetzt 2026-10-30T21:33:00+01:00
 
 ALT_ORDNER enthält die aktuellen Dateien des Dashboards:
-  liste.json, aenderungen.json, depot.json, depot_trades.json, depot_verlauf.json
+  liste.json, aenderungen.json, depot.json, depot_trades.json, depot_verlauf.json, depot50.json (fehlt sie: Start mit 10.000 €)
 NEU_ORDNER bekommt die neuen Dateien + bericht.json (Zusammenfassung, wichtige Ereignisse, Prüfergebnis).
 
 Optional: --kurse kurse.json  ({"TICKER": kurs_in_usd, ..., "EURUSD": 1.116}) überschreibt Kurse,
@@ -395,6 +395,55 @@ def main():
     if cash < -0.005:
         print("FEHLER: Bargeld negativ", file=sys.stderr)
         sys.exit(2)
+
+    # 5b. Depot B: alle 50 Aktien der Liste zu gleichen Teilen (Vergleich: bringt die Top-5-Auswahl etwas?)
+    d50 = lade(os.path.join(a.alt, "depot50.json"), None)
+    if not d50:
+        cash50, pos50 = START_GELD, []
+    else:
+        c50 = next((p for p in d50 if p.get("ticker") == "CASH"), None)
+        cash50 = c50["wert_eur"] if c50 else 0.0
+        pos50 = [p for p in d50 if p.get("ticker") != "CASH"]
+    n_v = n_k = 0
+    if not a.keine_trades:
+        bleiben50 = []
+        for p in pos50:
+            if p["ticker"] in drin:
+                bleiben50.append(p)
+                continue
+            k = kurs_von(p["ticker"], p["kurs_eur"])
+            cash50 = round(cash50 + p["stueck"] * k - GEBUEHR, 2)
+            n_v += 1
+        pos50 = bleiben50
+        halten50 = {p["ticker"] for p in pos50}
+        neue50 = [r for r in liste if r["ticker"] not in halten50]
+        if neue50:
+            wert50 = cash50 + sum(p["stueck"] * kurs_von(p["ticker"], p["kurs_eur"]) for p in pos50)
+            je50 = min(wert50 / ANZAHL, cash50 / len(neue50))
+            for r in neue50:
+                betrag = je50 - GEBUEHR
+                if betrag <= 5:
+                    continue
+                st = math.floor(betrag / r["kurs_eur"] * 10000) / 10000
+                kosten = round(st * r["kurs_eur"], 2)
+                cash50 = round(cash50 - kosten - GEBUEHR, 2)
+                pos50.append(dict(ticker=r["ticker"], aktie=r["aktie"], stueck=st, kaufkurs_eur=r["kurs_eur"], kaufdatum=heute_s,
+                                  kurs_eur=r["kurs_eur"], wert_eur=kosten, gewinn_eur=0.0, gewinn_pct=0.0, id=r.get("id")))
+                n_k += 1
+        if n_v or n_k:
+            logz("Depot B (alle 50)", "Umschichtung", f"{n_v} verkauft, {n_k} gekauft (je 1 € Gebühr)")
+    for p in pos50:
+        k = kurs_von(p["ticker"], p["kurs_eur"])
+        p["kurs_eur"] = k
+        p["wert_eur"] = round(p["stueck"] * k, 2)
+        p["gewinn_eur"] = round(p["wert_eur"] - p["stueck"] * p["kaufkurs_eur"], 2)
+        p["gewinn_pct"] = round((k / p["kaufkurs_eur"] - 1) * 100, 2)
+    if cash50 < -0.005:
+        print("FEHLER: Bargeld Depot B negativ", file=sys.stderr)
+        sys.exit(2)
+    wert50 = round(sum(p["wert_eur"] for p in pos50) + cash50, 2)
+    depot50_neu = sorted(pos50, key=lambda p: -p["gewinn_pct"]) + [dict(ticker="CASH", aktie="Bargeld", stueck=None, kaufkurs_eur=None,
+                         kaufdatum=None, kurs_eur=None, wert_eur=round(cash50, 2), gewinn_eur=None, gewinn_pct=None, id=None)]
     investiert = round(sum(p["wert_eur"] for p in pos), 2)
     wert = round(investiert + cash, 2)
     spy = ydata.get("SPY", {}).get("kurs")
@@ -404,7 +453,8 @@ def main():
         vgl = verlauf[-1].get("vergleich_eur") if verlauf else None
     verlauf.append(dict(zeit=zeit, wert_eur=wert, cash_eur=round(cash, 2), investiert_eur=investiert,
                         rendite_pct=round((wert / START_GELD - 1) * 100, 2), positionen=len(pos),
-                        vergleich_eur=vgl, vergleich_pct=None if vgl is None else round((vgl / SPY_START - 1) * 100, 2)))
+                        vergleich_eur=vgl, vergleich_pct=None if vgl is None else round((vgl / SPY_START - 1) * 100, 2),
+                        wert50_eur=wert50, rendite50_pct=round((wert50 / START_GELD - 1) * 100, 2)))
     depot_neu = pos + [dict(ticker="CASH", aktie="Bargeld", stueck=None, kaufkurs_eur=None, kaufdatum=None, kurs_eur=None,
                             wert_eur=round(cash, 2), gewinn_eur=None, gewinn_pct=None, id=None)]
 
@@ -416,10 +466,12 @@ def main():
     assert {p["ticker"] for p in pos} <= set(top) or a.keine_trades
     assert abs(sum(p["wert_eur"] for p in depot_neu) - wert) < 0.02
     assert trades and trades[0].get("aktion") == "Start"
+    assert abs(sum(p["wert_eur"] for p in depot50_neu) - wert50) < 0.02
+    assert {p["ticker"] for p in pos50} <= drin or a.keine_trades
 
     os.makedirs(a.neu, exist_ok=True)
     out = {"liste.json": liste, "aenderungen.json": (log + neu_log)[-300:], "depot.json": depot_neu,
-           "depot_trades.json": trades, "depot_verlauf.json": verlauf[-2000:]}
+           "depot_trades.json": trades, "depot_verlauf.json": verlauf[-2000:], "depot50.json": depot50_neu}
     for n, d in out.items():
         json.dump(d, open(os.path.join(a.neu, n), "w"), ensure_ascii=False)
     statuswechsel = sum(1 for r in liste if alt_by.get(r["ticker"], {}).get("status") not in (None, r["status"]))
@@ -429,6 +481,7 @@ def main():
                   punkte=by_now[t]["punkte"], trend=by_now[t]["trend"], zahlen_am=by_now[t]["zahlen_am"]) for t in top],
         depot=dict(wert_eur=wert, rendite_pct=verlauf[-1]["rendite_pct"], vergleich_pct=verlauf[-1]["vergleich_pct"],
                    bargeld_eur=round(cash, 2), positionen=[p["ticker"] for p in pos]),
+        depot_b=dict(wert_eur=wert50, rendite_pct=verlauf[-1]["rendite50_pct"], positionen=len(pos50), verkauft=n_v, gekauft=n_k),
         statuswechsel=statuswechsel, aenderungen=len(neu_log), wichtig=wichtig,
     )
     json.dump(bericht, open(os.path.join(a.neu, "bericht.json"), "w"), ensure_ascii=False, indent=1)
