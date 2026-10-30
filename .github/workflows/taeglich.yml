@@ -1,0 +1,26 @@
+name: Aktien-Daten holen
+on:
+  schedule:
+    - cron: "17 5 * * 1-5"   # Mo–Fr 05:17 UTC (vor dem 7:33-Lauf in Berlin)
+    - cron: "47 15 * * 1-5"  # Mo–Fr 15:47 UTC (US-Handel läuft)
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  holen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install yfinance
+      - run: python fetch.py
+      - name: Ergebnis speichern
+        run: |
+          git config user.name "aktien-bot"
+          git config user.email "aktien-bot@users.noreply.github.com"
+          git add data/aktien.json
+          git diff --cached --quiet || git commit -m "Daten $(date -u +%F' '%H:%M)"
+          git push
