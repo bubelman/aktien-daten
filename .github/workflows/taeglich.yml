@@ -1,8 +1,7 @@
 name: Aktien-Daten holen
 on:
   schedule:
-    - cron: "17 5 * * 1-5"   # Mo–Fr 05:17 UTC (vor dem 7:33-Lauf in Berlin)
-    - cron: "47 15 * * 1-5"  # Mo–Fr 15:47 UTC (US-Handel läuft)
+    - cron: "3 6,9,12,17,20 * * 1-5"   # Mo–Fr kurz vor den Läufen der Automatik (7:33, 10:33, 13:33, 18:33, 21:33 Uhr Berlin im Winter)
   workflow_dispatch: {}
 permissions:
   contents: write

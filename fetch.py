@@ -31,8 +31,17 @@ def one(sym):
         roe=num(g("returnOnEquity")), operative_marge=num(g("operatingMargins")),
         freier_cashflow=num(g("freeCashflow")), marktwert=num(g("marketCap")),
         ebitda=num(g("ebitda")), schulden=num(g("totalDebt")), cash=num(g("totalCash")),
-        sektor=g("sector"), branche=g("industry"),
+        sektor=g("sector"), branche=g("industry"), finanz_waehrung=g("financialCurrency"),
     )
+    # Gewinnschätzungen sind in der Berichtswährung (z. B. PDD in Yuan); Faktor in die Kurswährung
+    out["eps_faktor"] = 1.0
+    fw, kw = out.get("finanz_waehrung"), out.get("waehrung")
+    if fw and kw and fw != kw:
+        try:
+            fx = yf.Ticker(f"{fw}{kw}=X").history(period="5d")["Close"].dropna()
+            out["eps_faktor"] = float(fx.iloc[-1]) if len(fx) else None
+        except Exception:
+            out["eps_faktor"] = None
     if out["freier_cashflow"] and out["marktwert"]:
         out["fcf_rendite"] = out["freier_cashflow"] / out["marktwert"]
     if out["ebitda"] and out["ebitda"] > 0 and out["schulden"] is not None and out["cash"] is not None:
@@ -92,8 +101,14 @@ for s in TICKERS:
             time.sleep(5)
     time.sleep(1.5)
 
+# Wechselkurs Euro/Dollar für die Umrechnung
+try:
+    eurusd = float(yf.Ticker("EURUSD=X").history(period="5d")["Close"].dropna().iloc[-1])
+except Exception:
+    eurusd = None
+
 stand = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 ok = sum(1 for r in rows if r.get("kurs"))
-json.dump({"stand": stand, "quelle": "Yahoo Finance über yfinance (inoffiziell)", "anzahl": len(rows), "mit_kurs": ok, "aktien": rows},
+json.dump({"stand": stand, "eurusd": eurusd, "quelle": "Yahoo Finance über yfinance (inoffiziell)", "anzahl": len(rows), "mit_kurs": ok, "aktien": rows},
           open("data/aktien.json", "w"), ensure_ascii=False, indent=1)
 print(f"{ok}/{len(rows)} Aktien mit Kurs, Stand {stand}")
