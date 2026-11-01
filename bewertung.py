@@ -422,10 +422,10 @@ def main():
             y = ydata.get(t)
             name = NAMEN.get(t) or kurzname((y or {}).get("name_lang") or (y or {}).get("name") or t)
             grund = ausfall.get(t) or ("noch nicht in den Daten – Claude muss sie erst aufnehmen" if not y else "keine Bewertung möglich")
-            meine.append(dict(ticker=t, aktie=name, grund=grund, punkte=None, rang=None, stand=jetzt.isoformat()))
+            meine.append(dict(ticker=t, aktie=name, grund=grund, punkte=None, rang=None, stand=jetzt.isoformat(), bewertet=len(zeilen)))
     meine.sort(key=lambda r: (r.get("rang") is None, r.get("rang") or 0))
     if not meine:  # das Dashboard kann keine leere Datei lesen
-        meine = [dict(ticker="", aktie="", leer=True, grund="Noch keine Aktien ausgewählt", stand=jetzt.isoformat())]
+        meine = [dict(ticker="", aktie="", leer=True, grund="Noch keine Aktien ausgewählt", stand=jetzt.isoformat(), bewertet=len(zeilen))]
 
     if not a.ohne_depots:
         # 5. Musterdepot
