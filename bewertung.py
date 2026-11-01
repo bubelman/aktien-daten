@@ -119,6 +119,23 @@ def boersentage_bis(heute, ziel):
     return n
 
 
+def schaetz_faktor(y, e1, f):
+    """Yahoo liefert Gewinnschätzungen bei ausländischen Aktien mal in der Kurswährung, mal in der
+    Berichtswährung (z. B. SAP-ADR in Dollar, ASML-ADR in Euro, PDD in Yuan). Yahoos forwardEps ist immer
+    in der Kurswährung. Darum: Passt die Schätzung schon zu forwardEps, wird nicht umgerechnet (Faktor 1);
+    passt sie erst nach Umrechnung, wird umgerechnet; passt keins von beiden auf 25 % genau: unklar (None)."""
+    if f == 1.0:
+        return 1.0
+    fe = y.get("eps_forward")
+    if not fe or not e1 or fe <= 0 or e1 <= 0:
+        return f  # kein Vergleich möglich: wie bisher umrechnen
+    r = fe / e1
+    d1, df = abs(math.log(r)), abs(math.log(r / f)) if f and f > 0 else 99
+    if min(d1, df) > math.log(1.25):
+        return None
+    return 1.0 if d1 <= df else f
+
+
 def bewerte(y, fx, alt_by, heute=None):
     """Rechnet eine Aktie aus den Yahoo-Daten. Gibt (zeile, fehlergrund) zurück."""
     t = y["ticker"]
@@ -139,6 +156,9 @@ def bewerte(y, fx, alt_by, heute=None):
                 return None, f"Kurs veraltet ({y['kurs_stand']})"
         except ValueError:
             pass
+    f = schaetz_faktor(y, e1, f)
+    if f is None:
+        return None, "Währung der Gewinnschätzung unklar"
     e0, e1 = e0 * f, e1 * f
     if e1 <= 0 or e0 <= 0:
         return None, "Gewinn nicht positiv"
