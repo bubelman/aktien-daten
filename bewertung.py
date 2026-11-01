@@ -3,6 +3,9 @@
 Aufruf:
   python3 bewertung.py --yahoo aktien.json --alt ALT_ORDNER --neu NEU_ORDNER --jetzt 2026-10-30T21:33:00+01:00
 
+Reihenfolge: erst Punkte (max. 10), bei Gleichstand der Feinwert (0–100, Rang jeder Kennzahl unter allen
+bewerteten Aktien). Bewertet werden Dollar- und Euro-Aktien.
+
 ALT_ORDNER enthält die aktuellen Dateien des Dashboards:
   liste.json, aenderungen.json, depot.json, depot_trades.json, depot_verlauf.json, depot50.json (fehlt sie: Start mit 10.000 €)
 NEU_ORDNER bekommt die neuen Dateien + bericht.json (Zusammenfassung, wichtige Ereignisse, Prüfergebnis).
@@ -22,6 +25,7 @@ BEOBACHTEN_MAX = 10
 PRO_BRANCHE = 2
 ZYKLIKER = {"MU", "SNDK", "WDC", "STX", "SKHY"}
 SPY_STUECK, SPY_START = 14.7752, 10000.0  # Vergleichsdepot, gekauft am 30.10.2026
+NAMEN = {'MC.PA': 'LVMH', 'ITX.MC': 'Inditex', 'BMW.DE': 'BMW', 'BBVA.MC': 'BBVA', 'SAN.MC': 'Banco Santander', 'BNP.PA': 'BNP Paribas', 'OR.PA': "L'Oréal", 'RMS.PA': 'Hermès', 'DG.PA': 'Vinci', 'SU.PA': 'Schneider Electric', 'AI.PA': 'Air Liquide', 'EL.PA': 'EssilorLuxottica', 'CS.PA': 'AXA', 'RI.PA': 'Pernod Ricard', 'BN.PA': 'Danone', 'SAF.PA': 'Safran', 'SGO.PA': 'Saint-Gobain', 'ACA.PA': 'Crédit Agricole', 'HO.PA': 'Thales', 'AM.PA': 'Dassault Aviation', 'DSY.PA': 'Dassault Systèmes', 'STMPA.PA': 'STMicroelectronics', 'IBE.MC': 'Iberdrola', 'MUV2.DE': 'Munich Re', 'DB1.DE': 'Deutsche Börse', 'DTE.DE': 'Deutsche Telekom', 'DBK.DE': 'Deutsche Bank', 'HNR1.DE': 'Hannover Rück', 'SRT3.DE': 'Sartorius', 'FME.DE': 'Fresenius Medical Care', 'SHL.DE': 'Siemens Healthineers', 'ENR.DE': 'Siemens Energy', 'P911.DE': 'Porsche', 'VOW3.DE': 'Volkswagen', 'G1A.DE': 'GEA', 'MTX.DE': 'MTU Aero Engines', 'HEI.DE': 'Heidelberg Materials', 'AD.AS': 'Ahold Delhaize', 'PRX.AS': 'Prosus', 'INGA.AS': 'ING', 'WKL.AS': 'Wolters Kluwer', 'ASM.AS': 'ASM International', 'BESI.AS': 'BE Semiconductor', 'KNEBV.HE': 'Kone', 'ENEL.MI': 'Enel', 'ISP.MI': 'Intesa Sanpaolo', 'ENI.MI': 'Eni', 'TTE.PA': 'TotalEnergies', 'ORA.PA': 'Orange', 'VIE.PA': 'Veolia', 'ENGI.PA': 'Engie', 'KER.PA': 'Kering', 'CAP.PA': 'Capgemini', 'AIR.PA': 'Airbus', 'ADS.DE': 'Adidas', 'BAS.DE': 'BASF', 'BAYN.DE': 'Bayer', 'BEI.DE': 'Beiersdorf', 'BNR.DE': 'Brenntag', 'CBK.DE': 'Commerzbank', 'CON.DE': 'Continental', 'DTG.DE': 'Daimler Truck', 'DHL.DE': 'DHL Group', 'EOAN.DE': 'E.ON', 'FRE.DE': 'Fresenius', 'HEN3.DE': 'Henkel', 'IFX.DE': 'Infineon', 'MBG.DE': 'Mercedes-Benz', 'MRK.DE': 'Merck KGaA', 'QIA.DE': 'Qiagen', 'RHM.DE': 'Rheinmetall', 'RWE.DE': 'RWE', 'SIE.DE': 'Siemens', 'SY1.DE': 'Symrise', 'VNA.DE': 'Vonovia', 'ZAL.DE': 'Zalando', 'HAG.DE': 'Hensoldt', 'ALV.DE': 'Allianz', 'UCG.MI': 'UniCredit', 'STLAM.MI': 'Stellantis', 'ADYEN.AS': 'Adyen', 'HEIA.AS': 'Heineken', 'NOKIA.HE': 'Nokia', 'UCB.BR': 'UCB', 'BRK-B': 'Berkshire Hathaway', 'BF-B': 'Brown-Forman', 'GOOG': 'Alphabet (C)', 'GOOGL': 'Alphabet'}  # feste Kurznamen, vor allem für Euro-Aktien
 
 BRANCHEN = [  # (Suchwort in Yahoo-Industry/Sector, deutsche Branche)
     ("Semiconductor", "Halbleiter & Speicher"), ("Computer Hardware", "Hardware & Netzwerk"),
@@ -69,13 +73,24 @@ def rf(x):
 def kurzname(n):
     import re
     n = (n or "").split(" - ")[0]
-    n = re.sub(r",? (Inc\.?|Incorporated|Corporation|Corp\.?|Co\.|Company|Holdings?|plc|PLC|N\.V\.|S\.A\.|Ltd\.?|Limited|Group|Technologies|Platforms)$", "", n or "")
-    n = re.sub(r",? (Inc\.?|Corporation|Corp\.?|Holdings?|plc|Ltd\.?)$", "", n)
-    return n.strip(" ,")
+    muster = (r",? (Inc\.?|Incorporated|Corporation|Corp\.?|Co\.|Company|Holdings?|plc|PLC|N\.V\.?|NV|S\.A\.?|SA|S\.p\.A\.|SpA|"
+              r"Ltd\.?|Limited|Group|Technologies|Platforms|AG|SE|S\.E\.|Aktiengesellschaft|KGaA|& Co\.|Oyj|ASA|"
+              r"Société Européenne|Societas Europaea|Vz|O\.N\.|NA)$")
+    while True:
+        m = re.sub(muster, "", n).strip(" ,")
+        if m == n:
+            return n
+        n = m
 
 
 def r2(x):
     return None if x is None else round(x, 2)
+
+
+def fx_von(y, fx):
+    """Teiler von der Kurswährung in Euro: Dollar-Aktien durch den Euro-Kurs, Euro-Aktien 1. Andere Währungen: None."""
+    w = y.get("waehrung") or "USD"
+    return fx if w == "USD" else 1.0 if w == "EUR" else None
 
 
 def lade(p, default):
@@ -97,7 +112,7 @@ def boersentage_bis(heute, ziel):
     return n
 
 
-def bewerte(y, fx, alt_by):
+def bewerte(y, fx, alt_by, heute=None):
     """Rechnet eine Aktie aus den Yahoo-Daten. Gibt (zeile, fehlergrund) zurück."""
     t = y["ticker"]
     kurs, ziel = y.get("kurs"), y.get("kursziel_median") or y.get("kursziel_mittel")
@@ -108,12 +123,19 @@ def bewerte(y, fx, alt_by):
         return None, "kein Kursziel"
     if not e0 or not e1 or f is None:
         return None, "keine Gewinnschätzung"
-    if (y.get("waehrung") or "USD") != "USD":
-        return None, "Kurs nicht in Dollar"
+    q = fx_von(y, fx)
+    if q is None:
+        return None, f"Kurs in {y.get('waehrung')} (nur Dollar und Euro)"
+    if heute and y.get("kurs_stand"):
+        try:
+            if (heute - dt.date.fromisoformat(y["kurs_stand"])).days > 5:
+                return None, f"Kurs veraltet ({y['kurs_stand']})"
+        except ValueError:
+            pass
     e0, e1 = e0 * f, e1 * f
     if e1 <= 0 or e0 <= 0:
         return None, "Gewinn nicht positiv"
-    kurs_eur, ziel_eur, eps1_eur = kurs / fx, ziel / fx, e1 / fx
+    kurs_eur, ziel_eur, eps1_eur = kurs / q, ziel / q, e1 / q
     kgv = kurs / e1
     wachstum = e1 / e0 - 1
     if not (1 <= kgv <= 200):
@@ -169,7 +191,7 @@ def bewerte(y, fx, alt_by):
     unter_hoch = (kurs / y["hoch_52w"] - 1) if y.get("hoch_52w") else None
     a = alt_by.get(t, {})
     zeile = dict(
-        ticker=t, aktie=a.get("aktie") or kurzname(y.get("name") or t), status="", punkte=int(punkte),
+        ticker=t, aktie=NAMEN.get(t) or kurzname(a.get("aktie") or (y.get("name_lang") if fx_von(y, fx) == 1.0 else None) or y.get("name") or t), status="", punkte=int(punkte),
         kurs_eur=r2(kurs_eur), kgv=round(kgv, 1), wachstum_pct=round(gp, 1), peg=r2(peg),
         fair_lo_eur=rf(lo), fair_hi_eur=rf(hi), fair_mitte_eur=rf(mitte), abstand_pct=round(abstand * 100),
         kursziel_eur=round(ziel_eur, 1), haken=", ".join(haken[:3]), seit=a.get("seit"), stand=None,
@@ -177,9 +199,48 @@ def bewerte(y, fx, alt_by):
         unter_hoch_pct=None if unter_hoch is None else round(unter_hoch * 100),
         schwankung_pct=None if sw is None else round(sw * 100), zahlen_am=y.get("zahlen_am"),
         kurztrend=kurz, kurztrend_pkt=kurz_pkt, veraenderung_1m_pct=None if y.get("veraenderung_1m") is None else round(y["veraenderung_1m"] * 100, 1),
-        analysten=an, bewertungs_pkt=bew, qualitaets_pkt=qual,
+        analysten=an, bewertungs_pkt=bew, qualitaets_pkt=qual, waehrung=y.get("waehrung") or "USD", feinwert=None, rang=None,
     )
+    # Rohwerte für die Feinwertung (werden vor dem Speichern entfernt)
+    sma = y.get("sma200")
+    zeile["_roh"] = dict(abstand=abstand, peg=peg, hoch=hoch, roe=roe, fcf=fcf, nde=nde, marge=y.get("operative_marge"),
+                         r6=y.get("veraenderung_6m"), r1m=y.get("veraenderung_1m"), sma=(kurs / sma - 1) if sma else None, rev=rev)
     return zeile, None
+
+
+# Feinwertung 0–100: Rang jeder Kennzahl unter allen bewerteten Aktien (0 = schlechteste, 1 = beste).
+# Entscheidet bei gleichen Punkten über die Reihenfolge. Fehlt ein Wert, zählt die Mitte (0,5).
+FEIN = [  # (Gewicht, [(Kennzahl, +1 = höher ist besser / -1 = niedriger ist besser)])
+    (0.35, [("abstand", 1), ("peg", -1), ("hoch", 1)]),                 # Bewertung
+    (0.30, [("roe", 1), ("fcf", 1), ("nde", -1), ("marge", 1)]),        # Qualität
+    (0.20, [("r6", 1), ("r1m", 1), ("sma", 1)]),                        # Trend
+    (0.15, [("rev", 1)]),                                                # Schätzungen der Analysten
+]
+
+
+def feinwertung(zeilen):
+    rang = {}
+    for _, teile in FEIN:
+        for k, richtung in teile:
+            werte = sorted(z["_roh"][k] * richtung for z in zeilen if z["_roh"].get(k) is not None)
+            n = len(werte)
+            rang[k] = (werte, n)
+    import bisect
+    for z in zeilen:
+        summe = 0.0
+        for gewicht, teile in FEIN:
+            ps = []
+            for k, richtung in teile:
+                werte, n = rang[k]
+                v = z["_roh"].get(k)
+                if v is None or n < 2:
+                    ps.append(0.5)
+                    continue
+                v *= richtung
+                lo, hi = bisect.bisect_left(werte, v), bisect.bisect_right(werte, v)
+                ps.append(((lo + hi - 1) / 2) / (n - 1))
+            summe += gewicht * sum(ps) / len(ps)
+        z["feinwert"] = round(summe * 100, 1)
 
 
 def pruefe_zeile(z):
@@ -220,8 +281,9 @@ def main():
         K = json.load(open(a.kurse))
         fx = K.get("EURUSD") or fx
         for t, k in K.items():
-            if t in ydata and k:
+            if t in ydata and k and (ydata[t].get("waehrung") or "USD") == "USD":
                 ydata[t]["kurs"] = k
+                ydata[t].pop("kurs_stand", None)
     alt = lade(os.path.join(a.alt, "liste.json"), [])
     alt_by = {r["ticker"]: r for r in alt}
     log = lade(os.path.join(a.alt, "aenderungen.json"), [])
@@ -235,7 +297,7 @@ def main():
     for t, y in ydata.items():
         if t == "SPY":
             continue
-        z, grund = bewerte(y, fx, alt_by)
+        z, grund = bewerte(y, fx, alt_by, heute)
         if z is None:
             ausfall[t] = grund
             continue
@@ -253,8 +315,16 @@ def main():
                 pruef.append(f"{t}: Kurs {o['kurs_eur']} → {z['kurs_eur']} € (Faktor {q:.2f})")
         zeilen.append(z)
 
-    # 2. Rangliste, 50 behalten
-    zeilen.sort(key=lambda r: (-r["punkte"], -r["abstand_pct"]))
+    # 2. Rangliste: erst Punkte, bei Gleichstand die Feinwertung; 50 behalten
+    feinwertung(zeilen)
+    for z in zeilen:
+        z.pop("_roh", None)
+        if not (0 <= z["feinwert"] <= 100):
+            pruef.append(f"{z['ticker']}: Feinwert {z['feinwert']}")
+    zeilen.sort(key=lambda r: (-r["punkte"], -r["feinwert"], -r["abstand_pct"]))
+    for i, z in enumerate(zeilen, 1):
+        z["rang"] = i
+        z["bewertet"] = len(zeilen)
     liste = zeilen[:ANZAHL]
     drin = {r["ticker"] for r in liste}
 
@@ -317,7 +387,8 @@ def main():
         if t in alle:
             return alle[t]["kurs_eur"]
         y = ydata.get(t)
-        return round(y["kurs"] / fx, 2) if y and y.get("kurs") else fallback
+        q = fx_von(y, fx) if y else None
+        return round(y["kurs"] / q, 2) if y and y.get("kurs") and q else fallback
 
     zeit = jetzt.isoformat()
     if not a.keine_trades:
@@ -461,6 +532,8 @@ def main():
     # 6. Abschlussprüfung
     assert len(liste) == ANZAHL, "nicht 50 Zeilen"
     assert len({r["ticker"] for r in liste}) == ANZAHL, "doppelte Ticker"
+    assert [r["rang"] for r in liste] == list(range(1, ANZAHL + 1)), "Rang"
+    assert all((a["punkte"], a["feinwert"]) >= (b["punkte"], b["feinwert"]) for a, b in zip(liste, liste[1:])), "Reihenfolge"
     assert sum(1 for r in liste if r["status"] == "Top") <= TOP_MAX
     assert all(r["trend"] != "fallend" for r in liste if r["status"] == "Top")
     assert {p["ticker"] for p in pos} <= set(top) or a.keine_trades

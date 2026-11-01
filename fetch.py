@@ -1,9 +1,17 @@
-"""Holt täglich kostenlose Yahoo-Finance-Daten (über yfinance) für die Aktien-Liste
-und schreibt sie nach data/aktien.json. Läuft per GitHub Actions."""
-import json, math, time, datetime as dt
+"""Holt kostenlose Yahoo-Finance-Daten (über yfinance) für die Aktien-Liste und schreibt data/aktien.json.
+Läuft per GitHub Actions.
+
+  python fetch.py --voll   Grunddaten (Kursziele, Gewinnschätzungen, Kennzahlen) für alle Aktien
+                           aus tickers.txt neu holen, danach die Kurse. Dauert ca. 40 Minuten, 1x am Morgen.
+  python fetch.py          Nur Kurse und Trends neu holen (ein Sammelabruf, 1–3 Minuten). Grunddaten
+                           bleiben aus dem letzten Vollabruf.
+"""
+import json, math, sys, time, datetime as dt
 import yfinance as yf
 
+DATEI = "data/aktien.json"
 TICKERS = open("tickers.txt").read().split()
+
 
 def num(x):
     try:
@@ -12,7 +20,12 @@ def num(x):
     except Exception:
         return None
 
-def one(sym):
+
+def jetzt():
+    return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+
+
+def grunddaten(sym):
     t = yf.Ticker(sym)
     out = {"ticker": sym}
     info = {}
@@ -22,7 +35,7 @@ def one(sym):
         out["fehler_info"] = str(e)[:120]
     g = info.get
     out.update(
-        name=g("shortName"), waehrung=g("currency"), kurs=num(g("currentPrice") or g("regularMarketPrice")),
+        name=g("shortName") or g("longName"), name_lang=g("longName"), waehrung=g("currency"), kurs=num(g("currentPrice") or g("regularMarketPrice")),
         hoch_52w=num(g("fiftyTwoWeekHigh")), tief_52w=num(g("fiftyTwoWeekLow")),
         kursziel_mittel=num(g("targetMeanPrice")), kursziel_median=num(g("targetMedianPrice")),
         kursziel_hoch=num(g("targetHighPrice")), kursziel_tief=num(g("targetLowPrice")),
@@ -46,7 +59,6 @@ def one(sym):
         out["fcf_rendite"] = out["freier_cashflow"] / out["marktwert"]
     if out["ebitda"] and out["ebitda"] > 0 and out["schulden"] is not None and out["cash"] is not None:
         out["nettoschulden_ebitda"] = (out["schulden"] - out["cash"]) / out["ebitda"]
-    # Gewinnschätzungen: laufendes Jahr (0y) und nächstes Jahr (+1y)
     try:
         ee = t.earnings_estimate
         if ee is not None and len(ee):
@@ -59,7 +71,6 @@ def one(sym):
                 out["wachstum_naechstes_jahr"] = out["eps_+1y"] / out["eps_0y"] - 1
     except Exception as e:
         out["fehler_schaetzung"] = str(e)[:120]
-    # Revisionen: Schätzung nächstes Jahr heute gegen vor 30 Tagen
     try:
         tr = t.eps_trend
         if tr is not None and "+1y" in tr.index:
@@ -70,7 +81,6 @@ def one(sym):
                 out["revision_30t"] = cur / ago - 1
     except Exception as e:
         out["fehler_trend"] = str(e)[:120]
-    # Termin der nächsten Quartalszahlen
     try:
         cal = t.calendar
         d = cal.get("Earnings Date") if isinstance(cal, dict) else None
@@ -78,41 +88,92 @@ def one(sym):
             out["zahlen_am"] = str(d[0] if isinstance(d, (list, tuple)) else d)[:10]
     except Exception:
         pass
-    # Trend und Schwankung aus 1 Jahr Tageskursen
-    try:
-        h = t.history(period="14mo", interval="1d", auto_adjust=True)["Close"].dropna()
-        if len(h) >= 200:
-            c = float(h.iloc[-1]); sma = float(h.iloc[-200:].mean()); r6 = c / float(h.iloc[-127]) - 1
-            rets = h.pct_change().dropna().iloc[-252:]
-            out.update(sma200=sma, veraenderung_6m=r6, schwankung=float(rets.std() * math.sqrt(252)),
-                       trend=("steigend" if c > sma and r6 > 0 else "fallend" if c < sma and r6 < 0 else "seitwärts"))
-            # Kurzfristiger Trend: 50-Tage-Schnitt und letzter Monat (ca. 21 Handelstage)
-            sma50 = float(h.iloc[-50:].mean()); r1m = c / float(h.iloc[-22]) - 1
-            out.update(sma50=sma50, veraenderung_1m=r1m,
-                       kurztrend=("steigend" if c > sma50 and r1m > 0 else "fallend" if c < sma50 and r1m < 0 else "seitwärts"))
-    except Exception as e:
-        out["fehler_verlauf"] = str(e)[:120]
+    out["grunddaten_stand"] = jetzt()
     return out
 
-rows = []
-for s in TICKERS:
-    for versuch in range(3):
-        try:
-            rows.append(one(s)); break
-        except Exception as e:
-            if versuch == 2:
-                rows.append({"ticker": s, "fehler": str(e)[:200]})
-            time.sleep(5)
-    time.sleep(1.5)
 
-# Wechselkurs Euro/Dollar für die Umrechnung
-try:
-    eurusd = float(yf.Ticker("EURUSD=X").history(period="5d")["Close"].dropna().iloc[-1])
-except Exception:
-    eurusd = None
+def kurse_und_trends(rows):
+    """Ein Sammelabruf: 14 Monate Tageskurse für alle Aktien -> Kurs, 52-Wochen-Spanne, Trends, Schwankung."""
+    syms = [r["ticker"] for r in rows]
+    frisch = set()
+    for i in range(0, len(syms), 200):
+        teil = syms[i:i + 200]
+        for versuch in range(3):
+            try:
+                df = yf.download(teil, period="14mo", interval="1d", auto_adjust=True, group_by="ticker",
+                                 threads=True, progress=False)
+                break
+            except Exception as e:
+                print("Sammelabruf fehlgeschlagen:", e)
+                df = None
+                time.sleep(20)
+        if df is None:
+            continue
+        for s in teil:
+            try:
+                h = (df[s]["Close"] if len(teil) > 1 else df["Close"]).dropna()
+            except Exception:
+                continue
+            if len(h) < 30:
+                continue
+            r = next(x for x in rows if x["ticker"] == s)
+            c = float(h.iloc[-1])
+            j = h.iloc[-252:]
+            r.update(kurs=c, hoch_52w=float(j.max()), tief_52w=float(j.min()), kurs_stand=str(h.index[-1])[:10])
+            frisch.add(s)
+            for k in ("sma200", "veraenderung_6m", "schwankung", "trend", "sma50", "veraenderung_1m", "kurztrend"):
+                r.pop(k, None)
+            if len(h) >= 200:
+                sma = float(h.iloc[-200:].mean()); r6 = c / float(h.iloc[-127]) - 1
+                rets = h.pct_change().dropna().iloc[-252:]
+                r.update(sma200=sma, veraenderung_6m=r6, schwankung=float(rets.std() * math.sqrt(252)),
+                         trend=("steigend" if c > sma and r6 > 0 else "fallend" if c < sma and r6 < 0 else "seitwärts"))
+                sma50 = float(h.iloc[-50:].mean()); r1m = c / float(h.iloc[-22]) - 1
+                r.update(sma50=sma50, veraenderung_1m=r1m,
+                         kurztrend=("steigend" if c > sma50 and r1m > 0 else "fallend" if c < sma50 and r1m < 0 else "seitwärts"))
+        time.sleep(3)
+    return frisch
 
-stand = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
-ok = sum(1 for r in rows if r.get("kurs"))
-json.dump({"stand": stand, "eurusd": eurusd, "quelle": "Yahoo Finance über yfinance (inoffiziell)", "anzahl": len(rows), "mit_kurs": ok, "aktien": rows},
-          open("data/aktien.json", "w"), ensure_ascii=False, indent=1)
-print(f"{ok}/{len(rows)} Aktien mit Kurs, Stand {stand}")
+
+def main():
+    voll = "--voll" in sys.argv
+    try:
+        alt = json.load(open(DATEI))
+    except Exception:
+        alt = {"aktien": []}
+    alt_by = {r["ticker"]: r for r in alt.get("aktien", [])}
+
+    if voll:
+        rows = []
+        for n, s in enumerate(TICKERS, 1):
+            for versuch in range(3):
+                try:
+                    rows.append(grunddaten(s)); break
+                except Exception as e:
+                    if versuch == 2:
+                        rows.append(alt_by.get(s) or {"ticker": s, "fehler": str(e)[:200]})
+                    time.sleep(5)
+            if n % 50 == 0:
+                print(f"{n}/{len(TICKERS)} Grunddaten")
+            time.sleep(0.8)
+        grund_stand = jetzt()
+    else:
+        rows = [alt_by.get(s) or {"ticker": s} for s in TICKERS]
+        grund_stand = alt.get("grunddaten_stand")
+
+    frisch = kurse_und_trends(rows)
+
+    try:
+        eurusd = float(yf.Ticker("EURUSD=X").history(period="5d")["Close"].dropna().iloc[-1])
+    except Exception:
+        eurusd = alt.get("eurusd")
+
+    stand = jetzt()
+    json.dump({"stand": stand, "grunddaten_stand": grund_stand, "eurusd": eurusd,
+               "quelle": "Yahoo Finance über yfinance (inoffiziell)", "anzahl": len(rows), "mit_kurs": len(frisch),
+               "aktien": rows}, open(DATEI, "w"), ensure_ascii=False, indent=1)
+    print(f"{len(frisch)}/{len(rows)} Aktien mit frischem Kurs, Stand {stand}, Grunddaten {grund_stand}")
+
+
+if __name__ == "__main__":
+    main()

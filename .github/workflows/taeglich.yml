@@ -1,14 +1,17 @@
-name: Aktien-Daten holen
+name: Kurse holen
 on:
   schedule:
     - cron: "3 6,9,12,17,20 * * 1-5"   # Mo–Fr kurz vor den Läufen der Automatik (7:33, 10:33, 13:33, 18:33, 21:33 Uhr Berlin im Winter)
   workflow_dispatch: {}
 permissions:
   contents: write
+concurrency:
+  group: daten
+  cancel-in-progress: false
 jobs:
   holen:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,5 +24,6 @@ jobs:
           git config user.name "aktien-bot"
           git config user.email "aktien-bot@users.noreply.github.com"
           git add data/aktien.json
-          git diff --cached --quiet || git commit -m "Daten $(date -u +%F' '%H:%M)"
-          git push
+          git diff --cached --quiet && exit 0
+          git commit -m "Kurse $(date -u +%F' '%H:%M)"
+          for i in 1 2 3; do git pull --rebase -q && git push && break; sleep 10; done
