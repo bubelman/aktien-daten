@@ -4,7 +4,7 @@ Aufruf:
   python3 bewertung.py --yahoo aktien.json --alt ALT_ORDNER --neu NEU_ORDNER --jetzt 2026-10-30T21:33:00+01:00
 
 Faire Spanne aus drei Wegen: Gewinn × faires KGV, Cashflow-Rechnung (DCF) und Kursziel der Analysten;
-faire Mitte = mittlerer der drei Werte. Reihenfolge: erst Punkte (max. 10), bei Gleichstand der Feinwert (0–100, Rang jeder Kennzahl unter allen
+faire Mitte = mittlerer der drei Werte, Spanne von halbem Weg zum unteren bis halbem Weg zum oberen Wert. Reihenfolge: erst Punkte (max. 10), bei Gleichstand der Feinwert (0–100, Rang jeder Kennzahl unter allen
 bewerteten Aktien). Bewertet werden Dollar- und Euro-Aktien.
 
 ALT_ORDNER enthält die aktuellen Dateien des Dashboards:
@@ -205,9 +205,15 @@ def bewerte(y, fx, alt_by, heute=None):
         if fcf_q > 0 and not finanz:
             g_cf = 0.0 if zyk else max(0.0, min(0.15, wachstum / 2))  # vorsichtig: halbes erwartetes Gewinnwachstum, höchstens 15 %
             cf_wert = dcf_wert(fcf_q / (mcap / kurs), g_cf) / q
-    werte = [fair_peg, ziel_eur] + ([cf_wert] if cf_wert else [])
-    lo, hi = min(werte), max(werte)
-    mitte = sorted(werte)[len(werte) // 2] if len(werte) == 3 else (lo + hi) / 2  # bei drei Wegen der mittlere Wert
+    werte = sorted([fair_peg, ziel_eur] + ([cf_wert] if cf_wert else []))
+    if len(werte) == 3:
+        # faire Mitte = mittlerer Wert; Spanne von halbem Weg zum unteren bis halbem Weg zum oberen Wert,
+        # damit ein einzelner Ausreißer die Spanne nicht riesig macht
+        a3, b3, c3 = werte
+        mitte, lo, hi = b3, (a3 + b3) / 2, (b3 + c3) / 2
+    else:
+        lo, hi = werte[0], werte[-1]
+        mitte = (lo + hi) / 2
     abstand = mitte / kurs_eur - 1
     hoch = ziel_eur / kurs_eur - 1
 
