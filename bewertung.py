@@ -3,7 +3,8 @@
 Aufruf:
   python3 bewertung.py --yahoo aktien.json --alt ALT_ORDNER --neu NEU_ORDNER --jetzt 2026-10-30T21:33:00+01:00
 
-Reihenfolge: erst Punkte (max. 10), bei Gleichstand der Feinwert (0–100, Rang jeder Kennzahl unter allen
+Faire Spanne aus drei Wegen: Gewinn × faires KGV, Cashflow-Rechnung (DCF) und Kursziel der Analysten;
+faire Mitte = mittlerer der drei Werte. Reihenfolge: erst Punkte (max. 10), bei Gleichstand der Feinwert (0–100, Rang jeder Kennzahl unter allen
 bewerteten Aktien). Bewertet werden Dollar- und Euro-Aktien.
 
 ALT_ORDNER enthält die aktuellen Dateien des Dashboards:
@@ -136,11 +137,28 @@ def schaetz_faktor(y, e1, f):
     return 1.0 if d1 <= df else f
 
 
+DCF_ZINS, DCF_ENDWACHSTUM = 0.09, 0.025  # Abzinsung 9 % pro Jahr, ewiges Wachstum 2,5 %
+
+
+def dcf_wert(fcf_je_aktie, wachstum):
+    """Einfache Cashflow-Rechnung (DCF) je Aktie: Jahre 1–5 wachsen mit `wachstum`, Jahre 6–10 sinkt das
+    Wachstum gleichmäßig auf 2,5 %, danach ewig 2,5 %; alles mit 9 % pro Jahr abgezinst."""
+    wert, cf, g = 0.0, fcf_je_aktie, wachstum
+    for jahr in range(1, 11):
+        if jahr > 5:
+            g = wachstum + (DCF_ENDWACHSTUM - wachstum) * (jahr - 5) / 5
+        cf *= 1 + g
+        wert += cf / (1 + DCF_ZINS) ** jahr
+    wert += cf * (1 + DCF_ENDWACHSTUM) / (DCF_ZINS - DCF_ENDWACHSTUM) / (1 + DCF_ZINS) ** 10
+    return wert
+
+
 def bewerte(y, fx, alt_by, heute=None):
     """Rechnet eine Aktie aus den Yahoo-Daten. Gibt (zeile, fehlergrund) zurück."""
     t = y["ticker"]
     kurs, ziel = y.get("kurs"), y.get("kursziel_median") or y.get("kursziel_mittel")
     e0, e1, f = y.get("eps_0y"), y.get("eps_+1y"), y.get("eps_faktor")
+    fx_bericht = f if (y.get("finanz_waehrung") and y.get("finanz_waehrung") != y.get("waehrung")) else 1.0
     if not kurs or kurs <= 0:
         return None, "kein Kurs"
     if not ziel:
@@ -174,13 +192,27 @@ def bewerte(y, fx, alt_by, heute=None):
     zyk = t in ZYKLIKER
     fair_kgv = 10 if zyk else max(12, min(25, gp))
     fair_peg = eps1_eur * fair_kgv
-    lo, hi = min(fair_peg, ziel_eur), max(fair_peg, ziel_eur)
-    mitte = (lo + hi) / 2
+
+    # Freier Cashflow: kommt in der Berichtswährung (z. B. SAP in Euro, PDD in Yuan), der Börsenwert in der
+    # Kurswährung. Darum erst umrechnen, dann vergleichen.
+    fcf_roh, mcap = y.get("freier_cashflow"), y.get("marktwert")
+    fcf = None
+    cf_wert = None
+    if fcf_roh is not None and mcap and mcap > 0 and fx_bericht:
+        fcf_q = fcf_roh * fx_bericht
+        fcf = fcf_q / mcap
+        finanz = (y.get("sektor") == "Financial Services")  # bei Banken/Versicherungen sagt der Cashflow wenig
+        if fcf_q > 0 and not finanz:
+            g_cf = 0.0 if zyk else max(0.0, min(0.15, wachstum / 2))  # vorsichtig: halbes erwartetes Gewinnwachstum, höchstens 15 %
+            cf_wert = dcf_wert(fcf_q / (mcap / kurs), g_cf) / q
+    werte = [fair_peg, ziel_eur] + ([cf_wert] if cf_wert else [])
+    lo, hi = min(werte), max(werte)
+    mitte = sorted(werte)[len(werte) // 2] if len(werte) == 3 else (lo + hi) / 2  # bei drei Wegen der mittlere Wert
     abstand = mitte / kurs_eur - 1
     hoch = ziel_eur / kurs_eur - 1
 
     an = y.get("analysten") or 0
-    roe, fcf, nde = y.get("roe"), y.get("fcf_rendite"), y.get("nettoschulden_ebitda")
+    roe, nde = y.get("roe"), y.get("nettoschulden_ebitda")
     trend = y.get("trend")
     rev = y.get("revision_30t")
     bew = (2 if peg < 0.6 else 1 if peg < 1 else 0) + (2 if hoch > 0.4 else 1 if hoch > 0.2 else 0)
@@ -210,6 +242,8 @@ def bewerte(y, fx, alt_by, heute=None):
         haken.append(f"nur {an} Analysten")
     if rev_pkt < 0:
         haken.append("Analysten senken Schätzungen")
+    if cf_wert and cf_wert < kurs_eur * 0.7:
+        haken.append("Cashflow-Rechnung deutlich unter Kurs")
     if f != 1.0:
         haken.append(f"Gewinn aus {y.get('finanz_waehrung')} umgerechnet")
     if kgv > 40:
@@ -226,7 +260,9 @@ def bewerte(y, fx, alt_by, heute=None):
         unter_hoch_pct=None if unter_hoch is None else round(unter_hoch * 100),
         schwankung_pct=None if sw is None else round(sw * 100), zahlen_am=y.get("zahlen_am"),
         kurztrend=kurz, kurztrend_pkt=kurz_pkt, veraenderung_1m_pct=None if y.get("veraenderung_1m") is None else round(y["veraenderung_1m"] * 100, 1),
-        analysten=an, bewertungs_pkt=bew, qualitaets_pkt=qual, waehrung=y.get("waehrung") or "USD", feinwert=None, rang=None,
+        analysten=an, bewertungs_pkt=bew, qualitaets_pkt=qual,
+        wert_kgv_eur=rf(fair_peg), wert_cf_eur=None if cf_wert is None else rf(cf_wert),
+        fcf_rendite_pct=None if fcf is None else round(fcf * 100, 1), waehrung=y.get("waehrung") or "USD", feinwert=None, rang=None,
     )
     # Rohwerte für die Feinwertung (werden vor dem Speichern entfernt)
     sma = y.get("sma200")
@@ -430,6 +466,10 @@ def main():
             o = meine_alt.get(t)
             if o and o.get("punkte") is not None and abs(m["punkte"] - o["punkte"]) >= 2:
                 wichtig.append(f"Deine Aktie {m['aktie']}: {o['punkte']} → {m['punkte']} Punkte")
+            if o and o.get("kurs_eur") and m.get("kurs_eur"):
+                ch = (m["kurs_eur"] / o["kurs_eur"] - 1) * 100
+                if abs(ch) >= 5:
+                    wichtig.append(f"Deine Aktie {m['aktie']}: Kurs {'+' if ch > 0 else ''}{de(ch)} % seit dem letzten Lauf ({de(o['kurs_eur'], 2)} → {de(m['kurs_eur'], 2)} €)")
             if o and o.get("top_bedingungen") is not None and o["top_bedingungen"] != m["top_bedingungen"]:
                 wichtig.append(f"Deine Aktie {m['aktie']} erfüllt die Top-Bedingungen {'jetzt' if m['top_bedingungen'] else 'nicht mehr'}")
             if m.get("zahlen_am"):
