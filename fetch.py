@@ -114,10 +114,10 @@ def kurse_und_trends(rows):
                 h = (df[s]["Close"] if len(teil) > 1 else df["Close"]).dropna()
             except Exception:
                 continue
-            if len(h) < 30:
+            if len(h) < 1:
                 continue
             r = next(x for x in rows if x["ticker"] == s)
-            c = float(h.iloc[-1])
+            c = float(h.iloc[-1])  # auch bei kurzer Historie (z. B. Neuling an der Börse) den Kurs aktualisieren
             j = h.iloc[-252:]
             r.update(kurs=c, hoch_52w=float(j.max()), tief_52w=float(j.min()), kurs_stand=str(h.index[-1])[:10])
             frisch.add(s)
@@ -142,6 +142,14 @@ def main():
     except Exception:
         alt = {"aktien": []}
     alt_by = {r["ticker"]: r for r in alt.get("aktien", [])}
+    if "--voll-wenn-alt" in sys.argv:
+        # GitHub startet geplante Läufe oft Stunden zu spät oder gar nicht. Darum gibt es mehrere Versuche
+        # am Morgen; nur der erste des Tages holt die Grunddaten, die anderen nur Kurse. Neue Kürzel in
+        # tickers.txt (noch ohne Grunddaten) erzwingen ebenfalls einen Vollabruf.
+        heute = dt.datetime.now(dt.timezone.utc).date().isoformat()
+        neu = [t for t in TICKERS if t not in alt_by]
+        voll = not str(alt.get("grunddaten_stand") or "").startswith(heute) or bool(neu)
+        print("Vollabruf" if voll else "Grunddaten von heute schon da: nur Kurse")
 
     if voll:
         rows = []

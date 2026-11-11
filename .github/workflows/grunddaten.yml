@@ -1,7 +1,9 @@
 name: Grunddaten holen (voll)
 on:
   schedule:
-    - cron: "3 4 * * 1-5"   # Mo–Fr früh am Morgen: Kursziele, Gewinnschätzungen, Kennzahlen für alle Aktien
+    # Mo–Fr früh am Morgen (UTC). GitHub lässt geplante Läufe oft ausfallen oder startet sie Stunden zu spät,
+    # darum mehrere Versuche; der erste, der durchkommt, holt die Grunddaten, die übrigen nur Kurse.
+    - cron: "41 1,2,3,4,5 * * 1-5"
   workflow_dispatch: {}
   push:
     branches: [main]
@@ -21,12 +23,12 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install yfinance
-      - run: python fetch.py --voll
+      - run: python fetch.py --voll-wenn-alt
       - name: Ergebnis speichern
         run: |
           git config user.name "aktien-bot"
           git config user.email "aktien-bot@users.noreply.github.com"
           git add data/aktien.json
           git diff --cached --quiet && exit 0
-          git commit -m "Grunddaten $(date -u +%F' '%H:%M)"
+          git commit -m "Daten (Morgenlauf) $(date -u +%F' '%H:%M)"
           for i in 1 2 3; do git pull --rebase -q && git push && break; sleep 10; done

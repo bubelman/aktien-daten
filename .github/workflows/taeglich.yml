@@ -1,7 +1,10 @@
 name: Kurse holen
 on:
   schedule:
-    - cron: "3 6,9,12,17,20 * * 1-5"   # Mo–Fr kurz vor den Läufen der Automatik (7:33, 10:33, 13:33, 18:33, 21:33 Uhr Berlin im Winter)
+    # Mo–Fr stündlich von 7 bis 22 Uhr Berlin (Winterzeit; UTC 6–21). GitHub lässt geplante Läufe oft ausfallen
+    # oder startet sie spät; stündliche Versuche sorgen dafür, dass vor jedem Lauf der Automatik (:33) frische Kurse da sind.
+    # Minute 17 statt :00, weil zur vollen Stunde besonders viele Läufe ausfallen.
+    - cron: "17 6-21 * * 1-5"
   workflow_dispatch: {}
 permissions:
   contents: write

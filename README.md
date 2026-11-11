@@ -5,9 +5,11 @@ und speichert sie in `data/aktien.json`. Claude liest die Datei für Levins Dash
 
 - Aktien: `tickers.txt` (eine pro Zeile; rund 600: S&P 500, große Euro-Aktien, weitere große US-Werte)
 - Programm: `fetch.py`
-- Grunddaten (Kursziele, Gewinnschätzungen, Kennzahlen): `.github/workflows/grunddaten.yml`, Mo–Fr 4:03 UTC
-  und bei jeder Änderung an `tickers.txt` oder `fetch.py` (ca. 40 Minuten)
-- Kurse und Trends: `.github/workflows/taeglich.yml`, Mo–Fr 5-mal am Tag (ein Sammelabruf, wenige Minuten)
+- Grunddaten (Kursziele, Gewinnschätzungen, Kennzahlen): `.github/workflows/grunddaten.yml`, Mo–Fr mehrere
+  Versuche zwischen 1:41 und 5:41 UTC (der erste, der durchkommt, holt alles; ca. 15 Minuten) und bei jeder
+  Änderung an `tickers.txt` oder `fetch.py`
+- Kurse und Trends: `.github/workflows/taeglich.yml`, Mo–Fr stündlich um :17 von 6 bis 21 Uhr UTC (ein Sammelabruf,
+  1–2 Minuten). Stündlich, weil GitHub geplante Läufe oft ausfallen lässt oder Stunden zu spät startet.
 - Manuell starten: Actions → Workflow wählen → Run workflow
 
 Nur Spielgeld-Simulation, keine Anlageberatung.
