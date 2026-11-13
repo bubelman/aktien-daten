@@ -8,8 +8,9 @@ und speichert sie in `data/aktien.json`. Claude liest die Datei für Levins Dash
 - Grunddaten (Kursziele, Gewinnschätzungen, Kennzahlen): `.github/workflows/grunddaten.yml`, Mo–Fr mehrere
   Versuche zwischen 1:41 und 5:41 UTC (der erste, der durchkommt, holt alles; ca. 15 Minuten) und bei jeder
   Änderung an `tickers.txt` oder `fetch.py`
-- Kurse und Trends: `.github/workflows/taeglich.yml`, Mo–Fr stündlich um :17 von 6 bis 21 Uhr UTC (ein Sammelabruf,
-  1–2 Minuten). Stündlich, weil GitHub geplante Läufe oft ausfallen lässt oder Stunden zu spät startet.
+- Kurse und Trends: `.github/workflows/kurse-schleife.yml` – ein Lauf bleibt bis zu 5,5 Stunden aktiv, holt stündlich
+  um :17 die Kurse und startet am Ende selbst den nächsten (Mo–Fr bis 21 Uhr UTC), weil GitHub geplante Läufe oft
+  auslässt. `taeglich.yml` nur noch zum manuellen Start.
 - Manuell starten: Actions → Workflow wählen → Run workflow
 
 Nur Spielgeld-Simulation, keine Anlageberatung.

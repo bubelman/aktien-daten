@@ -1,0 +1,53 @@
+name: Kurse-Schleife
+# GitHub lässt geplante Läufe bei diesem Repository oft aus oder startet sie Stunden zu spät.
+# Darum bleibt ein Lauf bis zu 5,5 Stunden aktiv, holt jede Stunde (um :17) die Kurse – und am ersten
+# Lauf des Tages auch die Grunddaten – und startet am Ende selbst den nächsten Lauf (Mo–Fr bis 21 Uhr UTC).
+# Die geplanten Zeiten unten sind nur Starthilfen, falls die Kette einmal abreißt.
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "11 5,7,9,12,15,18 * * 1-5"
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: daten
+  cancel-in-progress: false
+jobs:
+  schleife:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install yfinance
+      - name: Stündlich Daten holen
+        run: |
+          git config user.name "aktien-bot"
+          git config user.email "aktien-bot@users.noreply.github.com"
+          ende=$(( $(date +%s) + 330*60 ))
+          while :; do
+            if [ "$(date -u +%u)" -gt 5 ] || [ "$(date -u +%H)" -ge 22 ]; then echo "Feierabend"; break; fi
+            git pull -q --rebase || true
+            python fetch.py --voll-wenn-alt || echo "Abruf fehlgeschlagen, nächster Versuch in einer Stunde"
+            git add data/aktien.json
+            if ! git diff --cached --quiet; then
+              git commit -q -m "Kurse $(date -u +%F' '%H:%M)"
+              for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 15; done
+            fi
+            t=$(date +%s); n=$(( t/3600*3600 + 17*60 )); [ $n -le $t ] && n=$(( n + 3600 ))
+            [ $n -gt $ende ] && break
+            sleep $(( n - $(date +%s) ))
+          done
+      - name: Nächste Runde starten
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "$(date -u +%u)" -le 5 ] && [ "$(date -u +%H)" -lt 21 ]; then
+            gh workflow run kurse-schleife.yml --ref main && echo "nächste Runde gestartet"
+          else
+            echo "Heute keine weitere Runde"
+          fi

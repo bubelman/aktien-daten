@@ -34,8 +34,9 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - Währung der Gewinnschätzungen wird je Aktie über forwardEps erkannt (Fehler bei SAP & Co. am 01.11. behoben).
 
 ## Abläufe
-- GitHub: Grunddaten morgens (mehrere Versuche ab 1:41 UTC), Kurse stündlich :17 (6–21 UTC). GitHub lässt
-  geplante Läufe oft aus – deshalb die vielen Versuche.
+- GitHub: `kurse-schleife.yml` – ein Lauf bleibt bis 5,5 h aktiv, holt stündlich um :17 die Kurse (am ersten
+  Lauf des Tages auch die Grunddaten) und startet am Ende selbst den nächsten (Mo–Fr bis 21 Uhr UTC). Grund:
+  GitHub ließ geplante Läufe massiv aus (nur 2–3 Kurs-Abrufe am Tag). Starthilfen 5:11–18:11 UTC.
 - Geplante Aufgabe „Meine Aktien aktualisieren“: Börsentage 7:33, 10:33, 13:33, 18:33, 21:33 (Berlin).
   Kurs-Alarm ab ±5 %, Zahlen-Check an Zahlentagen, Wochenbericht montags.
 - Nachtschicht: kurz vor 22 und 4 Uhr, prüft alles und verbessert (siehe unten).
@@ -50,7 +51,7 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   richtiger Währung; Kurs-Alarm; Spanne schmaler.
 - 13.11.2026: Mehr Währungen (Pfund/Pence, Franken, Kronen); Favoriten von Morgan Stanley, Goldman Sachs,
   Deutscher Bank aufgenommen. Levin wünscht „die 10 besten Aktien, auch außerhalb der Liste“ (nur zum
-  Beobachten, kein Kauf).
+  Beobachten, kein Kauf). Nachtschicht eingerichtet (21:41 und 3:41). Daten-Schleife statt Zeitplan.
 
 ## Bekannte Grenzen und offene Ideen
 - Yahoo-Schätzungen sind oft „bereinigt“ (ohne Sonderkosten); andere Quellen nennen niedrigere Gewinne

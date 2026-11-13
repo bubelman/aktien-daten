@@ -1,10 +1,6 @@
 name: Kurse holen
 on:
-  schedule:
-    # Mo–Fr stündlich von 7 bis 22 Uhr Berlin (Winterzeit; UTC 6–21). GitHub lässt geplante Läufe oft ausfallen
-    # oder startet sie spät; stündliche Versuche sorgen dafür, dass vor jedem Lauf der Automatik (:33) frische Kurse da sind.
-    # Minute 17 statt :00, weil zur vollen Stunde besonders viele Läufe ausfallen.
-    - cron: "17 6-21 * * 1-5"
+  # Zeitplan übernimmt jetzt kurse-schleife.yml; hier nur noch manuell (und Grunddaten bei Änderungen an tickers.txt/fetch.py)
   workflow_dispatch: {}
 permissions:
   contents: write

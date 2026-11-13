@@ -1,9 +1,6 @@
 name: Grunddaten holen (voll)
 on:
-  schedule:
-    # Mo–Fr früh am Morgen (UTC). GitHub lässt geplante Läufe oft ausfallen oder startet sie Stunden zu spät,
-    # darum mehrere Versuche; der erste, der durchkommt, holt die Grunddaten, die übrigen nur Kurse.
-    - cron: "41 1,2,3,4,5 * * 1-5"
+  # Zeitplan übernimmt jetzt kurse-schleife.yml; hier nur noch manuell (und Grunddaten bei Änderungen an tickers.txt/fetch.py)
   workflow_dispatch: {}
   push:
     branches: [main]
