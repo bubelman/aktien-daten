@@ -52,6 +52,15 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - 13.11.2026: Mehr Währungen (Pfund/Pence, Franken, Kronen); Favoriten von Morgan Stanley, Goldman Sachs,
   Deutscher Bank aufgenommen. Levin wünscht „die 10 besten Aktien, auch außerhalb der Liste“ (nur zum
   Beobachten, kein Kauf). Nachtschicht eingerichtet (21:41 und 3:41). Daten-Schleife statt Zeitplan.
+- 13.11.2026 (Nachtschicht 21:41): Kurse-Schleife war nach dem Push (18:51 UTC) nie gelaufen – letzte
+  Starthilfe 18:11 UTC lag davor, also keine Kurse nach 18:48 UTC. Von Hand gestartet (Lauf 43504676163),
+  damit der US-Schluss vom Freitag noch kommt. Keine Code-Änderung.
+
+## Gegenprüfung mit dem Internet (Nachtschicht, reihum)
+- NVDA: 13.11.2026 – Gewinn FY2027 9,32 $ / FY2028 15,85 $ passt zu stockanalysis.com (9,31 / 15,91).
+  Kursziel-Median Yahoo 282 $, stockanalysis 315 $ (Stand dort 06.11., vor dem Kursrutsch) → −10 %, Ursache
+  vermutlich veralteter Vergleichswert.
+- AVGO, SAP, IFX.DE, ENR.DE: noch nicht geprüft (als Nächstes, in dieser Reihenfolge).
 
 ## Bekannte Grenzen und offene Ideen
 - Yahoo-Schätzungen sind oft „bereinigt“ (ohne Sonderkosten); andere Quellen nennen niedrigere Gewinne
