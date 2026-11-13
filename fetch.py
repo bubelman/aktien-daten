@@ -25,6 +25,11 @@ def jetzt():
     return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 
 
+def basis(w):
+    """Währung ohne Pence-Schreibweise: ('GBP', 100) für GBp/GBX, sonst (w, 1)."""
+    return ("GBP", 100.0) if w in ("GBp", "GBX") else (w, 1.0)
+
+
 def grunddaten(sym):
     t = yf.Ticker(sym)
     out = {"ticker": sym}
@@ -48,13 +53,19 @@ def grunddaten(sym):
     )
     # Gewinnschätzungen sind in der Berichtswährung (z. B. PDD in Yuan); Faktor in die Kurswährung
     out["eps_faktor"] = 1.0
+    out["anzahl_aktien"] = num(g("sharesOutstanding"))
     fw, kw = out.get("finanz_waehrung"), out.get("waehrung")
     if fw and kw and fw != kw:
-        try:
-            fx = yf.Ticker(f"{fw}{kw}=X").history(period="5d")["Close"].dropna()
-            out["eps_faktor"] = float(fx.iloc[-1]) if len(fx) else None
-        except Exception:
-            out["eps_faktor"] = None
+        # Pence (GBp/GBX) = Pfund/100: London-Aktien notieren in Pence, berichten aber in Pfund
+        (fwb, fwm), (kwb, kwm) = basis(fw), basis(kw)
+        if fwb == kwb:
+            out["eps_faktor"] = kwm / fwm
+        else:
+            try:
+                fx = yf.Ticker(f"{fwb}{kwb}=X").history(period="5d")["Close"].dropna()
+                out["eps_faktor"] = float(fx.iloc[-1]) * kwm / fwm if len(fx) else None
+            except Exception:
+                out["eps_faktor"] = None
     if out["freier_cashflow"] and out["marktwert"]:
         out["fcf_rendite"] = out["freier_cashflow"] / out["marktwert"]
     if out["ebitda"] and out["ebitda"] > 0 and out["schulden"] is not None and out["cash"] is not None:
@@ -175,9 +186,17 @@ def main():
         eurusd = float(yf.Ticker("EURUSD=X").history(period="5d")["Close"].dropna().iloc[-1])
     except Exception:
         eurusd = alt.get("eurusd")
+    # Euro-Kurse weiterer Währungen (1 € = x), für Aktien aus London, der Schweiz und Skandinavien
+    fx_eur = dict(alt.get("fx_eur") or {})
+    fx_eur["USD"] = eurusd
+    for c in ("GBP", "CHF", "DKK", "SEK", "NOK"):
+        try:
+            fx_eur[c] = float(yf.Ticker(f"EUR{c}=X").history(period="5d")["Close"].dropna().iloc[-1])
+        except Exception:
+            pass
 
     stand = jetzt()
-    json.dump({"stand": stand, "grunddaten_stand": grund_stand, "eurusd": eurusd,
+    json.dump({"stand": stand, "grunddaten_stand": grund_stand, "eurusd": eurusd, "fx_eur": fx_eur,
                "quelle": "Yahoo Finance über yfinance (inoffiziell)", "anzahl": len(rows), "mit_kurs": len(frisch),
                "aktien": rows}, open(DATEI, "w"), ensure_ascii=False, indent=1)
     print(f"{len(frisch)}/{len(rows)} Aktien mit frischem Kurs, Stand {stand}, Grunddaten {grund_stand}")

@@ -95,10 +95,20 @@ def r2(x):
     return None if x is None else round(x, 2)
 
 
+FX_EUR = {}  # 1 € = x Fremdwährung, aus aktien.json ("fx_eur"); wird in main() gesetzt
+
+
 def fx_von(y, fx):
-    """Teiler von der Kurswährung in Euro: Dollar-Aktien durch den Euro-Kurs, Euro-Aktien 1. Andere Währungen: None."""
+    """Teiler von der Kurswährung in Euro (Kurs / Teiler = Euro). Dollar über fx, Euro 1, Pence = Pfund × 100,
+    Franken/Kronen über FX_EUR. Unbekannte Währung: None."""
     w = y.get("waehrung") or "USD"
-    return fx if w == "USD" else 1.0 if w == "EUR" else None
+    if w == "USD":
+        return fx
+    if w == "EUR":
+        return 1.0
+    if w in ("GBp", "GBX"):
+        return FX_EUR["GBP"] * 100 if FX_EUR.get("GBP") else None
+    return FX_EUR.get(w)
 
 
 def lade(p, default):
@@ -167,7 +177,7 @@ def bewerte(y, fx, alt_by, heute=None):
         return None, "keine Gewinnschätzung"
     q = fx_von(y, fx)
     if q is None:
-        return None, f"Kurs in {y.get('waehrung')} (nur Dollar und Euro)"
+        return None, f"Kurs in {y.get('waehrung')} (kein Wechselkurs)"
     if heute and y.get("kurs_stand"):
         try:
             if (heute - dt.date.fromisoformat(y["kurs_stand"])).days > 5:
@@ -180,6 +190,11 @@ def bewerte(y, fx, alt_by, heute=None):
     e0, e1 = e0 * f, e1 * f
     if e1 <= 0 or e0 <= 0:
         return None, "Gewinn nicht positiv"
+    if y.get("waehrung") in ("GBp", "GBX") and not (1 <= kurs / e1 <= 200):
+        f_alt = (y.get("eps_faktor") or 1.0) if f == 1.0 else 1.0
+        e0b, e1b = e0 / f * f_alt, e1 / f * f_alt
+        if e1b > 0 and 3 <= kurs / e1b <= 100:
+            e0, e1, f = e0b, e1b, f_alt
     kurs_eur, ziel_eur, eps1_eur = kurs / q, ziel / q, e1 / q
     kgv = kurs / e1
     wachstum = e1 / e0 - 1
@@ -196,6 +211,10 @@ def bewerte(y, fx, alt_by, heute=None):
     # Freier Cashflow: kommt in der Berichtswährung (z. B. SAP in Euro, PDD in Yuan), der Börsenwert in der
     # Kurswährung. Darum erst umrechnen, dann vergleichen.
     fcf_roh, mcap = y.get("freier_cashflow"), y.get("marktwert")
+    if mcap and y.get("anzahl_aktien") and (y.get("waehrung") in ("GBp", "GBX")):
+        r_mc = mcap / (y["anzahl_aktien"] * kurs)
+        if 0.005 < r_mc < 0.02:  # Börsenwert in Pfund, Kurs in Pence
+            mcap *= 100
     fcf = None
     cf_wert = None
     if fcf_roh is not None and mcap and mcap > 0 and fx_bericht:
@@ -348,6 +367,7 @@ def main():
     Y = json.load(open(a.yahoo))
     ydata = {r["ticker"]: r for r in Y["aktien"]}
     fx = Y.get("eurusd") or 1.116
+    FX_EUR.update(Y.get("fx_eur") or {})
     if a.kurse:
         K = json.load(open(a.kurse))
         fx = K.get("EURUSD") or fx
