@@ -270,7 +270,7 @@ def bewerte(y, fx, alt_by, heute=None):
 
     haken = []
     if news_pkt < 0:
-        haken.append(("sehr negative Nachrichten" if news_pkt <= -2 else "negative Nachrichten") + (f": {nw.get('kurz')}" if nw.get("kurz") else ""))
+        haken.append(("sehr negative Nachrichten" if news_pkt <= -2 else "negative Nachrichten") + (": " + str(nw["kurz"]).replace(", ", " und ").replace(",", " ") if nw.get("kurz") else ""))
     if trend == "fallend":
         haken.append("Kurs im Abwärtstrend")
     elif kurz == "fallend":
