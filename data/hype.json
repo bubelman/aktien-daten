@@ -1,0 +1,5 @@
+{
+ "stand": null,
+ "hinweis": "Aktien mit viel Aufmerksamkeit (Aktien-Scout). Gibt KEINE Punkte, nur eine Markierung im Dashboard. Gilt 3 Tage ab datum und nur mit Quelle. Felder je Aktie: grund (1 Satz), quellen (URLs), datum, staerke (1-3), von.",
+ "aktien": {}
+}

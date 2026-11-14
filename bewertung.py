@@ -164,6 +164,8 @@ def dcf_wert(fcf_je_aktie, wachstum):
 
 
 NEWS = {}  # aus data/news.json (News-Agenten), wird in main() gesetzt
+HYPE = {}  # aus data/hype.json (Aktien-Scout): viel Aufmerksamkeit; gibt KEINE Punkte, nur eine Markierung
+HYPE_TAGE = 3
 NEWS_PKT = {"positiv": 1, "neutral": 0, "negativ": -1, "sehr negativ": -2}
 NEWS_TAGE = 7
 
@@ -178,6 +180,17 @@ def nachricht(t, heute):
     except ValueError:
         return None
     return n if 0 <= alter <= NEWS_TAGE else None
+
+
+def hype(t, heute):
+    h = HYPE.get(t)
+    if not h or not h.get("grund") or not h.get("quellen"):
+        return None
+    try:
+        alter = (heute - dt.date.fromisoformat(str(h.get("datum"))[:10])).days if heute else 0
+    except ValueError:
+        return None
+    return h if 0 <= alter <= HYPE_TAGE else None
 
 
 def bewerte(y, fx, alt_by, heute=None):
@@ -265,6 +278,7 @@ def bewerte(y, fx, alt_by, heute=None):
     kurz = y.get("kurztrend")
     kurz_pkt = 1 if kurz == "steigend" else -1 if kurz == "fallend" else 0
     nw = nachricht(t, heute)
+    hy = hype(t, heute)
     news_pkt = NEWS_PKT[nw["urteil"]] if nw else 0
     punkte = min(10, bew + qual + trend_pkt + rev_pkt + kurz_pkt + news_pkt)
 
@@ -311,6 +325,7 @@ def bewerte(y, fx, alt_by, heute=None):
         fcf_rendite_pct=None if fcf is None else round(fcf * 100, 1), waehrung=y.get("waehrung") or "USD", feinwert=None, rang=None,
         nachrichten_pkt=news_pkt, nachrichten_urteil=nw["urteil"] if nw else None, nachrichten=nw.get("grund") if nw else None,
         nachrichten_quellen=(nw.get("quellen") or [])[:3] if nw else None, nachrichten_datum=nw.get("datum") if nw else None,
+        hype=(hy or {}).get("grund"), hype_quellen=((hy or {}).get("quellen") or [])[:3] or None, hype_datum=(hy or {}).get("datum"),
     )
     # Rohwerte für die Feinwertung (werden vor dem Speichern entfernt)
     sma = y.get("sma200")
@@ -392,17 +407,20 @@ def main():
     ydata = {r["ticker"]: r for r in Y["aktien"]}
     fx = Y.get("eurusd") or 1.116
     FX_EUR.update(Y.get("fx_eur") or {})
-    news_datei = a.news or os.path.join(os.path.dirname(os.path.abspath(a.yahoo)), "news.json")
-    news = lade(news_datei, None)
-    if news is None and not a.news:
-        # Geplante Aufgaben laden oft nur aktien.json und bewertung.py: dann news.json direkt von GitHub holen
-        try:
-            import urllib.request
-            with urllib.request.urlopen("https://raw.githubusercontent.com/bubelman/aktien-daten/main/data/news.json", timeout=20) as r:
-                news = json.loads(r.read().decode("utf-8"))
-        except Exception as e:
-            print("Hinweis: news.json nicht geladen –", str(e)[:80], file=sys.stderr)
-    NEWS.update((news or {}).get("aktien") or {})
+    def lade_daten(name, pfad):
+        """news.json / hype.json neben der Yahoo-Datei; fehlt sie (geplante Aufgaben laden oft nur aktien.json),
+        direkt von GitHub holen."""
+        d = lade(pfad or os.path.join(os.path.dirname(os.path.abspath(a.yahoo)), name), None)
+        if d is None and not pfad:
+            try:
+                import urllib.request
+                with urllib.request.urlopen(f"https://raw.githubusercontent.com/bubelman/aktien-daten/main/data/{name}", timeout=20) as r:
+                    d = json.loads(r.read().decode("utf-8"))
+            except Exception as e:
+                print(f"Hinweis: {name} nicht geladen –", str(e)[:80], file=sys.stderr)
+        return (d or {}).get("aktien") or {}
+    NEWS.update(lade_daten("news.json", a.news))
+    HYPE.update(lade_daten("hype.json", None))
     if a.kurse:
         K = json.load(open(a.kurse))
         fx = K.get("EURUSD") or fx
