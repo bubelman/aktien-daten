@@ -18,7 +18,7 @@ wenn die Yahoo-Datei älter ist. --keine-trades verbietet Depot-Käufe/-Verkäuf
 
 Nur Spielgeld-Simulation, keine Anlageberatung.
 """
-import argparse, datetime as dt, json, math, os, sys
+import argparse, datetime as dt, json, math, os, re, sys
 
 START_GELD = 10000.0
 GEBUEHR = 1.0
@@ -405,6 +405,29 @@ def main():
                 z["pruefung_offen"] = True
                 pruef.append(f"{t}: Kurs {o['kurs_eur']} → {z['kurs_eur']} € (Faktor {q:.2f})")
         zeilen.append(z)
+
+    # Doppelte Firmen (z. B. US-Zweitlisting und Heimatbörse) nur einmal werten: Levins Kürzel zuerst,
+    # sonst die Notierung mit den meisten Analysten (bei Gleichstand die Heimatbörse, nicht USD).
+    meine_set = set(open(a.meine).read().replace(",", " ").split()) if a.meine and os.path.exists(a.meine) else set()
+    def firma(t):
+        n = (ydata.get(t, {}).get("name_lang") or "").lower()
+        n = re.sub(r"[^a-z0-9 ]", " ", n)
+        n = re.sub(r"\b(the|plc|ag|se|sa|nv|n v|inc|corp|corporation|ltd|limited|holding|holdings|group|asa|ab|a s|s a|s p a|spa)\b", " ", n)
+        return " ".join(n.split())
+    gruppen = {}
+    for z in zeilen:
+        f = firma(z["ticker"])
+        if f:
+            gruppen.setdefault(f, []).append(z)
+    weg = set()
+    for f, zs in gruppen.items():
+        if len(zs) < 2:
+            continue
+        zs.sort(key=lambda z: (z["ticker"] not in meine_set, -(z.get("analysten") or 0), z.get("waehrung") == "USD"))
+        for z in zs[1:]:
+            if z["ticker"] not in meine_set:
+                weg.add(z["ticker"]); ausfall[z["ticker"]] = f"doppelt (gleiche Firma wie {zs[0]['ticker']})"
+    zeilen = [z for z in zeilen if z["ticker"] not in weg]
 
     # 2. Rangliste: erst Punkte, bei Gleichstand die Feinwertung; 50 behalten
     feinwertung(zeilen)
