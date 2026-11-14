@@ -1,0 +1,18 @@
+{
+ "stand": "2026-11-14T19:05:00+01:00",
+ "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
+ "aktien": {
+  "NVDA": {
+   "urteil": "sehr negativ",
+   "kurz": "Chef zurückgetreten, Ermittlungen",
+   "grund": "CEO Jensen Huang ist am 11.11. zurückgetreten (Grund vom Unternehmen nicht genannt). Interne Untersuchung, Sammelklage und Fragen aus dem Kongress laufen; mehrere Banken haben am 12.11. abgestuft.",
+   "quellen": [
+    "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000082/nvda-20261111.htm",
+    "https://www.aljazeera.com/news/2026/11/12/why-did-nvidia-ceo-jensen-huang-resign-and-who-is-colette-kress",
+    "https://finance.yahoo.com/markets/stocks/articles/nvda-stock-price-forecast-top-204543429.html"
+   ],
+   "datum": "2026-11-14",
+   "von": "Claude (drei Agenten, 14.11.2026)"
+  }
+ }
+}

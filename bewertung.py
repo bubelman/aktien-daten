@@ -163,6 +163,23 @@ def dcf_wert(fcf_je_aktie, wachstum):
     return wert
 
 
+NEWS = {}  # aus data/news.json (News-Agenten), wird in main() gesetzt
+NEWS_PKT = {"positiv": 1, "neutral": 0, "negativ": -1, "sehr negativ": -2}
+NEWS_TAGE = 7
+
+
+def nachricht(t, heute):
+    """Gültige Nachrichten-Einschätzung der News-Agenten: höchstens 7 Tage alt, mit mindestens einer Quelle."""
+    n = NEWS.get(t)
+    if not n or n.get("urteil") not in NEWS_PKT or not n.get("quellen"):
+        return None
+    try:
+        alter = (heute - dt.date.fromisoformat(str(n.get("datum"))[:10])).days if heute else 0
+    except ValueError:
+        return None
+    return n if 0 <= alter <= NEWS_TAGE else None
+
+
 def bewerte(y, fx, alt_by, heute=None):
     """Rechnet eine Aktie aus den Yahoo-Daten. Gibt (zeile, fehlergrund) zurück."""
     t = y["ticker"]
@@ -247,9 +264,13 @@ def bewerte(y, fx, alt_by, heute=None):
     rev_pkt = 1 if rev is not None and rev > 0.02 else -1 if rev is not None and rev < -0.02 else 0
     kurz = y.get("kurztrend")
     kurz_pkt = 1 if kurz == "steigend" else -1 if kurz == "fallend" else 0
-    punkte = bew + qual + trend_pkt + rev_pkt + kurz_pkt
+    nw = nachricht(t, heute)
+    news_pkt = NEWS_PKT[nw["urteil"]] if nw else 0
+    punkte = min(10, bew + qual + trend_pkt + rev_pkt + kurz_pkt + news_pkt)
 
     haken = []
+    if news_pkt < 0:
+        haken.append(("sehr negative Nachrichten" if news_pkt <= -2 else "negative Nachrichten") + (f": {nw.get('kurz')}" if nw.get("kurz") else ""))
     if trend == "fallend":
         haken.append("Kurs im Abwärtstrend")
     elif kurz == "fallend":
@@ -288,6 +309,8 @@ def bewerte(y, fx, alt_by, heute=None):
         analysten=an, bewertungs_pkt=bew, qualitaets_pkt=qual,
         wert_kgv_eur=rf(fair_peg), wert_cf_eur=None if cf_wert is None else rf(cf_wert),
         fcf_rendite_pct=None if fcf is None else round(fcf * 100, 1), waehrung=y.get("waehrung") or "USD", feinwert=None, rang=None,
+        nachrichten_pkt=news_pkt, nachrichten_urteil=nw["urteil"] if nw else None, nachrichten=nw.get("grund") if nw else None,
+        nachrichten_quellen=(nw.get("quellen") or [])[:3] if nw else None, nachrichten_datum=nw.get("datum") if nw else None,
     )
     # Rohwerte für die Feinwertung (werden vor dem Speichern entfernt)
     sma = y.get("sma200")
@@ -337,9 +360,9 @@ def pruefe_zeile(z):
         p.append("Kurs")
     if not (z["fair_lo_eur"] <= z["fair_mitte_eur"] + 1 and z["fair_mitte_eur"] <= z["fair_hi_eur"] + 1):
         p.append("faire Spanne")
-    if not (-6 <= z["punkte"] <= 10):
+    if not (-8 <= z["punkte"] <= 10):
         p.append("Punkte")
-    if z["punkte"] != z["bewertungs_pkt"] + z["qualitaets_pkt"] + z["trend_pkt"] + z["revision_pkt"] + z["kurztrend_pkt"]:
+    if z["punkte"] != min(10, z["bewertungs_pkt"] + z["qualitaets_pkt"] + z["trend_pkt"] + z["revision_pkt"] + z["kurztrend_pkt"] + z["nachrichten_pkt"]):
         p.append("Punktesumme")
     ab = round((z["fair_mitte_eur"] / z["kurs_eur"] - 1) * 100)
     if abs(ab - z["abstand_pct"]) > 2:
@@ -359,6 +382,7 @@ def main():
     ap.add_argument("--keine-trades", action="store_true")
     ap.add_argument("--meine", help="Datei mit Levins eigenen Aktien (ein Kürzel pro Zeile)")
     ap.add_argument("--ohne-depots", action="store_true", help="Musterdepots gestoppt: nicht rechnen, nicht schreiben")
+    ap.add_argument("--news", help="Nachrichten der News-Agenten (Standard: news.json neben der Yahoo-Datei)")
     a = ap.parse_args()
 
     jetzt = dt.datetime.fromisoformat(a.jetzt)
@@ -368,6 +392,8 @@ def main():
     ydata = {r["ticker"]: r for r in Y["aktien"]}
     fx = Y.get("eurusd") or 1.116
     FX_EUR.update(Y.get("fx_eur") or {})
+    news_datei = a.news or os.path.join(os.path.dirname(os.path.abspath(a.yahoo)), "news.json")
+    NEWS.update((lade(news_datei, {}) or {}).get("aktien") or {})
     if a.kurse:
         K = json.load(open(a.kurse))
         fx = K.get("EURUSD") or fx
