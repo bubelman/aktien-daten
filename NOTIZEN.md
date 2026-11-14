@@ -20,6 +20,8 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   Wichtige Zahlen mit einer zweiten Quelle gegenprüfen; Abweichungen offen sagen.
 - Ehrlich über Grenzen sein (inoffizielle Daten, Schätzungen sind Meinungen, Regeln nicht über Jahre getestet).
 - Nie echte Käufe/Verkäufe ausführen; nur Spielgeld-Simulationen.
+- **Keine Plätze (Rang) zeigen oder nennen** (Levin, 14.11.2026). Stattdessen Punkte und Feinwert.
+  Intern sortiert das Programm weiter nach Punkten und Feinwert.
 
 ## Wie gerechnet wird (Kurzfassung, Details in bewertung.py)
 - Rund 630 Aktien: S&P 500, große Euro-Aktien, weitere US-Werte, Favoriten von Banken (auch London, Schweiz,
@@ -52,6 +54,7 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - 13.11.2026: Mehr Währungen (Pfund/Pence, Franken, Kronen); Favoriten von Morgan Stanley, Goldman Sachs,
   Deutscher Bank aufgenommen. Levin wünscht „die 10 besten Aktien, auch außerhalb der Liste“ (nur zum
   Beobachten, kein Kauf). Nachtschicht eingerichtet (21:41 und 3:41). Daten-Schleife statt Zeitplan.
+- 14.11.2026: Plätze aus Dashboard und Nachrichten entfernt (Levins Wunsch).
 - 13.11.2026 (Nachtschicht 21:41): Kurse-Schleife war nach dem Push (18:51 UTC) nie gelaufen – letzte
   Starthilfe 18:11 UTC lag davor, also keine Kurse nach 18:48 UTC. Von Hand gestartet (Lauf 43504676163),
   damit der US-Schluss vom Freitag noch kommt. Keine Code-Änderung.
