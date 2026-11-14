@@ -72,8 +72,23 @@ def de(x, nd=1):
 
 
 def rf(x):
-    """Faire Werte: unter 100 € auf 0,1 € genau, sonst ganze Euro."""
-    return round(x, 1) if x < 100 else round(x)
+    """Faire Werte: unter 10 € auf 0,01 €, unter 100 € auf 0,1 € genau, sonst ganze Euro."""
+    return round(x, 2) if x < 10 else round(x, 1) if x < 100 else round(x)
+
+
+def name_wahl(kurz, lang):
+    """Yahoo-Kurznamen aus London/Skandinavien sind oft abgeschnitten und in GROSSBUCHSTABEN
+    („FORESIGHT GROUP HOLDINGS LIMITE“): dann lieber den langen Namen nehmen bzw. normal schreiben."""
+    def laut(x):
+        b = [c for c in (x or "") if c.isalpha()]
+        return len(b) >= 4 and sum(c.isupper() for c in b) / len(b) > 0.8
+    if kurz and not laut(kurz):
+        return kurz
+    if lang and not laut(lang):
+        return lang
+    x = kurz or lang or ""
+    x = re.sub(r"\b(ORD|ORDINARY|SHS|SHARES)\b.*$", "", x).strip()
+    return " ".join(w if (len(w) <= 3 and w.isalpha() and w not in ("THE", "AND", "OF")) else w.capitalize() for w in x.split())
 
 
 def kurzname(n):
@@ -83,7 +98,7 @@ def kurzname(n):
     n = re.sub(r",? (and|&) (Company|Co\.?)$", "", n)
     muster = (r",? (Inc\.?|Incorporated|Corporation|Corp\.?|Co\.|Company|Holdings?|plc|PLC|N\.V\.?|NV|S\.A\.?|SA|S\.p\.A\.|SpA|"
               r"Ltd\.?|Limited|Group|Technologies|Platforms|AG|SE|S\.E\.|Aktiengesellschaft|KGaA|& Co\.|Oyj|ASA|"
-              r"Société Européenne|Societas Europaea|Vz|O\.N\.|NA)$")
+              r"Société Européenne|Societas Europaea|Vz|O\.N\.|NA|Ord\.?|ORD)$")
     while True:
         m = re.sub(muster, "", n).strip(" ,")
         if m == n:
@@ -312,7 +327,7 @@ def bewerte(y, fx, alt_by, heute=None):
     unter_hoch = (kurs / y["hoch_52w"] - 1) if y.get("hoch_52w") else None
     a = alt_by.get(t, {})
     zeile = dict(
-        ticker=t, aktie=NAMEN.get(t) or kurzname(a.get("aktie") or (y.get("name_lang") if fx_von(y, fx) == 1.0 else None) or y.get("name") or t), status="", punkte=int(punkte),
+        ticker=t, aktie=NAMEN.get(t) or kurzname(a.get("aktie") or (y.get("name_lang") if fx_von(y, fx) == 1.0 else None) or name_wahl(y.get("name"), y.get("name_lang")) or t), status="", punkte=int(punkte),
         kurs_eur=r2(kurs_eur), kgv=round(kgv, 1), wachstum_pct=round(gp, 1), peg=r2(peg),
         fair_lo_eur=rf(lo), fair_hi_eur=rf(hi), fair_mitte_eur=rf(mitte), abstand_pct=round(abstand * 100),
         kursziel_eur=round(ziel_eur, 1), haken=", ".join(haken[:3]), seit=a.get("seit"), stand=None,
@@ -380,7 +395,7 @@ def pruefe_zeile(z):
     if z["punkte"] != min(10, z["bewertungs_pkt"] + z["qualitaets_pkt"] + z["trend_pkt"] + z["revision_pkt"] + z["kurztrend_pkt"] + z["nachrichten_pkt"]):
         p.append("Punktesumme")
     ab = round((z["fair_mitte_eur"] / z["kurs_eur"] - 1) * 100)
-    if abs(ab - z["abstand_pct"]) > 2:
+    if abs(ab - z["abstand_pct"]) > max(2, abs(z["abstand_pct"]) * 0.02 + 100 * 0.005 / max(z["kurs_eur"], 0.01)):  # Rundung bei Kursen unter 1 €
         p.append("Abstand")
     if z["unter_hoch_pct"] is not None and z["unter_hoch_pct"] > 1:
         p.append("Jahreshoch")
