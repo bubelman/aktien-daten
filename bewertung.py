@@ -393,7 +393,16 @@ def main():
     fx = Y.get("eurusd") or 1.116
     FX_EUR.update(Y.get("fx_eur") or {})
     news_datei = a.news or os.path.join(os.path.dirname(os.path.abspath(a.yahoo)), "news.json")
-    NEWS.update((lade(news_datei, {}) or {}).get("aktien") or {})
+    news = lade(news_datei, None)
+    if news is None and not a.news:
+        # Geplante Aufgaben laden oft nur aktien.json und bewertung.py: dann news.json direkt von GitHub holen
+        try:
+            import urllib.request
+            with urllib.request.urlopen("https://raw.githubusercontent.com/bubelman/aktien-daten/main/data/news.json", timeout=20) as r:
+                news = json.loads(r.read().decode("utf-8"))
+        except Exception as e:
+            print("Hinweis: news.json nicht geladen –", str(e)[:80], file=sys.stderr)
+    NEWS.update((news or {}).get("aktien") or {})
     if a.kurse:
         K = json.load(open(a.kurse))
         fx = K.get("EURUSD") or fx
