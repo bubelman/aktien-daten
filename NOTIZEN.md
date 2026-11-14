@@ -98,6 +98,46 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   vermutlich veralteter Vergleichswert.
 - AVGO, SAP, IFX.DE, ENR.DE: noch nicht geprüft (als Nächstes, in dieser Reihenfolge).
 
+## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
+
+### A1 (14.11.2026, für die Nachtschicht am 14.11. um 21:41): Kurzer Text zu jeder Aktie
+Levin: „dass immer zur Aktie ein kurzer Text steht, warum so bewertet, und wie die finanzielle Lage ist, also
+Zahlen und Kurs“. Umsetzung:
+1. fetch.py, grunddaten(): zusätzlich aus info holen: umsatz = totalRevenue, umsatz_wachstum = revenueGrowth,
+   gewinnmarge = profitMargins, bruttomarge = grossMargins, dividende = dividendYield (Yahoo liefert es teils
+   in Prozent, teils als Anteil – prüfen und vereinheitlichen), kgv_trailing = trailingPE. Push von fetch.py
+   startet grunddaten.yml; die Werte kommen dann mit dem nächsten Vollabruf (spätestens Montag früh).
+2. bewertung.py, bewerte(): neue Felder in der Zeile (alles in Euro, Beträge der Berichtswährung umrechnen:
+   USD über fx, EUR = 1, sonst FX_EUR; fehlt der Kurs (z. B. CNY, TWD), Betrag weglassen):
+   marktwert_eur, umsatz_eur, umsatz_wachstum_pct, operative_marge_pct, gewinnmarge_pct, roe_pct,
+   nettoschulden_eur (schulden − cash), fcf_eur, dividende_pct, hoch_52w_eur, tief_52w_eur,
+   veraenderung_6m_pct. Achtung Pence (GBp): Börsenwert wie beim FCF-Vergleich korrigieren.
+3. bewertung.py: zwei Texte erzeugen, nur aus den Zahlen der Zeile (nichts erfinden, Zahlen deutsch formatiert,
+   kurze einfache Sätze, keine Empfehlung, kein „Platz“):
+   - "warum": 2–3 Sätze. „<Aktie> bekommt X von 10 Punkten.“ Dann „Dafür:“ die Bausteine mit Pluspunkten
+     (z. B. günstig: KGV 10,3 bei 70 % erwartetem Gewinnwachstum; Kursziel der Analysten 69 % über dem Kurs;
+     Eigenkapitalrendite 117 %; freier Cashflow 3,2 % des Börsenwerts; wenig Schulden; steigender Trend;
+     Analysten heben Schätzungen an; gute Nachrichten) und „Dagegen:“ die Abzüge (fallender Trend, Analysten
+     senken, wenige Analysten, Speicherchips, negative Nachrichten mit kurz-Text). Zum Schluss: „Die faire
+     Mitte (249 €) liegt 69 % über dem Kurs (147 €).“ bzw. „unter dem Kurs“.
+   - "finanzen": 2–3 Sätze. Kurs mit Entwicklung (1 Monat, 6 Monate, Abstand zum Jahreshoch), Börsenwert,
+     Umsatz (und Wachstum), operative Marge, freier Cashflow, Nettoschulden bzw. Nettoliquidität (mit Faktor
+     zum EBITDA), Dividende, nächster Zahlentermin. Fehlende Werte einfach weglassen.
+   Beide Felder auch in meine.json und alle.json (alle.json bleibt unter ~2 MB; sonst Texte kürzen).
+4. Dashboard-Seite (files/index.html, ArtifactData collection "files", doc_id "index.html", Feld "text",
+   update mit if_version): In der Detailansicht („Alle Zahlen zu einer Aktie“, Funktion zeigeDetail) ganz
+   oben zwei kurze Absätze „Warum diese Bewertung“ (r.warum) und „Finanzielle Lage“ (r.finanzen). In der
+   Zahlenliste rechts zusätzlich: Börsenwert, Umsatz, operative Marge, Nettoschulden, Dividende. Auf den
+   Karten von „Meine Aktien“ den ersten Satz von „Dagegen:“ bzw. „Dafür:“ klein unter dem Namen (optional).
+   Vorher lokal testen: Seite mit einem kleinen Ersatz für window.dash (draw/calc/onData/data/setLink) und
+   echten meine.json/alle.json in Chromium (Playwright) laden, keine Fehler in der Konsole, Bildschirmfoto
+   ansehen; auch Handybreite. Nach dem Hochladen data/users/me Dokument "runs" prüfen.
+5. Tests: bewertung.py mit aktuellen Daten (Fehlercode 0, "pruefung" leer), Punkte und Reihenfolge dürfen sich
+   durch A1 nicht ändern (liste.json vorher/nachher vergleichen). Für 3 Aktien (NVDA, SAP, IFX.DE) die Texte im
+   Bericht an Levin zeigen. Danach einmal neu/meine.json und neu/alle.json hochladen und datasets/meine und
+   datasets/alle umstellen (wie in der Aufgabe „Meine Aktien aktualisieren“, Schritt 1 und 4 mit alt/alle.json),
+   damit Levin die Texte sofort sieht.
+
 ## Bekannte Grenzen und offene Ideen
 - Yahoo-Schätzungen sind oft „bereinigt“ (ohne Sonderkosten); andere Quellen nennen niedrigere Gewinne
   (z. B. Infineon). Analysten können optimistischer sein als die Firma (z. B. Siemens Energy 2027).
