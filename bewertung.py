@@ -683,7 +683,10 @@ def main():
     assert meine and len({r["ticker"] for r in meine}) == len(meine), "Meine Aktien doppelt"
 
     os.makedirs(a.neu, exist_ok=True)
-    out = {"liste.json": liste, "aenderungen.json": (log + neu_log)[-300:], "meine.json": meine}
+    # Alle bewerteten Aktien (für den Aktien-Scout, nicht fürs Dashboard)
+    for z in zeilen:
+        z["top_bedingungen"] = bool(z["abstand_pct"] > 15 and z["trend"] in ("steigend", "seitwärts") and z["ticker"] not in ZYKLIKER)
+    out = {"liste.json": liste, "aenderungen.json": (log + neu_log)[-300:], "meine.json": meine, "alle.json": zeilen}
     if not a.ohne_depots:
         out.update({"depot.json": depot_neu, "depot_trades.json": trades, "depot_verlauf.json": verlauf[-2000:], "depot50.json": depot50_neu})
     for n, d in out.items():
