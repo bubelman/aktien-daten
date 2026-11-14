@@ -155,6 +155,13 @@ def schaetz_faktor(y, e1, f):
     fe = y.get("eps_forward")
     if not fe or not e1 or fe <= 0 or e1 <= 0:
         return f  # kein Vergleich möglich: wie bisher umrechnen
+    if y.get("waehrung") in ("GBp", "GBX") and f > 20 and fe * 100 / e1 > 0:
+        # London-Aktien mit Bericht in Dollar/Euro (AstraZeneca, Shell, HSBC, Rio Tinto …): Yahoos forwardEps
+        # steht dort in Pfund, der Kurs in Pence. Darum in Pence vergleichen (Fehler gefunden 14.11.2026).
+        # Nur wenn der normale Vergleich nichts findet (sonst bleibt alles wie bisher).
+        r1, r100 = fe / e1, fe * 100 / e1
+        if min(abs(math.log(r1)), abs(math.log(r1 / f))) > math.log(1.25) and abs(math.log(r100 / f)) <= math.log(1.25):
+            return f
     r = fe / e1
     d1, df = abs(math.log(r)), abs(math.log(r / f)) if f and f > 0 else 99
     if min(d1, df) > math.log(1.25):
