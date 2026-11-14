@@ -107,3 +107,10 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - Darf NICHT ohne Levins Ja: Punkte-Regeln, Gewichte, faire-Spanne-Methode oder Top-Bedingungen ändern;
   Depots wieder starten; Aktien in „Meine Aktien“ aufnehmen oder entfernen. Solche Ideen nur vorschlagen.
 - Jede Änderung hier im Protokoll eintragen. Keine Zahlen erfinden.
+- Seit 14.11.2026 (Levins Wunsch): jede Nacht genau eine Verbesserung der Arbeitsweise (mit Test vorher/nachher).
+  Regeländerungen (Punkte, Gewichte, faire Spanne, Top-Bedingungen) nur auf Zweig `vorschlag/<name>` mit
+  Rückblick-Test vorbereiten und nach Levins Ja übernehmen. „zurück“ von Levin = git revert.
+- Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
+
+## Skills
+- (noch keine von der Nachtschicht vorgeschlagen)
