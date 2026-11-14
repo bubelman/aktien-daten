@@ -706,10 +706,20 @@ def main():
     assert meine and len({r["ticker"] for r in meine}) == len(meine), "Meine Aktien doppelt"
 
     os.makedirs(a.neu, exist_ok=True)
-    # Alle bewerteten Aktien (für den Aktien-Scout, nicht fürs Dashboard)
+    # Alle bewerteten Aktien (Dashboard-Reiter „Alle Aktien“ und Aktien-Scout). "aufgenommen" = Tag, an dem die
+    # Aktie zum ersten Mal bewertet wurde (aus alt/alle.json übernommen; fehlt die Datei, bleibt es leer).
+    alt_alle = lade(os.path.join(a.alt, "alle.json"), None)
+    alt_auf = {r["ticker"]: r.get("aufgenommen") for r in (alt_alle or [])}
+    alle = []
     for z in zeilen:
         z["top_bedingungen"] = bool(z["abstand_pct"] > 15 and z["trend"] in ("steigend", "seitwärts") and z["ticker"] not in ZYKLIKER)
-    out = {"liste.json": liste, "aenderungen.json": (log + neu_log)[-300:], "meine.json": meine, "alle.json": zeilen}
+        r = {k: v for k, v in z.items() if k not in ("id", "daten_stand", "status", "seit", "stand")}
+        r["aufgenommen"] = alt_auf.get(z["ticker"]) if z["ticker"] in alt_auf else (heute_s if alt_alle is not None else None)
+        r["in_meine"] = z["ticker"] in meine_set
+        alle.append(r)
+    if alle:
+        alle[0]["stand"] = jetzt.isoformat()
+    out = {"liste.json": liste, "aenderungen.json": (log + neu_log)[-300:], "meine.json": meine, "alle.json": alle}
     if not a.ohne_depots:
         out.update({"depot.json": depot_neu, "depot_trades.json": trades, "depot_verlauf.json": verlauf[-2000:], "depot50.json": depot50_neu})
     for n, d in out.items():
