@@ -24,8 +24,8 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   Intern sortiert das Programm weiter nach Punkten und Feinwert.
 
 ## Wie gerechnet wird (Kurzfassung, Details in bewertung.py)
-- Rund 630 Aktien: S&P 500, große Euro-Aktien, weitere US-Werte, Favoriten von Banken (auch London, Schweiz,
-  Dänemark). Währungen: USD, EUR, GBp/GBP, CHF, DKK, SEK, NOK (Kurse über `fx_eur` in aktien.json).
+- Rund 1700 Aktien: S&P 500 und 400, große und mittlere Index-Aktien aus Europa (Deutschland, London,
+  Frankreich, Holland, Spanien, Italien, Schweiz, Skandinavien, Belgien), Favoriten von Banken. Währungen: USD, EUR, GBp/GBP, CHF, DKK, SEK, NOK (Kurse über `fx_eur` in aktien.json).
 - Punkte (max. 10): PEG, Kursziel-Abstand, ROE, freier Cashflow, Nettoschulden, Analystenzahl,
   Trend lang (SMA200 + 6 Monate), Trend kurz (SMA50 + 1 Monat), Revisionen; Zykliker −2.
 - Platz: Punkte, bei Gleichstand Feinwert 0–100 (Rang jeder Kennzahl unter allen).
@@ -70,6 +70,14 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - 14.11.2026: Plätze aus Dashboard und Nachrichten entfernt (Levins Wunsch).
 - 14.11.2026: Nachtschicht jetzt jeden Tag (auch Wochenende). Aktien-Scout eingerichtet; bewertung.py schreibt
   dafür `alle.json`. Erste Analyse mit drei Agenten (NVIDIA vor den Zahlen am 17.11.).
+- 14.11.2026: **Fehler behoben: freier Cashflow.** Yahoos info-Feld "freeCashflow" ist der „Levered FCF“
+  (NVIDIA 41,8 statt ~127 Mrd. $). fetch.py nimmt jetzt die letzten 4 Quartale aus der Kapitalflussrechnung
+  (Feld "fcf_quelle"; alter Wert in "fcf_levered"). Betrifft Cashflow-Punkte und DCF bei allen Aktien.
+- 14.11.2026: Levin will mehr Aktien als 630. universum.py (+ universum.yml) liest Index-Listen von Wikipedia
+  (S&P 500/400, DAX, MDAX, FTSE 100/250, CAC 40, AEX, AMX, IBEX, FTSE MIB, SMI, SMI MID, OMXS30, OMXC25, OBX,
+  BEL 20, OMXH25), prüft Kürzel bei Yahoo: 635 → 1703 Aktien. Lücken: Nasdaq-100, SDAX, TecDAX, SBF 120 (keine
+  Kürzel-Spalte auf Wikipedia). Die S&P-400-Tabelle enthielt auch frühere Mitglieder (noch gehandelt).
+  Doppelte Firmen (Zweitlisting) wertet bewertung.py nur einmal.
 - 13.11.2026 (Nachtschicht 21:41): Kurse-Schleife war nach dem Push (18:51 UTC) nie gelaufen – letzte
   Starthilfe 18:11 UTC lag davor, also keine Kurse nach 18:48 UTC. Von Hand gestartet (Lauf 43504676163),
   damit der US-Schluss vom Freitag noch kommt. Keine Code-Änderung.
