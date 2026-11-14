@@ -244,6 +244,7 @@ def kurs_text(x):
 
 def pz(x, nd=0):
     """Prozent mit Vorzeichen, z. B. +12 % oder -3,2 %."""
+    x = round(x, nd) + 0.0  # -0,0 vermeiden
     return ("+" if x > 0 else "") + de(x, nd) + " %"
 
 
@@ -340,7 +341,7 @@ def texte(z, x):
             u += f" ({pz(z['umsatz_wachstum_pct'])} im letzten Quartal zum Vorjahr)"
         teil.append(u)
     if z.get("operative_marge_pct") is not None:
-        teil.append(f"operative Marge {de(z['operative_marge_pct'], 0)} %")
+        teil.append(f"operative Marge {de(round(z['operative_marge_pct']) + 0.0, 0)} %")
     if teil:
         f.append(", ".join(teil) + ".")
     teil = []
