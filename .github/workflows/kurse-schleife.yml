@@ -30,13 +30,18 @@ jobs:
           ende=$(( $(date +%s) + 330*60 ))
           while :; do
             if [ "$(date -u +%u)" -gt 5 ] || [ "$(date -u +%H)" -ge 22 ]; then echo "Feierabend"; break; fi
-            git pull -q --rebase || true
+            git fetch -q origin main && git reset -q --hard origin/main || true
             python fetch.py --voll-wenn-alt || echo "Abruf fehlgeschlagen, nächster Versuch in einer Stunde"
-            git add data/aktien.json
-            if ! git diff --cached --quiet; then
+            cp data/aktien.json "$RUNNER_TEMP/aktien.json"
+            for i in 1 2 3 4 5; do
+              git fetch -q origin main && git reset -q --hard origin/main
+              cp "$RUNNER_TEMP/aktien.json" data/aktien.json
+              git add data/aktien.json
+              git diff --cached --quiet && break
               git commit -q -m "Kurse $(date -u +%F' '%H:%M)"
-              for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 15; done
-            fi
+              git push -q && break
+              sleep 15
+            done
             t=$(date +%s); n=$(( t/3600*3600 + 17*60 )); [ $n -le $t ] && n=$(( n + 3600 ))
             [ $n -gt $ende ] && break
             sleep $(( n - $(date +%s) ))
