@@ -88,7 +88,9 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   (S&P 500/400, DAX, MDAX, FTSE 100/250, CAC 40, AEX, AMX, IBEX, FTSE MIB, SMI, SMI MID, OMXS30, OMXC25, OBX,
   BEL 20, OMXH25), prüft Kürzel bei Yahoo: 635 → 1703 Aktien. Lücken: Nasdaq-100, SDAX, TecDAX, SBF 120 (keine
   Kürzel-Spalte auf Wikipedia). Die S&P-400-Tabelle enthielt auch frühere Mitglieder (noch gehandelt).
-  Doppelte Firmen (Zweitlisting) wertet bewertung.py nur einmal.
+  Doppelte Firmen (Zweitlisting) wertet bewertung.py nur einmal. Ergebnis 14.11. abends: 1703 Aktien, 1452 bewertet.
+  Datenabruf-Fehler: zwei gleichzeitige Abrufe → Konflikt in aktien.json, ein ganzer Abruf verworfen. Behoben:
+  grunddaten.yml und kurse-schleife.yml legen die neue Datei jetzt immer auf den neuesten Stand von main.
 - 14.11.2026: Levin will alle Aktien sehen und jede Nacht neue dazu: Dashboard-Reiter „Alle Aktien“
   (Datensatz `alle` aus alle.json, Feld "aufgenommen" für NEU), Nachtschicht nimmt jede Nacht bis zu 15 neue
   Aktien auf (zuerst Lücken: Nasdaq-100, SDAX, TecDAX, SBF 120, STOXX 600), sonntags universum.yml.
@@ -147,6 +149,10 @@ Zahlen und Kurs“. Umsetzung:
   (z. B. Infineon). Analysten können optimistischer sein als die Firma (z. B. Siemens Energy 2027).
 - Sonderkosten verzerren manchmal das Wachstum → Aktie fällt raus („Wachstum unplausibel“, z. B. Merck).
 - Firmen ohne Gewinn (Quantencomputer) sind nicht bewertbar.
+- Sehr hohe Abstände (z. B. TUI +342 %, bpost, CNX, Jazz): wenn Gewinn × faires KGV und DCF beide weit über dem
+  Kursziel liegen, wird die Mitte sehr hoch. Oft steckt ein Sondereffekt im freien Cashflow (Kundenanzahlungen bei
+  Reise- und Postfirmen). Idee für die Nachtschicht: Vorschlag mit Rückblick-Test (z. B. Mitte höchstens doppelt so
+  hoch wie das Kursziel oder Cashflow-Rendite über 15 % als Sondereffekt behandeln).
 - Ideen: Rückblick-Test der Trend-Regeln mit Kursdaten; Kurs-Gegenprüfung mit Twelve Data; Hinweis, wenn
   Analystenschätzung deutlich über dem Firmenausblick liegt.
 
