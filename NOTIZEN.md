@@ -28,7 +28,8 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - Rund 1700 Aktien: S&P 500 und 400, große und mittlere Index-Aktien aus Europa (Deutschland, London,
   Frankreich, Holland, Spanien, Italien, Schweiz, Skandinavien, Belgien), Favoriten von Banken. Währungen: USD, EUR, GBp/GBP, CHF, DKK, SEK, NOK (Kurse über `fx_eur` in aktien.json).
 - Punkte (max. 10): PEG, Kursziel-Abstand, ROE, freier Cashflow, Nettoschulden, Analystenzahl,
-  Trend lang (SMA200 + 6 Monate), Trend kurz (SMA50 + 1 Monat), Revisionen; Zykliker −2.
+  Trend lang (SMA200 + 6 Monate), Trend kurz (SMA50 + 1 Monat), Revisionen; Zykliker −2;
+  Nachrichten aus data/news.json (positiv +1, negativ −1, sehr negativ −2; 7 Tage gültig, nur mit Quelle).
 - Platz: Punkte, bei Gleichstand Feinwert 0–100 (Rang jeder Kennzahl unter allen).
 - Faire Spanne aus drei Wegen: Gewinn × faires KGV, Cashflow-DCF (9 % Zins, 2,5 % Endwachstum, halbes
   Gewinnwachstum max. 15 %), Kursziel-Median. Mitte = mittlerer Wert; Spanne von halbem Weg zum unteren bis
@@ -44,6 +45,8 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   Kurs-Alarm ab ±5 %, Zahlen-Check an Zahlentagen, Wochenbericht montags.
 - Nachtschicht: kurz vor 22 und 4 Uhr, jeden Tag, prüft alles und verbessert (siehe unten).
 - Aktien-Scout: Börsentage 11:48 und 18:48 (Berlin), siehe Abschnitt „Aktien-Scout“.
+- News-Agenten: Börsentage 6:51, 12:51, 20:51 (Berlin). 3 Agenten parallel prüfen Levins Aktien + bis zu
+  30 weitere (Top-Bedingungen zuerst), Ergebnis selbst nachprüfen, data/news.json pushen.
 
 ## Aktien-Scout (Levin, 14.11.2026: „einen, der die ganze Zeit nach neuen guten Aktien sucht“)
 - Liest `alle.json` (alle bewerteten Aktien, schreibt bewertung.py seit 14.11.) und meldet bis zu 5 Kandidaten:
@@ -71,6 +74,9 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - 14.11.2026: Plätze aus Dashboard und Nachrichten entfernt (Levins Wunsch).
 - 14.11.2026: Nachtschicht jetzt jeden Tag (auch Wochenende). Aktien-Scout eingerichtet; bewertung.py schreibt
   dafür `alle.json`. Erste Analyse mit drei Agenten (NVIDIA vor den Zahlen am 17.11.).
+- 14.11.2026: Levin will, dass Agenten News lesen und die News in die Bewertung einfließen → Nachrichten-Punkte
+  (siehe „Wie gerechnet wird“), Aufgabe „News-Agenten“, Anzeige mit Links in der Detailansicht. Erster Eintrag:
+  NVIDIA sehr negativ (Chefrücktritt, Ermittlungen). bewertung.py lädt news.json notfalls von GitHub.
 - 14.11.2026: **Fehler behoben: freier Cashflow.** Yahoos info-Feld "freeCashflow" ist der „Levered FCF“
   (NVIDIA 41,8 statt ~127 Mrd. $). fetch.py nimmt jetzt die letzten 4 Quartale aus der Kapitalflussrechnung
   (Feld "fcf_quelle"; alter Wert in "fcf_levered"). Betrifft Cashflow-Punkte und DCF bei allen Aktien.
