@@ -7,7 +7,8 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - Levin (Leipzig), Einsteiger an der Börse. Will einen „Wall-Street-Computer“: Aktien gründlich und so
   zuverlässig wie möglich bewerten, automatisch, mit kostenlosen Quellen. „Ich möchte das Beste, was geht.“
 - Dashboard „Aktien-Liste“: https://claude.ai/artifact/A5Tm8Qr9ZCixo8Cg62Kf6h (Artifact vom Typ Dashboard).
-  Zeigt nur noch „Meine Aktien“ (Levins Auswahl in `config/meine`) und „So wird gerechnet“.
+  Reiter: „Meine Aktien“ (Levins Auswahl in `config/meine`), „Alle Aktien“ (alle bewerteten, Datensatz `alle`,
+  mit Suche, Filtern und „NEU“-Markierung für 7 Tage) und „So wird gerechnet“.
 - Repository: bubelman/aktien-daten (öffentlich). Daten: `data/aktien.json`, Programm: `bewertung.py`,
   Abruf: `fetch.py`, Aktien: `tickers.txt`.
 
@@ -78,6 +79,9 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   BEL 20, OMXH25), prüft Kürzel bei Yahoo: 635 → 1703 Aktien. Lücken: Nasdaq-100, SDAX, TecDAX, SBF 120 (keine
   Kürzel-Spalte auf Wikipedia). Die S&P-400-Tabelle enthielt auch frühere Mitglieder (noch gehandelt).
   Doppelte Firmen (Zweitlisting) wertet bewertung.py nur einmal.
+- 14.11.2026: Levin will alle Aktien sehen und jede Nacht neue dazu: Dashboard-Reiter „Alle Aktien“
+  (Datensatz `alle` aus alle.json, Feld "aufgenommen" für NEU), Nachtschicht nimmt jede Nacht bis zu 15 neue
+  Aktien auf (zuerst Lücken: Nasdaq-100, SDAX, TecDAX, SBF 120, STOXX 600), sonntags universum.yml.
 - 13.11.2026 (Nachtschicht 21:41): Kurse-Schleife war nach dem Push (18:51 UTC) nie gelaufen – letzte
   Starthilfe 18:11 UTC lag davor, also keine Kurse nach 18:48 UTC. Von Hand gestartet (Lauf 43504676163),
   damit der US-Schluss vom Freitag noch kommt. Keine Code-Änderung.
@@ -98,7 +102,7 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 
 ## Regeln für die Nachtschicht
 - Darf ohne Rückfrage: Datenfehler und Abstürze beheben, Prüfungen ergänzen, Texte/Erklärungen verbessern,
-  neue Aktien aufnehmen, die Levin genannt hat. Vor jedem Push: `bewertung.py` mit aktuellen Daten laufen
+  neue Aktien aufnehmen (jede Nacht bis zu 15, Levins Wunsch vom 14.11.2026; Regeln in der Aufgabe, Schritt 2b). Vor jedem Push: `bewertung.py` mit aktuellen Daten laufen
   lassen (Fehlercode 0, "pruefung" leer oder erklärt) und mit dem Stand vorher vergleichen.
 - Darf NICHT ohne Levins Ja: Punkte-Regeln, Gewichte, faire-Spanne-Methode oder Top-Bedingungen ändern;
   Depots wieder starten; Aktien in „Meine Aktien“ aufnehmen oder entfernen. Solche Ideen nur vorschlagen.
