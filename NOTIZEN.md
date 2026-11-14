@@ -100,7 +100,9 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   Neue Euro-Felder (marktwert_eur, umsatz_eur, nettoschulden_eur, fcf_eur, dividende_pct …). fetch.py holt Umsatz,
   Margen, Dividende (Prozent/Anteil vereinheitlicht). Dashboard: Detailansicht mit „Warum diese Bewertung“ und
   „Finanzielle Lage“, 5 neue Zahlen, Karten mit erstem Gegen-/Pro-Punkt. Punkte und Reihenfolge unverändert.
-  alle.json ohne leere Felder und kompakt (~2 MB). grunddaten.yml: Eingabe „voll“ erzwingt Vollabruf (heute gestartet).
+  alle.json ohne leere Felder und kompakt (2,2 MB mit Umsatz/Dividende). grunddaten.yml: Eingabe „voll“ erzwingt
+  Vollabruf (lief 14.11. 20:58–21:42 UTC, Umsatz bei 1625, Dividende bei 1712 Aktien). Dashboard-Daten danach neu
+  hochgeladen. Stichprobe Dividende: NVIDIA 0,6 % passt zur Erhöhung im Mai 2026 (fool.com); EchoStar (SATS) 15 % prüfen.
 - 14.11.2026 (Nachtschicht): Fehler behoben (Commit a18e7e5): London-Aktien mit Dollar-Bericht (AstraZeneca, Shell,
   HSBC, Rio Tinto, BP, Glencore, Diageo …) fielen mit „Währung der Gewinnschätzung unklar“ raus, weil Yahoos
   forwardEps dort in Pfund steht (Kurs in Pence). Jetzt 1452 → 1487 bewertet, keine andere Aktie geändert.
