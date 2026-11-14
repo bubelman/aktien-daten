@@ -1,0 +1,34 @@
+name: Aktien-Universum erweitern
+# Liest Index-Listen (Wikipedia), prüft neue Kürzel bei Yahoo und hängt gültige an tickers.txt an.
+# Danach werden die Grunddaten der neuen Aktien geholt (grunddaten.yml).
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: [universum.py]
+permissions:
+  contents: write
+  actions: write
+jobs:
+  erweitern:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install yfinance pandas lxml requests
+      - run: python universum.py
+      - name: Ergebnis speichern
+        run: |
+          git config user.name "aktien-bot"
+          git config user.email "aktien-bot@users.noreply.github.com"
+          git add tickers.txt data/universum.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Universum erweitert: $(python -c "import json;b=json.load(open('data/universum.json'));print(b['vorher'],'->',b['nachher'],'Aktien')")"
+          for i in 1 2 3; do git pull --rebase -q && git push && break; sleep 10; done
+      - name: Grunddaten der neuen Aktien holen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run grunddaten.yml --ref main

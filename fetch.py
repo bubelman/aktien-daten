@@ -30,6 +30,35 @@ def basis(w):
     return ("GBP", 100.0) if w in ("GBp", "GBX") else (w, 1.0)
 
 
+def fcf_zeile(df):
+    """Freier Cashflow je Periode aus einer yfinance-Kapitalflussrechnung (Spalten = Perioden, neueste zuerst)."""
+    if df is None or df.empty:
+        return None
+    if "Free Cash Flow" in df.index:
+        return df.loc["Free Cash Flow"]
+    if "Operating Cash Flow" in df.index and "Capital Expenditure" in df.index:
+        return df.loc["Operating Cash Flow"] + df.loc["Capital Expenditure"]  # Investitionen sind negativ
+    return None
+
+
+def fcf_aus_cashflow(t):
+    try:
+        z = fcf_zeile(t.quarterly_cashflow)
+        if z is not None:
+            w = [num(x) for x in z.iloc[:4]]
+            if len(w) == 4 and all(x is not None for x in w):
+                return sum(w), "4 Quartale"
+    except Exception:
+        pass
+    try:
+        z = fcf_zeile(t.cashflow)
+        if z is not None and len(z) and num(z.iloc[0]) is not None:
+            return num(z.iloc[0]), "Geschäftsjahr"
+    except Exception:
+        pass
+    return None, None
+
+
 def grunddaten(sym):
     t = yf.Ticker(sym)
     out = {"ticker": sym}
@@ -66,6 +95,15 @@ def grunddaten(sym):
                 out["eps_faktor"] = float(fx.iloc[-1]) * kwm / fwm if len(fx) else None
             except Exception:
                 out["eps_faktor"] = None
+    # Yahoos "freeCashflow" in info ist der „Levered Free Cash Flow“ (eigene Herleitung, bei NVIDIA 41,8 statt
+    # ~127 Mrd. $). Darum: freier Cashflow = Summe der letzten 4 Quartale (operativer Cashflow minus Investitionen)
+    # aus der Kapitalflussrechnung; Ersatz: letztes Geschäftsjahr; erst dann der Wert aus info.
+    out["fcf_levered"] = out["freier_cashflow"]
+    fcf, quelle = fcf_aus_cashflow(t)
+    if fcf is not None:
+        out["freier_cashflow"], out["fcf_quelle"] = fcf, quelle
+    else:
+        out["fcf_quelle"] = "info (levered)"
     if out["freier_cashflow"] and out["marktwert"]:
         out["fcf_rendite"] = out["freier_cashflow"] / out["marktwert"]
     if out["ebitda"] and out["ebitda"] > 0 and out["schulden"] is not None and out["cash"] is not None:
@@ -153,18 +191,23 @@ def main():
     except Exception:
         alt = {"aktien": []}
     alt_by = {r["ticker"]: r for r in alt.get("aktien", [])}
+    nur_neu = None
     if "--voll-wenn-alt" in sys.argv:
         # GitHub startet geplante Läufe oft Stunden zu spät oder gar nicht. Darum gibt es mehrere Versuche
         # am Morgen; nur der erste des Tages holt die Grunddaten, die anderen nur Kurse. Neue Kürzel in
         # tickers.txt (noch ohne Grunddaten) erzwingen ebenfalls einen Vollabruf.
         heute = dt.datetime.now(dt.timezone.utc).date().isoformat()
         neu = [t for t in TICKERS if t not in alt_by]
-        voll = not str(alt.get("grunddaten_stand") or "").startswith(heute) or bool(neu)
-        print("Vollabruf" if voll else "Grunddaten von heute schon da: nur Kurse")
+        voll = not str(alt.get("grunddaten_stand") or "").startswith(heute)
+        if not voll and neu:
+            nur_neu = set(neu)  # Grunddaten von heute da: nur die neuen Kürzel nachholen
+        print("Vollabruf" if voll else f"Grunddaten von heute da: {len(neu)} neue Kürzel nachholen" if neu else "Grunddaten von heute schon da: nur Kurse")
 
-    if voll:
+    if voll or nur_neu:
         rows = []
         for n, s in enumerate(TICKERS, 1):
+            if nur_neu is not None and s not in nur_neu:
+                rows.append(alt_by.get(s) or {"ticker": s}); continue
             for versuch in range(3):
                 try:
                     rows.append(grunddaten(s)); break
@@ -175,7 +218,7 @@ def main():
             if n % 50 == 0:
                 print(f"{n}/{len(TICKERS)} Grunddaten")
             time.sleep(0.8)
-        grund_stand = jetzt()
+        grund_stand = jetzt() if voll else alt.get("grunddaten_stand")
     else:
         rows = [alt_by.get(s) or {"ticker": s} for s in TICKERS]
         grund_stand = alt.get("grunddaten_stand")
