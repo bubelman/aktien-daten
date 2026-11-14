@@ -88,12 +88,26 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   (S&P 500/400, DAX, MDAX, FTSE 100/250, CAC 40, AEX, AMX, IBEX, FTSE MIB, SMI, SMI MID, OMXS30, OMXC25, OBX,
   BEL 20, OMXH25), prüft Kürzel bei Yahoo: 635 → 1703 Aktien. Lücken: Nasdaq-100, SDAX, TecDAX, SBF 120 (keine
   Kürzel-Spalte auf Wikipedia). Die S&P-400-Tabelle enthielt auch frühere Mitglieder (noch gehandelt).
-  Doppelte Firmen (Zweitlisting) wertet bewertung.py nur einmal. Ergebnis 14.11. abends: 1703 Aktien, 1452 bewertet.
+  Doppelte Firmen (Zweitlisting) wertet bewertung.py nur einmal. Ergebnis 14.11. abends: 1703 Aktien, 1452 bewertet (nach Nachtschicht: 1715 Aktien, 1496 bewertet).
   Datenabruf-Fehler: zwei gleichzeitige Abrufe → Konflikt in aktien.json, ein ganzer Abruf verworfen. Behoben:
   grunddaten.yml und kurse-schleife.yml legen die neue Datei jetzt immer auf den neuesten Stand von main.
 - 14.11.2026: Levin will alle Aktien sehen und jede Nacht neue dazu: Dashboard-Reiter „Alle Aktien“
   (Datensatz `alle` aus alle.json, Feld "aufgenommen" für NEU), Nachtschicht nimmt jede Nacht bis zu 15 neue
   Aktien auf (zuerst Lücken: Nasdaq-100, SDAX, TecDAX, SBF 120, STOXX 600), sonntags universum.yml.
+- 14.11.2026 (Nachtschicht 21:41): **Auftrag A1 erledigt** (Commit 03c9adf, 1d8011a): bewertung.py schreibt zu jeder
+  Aktie "warum" (woher die Punkte kommen, faire Mitte) und "finanzen" (Kurs, Börsenwert, Umsatz, Marge, freier
+  Cashflow, Nettoschulden, Dividende, nächste Zahlen) – nur aus den Zahlen der Zeile, Banken ohne Cashflow/Schulden.
+  Neue Euro-Felder (marktwert_eur, umsatz_eur, nettoschulden_eur, fcf_eur, dividende_pct …). fetch.py holt Umsatz,
+  Margen, Dividende (Prozent/Anteil vereinheitlicht). Dashboard: Detailansicht mit „Warum diese Bewertung“ und
+  „Finanzielle Lage“, 5 neue Zahlen, Karten mit erstem Gegen-/Pro-Punkt. Punkte und Reihenfolge unverändert.
+  alle.json ohne leere Felder und kompakt (~2 MB). grunddaten.yml: Eingabe „voll“ erzwingt Vollabruf (heute gestartet).
+- 14.11.2026 (Nachtschicht): Fehler behoben (Commit a18e7e5): London-Aktien mit Dollar-Bericht (AstraZeneca, Shell,
+  HSBC, Rio Tinto, BP, Glencore, Diageo …) fielen mit „Währung der Gewinnschätzung unklar“ raus, weil Yahoos
+  forwardEps dort in Pfund steht (Kurs in Pence). Jetzt 1452 → 1487 bewertet, keine andere Aktie geändert.
+- 14.11.2026 (Nachtschicht): 12 neue Aktien: ALAB, CCEP, TEAM, TRI, ALNY, TTD, GFS (Nasdaq-100-Lücke), TKMS.DE,
+  R3NK.DE, IOS.DE, ELG.DE, SIX2.DE (TecDAX/SDAX/MDAX-Lücke). 10 bewertet; TEAM und ALNY: „Wachstum unplausibel“.
+  Nasdaq-100 aktuell (seit 22.06.2026): ALAB, CRWV, NBIS, RKLB, TER neu; CHTR, CTSH, INSM, VRSK, ZS raus.
+  CRWV, NBIS, RKLB ohne Gewinn → nicht aufgenommen. Noch offen: SDAX-Rest (z. B. 1U1, KWS, DUE, DRW3, WAC).
 - 13.11.2026 (Nachtschicht 21:41): Kurse-Schleife war nach dem Push (18:51 UTC) nie gelaufen – letzte
   Starthilfe 18:11 UTC lag davor, also keine Kurse nach 18:48 UTC. Von Hand gestartet (Lauf 43504676163),
   damit der US-Schluss vom Freitag noch kommt. Keine Code-Änderung.
@@ -102,47 +116,13 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - NVDA: 13.11.2026 – Gewinn FY2027 9,32 $ / FY2028 15,85 $ passt zu stockanalysis.com (9,31 / 15,91).
   Kursziel-Median Yahoo 282 $, stockanalysis 315 $ (Stand dort 06.11., vor dem Kursrutsch) → −10 %, Ursache
   vermutlich veralteter Vergleichswert.
-- AVGO, SAP, IFX.DE, ENR.DE: noch nicht geprüft (als Nächstes, in dieser Reihenfolge).
+- AVGO: 14.11.2026 – Gewinn FY2026 Yahoo 11,66 $ / vcpscanner.com 11,68 $ (passt). Kurs Yahoo 347 $ (13.11.),
+  dort 364 $ (12.11.) → Tagesbewegung. Kursziel-Durchschnitt (Yahoo 529 $) noch ohne zweite Quelle.
+- SAP, IFX.DE, ENR.DE: noch nicht geprüft (als Nächstes, in dieser Reihenfolge).
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
-### A1 (14.11.2026, für die Nachtschicht am 14.11. um 21:41): Kurzer Text zu jeder Aktie
-Levin: „dass immer zur Aktie ein kurzer Text steht, warum so bewertet, und wie die finanzielle Lage ist, also
-Zahlen und Kurs“. Umsetzung:
-1. fetch.py, grunddaten(): zusätzlich aus info holen: umsatz = totalRevenue, umsatz_wachstum = revenueGrowth,
-   gewinnmarge = profitMargins, bruttomarge = grossMargins, dividende = dividendYield (Yahoo liefert es teils
-   in Prozent, teils als Anteil – prüfen und vereinheitlichen), kgv_trailing = trailingPE. Push von fetch.py
-   startet grunddaten.yml; die Werte kommen dann mit dem nächsten Vollabruf (spätestens Montag früh).
-2. bewertung.py, bewerte(): neue Felder in der Zeile (alles in Euro, Beträge der Berichtswährung umrechnen:
-   USD über fx, EUR = 1, sonst FX_EUR; fehlt der Kurs (z. B. CNY, TWD), Betrag weglassen):
-   marktwert_eur, umsatz_eur, umsatz_wachstum_pct, operative_marge_pct, gewinnmarge_pct, roe_pct,
-   nettoschulden_eur (schulden − cash), fcf_eur, dividende_pct, hoch_52w_eur, tief_52w_eur,
-   veraenderung_6m_pct. Achtung Pence (GBp): Börsenwert wie beim FCF-Vergleich korrigieren.
-3. bewertung.py: zwei Texte erzeugen, nur aus den Zahlen der Zeile (nichts erfinden, Zahlen deutsch formatiert,
-   kurze einfache Sätze, keine Empfehlung, kein „Platz“):
-   - "warum": 2–3 Sätze. „<Aktie> bekommt X von 10 Punkten.“ Dann „Dafür:“ die Bausteine mit Pluspunkten
-     (z. B. günstig: KGV 10,3 bei 70 % erwartetem Gewinnwachstum; Kursziel der Analysten 69 % über dem Kurs;
-     Eigenkapitalrendite 117 %; freier Cashflow 3,2 % des Börsenwerts; wenig Schulden; steigender Trend;
-     Analysten heben Schätzungen an; gute Nachrichten) und „Dagegen:“ die Abzüge (fallender Trend, Analysten
-     senken, wenige Analysten, Speicherchips, negative Nachrichten mit kurz-Text). Zum Schluss: „Die faire
-     Mitte (249 €) liegt 69 % über dem Kurs (147 €).“ bzw. „unter dem Kurs“.
-   - "finanzen": 2–3 Sätze. Kurs mit Entwicklung (1 Monat, 6 Monate, Abstand zum Jahreshoch), Börsenwert,
-     Umsatz (und Wachstum), operative Marge, freier Cashflow, Nettoschulden bzw. Nettoliquidität (mit Faktor
-     zum EBITDA), Dividende, nächster Zahlentermin. Fehlende Werte einfach weglassen.
-   Beide Felder auch in meine.json und alle.json (alle.json bleibt unter ~2 MB; sonst Texte kürzen).
-4. Dashboard-Seite (files/index.html, ArtifactData collection "files", doc_id "index.html", Feld "text",
-   update mit if_version): In der Detailansicht („Alle Zahlen zu einer Aktie“, Funktion zeigeDetail) ganz
-   oben zwei kurze Absätze „Warum diese Bewertung“ (r.warum) und „Finanzielle Lage“ (r.finanzen). In der
-   Zahlenliste rechts zusätzlich: Börsenwert, Umsatz, operative Marge, Nettoschulden, Dividende. Auf den
-   Karten von „Meine Aktien“ den ersten Satz von „Dagegen:“ bzw. „Dafür:“ klein unter dem Namen (optional).
-   Vorher lokal testen: Seite mit einem kleinen Ersatz für window.dash (draw/calc/onData/data/setLink) und
-   echten meine.json/alle.json in Chromium (Playwright) laden, keine Fehler in der Konsole, Bildschirmfoto
-   ansehen; auch Handybreite. Nach dem Hochladen data/users/me Dokument "runs" prüfen.
-5. Tests: bewertung.py mit aktuellen Daten (Fehlercode 0, "pruefung" leer), Punkte und Reihenfolge dürfen sich
-   durch A1 nicht ändern (liste.json vorher/nachher vergleichen). Für 3 Aktien (NVDA, SAP, IFX.DE) die Texte im
-   Bericht an Levin zeigen. Danach einmal neu/meine.json und neu/alle.json hochladen und datasets/meine und
-   datasets/alle umstellen (wie in der Aufgabe „Meine Aktien aktualisieren“, Schritt 1 und 4 mit alt/alle.json),
-   damit Levin die Texte sofort sieht.
+(zurzeit keine)
 
 ## Bekannte Grenzen und offene Ideen
 - Yahoo-Schätzungen sind oft „bereinigt“ (ohne Sonderkosten); andere Quellen nennen niedrigere Gewinne
@@ -153,6 +133,8 @@ Zahlen und Kurs“. Umsetzung:
   Kursziel liegen, wird die Mitte sehr hoch. Oft steckt ein Sondereffekt im freien Cashflow (Kundenanzahlungen bei
   Reise- und Postfirmen). Idee für die Nachtschicht: Vorschlag mit Rückblick-Test (z. B. Mitte höchstens doppelt so
   hoch wie das Kursziel oder Cashflow-Rendite über 15 % als Sondereffekt behandeln).
+- Noch „Währung unklar“: SHC.L, ABB.ST, EQT.ST, HEXA-B.ST (forwardEps passt zu keiner Umrechnung, Abweichung 25–60 %).
+- Alle Kurse der Daten stammen vom 13.11.; ROKU hat seit 09.11. keinen neuen Kurs (beobachten, ggf. Übernahme?).
 - Ideen: Rückblick-Test der Trend-Regeln mit Kursdaten; Kurs-Gegenprüfung mit Twelve Data; Hinweis, wenn
   Analystenschätzung deutlich über dem Firmenausblick liegt.
 
@@ -169,4 +151,4 @@ Zahlen und Kurs“. Umsetzung:
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
 
 ## Skills
-- (noch keine von der Nachtschicht vorgeschlagen)
+- (noch keine von der Nachtschicht vorgeschlagen; 14.11.: bewusst keiner, A1 hatte Vorrang)
