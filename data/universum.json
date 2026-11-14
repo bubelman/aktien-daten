@@ -1,0 +1,525 @@
+{
+ "stand": "2026-11-14T17:28:27+00:00",
+ "indizes": {
+  "S&P 500": {
+   "gefunden": 503,
+   "neu": 4,
+   "beispiele": [
+    "MMM",
+    "AOS",
+    "ABT",
+    "ABBV",
+    "ACN"
+   ]
+  },
+  "S&P MidCap 400": {
+   "gefunden": 599,
+   "neu": 559,
+   "beispiele": [
+    "JHX",
+    "GKOS",
+    "FORM",
+    "CTVA",
+    "HUBS"
+   ]
+  },
+  "Nasdaq-100": {
+   "gefunden": 0,
+   "neu": 0,
+   "beispiele": [],
+   "tabellen": [
+    [
+     "0",
+     "1"
+    ],
+    [
+     "Category",
+     "All-Time Highs[13]",
+     "All-Time Highs[13].1"
+    ],
+    [
+     "Year",
+     "Closing level",
+     "Change in Index in Points",
+     "Change in Index in %"
+    ],
+    [
+     "Milestone (closing)[13]",
+     "Date of Record (closing)[13]",
+     "Trading Days[13]"
+    ],
+    [
+     "Milestone (closing)[13]",
+     "Date of Record (closing)[13]",
+     "Trading Days[13]"
+    ],
+    [
+     "vteList of NASDAQ-100 companies",
+     "vteList of NASDAQ-100 companies.1"
+    ],
+    [
+     "vteNasdaq, Inc.",
+     "vteNasdaq, Inc..1",
+     "vteNasdaq, Inc..2"
+    ],
+    [
+     "vteStock market indices",
+     "vteStock market indices.1"
+    ],
+    [
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1"
+    ]
+   ]
+  },
+  "DAX": {
+   "gefunden": 40,
+   "neu": 2,
+   "beispiele": [
+    "ADS.DE",
+    "AIR.PA",
+    "ALV.DE",
+    "BAS.DE",
+    "BAYN.DE"
+   ]
+  },
+  "MDAX": {
+   "gefunden": 50,
+   "neu": 45,
+   "beispiele": [
+    "AIXA.DE",
+    "AT1.DE",
+    "NDA.DE",
+    "BC8.DE",
+    "BFSA.DE"
+   ]
+  },
+  "SDAX": {
+   "gefunden": 0,
+   "neu": 0,
+   "beispiele": [],
+   "tabellen": [
+    [
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1"
+    ],
+    [
+     "Logo",
+     "Name",
+     "Industry",
+     "Location"
+    ],
+    [
+     "vte SDAX companies of Germany updated 25.01.2024",
+     "vte SDAX companies of Germany updated 25.01.2024.1"
+    ],
+    [
+     "0",
+     "1"
+    ]
+   ]
+  },
+  "TecDAX": {
+   "gefunden": 0,
+   "neu": 0,
+   "beispiele": [],
+   "tabellen": [
+    [
+     "0",
+     "1"
+    ],
+    [
+     "vte TecDAX companies of Germany updated 11.02.2024",
+     "vte TecDAX companies of Germany updated 11.02.2024.1"
+    ]
+   ]
+  },
+  "FTSE 100": {
+   "gefunden": 100,
+   "neu": 97,
+   "beispiele": [
+    "III.L",
+    "ABDN.L",
+    "ADM.L",
+    "AAF.L",
+    "ALW.L"
+   ]
+  },
+  "FTSE 250": {
+   "gefunden": 250,
+   "neu": 249,
+   "beispiele": [
+    "3IN.L",
+    "FOUR.L",
+    "AAS.L",
+    "ASL.L",
+    "AEP.L"
+   ]
+  },
+  "CAC 40": {
+   "gefunden": 40,
+   "neu": 16,
+   "beispiele": [
+    "AC.PA",
+    "AI.PA",
+    "AIR.PA",
+    "MT.AS",
+    "CS.PA"
+   ]
+  },
+  "SBF 120": {
+   "gefunden": 0,
+   "neu": 0,
+   "beispiele": [],
+   "tabellen": [
+    [
+     "0",
+     "1"
+    ],
+    [
+     "vteMajor France stock market indices",
+     "vteMajor France stock market indices.1"
+    ],
+    [
+     "vteStock market indices",
+     "vteStock market indices.1"
+    ],
+    [
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1"
+    ]
+   ]
+  },
+  "AEX": {
+   "gefunden": 25,
+   "neu": 15,
+   "beispiele": [
+    "ABN.AS",
+    "ADYEN.AS",
+    "AGN.AS",
+    "AD.AS",
+    "AKZA.AS"
+   ]
+  },
+  "AMX": {
+   "gefunden": 25,
+   "neu": 24,
+   "beispiele": [
+    "AF.AS",
+    "AMG.AS",
+    "APAM.AS",
+    "ARCAD.AS",
+    "BOKA.AS"
+   ]
+  },
+  "IBEX 35": {
+   "gefunden": 35,
+   "neu": 29,
+   "beispiele": [
+    "ACS.MC",
+    "ACX.MC",
+    "AMS.MC",
+    "ANA.MC",
+    "ANE.MC"
+   ]
+  },
+  "FTSE MIB": {
+   "gefunden": 40,
+   "neu": 34,
+   "beispiele": [
+    "A2A.MI",
+    "AMP.MI",
+    "AVIO.MI",
+    "AZM.MI",
+    "BMED.MI"
+   ]
+  },
+  "SMI": {
+   "gefunden": 20,
+   "neu": 19,
+   "beispiele": [
+    "NOVN.SW",
+    "ROP.SW",
+    "NESN.SW",
+    "ABBN.SW",
+    "UBSG.SW"
+   ]
+  },
+  "SMI MID": {
+   "gefunden": 28,
+   "neu": 25,
+   "beispiele": [
+    "ACLN.SW",
+    "ADEN.SW",
+    "AVOL.SW",
+    "BARN.SW",
+    "BEAN.SW"
+   ]
+  },
+  "OMX Stockholm 30": {
+   "gefunden": 30,
+   "neu": 30,
+   "beispiele": [
+    "ABB.ST",
+    "ADDT-B.ST",
+    "ALFA.ST",
+    "ASSA-B.ST",
+    "AZN.ST"
+   ]
+  },
+  "OMX Copenhagen 25": {
+   "gefunden": 25,
+   "neu": 24,
+   "beispiele": [
+    "MAERSK-A.CO",
+    "MAERSK-B.CO",
+    "ALSYDB.CO",
+    "AMBU-B.CO",
+    "CARL-B.CO"
+   ]
+  },
+  "OBX": {
+   "gefunden": 25,
+   "neu": 25,
+   "beispiele": [
+    "AKRBP.OL",
+    "BWLPG.OL",
+    "DNB.OL",
+    "EQNR.OL",
+    "FRO.OL"
+   ]
+  },
+  "BEL 20": {
+   "gefunden": 21,
+   "neu": 21,
+   "beispiele": [
+    "ABLX.BR",
+    "AGFB.BR",
+    "BAR.BR",
+    "BEFB.BR",
+    "BEKB.BR"
+   ]
+  },
+  "OMX Helsinki 25": {
+   "gefunden": 25,
+   "neu": 23,
+   "beispiele": [
+    "ELISA.HE",
+    "FORTUM.HE",
+    "HIAB.HE",
+    "HUH1V.HE",
+    "KALMAR.HE"
+   ]
+  }
+ },
+ "neu_gueltig": 1068,
+ "ungueltig": [
+  "CMA",
+  "ALTR",
+  "PSTG",
+  "ALTM",
+  "CIVI",
+  "CHK",
+  "ZI",
+  "BERY",
+  "FYBR",
+  "HTA",
+  "SWN",
+  "UA-UAA",
+  "SWAV",
+  "NARI",
+  "GTLS",
+  "PDCE",
+  "GPS",
+  "LEG",
+  "HBI",
+  "MIME",
+  "VSCO",
+  "ELY",
+  "ENV",
+  "HFC",
+  "AZPN",
+  "NSA",
+  "RCM",
+  "BRKS",
+  "AIRC",
+  "IAA",
+  "BLD",
+  "ADS",
+  "JWN",
+  "UNVR",
+  "STOR",
+  "LHCG",
+  "XEC",
+  "TMHC",
+  "CIT",
+  "CCMP",
+  "CDAY",
+  "IIVI",
+  "KAR",
+  "GRUB",
+  "FL",
+  "SRC",
+  "AAXN",
+  "PSB",
+  "CFX",
+  "AMED",
+  "CVET",
+  "SRCL",
+  "ETRN",
+  "ASGN",
+  "RLGY",
+  "ERI",
+  "WWE",
+  "WYND",
+  "PRAH",
+  "APY",
+  "MDR",
+  "OAS",
+  "PDCO",
+  "CMD",
+  "ALE",
+  "SGMS",
+  "DLPH",
+  "STL",
+  "SAFM",
+  "ILG",
+  "CPE",
+  "MNK",
+  "MDSO",
+  "TGNA",
+  "DNB",
+  "MIK",
+  "FTR",
+  "MASI",
+  "ENDP",
+  "CONE",
+  "CTB",
+  "BIVV",
+  "LOGM",
+  "LM",
+  "HLS",
+  "QCP",
+  "VSM",
+  "DO",
+  "NUVA",
+  "CHFC",
+  "MBFI",
+  "BRCD",
+  "EDR",
+  "MPW",
+  "WBMD",
+  "DCT",
+  "ABMD",
+  "ESV",
+  "PVTB",
+  "LNCE",
+  "MSCC",
+  "JCOM",
+  "CSC",
+  "ENH",
+  "WETF",
+  "OZRK",
+  "DNKN",
+  "CSAL",
+  "KLXI",
+  "THS",
+  "BMS",
+  "WNR",
+  "HYH",
+  "CDK",
+  "RDC",
+  "X",
+  "LHO",
+  "TMST",
+  "IGT",
+  "ARRS",
+  "WPG",
+  "POL",
+  "UMPQ",
+  "FEIC",
+  "WPX",
+  "KATE",
+  "SIRO",
+  "JDSU",
+  "CBST",
+  "SAI",
+  "SLXP",
+  "APOL",
+  "DF",
+  "WWAV",
+  "CST",
+  "FII",
+  "RRD",
+  "CAB",
+  "ANR",
+  "GWR",
+  "LXK",
+  "JAH",
+  "SWI",
+  "ALEX",
+  "HSH",
+  "TPX",
+  "SVU",
+  "WXS",
+  "ECV.DE",
+  "AF.AS",
+  "BOKA.AS",
+  "GVNV.AS",
+  "INTER.AS",
+  "WDP.AS",
+  "JDEP.AS",
+  "INPST.AS",
+  "GLPG.AS",
+  "LISN---LISP.SW",
+  "SCHN---SCHP.SW",
+  "NDA.CO",
+  "GOGL.OL",
+  "ABLX.BR",
+  "BEFB.BR",
+  "NAT.BR",
+  "AD.BR",
+  "DL.BR",
+  "ELE.BR",
+  "ENGI.BR",
+  "GLPG.BR",
+  "OME.BR",
+  "REC.BR",
+  "THR.BR",
+  "KOJAMO.HE"
+ ],
+ "vorher": 635,
+ "nachher": 1703
+}
