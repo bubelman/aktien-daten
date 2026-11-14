@@ -208,6 +208,155 @@ def hype(t, heute):
     return h if 0 <= alter <= HYPE_TAGE else None
 
 
+def eur_von(betrag, w, fx):
+    """Betrag in Währung w in Euro (Dollar über fx, Euro 1, Pence über Pfund × 100, sonst FX_EUR).
+    Unbekannte Währung (z. B. Yuan, Taiwan-Dollar): None – dann den Betrag lieber weglassen."""
+    if betrag is None:
+        return None
+    w = w or "USD"
+    q = fx if w == "USD" else 1.0 if w == "EUR" else (FX_EUR["GBP"] * 100 if FX_EUR.get("GBP") else None) \
+        if w in ("GBp", "GBX") else FX_EUR.get(w)
+    return betrag / q if q else None
+
+
+def geld(x):
+    """Großer Euro-Betrag kurz: 3,4 Bio. €, 160 Mrd. €, 12,5 Mrd. €, 830 Mio. €."""
+    a = abs(x)
+    if a >= 1e12:
+        return f"{de(x / 1e12, 1)} Bio. €"
+    if a >= 1e9:
+        return f"{de(x / 1e9, 0 if a >= 1e11 else 1)} Mrd. €"
+    if a >= 1e6:
+        return f"{de(x / 1e6, 0)} Mio. €"
+    return f"{de(x, 0)} €"
+
+
+def kurs_text(x):
+    return f"{de(x, 0 if x >= 100 else 2)} €"
+
+
+def pz(x, nd=0):
+    """Prozent mit Vorzeichen, z. B. +12 % oder -3,2 %."""
+    return ("+" if x > 0 else "") + de(x, nd) + " %"
+
+
+def liste_text(teile):
+    return teile[0] if len(teile) == 1 else ", ".join(teile[:-1]) + " und " + teile[-1]
+
+
+def datum_de(s):
+    try:
+        return dt.date.fromisoformat(str(s)[:10]).strftime("%d.%m.%Y")
+    except ValueError:
+        return None
+
+
+def texte(z, x):
+    """Zwei kurze Texte zu einer Aktie, nur aus den Zahlen der Zeile (Auftrag A1, Levin 14.11.2026):
+    "warum" = woher die Punkte kommen, "finanzen" = Kurs, Größe, Umsatz, Marge, Cashflow, Schulden, Termine.
+    x = Rohwerte aus bewerte(). Keine Empfehlung, kein Platz."""
+    dafuer, dagegen = [], []
+    kgv, gp, peg, hoch = z["kgv"], z["wachstum_pct"], x["peg"], x["hoch"]
+    if peg < 0.6:
+        dafuer.append(f"sehr günstig: KGV {de(kgv)} bei {de(gp, 0)} % erwartetem Gewinnwachstum")
+    elif peg < 1:
+        dafuer.append(f"günstig: KGV {de(kgv)} bei {de(gp, 0)} % erwartetem Gewinnwachstum")
+    if hoch > 0.2:
+        dafuer.append(f"Kursziel der Analysten {de(hoch * 100, 0)} % über dem Kurs")
+    if x["roe"] is not None and x["roe"] > 0.15:
+        dafuer.append(f"Eigenkapitalrendite {de(x['roe'] * 100, 0)} %")
+    if x["fcf"] is not None and x["fcf"] > 0.015:
+        dafuer.append(f"freier Cashflow {de(x['fcf'] * 100, 1)} % des Börsenwerts")
+    if x["nde"] is not None and x["nde"] < 1.5:
+        dafuer.append("mehr Geld als Schulden" if x["nde"] < 0 else "wenig Schulden")
+    if z["trend"] == "steigend":
+        dafuer.append("Kurs langfristig steigend")
+    if z["kurztrend"] == "steigend":
+        dafuer.append("kurzfristig steigend")
+    if z["revision_pkt"] > 0:
+        dafuer.append("Analysten heben Schätzungen an")
+    nk = str(x.get("news_kurz") or "").strip()
+    if z["nachrichten_pkt"] > 0:
+        dafuer.append("gute Nachrichten" + (f" ({nk})" if nk else ""))
+    if z["nachrichten_pkt"] < 0:
+        dagegen.append(("sehr negative" if z["nachrichten_pkt"] <= -2 else "negative") + " Nachrichten" + (f" ({nk})" if nk else ""))
+    if z["trend"] == "fallend":
+        dagegen.append("Kurs langfristig fallend")
+    if z["kurztrend"] == "fallend":
+        dagegen.append("kurzfristig fallend")
+    if z["revision_pkt"] < 0:
+        dagegen.append("Analysten senken Schätzungen")
+    if x["zyk"]:
+        dagegen.append("Speicherchips: Gewinn vermutlich nahe der Spitze (2 Punkte Abzug)")
+    if z["analysten"] < 5:
+        dagegen.append(f"nur {z['analysten']} Analysten")
+    # ohne Abzug, erklärt aber fehlende Punkte
+    if peg >= 1:
+        g0 = round(gp)
+        dagegen.append(f"KGV {de(kgv)} bei nur {de(gp, 0)} % erwartetem Gewinnwachstum" if g0 > 0
+                       else "Gewinn soll kaum wachsen" if g0 == 0 else f"Gewinn soll sinken ({pz(gp)})")
+    if hoch <= 0.2:
+        dagegen.append(f"Kursziel der Analysten {de(-hoch * 100, 0)} % unter dem Kurs" if hoch < 0
+                       else f"Kursziel der Analysten nur {de(hoch * 100, 0)} % über dem Kurs")
+    if x["nde"] is not None and x["nde"] > 3:
+        dagegen.append(f"hohe Schulden ({de(x['nde'])}× EBITDA)")
+    if x["fcf"] is not None and x["fcf"] < 0.01:
+        dagegen.append("kaum freier Cashflow")
+    s = [f"{z['aktie']} bekommt {z['punkte']} von 10 Punkten."]
+    if dafuer:
+        s.append("Dafür: " + liste_text(dafuer[:6]) + ".")
+    if dagegen:
+        s.append("Dagegen: " + liste_text(dagegen[:4]) + ".")
+    m, k, ab = z["fair_mitte_eur"], z["kurs_eur"], z["abstand_pct"]
+    if ab == 0:
+        s.append(f"Die faire Mitte ({kurs_text(m)}) liegt etwa beim Kurs ({kurs_text(k)}).")
+    else:
+        s.append(f"Die faire Mitte ({kurs_text(m)}) liegt {de(abs(ab), 0)} % {'über' if ab > 0 else 'unter'} dem Kurs ({kurs_text(k)}).")
+    warum = " ".join(s)
+
+    f = []
+    teil = []
+    if z.get("veraenderung_1m_pct") is not None:
+        teil.append(f"1 Monat {pz(z['veraenderung_1m_pct'], 1)}")
+    if z.get("veraenderung_6m_pct") is not None:
+        teil.append(f"6 Monate {pz(z['veraenderung_6m_pct'], 1)}")
+    uh = z.get("unter_hoch_pct")
+    if uh is not None:
+        teil.append("nahe am Jahreshoch" if uh >= -2 else f"{de(-uh, 0)} % unter dem Jahreshoch")
+    f.append(f"Kurs {kurs_text(z['kurs_eur'])}" + (f" ({', '.join(teil)})." if teil else "."))
+    teil = []
+    if z.get("marktwert_eur"):
+        teil.append(f"Börsenwert {geld(z['marktwert_eur'])}")
+    if z.get("umsatz_eur"):
+        u = f"Umsatz {geld(z['umsatz_eur'])} im Jahr"
+        if z.get("umsatz_wachstum_pct") is not None:
+            u += f" ({pz(z['umsatz_wachstum_pct'])} im letzten Quartal zum Vorjahr)"
+        teil.append(u)
+    if z.get("operative_marge_pct") is not None:
+        teil.append(f"operative Marge {de(z['operative_marge_pct'], 0)} %")
+    if teil:
+        f.append(", ".join(teil) + ".")
+    teil = []
+    finanz = x.get("finanz")  # Banken/Versicherungen: Cashflow und Schulden sagen dort wenig, darum weglassen
+    if z.get("fcf_eur") is not None and not finanz:
+        teil.append(f"Freier Cashflow {geld(z['fcf_eur'])} im Jahr")
+    ns = None if finanz else z.get("nettoschulden_eur")
+    if ns is not None:
+        if ns < 0:
+            teil.append(f"Nettoliquidität {geld(-ns)}")
+        else:
+            teil.append(f"Nettoschulden {geld(ns)}" + (f" ({de(x['nde'])}× EBITDA)" if x["nde"] is not None and x["nde"] > 0 else ""))
+    dv = z.get("dividende_pct")
+    if dv is not None:
+        teil.append("keine Dividende" if dv == 0 else f"Dividende {de(dv, 1)} %")
+    if teil:
+        f.append(teil[0][0].upper() + ", ".join(teil)[1:] + ".")
+    za = z.get("zahlen_am")
+    if za and x.get("heute") and str(za)[:10] >= x["heute"].isoformat() and datum_de(za):
+        f.append(f"Nächste Zahlen am {datum_de(za)}.")
+    return warum, " ".join(f)
+
+
 def bewerte(y, fx, alt_by, heute=None):
     """Rechnet eine Aktie aus den Yahoo-Daten. Gibt (zeile, fehlergrund) zurück."""
     t = y["ticker"]
@@ -342,6 +491,28 @@ def bewerte(y, fx, alt_by, heute=None):
         nachrichten_quellen=(nw.get("quellen") or [])[:3] if nw else None, nachrichten_datum=nw.get("datum") if nw else None,
         hype=(hy or {}).get("grund"), hype_quellen=((hy or {}).get("quellen") or [])[:3] or None, hype_datum=(hy or {}).get("datum"),
     )
+    # Finanzielle Lage in Euro (Auftrag A1). Börsenwert ist in der Kurswährung (Pence schon korrigiert),
+    # Umsatz, Cashflow und Schulden in der Berichtswährung.
+    rw = y.get("finanz_waehrung") or y.get("waehrung")
+    def pct(v, nd=1):
+        return None if v is None else round(v * 100, nd)
+    schulden, cash = y.get("schulden"), y.get("cash")
+    hoch52, tief52 = y.get("hoch_52w"), y.get("tief_52w")
+    dv = y.get("dividende")
+    zeile.update(
+        marktwert_eur=None if not mcap else round(mcap / q),
+        umsatz_eur=None if not y.get("umsatz") or eur_von(y["umsatz"], rw, fx) is None else round(eur_von(y["umsatz"], rw, fx)),
+        umsatz_wachstum_pct=pct(y.get("umsatz_wachstum")), operative_marge_pct=pct(y.get("operative_marge")),
+        gewinnmarge_pct=pct(y.get("gewinnmarge")), roe_pct=pct(roe),
+        nettoschulden_eur=None if schulden is None or cash is None or eur_von(schulden - cash, rw, fx) is None else round(eur_von(schulden - cash, rw, fx)),
+        fcf_eur=None if fcf_roh is None or eur_von(fcf_roh, rw, fx) is None else round(eur_von(fcf_roh, rw, fx)),
+        dividende_pct=None if dv is None or not (0 <= dv < 0.3) else round(dv * 100, 2),
+        hoch_52w_eur=None if not hoch52 else r2(hoch52 / q), tief_52w_eur=None if not tief52 else r2(tief52 / q),
+        veraenderung_6m_pct=pct(y.get("veraenderung_6m")),
+    )
+    zeile["warum"], zeile["finanzen"] = texte(zeile, dict(peg=peg, hoch=hoch, roe=roe, fcf=fcf, nde=nde, zyk=zyk,
+                                                          news_kurz=(nw or {}).get("kurz"), heute=heute,
+                                                          finanz=y.get("sektor") == "Financial Services"))
     # Rohwerte für die Feinwertung (werden vor dem Speichern entfernt)
     sma = y.get("sma200")
     zeile["_roh"] = dict(abstand=abstand, peg=peg, hoch=hoch, roe=roe, fcf=fcf, nde=nde, marge=y.get("operative_marge"),
@@ -781,7 +952,10 @@ def main():
     alle = []
     for z in zeilen:
         z["top_bedingungen"] = bool(z["abstand_pct"] > 15 and z["trend"] in ("steigend", "seitwärts") and z["ticker"] not in ZYKLIKER)
-        r = {k: v for k, v in z.items() if k not in ("id", "daten_stand", "status", "seit", "stand")}
+        # leere Felder und Werte, die nur in den Texten stehen, weglassen: alle.json soll unter ~2 MB bleiben
+        r = {k: v for k, v in z.items() if k not in ("id", "daten_stand", "status", "seit", "stand", "hoch_52w_eur",
+                                                     "tief_52w_eur", "gewinnmarge_pct", "roe_pct", "fcf_eur",
+                                                     "veraenderung_6m_pct", "umsatz_wachstum_pct") and v is not None}
         r["aufgenommen"] = alt_auf.get(z["ticker"]) if z["ticker"] in alt_auf else (heute_s if alt_alle is not None else None)
         r["in_meine"] = z["ticker"] in meine_set
         alle.append(r)
@@ -791,7 +965,7 @@ def main():
     if not a.ohne_depots:
         out.update({"depot.json": depot_neu, "depot_trades.json": trades, "depot_verlauf.json": verlauf[-2000:], "depot50.json": depot50_neu})
     for n, d in out.items():
-        json.dump(d, open(os.path.join(a.neu, n), "w"), ensure_ascii=False)
+        json.dump(d, open(os.path.join(a.neu, n), "w"), ensure_ascii=False, separators=(",", ":") if n == "alle.json" else None)
     statuswechsel = sum(1 for r in liste if alt_by.get(r["ticker"], {}).get("status") not in (None, r["status"]))
     bericht = dict(
         stand_yahoo=Y.get("stand"), eurusd=fx, bewertet=len(zeilen), ausgefallen=ausfall, pruefung=pruef,

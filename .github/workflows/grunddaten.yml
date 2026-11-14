@@ -1,7 +1,12 @@
 name: Grunddaten holen (voll)
 on:
   # Zeitplan übernimmt jetzt kurse-schleife.yml; hier nur noch manuell (und Grunddaten bei Änderungen an tickers.txt/fetch.py)
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      voll:
+        description: "Grunddaten für alle Aktien neu holen, auch wenn heute schon geholt (z. B. nach neuen Feldern in fetch.py)"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths: [tickers.txt, fetch.py]
@@ -20,7 +25,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install yfinance
-      - run: python fetch.py --voll-wenn-alt
+      - run: python fetch.py ${{ inputs.voll && '--voll' || '--voll-wenn-alt' }}
       - name: Ergebnis speichern
         run: |
           git config user.name "aktien-bot"

@@ -59,6 +59,20 @@ def fcf_aus_cashflow(t):
     return None, None
 
 
+def dividende_anteil(dy, trailing):
+    """Dividendenrendite als Anteil (0,025 = 2,5 %). Yahoo liefert "dividendYield" inzwischen meist in Prozent
+    (0,41 = 0,41 %), früher als Anteil; "trailingAnnualDividendYield" ist immer ein Anteil. Darum: die
+    Schreibweise nehmen, die näher am Vorjahreswert liegt; ohne Vergleich gilt alles über 0,2 als Prozent."""
+    dy, tr = num(dy), num(trailing)
+    if dy is None:
+        return tr
+    if dy <= 0:
+        return 0.0
+    if tr and tr > 0:
+        return dy if abs(math.log(dy / tr)) < abs(math.log(dy / 100 / tr)) else dy / 100
+    return dy / 100 if dy > 0.2 else dy
+
+
 def grunddaten(sym):
     t = yf.Ticker(sym)
     out = {"ticker": sym}
@@ -79,6 +93,10 @@ def grunddaten(sym):
         freier_cashflow=num(g("freeCashflow")), marktwert=num(g("marketCap")),
         ebitda=num(g("ebitda")), schulden=num(g("totalDebt")), cash=num(g("totalCash")),
         sektor=g("sector"), branche=g("industry"), finanz_waehrung=g("financialCurrency"),
+        # für den Text „Finanzielle Lage“ (Auftrag A1, 14.11.2026); Umsatz in der Berichtswährung
+        umsatz=num(g("totalRevenue")), umsatz_wachstum=num(g("revenueGrowth")), gewinnmarge=num(g("profitMargins")),
+        bruttomarge=num(g("grossMargins")), kgv_trailing=num(g("trailingPE")),
+        dividende=dividende_anteil(g("dividendYield"), g("trailingAnnualDividendYield")),
     )
     # Gewinnschätzungen sind in der Berichtswährung (z. B. PDD in Yuan); Faktor in die Kurswährung
     out["eps_faktor"] = 1.0
