@@ -14,7 +14,9 @@ ORDNER = "data/verlauf"
 FELDER = ["punkte", "feinwert", "kurs_eur", "abstand_pct", "top"]
 ZEITRAEUME = (("1 Woche", 7), ("1 Monat", 30), ("3 Monate", 91), ("6 Monate", 182), ("1 Jahr", 365))
 GRUPPEN = ("7–10", "5–6", "3–4", "unter 3")
-AUSREISSER = 0.8  # Kurs mehr als 80 % rauf oder runter: eher Datenfehler (Pence/Pfund, Split) – melden, nicht zählen
+AUSREISSER_HOCH = 1.5   # mehr als +150 %: eher Datenfehler (Pence/Pfund) – melden, nicht zählen
+AUSREISSER_TIEF = -0.75  # mehr als −75 %: eher Datenfehler (Pence/Pfund, Split ab 4:1) – melden, nicht zählen
+# (bis 15.11. war die Grenze ±80 %; dadurch fiel AppLovin mit echten +81 % heraus)
 HINWEIS_RUECK = ("Rückblick mit heutigen Regeln auf alte Yahoo-Daten (rueckwirkend), kein echter Test aus der "
                  "Vergangenheit; wenige Wochen sagen wenig.")
 
@@ -71,7 +73,7 @@ def trefferquote(ende):
             if not k0 or not k1:  # kein Kurs am Anfang oder am Ende: überspringen
                 continue
             ret = k1 / k0 - 1
-            if abs(ret) > AUSREISSER:
+            if ret > AUSREISSER_HOCH or ret < AUSREISSER_TIEF:
                 ergebnis["ausreisser"].append(dict(zeitraum=name, seit=a["datum"], ticker=t,
                                                    kurs_eur_vorher=k0, kurs_eur_jetzt=k1, aenderung_pct=round(ret * 100)))
                 continue

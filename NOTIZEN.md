@@ -148,6 +148,19 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   kein neuer Kurs seit mehr als 3 Börsentagen (Übernahme/neues Kürzel) oder weder Börsenwert noch Schätzungen (ETF,
   Vorzugspapier, falsche Börse). Test: findet alle 7 Fälle dieser Nacht (+ JCH.L und 2 Fonds aus London); Punkte und
   Listen byte-gleich. universum.py nimmt Kürzel aus `tickers_gesperrt.txt` nicht wieder auf (Kürzel + Datum + Grund).
+- 15.11.2026 (Nachtschicht 21:41, Sparmodus, 6 Agenten): **A2 + A4.1 erledigt** (Commits a856429 + Korrektur): Seite am PC neu
+  (Titel je Reiter, Detail rechts mitlaufend ab 1100 px, Detail ohne Doppelungen, „Mehr Spalten“, Tabelle einklappbar, ruhigere
+  Karten), Reiter „ETFs“ (Datensatz etfs), Trefferquote im Reiter „So wird gerechnet“ (Datensatz trefferquote). stray_write-Ursache:
+  dash.draw('alle_mehr') innerhalb eines anderen draw + 10 data-draw-Elemente mit „—“ im HTML → behoben, lokal 0 Funde.
+  Seite Version 25, Kopie in dashboard/index.html. **A3.1 erledigt** (c86544e): rueckwirkend.py füllt data/verlauf für 11 Börsentage
+  (30.10.–13.11., "rueckwirkend": true, nur Nachrichten des jeweiligen Tages), trefferquote.json + trefferquote_zeilen.json
+  (Liste fürs Dashboard). Ausreißer-Grenze von ±80 % auf +150 %/−75 % (AppLovin +81 % war echt). **A5.1 erledigt** (ccc7c4c):
+  BRWM.L, JCH.L, SDP.L, SOI.L, VAS.AX, NYR.BR, INDV (Fusion mit SUPN), LXP (Übernahme Brookfield/CPP) gesperrt; ECHO stand doppelt.
+  **23 neue Aktien** (SDAX: 1U1, KWS, DUE, AOF, HBH, KTN, VBK, DEQ; SBF 120: ALO, AMUN, BOL, GET, LI, RXL, SW, EDEN, BIM, SCR, AKE,
+  GFC, IPN, TE, DIM), **11 neue ETFs** (XEON, EUNH, EUN5, XCS6, ZPRR, XDEW, 2B7K, ZPRG, DFEN, IQQI, IQQ6; DFEN.DE = VanEck Defense,
+  das richtige Kürzel statt DFNS.DE – erst nach etf.yml bestätigt). LI/RXL/SW/GFC.PA: Yahoo-Seite nicht gefunden → nach Grunddaten prüfen.
+  Edenred: Übernahme-Spekulation (marketscreener) – beobachten. Aufgaben-Texte ändern (A3.3/A4.2/A5.2/A5.3) ging NICHT: update_trigger
+  in der geplanten Aufgabe nicht erlaubt → Levin muss es im Chat freigeben.
 - 13.11.2026 (Nachtschicht 21:41): Kurse-Schleife war nach dem Push (18:51 UTC) nie gelaufen – letzte
   Starthilfe 18:11 UTC lag davor, also keine Kurse nach 18:48 UTC. Von Hand gestartet (Lauf 43504676163),
   damit der US-Schluss vom Freitag noch kommt. Keine Code-Änderung.
@@ -160,82 +173,42 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   dort 364 $ (12.11.) → Tagesbewegung. Kursziel-Durchschnitt (Yahoo 529 $) noch ohne zweite Quelle.
 - SAP: 15.11.2026 – Kursziel-Durchschnitt Yahoo 284,50 $ / stockanalysis.com 280,83 $ (passt). Gewinn 2026/2027 Yahoo
   8,06/9,53 $ (ADR, in Dollar) = 7,29/8,62 € / stockanalysis 7,16/8,44 € bereinigt (+2 %, passt).
-- IFX.DE, ENR.DE: noch nicht geprüft (als Nächstes, in dieser Reihenfolge).
+- ENR.DE: 15.11.2026 – Kurs 131,28 €, Kursziel-Durchschnitt 192,21 € (28 Analysten), Gewinn GJ 2028 8,48 € – alles gleich wie
+  marketscreener. Achtung: Geschäftsjahr endet im September, eps_forward = GJ 2028 (in ~2 Jahren).
+- IFX.DE: 15.11.2026 – Kurs 49,875 € passt. Kursziel 80,79 € / marketscreener 86,08 € (−6 %, Quelle wohl vor den Zahlen).
+  Gewinn GJ 2028 Yahoo 3,88 € / marketscreener 3,31 € (+17 %): Yahoo bereinigt, marketscreener nahe IFRS (Infineon GJ 2026:
+  bereinigt 1,73 € gegen IFRS 1,15 €) und veraltet (02.10.). Bekannte Grenze „bereinigt“.
+- Als Nächstes: NVDA (nach den Zahlen 17.11.), dann AVGO.
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
-### A4 (15.11.2026, ab Nachtschicht 15.11. 21:41): ETFs im Dashboard – extra, nicht bei den Aktien
-Levin: „dass er auch ETFs reinmacht, also extra, nicht mit bei Aktien rein … und bei Nachtschicht immer rein machen“.
-Stand (15.11., Chat): etfs.txt (35 ETFs, Xetra, mit Gruppe), etf.py und .github/workflows/etf.yml (Mo–Fr 16:23 UTC und bei
-Push auf etfs.txt/etf.py) schreiben data/etfs.json: Kurs, Renditen 1M/6M/1J, 3J und 5J p. a., Schwankung 1J, größter
-Rückgang 5J, Trend (200-Tage-Linie), TER und Fondsgröße laut Yahoo. KEINE Punkte (eine ETF-Bewertung nur nach Levins Ja).
-Zu tun:
-1. Dashboard: eigener Reiter „ETFs“ (getrennt von „Meine Aktien“ und „Alle Aktien“), Datensatz datasets/etfs
-   (Upload wie alle.json: Artifact publish asset:true, dann datasets/etfs auf /_blob/<id>). Tabelle mit Name, Kürzel,
-   Gruppe, Kurs €, Renditen, Schwankung, größter Rückgang, Trend, TER, Fondsgröße; sortierbar, Filter nach Gruppe, Suche.
-   Hinweiszeile: „TER und Größe laut Yahoo, ungeprüft“ (bis Schritt 3 erledigt). Mit A2 zusammen bauen und testen wie in 2e.
-2. Aufgabe „Meine Aktien aktualisieren“ ergänzen (update_trigger, ganzer Text aus list_triggers + Ergänzung): bei jedem
-   Lauf auch data/etfs.json als Datensatz „etfs“ hochladen, wenn sich "stand" geändert hat. NOTIZEN.md „Abläufe“ ergänzen.
-3. TER gegen den Anbieter oder justETF prüfen (Yahoo hatte z. B. SPYI.DE 0,40 % statt laut Anbieter niedriger, EUNK.DE
-   0,20 % – prüfen); geprüfte Werte in etfs_pruefung.json (ticker, ter_pct, quelle URL, datum) ablegen, etf.py nimmt sie
-   dann vor dem Yahoo-Wert. Kein Wert ohne Quelle.
-4. TDIV.DE (VanEck Dividend Leaders) und DFNS.DE (VanEck Defense) hatten bei Yahoo keine Daten: richtiges Xetra-Kürzel
-   mit Quelle suchen und aufnehmen.
+### A6 (15.11.2026, Nachtschicht): Aufgaben-Texte ändern – braucht Levins Freigabe im Chat
+Die geplante Nachtschicht darf update_trigger nicht ausführen („Permission denied … Scheduled Task Write“). Darum offen:
+1. „Meine Aktien aktualisieren“ (trig_01CkcqBfDNXG1orD3A9WFXB8), ein Aufruf, ganzer Text:
+   - „rund 1.700“ → „rund 2.400“ (zwei Stellen); Reiter „ETFs“ und „So wird gerechnet (mit Trefferquote)“ nennen.
+   - Erlaubte Datensätze: liste, aenderungen, meine, alle, etfs, trefferquote.
+   - Schritt 1: auch datasets/etfs und datasets/trefferquote lesen (version).
+   - Schritt 4: ist "stand" in data/etfs.json neuer als updated.at von datasets/etfs → Liste aus Feld "etfs" als etfs.json hochladen;
+     ist "stand" in data/trefferquote.json neuer als updated.at von datasets/trefferquote → data/trefferquote_zeilen.json als
+     trefferquote.json hochladen; nie leere Liste; sonst nicht anfassen. (A4.2, A3.3)
+   - Wochenbericht: eine Zeile zur Trefferquote mit Hinweis „wenige Wochen sagen wenig; vor dem 15.11. rückwirkend“. (A3.4)
+2. „Nachtschicht Aktien“ (trig_01S5nJRTnMwn8cKRnQR1DUfy): „DREI LÄUFE PRO NACHT“ → zwei Läufe (21:41 alles inkl. großer Aufgaben;
+   3:41 alles, dazu US-Schluss, Termine, Zahlen-Check nach Zahlen von Levins Aktien); alle anderen Erwähnungen von 0:41 streichen. (A5.2)
+Bis dahin: ETFs und Trefferquote im Dashboard nur so aktuell wie der letzte Upload von Hand (15.11. abends).
+Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 
-### A2 (15.11.2026, ab Nachtschicht 15.11. 21:41): Dashboard am PC schöner und übersichtlicher
-Levin: „es soll auf PC und es soll schöner und übersichtlicher“, „du machst es einfach in der Nachtschicht schöner“.
-Seite: ArtifactData collection "files", doc_id "index.html", Feld "text" (immer die aktuelle Version lesen!).
-Beobachtungen am PC (1440 px, 15.11. abends):
-1. Überschrift heißt immer „Meine Aktien“, auch im Reiter „Alle Aktien“ → neutraler Titel (z. B. „Aktien-Liste“)
-   oder Titel je Reiter; der Einleitungssatz ist lang.
-2. Detailansicht liegt ganz unten; nach Klick muss man weit scrollen. Besser ab ca. 1100 px Breite zwei Spalten:
-   links Liste/Karten/Tabelle, rechts die Detailansicht fest mitlaufend (position: sticky; eigene Scrollleiste).
-   Auf schmalen Bildschirmen bleibt alles untereinander. Kein automatisches Scrollen zum Detail am PC.
-3. Detailansicht doppelt sich (Name und Kurs stehen unter den Texten nochmal). Neu ordnen, eine Spalte:
-   Kopf (Name, Kürzel, Branche, Punkte, Feinwert, 🔥/NEU), Kurs + Abstand groß, faire Spanne mit Beschriftung,
-   „Warum diese Bewertung“, „Finanzielle Lage“, Haken, Punkte-Balken, Nachrichten, Hype, Zahlenliste in 2 Spalten.
-4. Tabelle „Alle Aktien“ ist breiter als der Bildschirm (seitlich scrollen). Standard: wenige Spalten (Aktie,
-   Punkte, Feinwert, Kurs, Abstand, Trend, Land, Branche) und ein Knopf „Mehr Spalten“ für den Rest.
-5. „Meine Aktien“: Karten und Tabelle zeigen fast dasselbe → Tabelle einklappbar („Tabelle zeigen“), Karten
-   ruhiger (weniger Chips), KPI-Leiste kompakter.
-6. Insgesamt: ruhigere Abstände, klare Überschriften, gleiche Schriftgrößen; Farben nur für gut/schlecht.
-   Alle bestehenden Funktionen müssen bleiben (Suche, Filter, Sortieren, NEU, 🔥, ★, Texte, Nachrichten, Links,
-   „Mehr zeigen“). data-draw/data-source/data-field-Markierungen beibehalten; Elemente mit data-draw leer lassen.
-Vorgehen: lokal mit Ersatz für window.dash und echten meine.json/alle.json in Chromium testen (1440 px und
-390 px), Bildschirmfotos ansehen, keine Konsolenfehler; dann hochladen, data/users/me "runs" prüfen (keine
-"stray_write"/"not_empty"-Warnungen). Im Bericht kurz sagen, was anders ist. Danach weitere Nächte: weiter
-verbessern (siehe Regeln für die Nachtschicht).
+### A4 (Rest): ETFs
+- A4.3 TER gegen Anbieter/justETF prüfen → etfs_pruefung.json (ab Do 19.11.). Werte der ETF-Recherche vom 15.11. (justETF) als Start:
+  siehe Commit e8f8280 (Nachricht) bzw. Protokoll.
+- A4.4: DFNS.DE ersetzt durch DFEN.DE (VanEck Defense, Xetra-Kürzel laut justETF) – nach etf.yml prüfen, ob gültig. TDIV.DE noch offen.
+- Neue ETFs prüfen: steht eines in data/etfs.json "ungueltig" → aus etfs.txt entfernen.
 
-### A3 (15.11.2026, ab Nachtschicht 15.11. 21:41): Trefferquote – funktioniert die Bewertung?
-Levin: „geht noch besser“. Grundlage seit 15.11.: schnappschuss.py + schnappschuss.yml (Börsentage 22:37 UTC)
-speichern data/verlauf/JJJJ-MM-TT.json (Punkte, Feinwert, Kurs €, Abstand, Top je Aktie) und rechnen
-data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punktegruppe und mit/ohne Top-Bedingungen).
-1. Rückwirkend füllen: aus der Git-Geschichte von data/aktien.json (Daten seit Ende Oktober) für jeden Börsentag
-   die letzte Version holen, bewertung.py darauf laufen lassen (heutige Regeln; fehlende Felder → Aktie überspringen)
-   und als data/verlauf/<Datum>.json speichern, mit Feld "rueckwirkend": true. Ehrlich kennzeichnen: das ist ein
-   Rückblick mit heutigen Regeln, kein echter Test aus der Vergangenheit.
-2. Zusätzlich mit Kursdaten (yfinance im GitHub-Workflow, z. B. einmaliger Workflow) einen längeren Rückblick-Test
-   der Trend- und Bewertungsregeln vorbereiten, wenn machbar – nur als Auswertung, keine Regeländerung.
-3. Dashboard: neuer kleiner Bereich (z. B. im Reiter „So wird gerechnet“ oder eigener Reiter „Trefferquote“):
-   Tabelle/Balken „Aktien mit 7–10 / 5–6 / 3–4 / unter 3 Punkten: im Schnitt X % seit <Datum>“, Vergleich mit allen
-   Aktien, Hinweis „wenige Wochen sagen wenig“. Dafür einen Datensatz "trefferquote" anlegen (Datei aus
-   data/trefferquote.json hochladen, datasets/trefferquote) und in der Aufgabe „Meine Aktien aktualisieren“ ergänzen,
-   dass sie die Datei bei jedem Lauf mit hochlädt (update_trigger, ganzer Text plus Ergänzung).
-4. Wochenbericht montags: eine Zeile zur Trefferquote.
+### A3 (Rest): Trefferquote
+- A3.2 langer Rückblick-Test mit Kursdaten (yfinance im GitHub-Workflow) – ab Do 19.11. (nach Sparmodus).
+- Hinweis: Yahoo ist aus der Cloud-Umgebung der Aufgaben gesperrt (403); yfinance geht nur im GitHub-Workflow.
 
-### A5 (15.11.2026, vom Chef, ab Nachtschicht 15.11. 21:41, klein): Aufräumen und Anweisungen richtigstellen
-Ziel: weniger Rauschen in den Daten, keine veralteten Sätze in den Aufgaben (spart Tokens und Verwirrung).
-1. Kürzel-Verdacht (bericht.json, 15.11.: 8 Fälle): BRWM.L, JCH.L, SDP.L, SOI.L (Londoner Fonds), VAS.AX (ETF), NYR.BR
-   (Nyrstar, keine Daten) aus tickers.txt nehmen und mit Datum und Grund in tickers_gesperrt.txt eintragen. INDV und LXP
-   (kein Kurs seit 02./03.11.): Grund mit Quelle suchen (Übernahme? neues Kürzel?), dann entfernen oder Kürzel korrigieren.
-   Test: bewertung.py danach ohne diese Fälle in "kuerzel_verdacht", Punkte der übrigen Aktien unverändert.
-2. Aufgabe „Nachtschicht Aktien“: Abschnitt „DREI LÄUFE PRO NACHT“ steht noch mit Lauf 0:41 drin, der gestrichen ist.
-   Mit update_trigger (trigger_id trig_01S5nJRTnMwn8cKRnQR1DUfy, ganzer Text aus list_triggers) auf zwei Läufe (21:41 und
-   3:41) korrigieren; der Tiefenlauf-Teil geht an 21:41 (3:41 nur Prüfen, Zahlen-Check bei Levins Aktien). Sonst nichts streichen.
-3. Aufgabe „Meine Aktien aktualisieren“ (trig_01CkcqBfDNXG1orD3A9WFXB8): beim Ergänzen für A3/A4 (Upload "etfs" und
-   "trefferquote") auch „rund 1.700 Aktien“ auf „rund 2.400“ ändern. Nur in einem update_trigger-Aufruf, ganzer Text.
-4. Die Seite meldet in data/users/me "runs" zwei Warnungen "stray_write" (15.11.) → beim Umbau A2 beheben.
-Erfolg: kuerzel_verdacht nur noch echte neue Fälle; beide Aufgaben-Texte passen zu NOTIZEN.md; "runs" ohne Warnungen.
+### A5 (Rest)
+- A5.2/A5.3 siehe A6. A5.4 (stray_write) behoben – nach dem nächsten Öffnen der Seite in data/users/me "runs" bestätigen.
 
 ## Chef – Plan
 ### 15.11.2026 (So, erster Chef-Lauf) – Plan für die nächsten 1–2 Wochen
@@ -251,7 +224,7 @@ Reihenfolge für die Nachtschicht (Sparmodus beachten: 21:41 höchstens 5 Agente
 5. NVIDIA-Zahlen Di 17.11. abends → Zahlen-Check Mi 18.11. 3:41 (steht schon in „Abläufe“).
 Vorgeschlagen an Levin (nur nach Ja): (a) Sondereffekt-Regel mit Rückblick-Test auf Zweig vorschlag/sondereffekt;
 (b) Londoner Fonds ohne Kursziel (86 Aktien „kein Kursziel“) sperren.
-Stand Chef-Aufträge: A5 offen.
+Stand Chef-Aufträge: A5.1 und A5.4 erledigt (15.11. Nachtschicht), A5.2/A5.3 hängen an A6 (Freigabe nötig).
 
 ## Bekannte Grenzen und offene Ideen
 - Yahoo-Schätzungen sind oft „bereinigt“ (ohne Sonderkosten); andere Quellen nennen niedrigere Gewinne

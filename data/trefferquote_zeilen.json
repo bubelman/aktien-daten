@@ -67,8 +67,8 @@
   "zeitraum": "seit Beginn",
   "seit": "2026-10-30",
   "gruppe": "5–6 Punkte",
-  "anzahl": 49,
-  "schnitt_pct": -2.1,
+  "anzahl": 50,
+  "schnitt_pct": -0.5,
   "rueckwirkend": true
  },
  {
@@ -91,8 +91,8 @@
   "zeitraum": "seit Beginn",
   "seit": "2026-10-30",
   "gruppe": "alle Aktien",
-  "anzahl": 169,
-  "schnitt_pct": 0.1,
+  "anzahl": 170,
+  "schnitt_pct": 0.6,
   "rueckwirkend": true
  },
  {
@@ -107,8 +107,8 @@
   "zeitraum": "seit Beginn",
   "seit": "2026-10-30",
   "gruppe": "Top-Bedingungen nicht erfüllt",
-  "anzahl": 152,
-  "schnitt_pct": 0.6,
+  "anzahl": 153,
+  "schnitt_pct": 1.1,
   "rueckwirkend": true
  }
 ]

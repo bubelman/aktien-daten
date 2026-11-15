@@ -204,7 +204,7 @@
         <li>„Nimm Siemens wieder raus.“</li>
         <li>„Such mir eine Aktie aus Europa mit wenig Schulden und steigendem Trend.“</li>
       </ul>
-      <p class="al-note">Claude sucht dann aus rund 1.700 Aktien (Reiter „Alle Aktien“) und trägt deine Auswahl hier ein. Danach wird sie an jedem Börsentag 5-mal neu bewertet.</p>
+      <p class="al-note">Claude sucht dann aus rund 2.400 Aktien (Reiter „Alle Aktien“) und trägt deine Auswahl hier ein. Danach wird sie an jedem Börsentag 5-mal neu bewertet.</p>
     </section>
 
     <div class="al-voll" data-voll>
@@ -427,7 +427,7 @@
     <section class="al-card al-method">
       <h2>So wird gerechnet</h2>
       <h3>Womit deine Aktien verglichen werden</h3>
-      <p>Im Programm sind rund 1.700 Aktien: der S&amp;P 500 und der S&amp;P 400 (mittelgroße US-Firmen) sowie die großen und mittleren Index-Aktien aus Deutschland, London, Frankreich, den Niederlanden, Spanien, Italien, der Schweiz, Skandinavien und Belgien (🇪🇺 = Euro-Aktie), dazu der S&amp;P 600 (kleinere US-Firmen) und große Aktien aus Kanada, Japan, Australien und Hongkong. Jede Nacht und beim Aktien-Scout kommen neue dazu. Nicht jede lässt sich bewerten (siehe unten). Alle bewerteten stehen im Reiter „Alle Aktien“. Eine fehlende Aktie nimmt Claude auf Wunsch auf.</p>
+      <p>Im Programm sind rund 2.400 Aktien: der S&amp;P 500 und der S&amp;P 400 (mittelgroße US-Firmen) sowie die großen und mittleren Index-Aktien aus Deutschland, London, Frankreich, den Niederlanden, Spanien, Italien, der Schweiz, Skandinavien und Belgien (🇪🇺 = Euro-Aktie), dazu der S&amp;P 600 (kleinere US-Firmen) und große Aktien aus Kanada, Australien und Hongkong (Japan folgt). Jede Nacht und beim Aktien-Scout kommen neue dazu. Nicht jede lässt sich bewerten (siehe unten). Alle bewerteten stehen im Reiter „Alle Aktien“. Eine fehlende Aktie nimmt Claude auf Wunsch auf.</p>
       <h3>Punkte (höchstens 10)</h3>
       <ul>
         <li>PEG (KGV geteilt durch Gewinnwachstum): unter 0,6 gibt 2 Punkte, unter 1 gibt 1 Punkt.</li>
@@ -1080,7 +1080,7 @@
   // ---------- Trefferquote ----------
   const TQ_ZEIT = ['1 Woche', '1 Monat', '3 Monate', '6 Monate', '1 Jahr'];
   const TQ_GRUPPE = ['7–10', '5–6', '3–4', 'unter 3'];
-  const tqName = (g) => { const s = String(g || '').trim(); return /^alle/i.test(s) ? s : s.replace(/\s*Punkten?$/i, '') + ' Punkten'; };
+  const tqName = (g) => { const s = String(g || '').trim(); if (/^alle/i.test(s)) return s; if (/^Top-Bedingungen/i.test(s)) return 'Aktien, ' + s.replace(/^Top-Bedingungen\s*/i, 'die die Top-Bedingungen ').replace(/erfüllt$/, 'erfüllen').replace(/nicht erfüllen$/, 'nicht erfüllen'); return 'Aktien mit ' + s.replace(/\s*Punkten?$/i, '') + ' Punkten'; };
   const tqZeilen = () => {
     const g = daten('trefferquote');
     if (g.status !== 'ok' || !Array.isArray(g.data)) return [];
@@ -1127,7 +1127,7 @@
         z.append(el('span', '', label), b, wv, wa);
         blk.appendChild(z);
       };
-      for (const r of gruppen) zeile('Aktien mit ' + tqName(r.gruppe), num(r.schnitt_pct), num(r.anzahl), false, r);
+      for (const r of gruppen) zeile(tqName(r.gruppe), num(r.schnitt_pct), num(r.anzahl), false, r);
       zeile('alle Aktien (Vergleich)', alleWert, alleAnz, true, alleZ || null);
       wrap.appendChild(blk);
     }

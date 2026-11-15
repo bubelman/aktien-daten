@@ -46,8 +46,8 @@
      "mittel_pct": -5.9
     },
     "5–6": {
-     "anzahl": 49,
-     "mittel_pct": -2.1
+     "anzahl": 50,
+     "mittel_pct": -0.5
     },
     "3–4": {
      "anzahl": 79,
@@ -64,25 +64,16 @@
      "mittel_pct": -3.9
     },
     "nein": {
-     "anzahl": 152,
-     "mittel_pct": 0.6
+     "anzahl": 153,
+     "mittel_pct": 1.1
     }
    },
    "alle": {
-    "anzahl": 169,
-    "mittel_pct": 0.1
+    "anzahl": 170,
+    "mittel_pct": 0.6
    }
   }
  },
- "ausreisser": [
-  {
-   "zeitraum": "seit Beginn",
-   "seit": "2026-10-30",
-   "ticker": "APP",
-   "kurs_eur_vorher": 204.64,
-   "kurs_eur_jetzt": 370.22,
-   "aenderung_pct": 81
-  }
- ],
+ "ausreisser": [],
  "hinweis": "Rückblick mit heutigen Regeln auf alte Yahoo-Daten (rueckwirkend), kein echter Test aus der Vergangenheit; wenige Wochen sagen wenig."
 }
