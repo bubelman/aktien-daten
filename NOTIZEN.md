@@ -232,6 +232,12 @@ data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punkteg
   es richtig gut ist“): gründlich und tief arbeiten, dritter Lauf um 0:41 nur für große Aufgaben. Richtwert: höchstens
   etwa die Hälfte von Levins Wochenlimit. Den echten Verbrauch sieht nur Levin in seinen Claude-Einstellungen. Sagt er,
   es wird zu viel: weniger Agenten, Lauf 0:41 nur bei offenen großen Aufträgen.
+- **SPARMODUS bis Mittwoch 18.11.2026** (Levin am 15.11. um 19:22: schon 42 % vom Wochenlimit verbraucht, Mittwoch
+  wird es neu). Gilt vor allen anderen Regeln hier und in der Aufgabe:
+  • Lauf 0:41: sofort beenden, nur eine Zeile „Sparmodus bis Mittwoch“.
+  • Lauf 21:41: Aufträge A2/A3 und neue Aktien ja, aber höchstens 5 Agenten gleichzeitig und nur 1 Prüf-Agent am Schluss.
+  • Lauf 3:41: nur Schritt 1 (Prüfen) und Fehler beheben, keine neuen großen Arbeiten, höchstens 2 Agenten.
+  • Ab Nachtschicht Mittwoch 18.11. 21:41 wieder voller Betrieb. Diesen Punkt dann aus den Notizen löschen.
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
 
 ## Skills
