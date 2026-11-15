@@ -197,6 +197,10 @@ verbessern (siehe Regeln für die Nachtschicht).
 - Seit 15.11.2026 (Levin: „noch mehr Agenten, damit es noch besser ist“): die Nachtschicht arbeitet als Team –
   Recherche je Region, Gegenprüfung, Code- und Seiten-Agenten mit eigener Arbeitskopie, Nachrichten; nur die
   Leitung pusht. Zum Schluss prüft ein frischer Prüf-Agent alle Änderungen des Laufs.
+  Ausgebaut („noch mehr Agenten, das soll richtig gut sein“): 6 Recherche-Agenten nach Region, Kürzel-Prüfer,
+  2–4 Daten-Qualitäts-Agenten, 2 Gegenprüfer (Levins Aktien, Top 10), je Verbesserung ein Code-Agent, Rückblick-
+  Test, Seiten-Agent + Seiten-Tester, Nachrichten-Agenten, Skill-Agent, 2 unabhängige Prüf-Agenten am Schluss.
+  News-Agenten: Levins Aktien + bis 60 weitere, ein Agent je ~10 Aktien, dazu ein Prüf-Agent.
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
 
 ## Skills
