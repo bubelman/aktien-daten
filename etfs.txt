@@ -36,3 +36,14 @@ XDWT.DE | Branche: Technik Welt
 XDWH.DE | Branche: Gesundheit
 2B76.DE | Thema: Roboter und Automatisierung
 IQQH.DE | Thema: Saubere Energie
+XEON.DE | Geldmarkt
+EUNH.DE | Anleihen (Staatsanleihen Euro)
+EUN5.DE | Anleihen (Unternehmensanleihen Euro)
+XCS6.DE | China
+ZPRR.DE | USA (kleine Firmen)
+XDEW.DE | USA (gleichgewichtet)
+2B7K.DE | Welt (nachhaltig, SRI)
+ZPRG.DE | Dividende
+DFEN.DE | Thema: Rüstung
+IQQI.DE | Thema: Infrastruktur
+IQQ6.DE | Thema: Immobilien
