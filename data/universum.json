@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-15T02:47:00+00:00",
+ "stand": "2026-11-15T17:48:18+00:00",
  "indizes": {
   "S&P 500": {
    "gefunden": 503,
@@ -342,9 +342,102 @@
     "HUH1V.HE",
     "KALMAR.HE"
    ]
+  },
+  "S&P SmallCap 600": {
+   "gefunden": 603,
+   "neu": 527,
+   "beispiele": [
+    "AAMI",
+    "AAP",
+    "AAT",
+    "ABCB",
+    "ABG"
+   ]
+  },
+  "S&P/TSX 60": {
+   "gefunden": 59,
+   "neu": 59,
+   "beispiele": [
+    "AEM.TO",
+    "ATD.TO",
+    "BMO.TO",
+    "BNS.TO",
+    "ABX.TO"
+   ]
+  },
+  "Nikkei 225": {
+   "gefunden": 0,
+   "neu": 0,
+   "beispiele": [],
+   "tabellen": [
+    [
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1"
+    ],
+    [
+     "Nikkei 225 (JNK)",
+     "Unnamed: 1"
+    ],
+    [
+     "Year",
+     "Closing level",
+     "Change in Index in Points",
+     "Change in Index in %"
+    ],
+    [
+     "vte Nikkei 225 companies of Japan",
+     "vte Nikkei 225 companies of Japan.1"
+    ],
+    [
+     "vteEconomy of Japan",
+     "vteEconomy of Japan.1"
+    ],
+    [
+     "vteStock market indices",
+     "vteStock market indices.1"
+    ],
+    [
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1"
+    ]
+   ]
+  },
+  "S&P/ASX 50": {
+   "gefunden": 49,
+   "neu": 49,
+   "beispiele": [
+    "ALL.AX",
+    "AMC.AX",
+    "ANZ.AX",
+    "BHP.AX",
+    "BXB.AX"
+   ]
+  },
+  "Hang Seng": {
+   "gefunden": 85,
+   "neu": 85,
+   "beispiele": [
+    "0005.HK",
+    "0388.HK",
+    "0939.HK",
+    "1299.HK",
+    "1398.HK"
+   ]
   }
  },
- "neu_gueltig": 0,
+ "neu_gueltig": 714,
  "ungueltig": [
   "CMA",
   "ALTR",
@@ -518,8 +611,14 @@
   "OME.BR",
   "REC.BR",
   "THR.BR",
-  "KOJAMO.HE"
+  "KOJAMO.HE",
+  "ACA",
+  "BLFS",
+  "CWEN-A",
+  "HLX",
+  "QRVO",
+  "RAMP"
  ],
  "vorher": 1724,
- "nachher": 1724
+ "nachher": 2438
 }
