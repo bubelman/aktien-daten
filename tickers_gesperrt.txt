@@ -1,0 +1,9 @@
+# Kürzel, die universum.py NICHT wieder in tickers.txt aufnehmen soll (Kürzel, Leerzeichen, Grund).
+ROKU 15.11.2026 Übernahme durch Fox (06.11.2026), nicht mehr gehandelt
+SATS 15.11.2026 EchoStar heißt seit 24.06.2026 ECHO; SATS zeigt jetzt ein Vorzugspapier
+SIX 15.11.2026 ETF, keine Aktie
+ULTI 15.11.2026 ETF, keine Aktie
+TIME 15.11.2026 ETF, keine Aktie
+INCR 15.11.2026 Börsenwert unter 50 Mio. $
+INGA.BR 15.11.2026 ING doppelt (INGA.AS), keine Daten
+FAGR.AS 15.11.2026 falsche Börse, Fagron = FAGR.BR

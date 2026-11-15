@@ -5,7 +5,7 @@ Läuft per GitHub Actions (universum.yml), weil die Rechner dort freies Internet
                                Yahoo prüfen (gibt es einen Kurs?) und gültige an tickers.txt anhängen.
 Bestehende Kürzel bleiben immer drin. Bericht: data/universum.json (je Index: gefunden, neu, ungültig).
 """
-import io, json, re, sys, time, datetime as dt
+import io, json, os, re, sys, time, datetime as dt
 import pandas as pd
 import requests
 import yfinance as yf
@@ -102,6 +102,10 @@ def hat_kurs(syms):
 def main():
     alt = open("tickers.txt").read().split()
     alt_set = set(alt)
+    # gesperrte Kürzel (übernommen, ETF, falsche Börse …) nicht wieder aufnehmen
+    if os.path.exists("tickers_gesperrt.txt"):
+        alt_set |= {z.split()[0] for z in open("tickers_gesperrt.txt", encoding="utf-8")
+                    if z.strip() and not z.startswith("#")}
     bericht, kandidaten = {"stand": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "indizes": {}}, []
     for name, url, endung in INDIZES:
         try:

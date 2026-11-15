@@ -145,6 +145,40 @@ def boersentage_bis(heute, ziel):
     return n
 
 
+FONDS_WOERTER = re.compile(r"\b(ETF|ETN|Fund|Series [A-Z]|Preferred|Pfd)\b", re.I)
+
+
+def kuerzel_verdacht(ydata, stand):
+    """Findet Kürzel, die wahrscheinlich nicht mehr stimmen. Rückgabe {Kürzel: Grund}.
+    - letzter Kurs mehr als 3 Börsentage älter als der Datenstand (z. B. ROKU nach der Übernahme durch Fox,
+      SATS nach dem Wechsel zu ECHO)
+    - weder Börsenwert noch Gewinnschätzung noch Analysten (ETF, Vorzugspapier oder falsche Börse:
+      SIX, ULTI, TIME, SATS, FAGR.AS, INGA.BR am 15.11.2026) oder kein Sektor und ein Fonds-Wort im Namen"""
+    try:
+        bis = dt.date.fromisoformat((stand or "")[:10])
+    except ValueError:
+        return {}
+    v = {}
+    for t, y in ydata.items():
+        if t == "SPY":  # Vergleichswert, absichtlich ein ETF
+            continue
+        ks = (y.get("kurs_stand") or "")[:10]
+        if ks:
+            try:
+                n = boersentage_bis(dt.date.fromisoformat(ks), bis)
+            except ValueError:
+                n = -1
+            if n > 3:
+                v[t] = f"kein neuer Kurs seit {ks} ({n} Börsentage) – Übernahme oder neues Kürzel?"
+                continue
+        name = (y.get("name") or "").strip()
+        if not y.get("marktwert") and not y.get("eps_forward") and not y.get("analysten"):
+            v[t] = f"weder Börsenwert noch Schätzungen, Name „{name}“ – Fonds, Vorzugspapier oder falsches Kürzel?"
+        elif not y.get("sektor") and FONDS_WOERTER.search(name):
+            v[t] = f"kein Sektor, Name „{name}“ – Fonds statt Aktie?"
+    return v
+
+
 def schaetz_faktor(y, e1, f):
     """Yahoo liefert Gewinnschätzungen bei ausländischen Aktien mal in der Kurswährung, mal in der
     Berichtswährung (z. B. SAP-ADR in Dollar, ASML-ADR in Euro, PDD in Yuan). Yahoos forwardEps ist immer
@@ -630,6 +664,10 @@ def main():
     verlauf = lade(os.path.join(a.alt, "depot_verlauf.json"), [])
     wichtig, pruef, neu_log = [], [], []
 
+    # 0. Kürzel-Verdacht: Aktien ohne frischen Kurs (Übernahme, Börsenrückzug, neues Kürzel) und Kürzel ohne
+    #    Firmendaten (ETF, Vorzugspapier oder falsches Kürzel). Nur Hinweis für die Nachtschicht, ändert keine Punkte.
+    verdacht = kuerzel_verdacht(ydata, Y.get("stand"))
+
     # 1. Alle Aktien bewerten
     zeilen, ausfall = [], {}
     for t, y in ydata.items():
@@ -976,7 +1014,7 @@ def main():
         json.dump(d, open(os.path.join(a.neu, n), "w"), ensure_ascii=False, separators=(",", ":") if n == "alle.json" else None)
     statuswechsel = sum(1 for r in liste if alt_by.get(r["ticker"], {}).get("status") not in (None, r["status"]))
     bericht = dict(
-        stand_yahoo=Y.get("stand"), eurusd=fx, bewertet=len(zeilen), ausgefallen=ausfall, pruefung=pruef,
+        stand_yahoo=Y.get("stand"), eurusd=fx, bewertet=len(zeilen), ausgefallen=ausfall, pruefung=pruef, kuerzel_verdacht=verdacht,
         top=[dict(ticker=t, aktie=by_now[t]["aktie"], kurs_eur=by_now[t]["kurs_eur"], fair=f"{de(by_now[t]['fair_lo_eur'], 0)}–{de(by_now[t]['fair_hi_eur'], 0)} €",
                   punkte=by_now[t]["punkte"], trend=by_now[t]["trend"], zahlen_am=by_now[t]["zahlen_am"]) for t in top],
         depot=None if a.ohne_depots else dict(wert_eur=wert, rendite_pct=verlauf[-1]["rendite_pct"], vergleich_pct=verlauf[-1]["vergleich_pct"],
