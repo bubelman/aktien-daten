@@ -47,7 +47,8 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - Aktien-Scout: Börsentage 11:48 und 18:48 (Berlin), siehe Abschnitt „Aktien-Scout“.
 - Aufpasser (seit 15.11.): täglich 9:13, 13:13, 19:13, 23:13 (Berlin). Prüft Aufgaben, GitHub-Läufe, Daten, Dashboard;
   behebt Kleines selbst (Workflows neu starten, Dashboard-Daten neu schreiben), Größeres als Auftrag für die Nachtschicht.
-- Chef (seit 15.11.): sonntags 14:27. Schaut auf das ganze System („Firma“), plant die nächsten 1–2 Wochen, schreibt
+- Chef (seit 15.11., auf Levins Wunsch „öfter“): täglich 20:27 (vor der Nachtschicht), sonntags mit großem Bericht.
+  Schaut auf das ganze System („Firma“), plant die nächsten 1–2 Wochen, schreibt
   Aufträge für die Nachtschicht (Abschnitt „Chef – Plan“), schickt Levin den Chef-Bericht; Regeländerungen, mehr
   Kosten und neue Aufgaben nur nach Levins Ja.
 - News-Agenten: Börsentage 6:51, 12:51, 20:51 (Berlin). 3 Agenten parallel prüfen Levins Aktien + bis zu
@@ -182,7 +183,7 @@ data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punkteg
 4. Wochenbericht montags: eine Zeile zur Trefferquote.
 
 ## Chef – Plan
-- (der Chef trägt hier ab 22.11.2026 jede Woche seinen Plan ein)
+- (der Chef trägt hier ab 15.11.2026 jeden Abend seinen Plan ein)
 
 ## Bekannte Grenzen und offene Ideen
 - Yahoo-Schätzungen sind oft „bereinigt“ (ohne Sonderkosten); andere Quellen nennen niedrigere Gewinne
