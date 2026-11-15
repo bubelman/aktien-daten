@@ -48,7 +48,8 @@ def kennzahlen(h):
     j = c[c.index > d - dt.timedelta(days=365)]
     lr = (j / j.shift(1)).dropna().apply(math.log)
     vola = float(lr.std()) * math.sqrt(252) * 100 if len(lr) > 100 else None
-    dd = float((c / c.cummax() - 1).min()) * 100
+    c5 = c[c.index > d - dt.timedelta(days=5 * 365)]
+    dd = float((c5 / c5.cummax() - 1).min()) * 100
     sma200 = float(c.iloc[-200:].mean()) if len(c) >= 200 else None
     sma50 = float(c.iloc[-50:].mean()) if len(c) >= 50 else None
     if sma200 is None:
@@ -73,7 +74,7 @@ def main():
     for t, gruppe in liste:
         try:
             tk = yf.Ticker(t)
-            h = tk.history(period="5y", interval="1d", auto_adjust=True)
+            h = tk.history(period="max", interval="1d", auto_adjust=True)
             info = {}
             for versuch in range(2):
                 try:
@@ -103,7 +104,8 @@ def main():
         time.sleep(1)
     out = {"stand": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
            "hinweis": "Nur Kennzahlen aus Yahoo-Daten, keine Punkte. Renditen mit Ausschüttungen (angepasste Kurse). "
-                      "Fehlende Werte (z. B. Kosten) liefert Yahoo für manche europäische ETFs nicht.",
+                      "Kosten (TER) und Fondsgröße laut Yahoo, noch nicht mit dem Anbieter geprüft (Größe oft für alle "
+                      "Anteilsklassen zusammen, in Fondswährung). Fehlende Werte liefert Yahoo nicht.",
            "anzahl": len(ergebnis), "etfs": ergebnis, "ungueltig": ungueltig}
     json.dump(out, open("data/etfs.json", "w"), ensure_ascii=False, indent=1)
     print(f"{len(ergebnis)} ETFs, {len(ungueltig)} ungültig: {ungueltig}")

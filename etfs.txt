@@ -30,11 +30,9 @@ QDV5.DE | Indien
 EUNN.DE | Japan
 VGWD.DE | Dividende
 ISPA.DE | Dividende
-TDIV.DE | Dividende
 VVSM.DE | Branche: Halbleiter
 QDVE.DE | Branche: Technik USA
 XDWT.DE | Branche: Technik Welt
 XDWH.DE | Branche: Gesundheit
 2B76.DE | Thema: Roboter und Automatisierung
 IQQH.DE | Thema: Saubere Energie
-DFNS.DE | Thema: Rüstung
