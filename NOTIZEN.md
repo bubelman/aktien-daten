@@ -3,6 +3,20 @@
 Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Jede geplante Aufgabe
 (auch die Nachtschicht) liest sie zuerst. Neue Entscheidungen hier unten im Protokoll ergänzen.
 
+## TOKEN SPAREN – gilt für ALLE Aufgaben (Levin, 15.11.2026)
+Levin: „sehr tokensparend, dass wir immer noch gründlich und gut machen, aber nicht so viele Tokens, dass wenn
+einer keine Arbeit hat, er sich abschaltet“. Darum:
+1. **Erst kurz schauen, ob es Arbeit gibt.** Wenn nicht: sofort aufhören, nur eine Zeile („Aufpasser: alles ok“,
+   „Scout: nichts Neues“, „News: keine neuen Nachrichten“). Keine Agenten, kein Bericht an Levin.
+2. **Agenten nur für echte Arbeit.** Kein Agent auf Vorrat, keine Rolle „nur zur Sicherheit“. Jeder Agent bekommt
+   eine kleine, klare Aufgabe und hört sofort auf, wenn er fertig ist oder nichts findet („nichts gefunden“ reicht).
+   Lieber 2 gute Agenten als 10 halbe.
+3. **Große Dateien nicht in den Kopf laden.** alle.json, aktien.json, bericht.json usw. mit Python auswerten und nur
+   die Ergebnisse ansehen. Nichts doppelt lesen, was schon im Repository liegt.
+4. **Kurz schreiben.** Berichte, Commits und Agent-Antworten knapp.
+5. **Gründlich bleibt Pflicht:** Tests, Gegenprüfung und Quellen nie weglassen. Gespart wird bei Leerlauf, nicht
+   bei der Qualität.
+
 ## Wer und was
 - Levin (Leipzig), Einsteiger an der Börse. Will einen „Wall-Street-Computer“: Aktien gründlich und so
   zuverlässig wie möglich bewerten, automatisch, mit kostenlosen Quellen. „Ich möchte das Beste, was geht.“
