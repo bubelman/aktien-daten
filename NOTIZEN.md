@@ -164,6 +164,24 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
+### A4 (15.11.2026, ab Nachtschicht 15.11. 21:41): ETFs im Dashboard – extra, nicht bei den Aktien
+Levin: „dass er auch ETFs reinmacht, also extra, nicht mit bei Aktien rein … und bei Nachtschicht immer rein machen“.
+Stand (15.11., Chat): etfs.txt (35 ETFs, Xetra, mit Gruppe), etf.py und .github/workflows/etf.yml (Mo–Fr 16:23 UTC und bei
+Push auf etfs.txt/etf.py) schreiben data/etfs.json: Kurs, Renditen 1M/6M/1J, 3J und 5J p. a., Schwankung 1J, größter
+Rückgang 5J, Trend (200-Tage-Linie), TER und Fondsgröße laut Yahoo. KEINE Punkte (eine ETF-Bewertung nur nach Levins Ja).
+Zu tun:
+1. Dashboard: eigener Reiter „ETFs“ (getrennt von „Meine Aktien“ und „Alle Aktien“), Datensatz datasets/etfs
+   (Upload wie alle.json: Artifact publish asset:true, dann datasets/etfs auf /_blob/<id>). Tabelle mit Name, Kürzel,
+   Gruppe, Kurs €, Renditen, Schwankung, größter Rückgang, Trend, TER, Fondsgröße; sortierbar, Filter nach Gruppe, Suche.
+   Hinweiszeile: „TER und Größe laut Yahoo, ungeprüft“ (bis Schritt 3 erledigt). Mit A2 zusammen bauen und testen wie in 2e.
+2. Aufgabe „Meine Aktien aktualisieren“ ergänzen (update_trigger, ganzer Text aus list_triggers + Ergänzung): bei jedem
+   Lauf auch data/etfs.json als Datensatz „etfs“ hochladen, wenn sich "stand" geändert hat. NOTIZEN.md „Abläufe“ ergänzen.
+3. TER gegen den Anbieter oder justETF prüfen (Yahoo hatte z. B. SPYI.DE 0,40 % statt laut Anbieter niedriger, EUNK.DE
+   0,20 % – prüfen); geprüfte Werte in etfs_pruefung.json (ticker, ter_pct, quelle URL, datum) ablegen, etf.py nimmt sie
+   dann vor dem Yahoo-Wert. Kein Wert ohne Quelle.
+4. TDIV.DE (VanEck Dividend Leaders) und DFNS.DE (VanEck Defense) hatten bei Yahoo keine Daten: richtiges Xetra-Kürzel
+   mit Quelle suchen und aufnehmen.
+
 ### A2 (15.11.2026, ab Nachtschicht 15.11. 21:41): Dashboard am PC schöner und übersichtlicher
 Levin: „es soll auf PC und es soll schöner und übersichtlicher“, „du machst es einfach in der Nachtschicht schöner“.
 Seite: ArtifactData collection "files", doc_id "index.html", Feld "text" (immer die aktuelle Version lesen!).
@@ -263,6 +281,10 @@ data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punkteg
   • Lauf 21:41: Aufträge A2/A3 und neue Aktien ja, aber höchstens 5 Agenten gleichzeitig und nur 1 Prüf-Agent am Schluss.
   • Lauf 3:41: nur Schritt 1 (Prüfen) und Fehler beheben, keine neuen großen Arbeiten, höchstens 2 Agenten.
   • Ab Nachtschicht Mittwoch 18.11. 21:41 wieder voller Betrieb. Diesen Punkt dann aus den Notizen löschen.
+- Seit 15.11.2026 (Levin): jede Nacht auch neue ETFs in etfs.txt aufnehmen (Format „KÜRZEL | Gruppe“), extra von den
+  Aktien. Nur in Deutschland handelbar (Xetra .DE), Fondsgröße über 500 Mio. €, Kürzel mit Quelle geprüft (Anbieter,
+  justETF, Xetra). Dieselben Fonds nicht doppelt (eine Anteilsklasse reicht, außer thesaurierend/ausschüttend sind beide
+  beliebt). Der Push startet etf.yml; ungültige Kürzel stehen in data/etfs.json "ungueltig" → wieder entfernen.
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
 
 ## Skills
