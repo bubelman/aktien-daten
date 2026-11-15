@@ -194,6 +194,9 @@ verbessern (siehe Regeln für die Nachtschicht).
   vor allem am PC) – immer mit lokalem Test (PC und Handy), keine Funktion entfernen, im Bericht sagen, was neu ist;
   „zurück“ von Levin = vorherige Version von files/index.html wiederherstellen (vorher Kopie im Repository unter
   dashboard/index.html ablegen und mit committen).
+- Seit 15.11.2026 (Levin: „noch mehr Agenten, damit es noch besser ist“): die Nachtschicht arbeitet als Team –
+  Recherche je Region, Gegenprüfung, Code- und Seiten-Agenten mit eigener Arbeitskopie, Nachrichten; nur die
+  Leitung pusht. Zum Schluss prüft ein frischer Prüf-Agent alle Änderungen des Laufs.
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
 
 ## Skills
