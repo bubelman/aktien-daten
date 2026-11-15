@@ -45,6 +45,11 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   Kurs-Alarm ab ±5 %, Zahlen-Check an Zahlentagen, Wochenbericht montags.
 - Nachtschicht: kurz vor 22 und 4 Uhr, jeden Tag, prüft alles und verbessert (siehe unten).
 - Aktien-Scout: Börsentage 11:48 und 18:48 (Berlin), siehe Abschnitt „Aktien-Scout“.
+- Aufpasser (seit 15.11.): täglich 9:13, 13:13, 19:13, 23:13 (Berlin). Prüft Aufgaben, GitHub-Läufe, Daten, Dashboard;
+  behebt Kleines selbst (Workflows neu starten, Dashboard-Daten neu schreiben), Größeres als Auftrag für die Nachtschicht.
+- Chef (seit 15.11.): sonntags 14:27. Schaut auf das ganze System („Firma“), plant die nächsten 1–2 Wochen, schreibt
+  Aufträge für die Nachtschicht (Abschnitt „Chef – Plan“), schickt Levin den Chef-Bericht; Regeländerungen, mehr
+  Kosten und neue Aufgaben nur nach Levins Ja.
 - News-Agenten: Börsentage 6:51, 12:51, 20:51 (Berlin). 3 Agenten parallel prüfen Levins Aktien + bis zu
   30 weitere (Top-Bedingungen zuerst), Ergebnis selbst nachprüfen, data/news.json pushen.
 
@@ -175,6 +180,9 @@ data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punkteg
    data/trefferquote.json hochladen, datasets/trefferquote) und in der Aufgabe „Meine Aktien aktualisieren“ ergänzen,
    dass sie die Datei bei jedem Lauf mit hochlädt (update_trigger, ganzer Text plus Ergänzung).
 4. Wochenbericht montags: eine Zeile zur Trefferquote.
+
+## Chef – Plan
+- (der Chef trägt hier ab 22.11.2026 jede Woche seinen Plan ein)
 
 ## Bekannte Grenzen und offene Ideen
 - Yahoo-Schätzungen sind oft „bereinigt“ (ohne Sonderkosten); andere Quellen nennen niedrigere Gewinne
