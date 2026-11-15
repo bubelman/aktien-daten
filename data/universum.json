@@ -1,9 +1,9 @@
 {
- "stand": "2026-11-14T17:28:27+00:00",
+ "stand": "2026-11-15T02:47:00+00:00",
  "indizes": {
   "S&P 500": {
    "gefunden": 503,
-   "neu": 4,
+   "neu": 0,
    "beispiele": [
     "MMM",
     "AOS",
@@ -14,7 +14,7 @@
   },
   "S&P MidCap 400": {
    "gefunden": 599,
-   "neu": 559,
+   "neu": 148,
    "beispiele": [
     "JHX",
     "GKOS",
@@ -78,7 +78,7 @@
   },
   "DAX": {
    "gefunden": 40,
-   "neu": 2,
+   "neu": 0,
    "beispiele": [
     "ADS.DE",
     "AIR.PA",
@@ -89,7 +89,7 @@
   },
   "MDAX": {
    "gefunden": 50,
-   "neu": 45,
+   "neu": 1,
    "beispiele": [
     "AIXA.DE",
     "AT1.DE",
@@ -144,7 +144,7 @@
   },
   "FTSE 100": {
    "gefunden": 100,
-   "neu": 97,
+   "neu": 0,
    "beispiele": [
     "III.L",
     "ABDN.L",
@@ -155,7 +155,7 @@
   },
   "FTSE 250": {
    "gefunden": 250,
-   "neu": 249,
+   "neu": 0,
    "beispiele": [
     "3IN.L",
     "FOUR.L",
@@ -166,7 +166,7 @@
   },
   "CAC 40": {
    "gefunden": 40,
-   "neu": 16,
+   "neu": 0,
    "beispiele": [
     "AC.PA",
     "AI.PA",
@@ -224,7 +224,7 @@
   },
   "AEX": {
    "gefunden": 25,
-   "neu": 15,
+   "neu": 0,
    "beispiele": [
     "ABN.AS",
     "ADYEN.AS",
@@ -235,7 +235,7 @@
   },
   "AMX": {
    "gefunden": 25,
-   "neu": 24,
+   "neu": 8,
    "beispiele": [
     "AF.AS",
     "AMG.AS",
@@ -246,7 +246,7 @@
   },
   "IBEX 35": {
    "gefunden": 35,
-   "neu": 29,
+   "neu": 0,
    "beispiele": [
     "ACS.MC",
     "ACX.MC",
@@ -257,7 +257,7 @@
   },
   "FTSE MIB": {
    "gefunden": 40,
-   "neu": 34,
+   "neu": 0,
    "beispiele": [
     "A2A.MI",
     "AMP.MI",
@@ -268,7 +268,7 @@
   },
   "SMI": {
    "gefunden": 20,
-   "neu": 19,
+   "neu": 0,
    "beispiele": [
     "NOVN.SW",
     "ROP.SW",
@@ -279,7 +279,7 @@
   },
   "SMI MID": {
    "gefunden": 28,
-   "neu": 25,
+   "neu": 2,
    "beispiele": [
     "ACLN.SW",
     "ADEN.SW",
@@ -290,7 +290,7 @@
   },
   "OMX Stockholm 30": {
    "gefunden": 30,
-   "neu": 30,
+   "neu": 0,
    "beispiele": [
     "ABB.ST",
     "ADDT-B.ST",
@@ -301,7 +301,7 @@
   },
   "OMX Copenhagen 25": {
    "gefunden": 25,
-   "neu": 24,
+   "neu": 1,
    "beispiele": [
     "MAERSK-A.CO",
     "MAERSK-B.CO",
@@ -312,7 +312,7 @@
   },
   "OBX": {
    "gefunden": 25,
-   "neu": 25,
+   "neu": 1,
    "beispiele": [
     "AKRBP.OL",
     "BWLPG.OL",
@@ -323,7 +323,7 @@
   },
   "BEL 20": {
    "gefunden": 21,
-   "neu": 21,
+   "neu": 11,
    "beispiele": [
     "ABLX.BR",
     "AGFB.BR",
@@ -334,7 +334,7 @@
   },
   "OMX Helsinki 25": {
    "gefunden": 25,
-   "neu": 23,
+   "neu": 1,
    "beispiele": [
     "ELISA.HE",
     "FORTUM.HE",
@@ -344,7 +344,7 @@
    ]
   }
  },
- "neu_gueltig": 1068,
+ "neu_gueltig": 0,
  "ungueltig": [
   "CMA",
   "ALTR",
@@ -520,6 +520,6 @@
   "THR.BR",
   "KOJAMO.HE"
  ],
- "vorher": 635,
- "nachher": 1703
+ "vorher": 1724,
+ "nachher": 1724
 }
