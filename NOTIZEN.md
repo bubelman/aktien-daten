@@ -57,8 +57,9 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   GitHub ließ geplante Läufe massiv aus (nur 2–3 Kurs-Abrufe am Tag). Starthilfen 5:11–18:11 UTC.
 - Geplante Aufgabe „Meine Aktien aktualisieren“: Börsentage 7:33, 10:33, 13:33, 18:33, 21:33 (Berlin).
   Kurs-Alarm ab ±5 %, Zahlen-Check an Zahlentagen, Wochenbericht montags.
-- Nachtschicht: jeden Tag 21:41, 0:41 und 3:41 (Berlin). 21:41 und 3:41 prüfen alles und verbessern; 0:41 ist
-  der Tiefenlauf für große Aufgaben (seit 15.11., siehe unten).
+- Nachtschicht: jeden Tag 21:41 und 3:41 (Berlin), prüft alles und verbessert. Der Lauf 0:41 ist auf Levins Wunsch
+  wieder gestrichen (15.11.2026, 19:31). Große Aufgaben machen die Läufe 21:41 und 3:41; was nicht fertig wird, macht
+  der nächste Lauf weiter. Steht in der Aufgabe noch etwas von 0:41, gilt das nicht mehr.
 - Aktien-Scout: Börsentage 11:48 und 18:48 (Berlin), siehe Abschnitt „Aktien-Scout“.
 - Aufpasser (seit 15.11.): täglich 9:13, 13:13, 19:13, 23:13 (Berlin). Prüft Aufgaben, GitHub-Läufe, Daten, Dashboard;
   behebt Kleines selbst (Workflows neu starten, Dashboard-Daten neu schreiben), Größeres als Auftrag für die Nachtschicht.
@@ -245,7 +246,7 @@ data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punkteg
   Test, Seiten-Agent + Seiten-Tester, Nachrichten-Agenten, Skill-Agent, 2 unabhängige Prüf-Agenten am Schluss.
   News-Agenten: Levins Aktien + bis 60 weitere, ein Agent je ~10 Aktien, dazu ein Prüf-Agent.
 - Seit 15.11.2026 (Levin: „du kannst die Hälfte meiner wöchentlichen Tokens in der Nachtschicht verbrauchen, damit
-  es richtig gut ist“): gründlich und tief arbeiten, dritter Lauf um 0:41 nur für große Aufgaben. Richtwert: höchstens
+  es richtig gut ist“): gründlich und tief arbeiten (Lauf 0:41 am selben Abend wieder gestrichen). Richtwert: höchstens
   etwa die Hälfte von Levins Wochenlimit. Den echten Verbrauch sieht nur Levin in seinen Claude-Einstellungen. Sagt er,
   es wird zu viel: weniger Agenten, Lauf 0:41 nur bei offenen großen Aufträgen.
 - Grenze (Levin, 15.11.2026): alle Aufgaben zusammen höchstens **75 % von Levins Wochenlimit** (neu jeden Mittwoch).
@@ -254,7 +255,6 @@ data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punkteg
   Letzte Zahl: 42 % am So 15.11. 19:22.
 - **SPARMODUS bis Mittwoch 18.11.2026** (Levin am 15.11. um 19:22: schon 42 % vom Wochenlimit verbraucht, Mittwoch
   wird es neu). Gilt vor allen anderen Regeln hier und in der Aufgabe:
-  • Lauf 0:41: sofort beenden, nur eine Zeile „Sparmodus bis Mittwoch“.
   • Lauf 21:41: Aufträge A2/A3 und neue Aktien ja, aber höchstens 5 Agenten gleichzeitig und nur 1 Prüf-Agent am Schluss.
   • Lauf 3:41: nur Schritt 1 (Prüfen) und Fehler beheben, keine neuen großen Arbeiten, höchstens 2 Agenten.
   • Ab Nachtschicht Mittwoch 18.11. 21:41 wieder voller Betrieb. Diesen Punkt dann aus den Notizen löschen.
