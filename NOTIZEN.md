@@ -223,8 +223,35 @@ data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punkteg
    dass sie die Datei bei jedem Lauf mit hochlädt (update_trigger, ganzer Text plus Ergänzung).
 4. Wochenbericht montags: eine Zeile zur Trefferquote.
 
+### A5 (15.11.2026, vom Chef, ab Nachtschicht 15.11. 21:41, klein): Aufräumen und Anweisungen richtigstellen
+Ziel: weniger Rauschen in den Daten, keine veralteten Sätze in den Aufgaben (spart Tokens und Verwirrung).
+1. Kürzel-Verdacht (bericht.json, 15.11.: 8 Fälle): BRWM.L, JCH.L, SDP.L, SOI.L (Londoner Fonds), VAS.AX (ETF), NYR.BR
+   (Nyrstar, keine Daten) aus tickers.txt nehmen und mit Datum und Grund in tickers_gesperrt.txt eintragen. INDV und LXP
+   (kein Kurs seit 02./03.11.): Grund mit Quelle suchen (Übernahme? neues Kürzel?), dann entfernen oder Kürzel korrigieren.
+   Test: bewertung.py danach ohne diese Fälle in "kuerzel_verdacht", Punkte der übrigen Aktien unverändert.
+2. Aufgabe „Nachtschicht Aktien“: Abschnitt „DREI LÄUFE PRO NACHT“ steht noch mit Lauf 0:41 drin, der gestrichen ist.
+   Mit update_trigger (trigger_id trig_01S5nJRTnMwn8cKRnQR1DUfy, ganzer Text aus list_triggers) auf zwei Läufe (21:41 und
+   3:41) korrigieren; der Tiefenlauf-Teil geht an 21:41 (3:41 nur Prüfen, Zahlen-Check bei Levins Aktien). Sonst nichts streichen.
+3. Aufgabe „Meine Aktien aktualisieren“ (trig_01CkcqBfDNXG1orD3A9WFXB8): beim Ergänzen für A3/A4 (Upload "etfs" und
+   "trefferquote") auch „rund 1.700 Aktien“ auf „rund 2.400“ ändern. Nur in einem update_trigger-Aufruf, ganzer Text.
+4. Die Seite meldet in data/users/me "runs" zwei Warnungen "stray_write" (15.11.) → beim Umbau A2 beheben.
+Erfolg: kuerzel_verdacht nur noch echte neue Fälle; beide Aufgaben-Texte passen zu NOTIZEN.md; "runs" ohne Warnungen.
+
 ## Chef – Plan
-- (der Chef trägt hier ab 15.11.2026 jeden Abend seinen Plan ein)
+### 15.11.2026 (So, erster Chef-Lauf) – Plan für die nächsten 1–2 Wochen
+Lage: 2438 Aktien im Programm, 2141 bewertet (Prüfung leer). Japan (.T) noch 0 Aktien. 63 Aktien mit Abstand über 150 %.
+Trefferquote: erst ein Schnappschuss (15.11.), noch keine Werte. Sparmodus bis Mi 18.11. (42 % vom Wochenlimit).
+Reihenfolge für die Nachtschicht (Sparmodus beachten: 21:41 höchstens 5 Agenten, 3:41 nur Prüfen):
+1. Heute 21:41 zuerst die kleinen Hebel: Aufgabe „Meine Aktien aktualisieren“ einmal ergänzen (A3.3 + A4.2 + A5.3), A5.1.
+   Grund: ohne das kommen ETFs und Trefferquote nie automatisch ins Dashboard. Erfolg: Text in list_triggers geändert.
+2. A2 + A4.1 zusammen (Seite am PC, Reiter ETFs, "stray_write" weg). Erfolg: Bildschirmfotos 1440/390 px, runs ohne Warnung.
+3. A3.1 (Verlauf rückwirkend) – damit die Trefferquote überhaupt Zahlen hat. Erfolg: data/verlauf mit mehreren Tagen,
+   trefferquote.json "zeitraeume" nicht leer. A3.2 (langer Rückblick-Test) und A4.3/A4.4 erst ab Do 19.11. (nach Sparmodus).
+4. Neue Aktien: Lücke Japan (Nikkei 225, 0 von 225) zuerst – ab Do 19.11. im vollen Betrieb.
+5. NVIDIA-Zahlen Di 17.11. abends → Zahlen-Check Mi 18.11. 3:41 (steht schon in „Abläufe“).
+Vorgeschlagen an Levin (nur nach Ja): (a) Sondereffekt-Regel mit Rückblick-Test auf Zweig vorschlag/sondereffekt;
+(b) Londoner Fonds ohne Kursziel (86 Aktien „kein Kursziel“) sperren.
+Stand Chef-Aufträge: A5 offen.
 
 ## Bekannte Grenzen und offene Ideen
 - Yahoo-Schätzungen sind oft „bereinigt“ (ohne Sonderkosten); andere Quellen nennen niedrigere Gewinne
