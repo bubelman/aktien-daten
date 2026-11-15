@@ -43,7 +43,8 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   GitHub ließ geplante Läufe massiv aus (nur 2–3 Kurs-Abrufe am Tag). Starthilfen 5:11–18:11 UTC.
 - Geplante Aufgabe „Meine Aktien aktualisieren“: Börsentage 7:33, 10:33, 13:33, 18:33, 21:33 (Berlin).
   Kurs-Alarm ab ±5 %, Zahlen-Check an Zahlentagen, Wochenbericht montags.
-- Nachtschicht: kurz vor 22 und 4 Uhr, jeden Tag, prüft alles und verbessert (siehe unten).
+- Nachtschicht: jeden Tag 21:41, 0:41 und 3:41 (Berlin). 21:41 und 3:41 prüfen alles und verbessern; 0:41 ist
+  der Tiefenlauf für große Aufgaben (seit 15.11., siehe unten).
 - Aktien-Scout: Börsentage 11:48 und 18:48 (Berlin), siehe Abschnitt „Aktien-Scout“.
 - Aufpasser (seit 15.11.): täglich 9:13, 13:13, 19:13, 23:13 (Berlin). Prüft Aufgaben, GitHub-Läufe, Daten, Dashboard;
   behebt Kleines selbst (Workflows neu starten, Dashboard-Daten neu schreiben), Größeres als Auftrag für die Nachtschicht.
@@ -206,7 +207,7 @@ data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punkteg
 
 ## Regeln für die Nachtschicht
 - Darf ohne Rückfrage: Datenfehler und Abstürze beheben, Prüfungen ergänzen, Texte/Erklärungen verbessern,
-  neue Aktien aufnehmen (jede Nacht bis zu 15, Levins Wunsch vom 14.11.2026; Regeln in der Aufgabe, Schritt 2b). Vor jedem Push: `bewertung.py` mit aktuellen Daten laufen
+  neue Aktien aufnehmen (seit 15.11. ohne Obergrenze, Levins Wünsche vom 14./15.11.2026; Regeln in der Aufgabe, Schritt 2b). Vor jedem Push: `bewertung.py` mit aktuellen Daten laufen
   lassen (Fehlercode 0, "pruefung" leer oder erklärt) und mit dem Stand vorher vergleichen.
 - Darf NICHT ohne Levins Ja: Punkte-Regeln, Gewichte, faire-Spanne-Methode oder Top-Bedingungen ändern;
   Depots wieder starten; Aktien in „Meine Aktien“ aufnehmen oder entfernen. Solche Ideen nur vorschlagen.
@@ -227,6 +228,10 @@ data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punkteg
   2–4 Daten-Qualitäts-Agenten, 2 Gegenprüfer (Levins Aktien, Top 10), je Verbesserung ein Code-Agent, Rückblick-
   Test, Seiten-Agent + Seiten-Tester, Nachrichten-Agenten, Skill-Agent, 2 unabhängige Prüf-Agenten am Schluss.
   News-Agenten: Levins Aktien + bis 60 weitere, ein Agent je ~10 Aktien, dazu ein Prüf-Agent.
+- Seit 15.11.2026 (Levin: „du kannst die Hälfte meiner wöchentlichen Tokens in der Nachtschicht verbrauchen, damit
+  es richtig gut ist“): gründlich und tief arbeiten, dritter Lauf um 0:41 nur für große Aufgaben. Richtwert: höchstens
+  etwa die Hälfte von Levins Wochenlimit. Den echten Verbrauch sieht nur Levin in seinen Claude-Einstellungen. Sagt er,
+  es wird zu viel: weniger Agenten, Lauf 0:41 nur bei offenen großen Aufträgen.
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
 
 ## Skills
