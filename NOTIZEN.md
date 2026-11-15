@@ -161,6 +161,9 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   das richtige Kürzel statt DFNS.DE – erst nach etf.yml bestätigt). LI/RXL/SW/GFC.PA: Yahoo-Seite nicht gefunden → nach Grunddaten prüfen.
   Edenred: Übernahme-Spekulation (marketscreener) – beobachten. Aufgaben-Texte ändern (A3.3/A4.2/A5.2/A5.3) ging NICHT: update_trigger
   in der geplanten Aufgabe nicht erlaubt → Levin muss es im Chat freigeben.
+  Nach dem Grunddaten-Abruf (21:10 UTC): alle 23 neuen Aktien mit Daten, 22 bewertet (2141 → 2163; ALO.PA „Wachstum 664 %
+  unplausibel“), kuerzel_verdacht leer; alle 46 ETFs gültig, Datensatz etfs von Hand neu hochgeladen. "runs" zeigt noch den alten
+  Stand (Seite seit dem Upload nicht geöffnet) → Aufpasser/nächster Lauf prüft, ob stray_write weg ist.
 - 13.11.2026 (Nachtschicht 21:41): Kurse-Schleife war nach dem Push (18:51 UTC) nie gelaufen – letzte
   Starthilfe 18:11 UTC lag davor, also keine Kurse nach 18:48 UTC. Von Hand gestartet (Lauf 43504676163),
   damit der US-Schluss vom Freitag noch kommt. Keine Code-Änderung.
