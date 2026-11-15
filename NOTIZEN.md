@@ -60,6 +60,11 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
 - Nachtschicht: jeden Tag 21:41 und 3:41 (Berlin), prüft alles und verbessert. Der Lauf 0:41 ist auf Levins Wunsch
   wieder gestrichen (15.11.2026, 19:31). Große Aufgaben machen die Läufe 21:41 und 3:41; was nicht fertig wird, macht
   der nächste Lauf weiter. Steht in der Aufgabe noch etwas von 0:41, gilt das nicht mehr.
+  Ausnahme (Levin, 15.11.2026: „außer es ist irgendwas richtig Wichtiges, so wie NVIDIA-Zahlen oder andere aus meinen
+  Aktien“): Hat eine von Levins Aktien am Vorabend Zahlen gemeldet (US-Zahlen kommen meist ca. 22 Uhr), macht der
+  Lauf 3:41 einen gründlichen Zahlen-Check: Umsatz und Gewinn gegen Erwartung, Ausblick, erste Reaktion, mit Quellen;
+  danach bewertung.py und kurzer Bericht an Levin. Dafür gilt der Sparmodus nicht (bis 3 Agenten). Termine: config/zahlencheck
+  und Quartalstermine (z. B. NVIDIA Di 17.11.2026 abends → Check Mi 18.11. 3:41).
 - Aktien-Scout: Börsentage 11:48 und 18:48 (Berlin), siehe Abschnitt „Aktien-Scout“.
 - Aufpasser (seit 15.11.): täglich 9:13, 13:13, 19:13, 23:13 (Berlin). Prüft Aufgaben, GitHub-Läufe, Daten, Dashboard;
   behebt Kleines selbst (Workflows neu starten, Dashboard-Daten neu schreiben), Größeres als Auftrag für die Nachtschicht.
