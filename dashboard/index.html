@@ -1,25 +1,35 @@
 <meta name="dash-one-writer">
 <style>
   #dash-root { --dash-gutter: clamp(12px, 3vw, 32px); }
-  .al { font-family: var(--font-anthropic-sans); display: grid; gap: var(--cds-gap-lg); max-width: 1320px; margin-inline: auto; }
+  .al { font-family: var(--font-anthropic-sans); display: grid; gap: var(--cds-gap-lg); max-width: 1400px; margin-inline: auto; font-size: var(--cds-font-size-body); }
   .al b { font-variant-numeric: tabular-nums; }
   .al .pos { color: var(--color-ok); }
   .al .neg { color: var(--color-bad); }
   .al .muted { color: var(--color-fg-muted); }
+  .al h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; line-height: 1.3; }
+  .al h3, .al h4 { margin: 0; }
+  .al-ph:empty::before { content: "—"; color: var(--color-fg-muted); }
 
   /* Kopf */
-  .al-hero { display: grid; gap: var(--cds-gap-md); padding: var(--cds-pad-lg) 0 0; }
-  .al-hero-top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--cds-gap-sm); }
-  .al-hero h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: calc(var(--cds-font-size-title) * 1.35); line-height: 1.1; margin: 0; letter-spacing: -0.01em; }
+  .al-hero { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--cds-gap-sm); padding-top: var(--cds-pad-lg); }
+  .al-hero h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: calc(var(--cds-font-size-title) * 1.3); line-height: 1.1; margin: 0; letter-spacing: -0.01em; }
   .al-stand { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); display: inline-flex; align-items: center; gap: var(--cds-gap-xs); }
   .al-stand::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--color-ok); }
-  .al-lead { margin: 0; font-size: var(--cds-font-size-heading); line-height: 1.45; max-width: 62ch; text-wrap: pretty; }
-  .al-lead b { font-weight: 600; }
-  .al-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--cds-gap-md); }
-  .al-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); min-width: 0; }
-  .al-kpi span { display: block; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
-  .al-kpi b { display: block; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin-top: var(--cds-gap-xs); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .al-kpi small { display: block; font-size: var(--cds-font-size-caption); margin-top: 2px; }
+  .al-lead { margin: 0; color: var(--color-fg-muted); line-height: 1.5; max-width: 75ch; text-wrap: pretty; }
+  .al-lead b { color: var(--color-fg); font-weight: 600; }
+
+  /* Kennzahlen-Leiste */
+  .al-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); }
+  .al-kpi { padding: var(--cds-pad-sm) var(--cds-pad-md); min-width: 0; border-left: 1px solid var(--color-border-line); }
+  .al-kpi:first-child { border-left: 0; }
+  .al-kpi > span { display: block; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .al-kpi b { display: block; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .al-kpi small { display: block; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  @media (max-width: 40rem) {
+    .al-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .al-kpi:nth-child(3) { border-left: 0; }
+    .al-kpi:nth-child(n+3) { border-top: 1px solid var(--color-border-line); }
+  }
 
   /* Reiter */
   .al-tabs { display: flex; gap: var(--cds-gap-xs); border-bottom: 1px solid var(--color-border-line); overflow-x: auto; scrollbar-width: none; position: sticky; top: 0; z-index: 3; background: var(--color-bg); }
@@ -29,164 +39,163 @@
   .al-panel { display: grid; gap: var(--cds-gap-lg); }
   .al-panel[hidden] { display: none; }
 
+  /* Zwei Spalten am PC */
+  .al-split { display: grid; gap: var(--cds-gap-lg); align-items: start; }
+  .al-main { display: grid; gap: var(--cds-gap-lg); min-width: 0; }
+  @media (min-width: 1100px) {
+    .al-split { grid-template-columns: minmax(0, 1fr) clamp(360px, 30vw, 440px); }
+    .al-side { position: sticky; top: 3.5rem; max-height: calc(100vh - 4.5rem); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+  }
+
   /* Karten */
   .al-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; }
-  .al-card > h2, .al-sec > h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; }
-  .al-note { margin: var(--cds-gap-xs) 0 var(--cds-gap-md); color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); max-width: 75ch; }
-  .al-grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: var(--cds-gap-lg); }
-  .al-sec { display: grid; gap: var(--cds-gap-sm); }
+  .al-note { margin: var(--cds-gap-xs) 0 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); max-width: 75ch; line-height: 1.45; }
+  .al-sec { display: grid; gap: var(--cds-gap-sm); min-width: 0; }
+  .al-sec-kopf { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--cds-gap-sm); }
 
-  /* Top-Treffer */
-  .al-tops { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: var(--cds-gap-md); min-height: 15rem; }
-  .al-top { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-sm); align-content: start; position: relative; overflow: hidden; cursor: pointer; transition: border-color var(--cds-dur-slow); }
+  /* Aktien-Karten */
+  .al-tops { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15.5rem), 1fr)); gap: var(--cds-gap-md); margin-top: var(--cds-gap-xs); }
+  .al-top { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg) var(--cds-pad-lg); display: grid; gap: var(--cds-gap-xs); align-content: start; position: relative; overflow: hidden; cursor: pointer; transition: border-color var(--cds-dur-slow); }
   .al-top:hover { border-color: var(--color-fg-muted); }
-  .al-top::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--color-ok); }
+  .al-top.sel { border-color: var(--color-fg); box-shadow: 0 0 0 1px var(--color-fg) inset; }
+  .al-top::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--color-border-line); }
+  .al-top.gut::before { background: var(--color-ok); }
+  .al-top.aus { cursor: default; opacity: .8; }
   .al-top-head { display: flex; justify-content: space-between; align-items: center; gap: var(--cds-gap-sm); }
   .al-top-rang { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
-  .al-top-name { font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-title); line-height: 1.15; margin: 0; overflow-wrap: anywhere; }
+  .al-top-name { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); line-height: 1.25; margin: 0; overflow-wrap: anywhere; }
   .al-top-sub { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
-  .al-top-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--cds-gap-sm); }
-  .al-top-kurs { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+  .al-top-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--cds-gap-sm); margin-top: var(--cds-gap-xs); }
+  .al-top-kurs { font-size: var(--cds-font-size-heading); }
   .al-top-ab { font-size: var(--cds-font-size-heading); font-weight: 600; }
-  .al-top-meta { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); }
+  .al-top-meta { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); display: flex; flex-wrap: wrap; gap: 2px var(--cds-gap-sm); }
   .al-chip { font-size: var(--cds-font-size-caption); padding: 1px var(--cds-pad-sm); border-radius: 999px; background: var(--color-bg); border: 1px solid var(--color-border-line); white-space: nowrap; }
-  .al-range { display: block; width: 100%; height: 34px; }
-  .al-range-lbl { display: flex; justify-content: space-between; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: -4px; }
-  .al-empty { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .al-range { display: block; width: 100%; height: 28px; }
+  .al-range-lbl { display: flex; justify-content: space-between; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: -2px; }
+  .al-kurztext { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.4; margin: var(--cds-gap-xs) 0 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 
-  /* Punkte-Punkte */
+  /* Punkte */
   .al-dots { display: inline-flex; gap: 2px; vertical-align: middle; margin-left: var(--cds-gap-xs); }
-  .al-dots i { width: 6px; height: 10px; border-radius: 2px; background: var(--color-border-line); }
+  .al-dots i { width: 5px; height: 10px; border-radius: 2px; background: var(--color-border-line); }
   .al-dots i.on { background: var(--color-ok); }
   .al-dots i.minus { background: var(--color-bad); }
   .al-badge { display: inline-flex; align-items: center; gap: 4px; font-size: var(--cds-font-size-caption); font-weight: 600; padding: 2px var(--cds-pad-sm); border-radius: 999px; background: color-mix(in srgb, var(--color-ok) 14%, transparent); color: var(--color-ok); white-space: nowrap; }
+  .al-neu { font-size: 10px; font-weight: 600; letter-spacing: .04em; padding: 0 5px; border-radius: 999px; background: var(--color-ok); color: var(--color-bg); margin-left: var(--cds-gap-xs); vertical-align: 2px; }
 
-  /* Status-Pillen */
-  .al-pill { display: inline-block; font-size: var(--cds-font-size-caption); padding: 1px var(--cds-pad-sm); border-radius: 999px; white-space: nowrap; font-weight: var(--cds-font-weight-medium); }
-  .al-pill.top { background: color-mix(in srgb, var(--color-ok) 16%, transparent); color: var(--color-ok); }
-  .al-pill.beobachten { background: color-mix(in srgb, var(--color-warn) 16%, transparent); color: var(--color-warn); }
-  .al-pill.neu { background: color-mix(in srgb, var(--color-fg) 9%, transparent); color: var(--color-fg); }
-  .al-pill.gepruft { color: var(--color-fg-muted); border: 1px solid var(--color-border-line); }
-
-  /* Werkzeugleiste */
-  .al-tools { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); align-items: center; margin-bottom: var(--cds-gap-md); }
-  .al-search { font: inherit; font-size: var(--cds-font-size-body); flex: 1 1 14rem; min-width: 0; max-width: 22rem; padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); }
-  .al-filter { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); }
-  .al-filter button { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: 999px; background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
-  .al-filter button[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); border-color: var(--color-fg); }
+  /* Werkzeuge */
+  .al-tools { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); align-items: center; }
+  .al-search { font: inherit; font-size: var(--cds-font-size-body); flex: 1 1 14rem; min-width: 0; max-width: 20rem; padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); }
+  .al-select { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); max-width: 100%; }
+  .al-check { font-size: var(--cds-font-size-caption); display: inline-flex; align-items: center; gap: var(--cds-gap-xs); white-space: nowrap; cursor: pointer; }
+  .al-sortbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); }
+  .al-sortbar label { color: var(--color-fg-muted); }
+  .al-knopf, .al-richtung { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); cursor: pointer; white-space: nowrap; }
+  .al-knopf[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); border-color: var(--color-fg); }
+  .al-spacer { flex: 1 1 auto; }
+  .al-mehr { font: inherit; font-size: var(--cds-font-size-caption); margin-top: var(--cds-gap-md); padding: var(--cds-pad-xs) var(--cds-pad-md); border: 1px solid var(--color-border-line); border-radius: 999px; background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
+  .al-mehr[hidden] { display: none; }
 
   /* Tabellen */
-  .al-scroll { overflow: auto; max-height: 40rem; border-radius: var(--cds-radius); }
-  .al-scroll.short { max-height: 26rem; }
+  .al-scroll { overflow: auto; max-height: 40rem; border-radius: var(--cds-radius); margin-top: var(--cds-gap-md); }
+  .al-scroll.frei { max-height: none; }
   .al table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
-  .al th { position: sticky; top: 0; z-index: 1; background: var(--color-panel); text-align: left; font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); padding: var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
-  .al th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  .al th { position: sticky; top: 0; z-index: 1; background: var(--color-panel); text-align: left; font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); padding: var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; vertical-align: bottom; }
+  .al th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: inherit; }
   .al th[aria-sort] { color: var(--color-fg); }
   .al th[aria-sort="ascending"] button::after { content: " ↑"; }
   .al th[aria-sort="descending"] button::after { content: " ↓"; }
   .al th.num, .al td.num { text-align: right; }
   .al td { padding: var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); vertical-align: middle; white-space: nowrap; }
-  .al tbody tr:hover td { background: color-mix(in srgb, var(--color-fg) 4%, transparent); }
+  .al tbody tr:hover td { background: color-mix(in srgb, var(--color-fg) 4%, var(--color-panel)); }
   .al tbody tr.click { cursor: pointer; }
-  .al tbody tr.sel td { background: color-mix(in srgb, var(--color-ok) 10%, transparent); }
-  .al td.name { font-weight: var(--cds-font-weight-medium); }
+  .al tbody tr.sel td { background: color-mix(in srgb, var(--color-ok) 12%, var(--color-panel)); }
+  .al td.name { font-weight: var(--cds-font-weight-medium); white-space: normal; min-width: 9rem; max-width: 15rem; }
   .al td.tick { color: var(--color-fg-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; }
-  .al td.wrap { white-space: normal; min-width: 14rem; color: var(--color-fg-muted); }
-  .al td.rang { color: var(--color-fg-muted); }
-  .al-bar { display: inline-block; vertical-align: middle; height: 6px; border-radius: 3px; background: var(--color-border-line); width: 48px; margin-left: var(--cds-gap-xs); position: relative; overflow: hidden; }
+  .al td.lang { white-space: normal; min-width: 7rem; max-width: 11rem; }
+  .al-liste td.name, .al-liste th:first-child { position: sticky; left: 0; background: var(--color-panel); z-index: 1; }
+  .al-liste th:first-child { z-index: 2; }
+  .al-liste:not(.alle-spalten) .x { display: none; }
+  .al-bar { display: inline-block; vertical-align: middle; height: 6px; border-radius: 3px; background: var(--color-border-line); width: 40px; margin-left: var(--cds-gap-xs); position: relative; overflow: hidden; }
   .al-bar i { position: absolute; inset: 0 auto 0 0; border-radius: 3px; background: var(--color-fg-muted); }
-  .al-bar.ok i { background: var(--color-ok); }
-  .al-bar.bad i { background: var(--color-bad); }
-  .al-mini { display: inline-block; vertical-align: middle; width: 72px; height: 12px; margin-left: var(--cds-gap-xs); }
-  .al tr.cash td { color: var(--color-fg-muted); font-style: italic; }
+  .al-mini { display: inline-block; vertical-align: middle; width: 60px; height: 12px; margin-left: var(--cds-gap-xs); }
+
+  /* Tabelle einklappbar */
+  .al-fold > summary { cursor: pointer; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); list-style: none; display: flex; align-items: center; gap: var(--cds-gap-sm); }
+  .al-fold > summary::-webkit-details-marker { display: none; }
+  .al-fold > summary::before { content: "▸"; color: var(--color-fg-muted); transition: transform var(--cds-dur-slow); }
+  .al-fold[open] > summary::before { transform: rotate(90deg); }
+  .al-fold .auf, .al-fold[open] .zu { display: none; }
+  .al-fold[open] .auf { display: inline; }
+  .al-fold-inhalt { margin-top: var(--cds-gap-md); }
 
   /* Detail */
-  .al-detail { min-height: 6rem; }
-  .al-det-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: var(--cds-gap-lg); }
-  .al-det-name { font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-title); margin: 0; }
-  .al-det-list { display: grid; grid-template-columns: auto 1fr; gap: var(--cds-gap-xs) var(--cds-gap-md); margin: 0; font-size: var(--cds-font-size-caption); }
-  .al-det-list dt { color: var(--color-fg-muted); }
-  .al-texte { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md) var(--cds-gap-lg); margin-bottom: var(--cds-gap-lg); }
-  .al-texte p { margin: 0; font-size: var(--cds-font-size-body); line-height: 1.5; max-width: 70ch; text-wrap: pretty; }
-  .al-texte .al-note { margin: 0 0 var(--cds-gap-xs); }
-  .al-kurztext { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.35; margin: 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-  .al-det-list dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
-  .al-score { display: grid; grid-template-columns: 8rem 1fr 2.5rem; gap: var(--cds-gap-xs) var(--cds-gap-sm); align-items: center; font-size: var(--cds-font-size-caption); }
+  .al-side-kopf { display: flex; justify-content: space-between; align-items: baseline; gap: var(--cds-gap-sm); padding-bottom: var(--cds-pad-sm); margin-bottom: var(--cds-pad-md); border-bottom: 1px solid var(--color-border-line); }
+  .al-side-kopf h2 { font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .06em; }
+  .al-side-kopf span { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .al-d { display: grid; gap: var(--cds-gap-lg); }
+  .al-d-name { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.15; margin: 0; overflow-wrap: anywhere; }
+  .al-d-chips { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); margin-top: var(--cds-gap-sm); align-items: center; }
+  .al-d-kurs { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md) var(--cds-gap-lg); align-items: flex-end; }
+  .al-d-kurs > div span { display: block; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .al-d-kurs b { display: block; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: calc(var(--cds-font-size-title) * 1.15); line-height: 1.15; }
+  .al-d-sek { display: grid; gap: var(--cds-gap-xs); }
+  .al-d-sek h4 { font-size: var(--cds-font-size-caption); font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); text-transform: uppercase; letter-spacing: .05em; }
+  .al-d-sek p { margin: 0; line-height: 1.5; text-wrap: pretty; }
+  .al-hakenliste { margin: 0; padding-left: 1.1rem; }
+  .al-score { display: grid; grid-template-columns: 6.5rem 1fr 2rem; gap: var(--cds-gap-xs) var(--cds-gap-sm); align-items: center; font-size: var(--cds-font-size-caption); }
+  .al-score .num { text-align: right; }
   .al-score .track { height: 8px; border-radius: 4px; background: var(--color-border-line); position: relative; overflow: hidden; }
   .al-score .track i { position: absolute; top: 0; bottom: 0; border-radius: 4px; }
-  .al-hakenliste { margin: var(--cds-gap-sm) 0 0; padding-left: 1.1rem; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .al-news-links { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); }
+  .al-news-links a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  .al-zahlen { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr)); column-gap: var(--cds-gap-lg); margin: 0; font-size: var(--cds-font-size-caption); }
+  .al-zahlen div { display: flex; justify-content: space-between; align-items: baseline; gap: var(--cds-gap-sm); padding: 4px 0; border-bottom: 1px solid var(--color-border-line); }
+  .al-zahlen dt { color: var(--color-fg-muted); }
+  .al-zahlen dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
-  /* Depots */
-  .al-race { display: grid; gap: var(--cds-gap-sm); margin-bottom: var(--cds-gap-md); }
-  .al-race-row { display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr auto; gap: var(--cds-gap-md); align-items: center; font-size: var(--cds-font-size-body); }
-  .al-race-row .lab { font-weight: var(--cds-font-weight-medium); }
-  .al-race-row .lab small { display: block; font-weight: 400; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
-  .al-race-row .val { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .al-race-row .val b { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-heading); }
-  .al-race-bar { height: 10px; position: relative; }
-  .al-race-bar .zero { position: absolute; left: 50%; top: -4px; bottom: -4px; width: 1px; background: var(--cds-chart-axis); }
-  .al-race-bar i { position: absolute; top: 0; bottom: 0; border-radius: 5px; }
-  .al-chart { position: relative; min-height: 16rem; }
-  .al-chart.tall { min-height: 22rem; }
-  .al-tip { position: absolute; pointer-events: none; z-index: 4; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; }
-  .al-tip .t { color: var(--cds-text-secondary); }
+  /* Trefferquote */
+  .al-tq { display: grid; gap: var(--cds-gap-lg); margin-top: var(--cds-gap-md); max-width: 48rem; }
+  .al-tq-block h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin-bottom: var(--cds-gap-sm); }
+  .al-tq-block h3 span { font-weight: 400; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .al-tq-row { display: grid; grid-template-columns: minmax(8rem, 12rem) minmax(4rem, 1fr) 5rem 5.5rem; gap: var(--cds-gap-sm); align-items: center; font-size: var(--cds-font-size-caption); padding: 3px 0; }
+  .al-tq-row.alle { border-top: 1px solid var(--color-border-line); padding-top: var(--cds-gap-xs); margin-top: 2px; color: var(--color-fg-muted); }
+  .al-tq-row .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .al-tq-bar { height: 8px; position: relative; background: var(--color-border-line); border-radius: 4px; }
+  .al-tq-bar .null { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--color-fg-muted); }
+  .al-tq-bar i { position: absolute; top: 0; bottom: 0; border-radius: 4px; }
+  @media (max-width: 40rem) { .al-tq-row { grid-template-columns: 7.5rem 1fr 4rem; } .al-tq-row .anz { display: none; } }
 
   /* Methode */
-  .al-method summary { cursor: pointer; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
   .al-method h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin: var(--cds-gap-lg) 0 var(--cds-gap-xs); }
   .al-method p, .al-method li { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); max-width: 75ch; line-height: 1.55; }
   .al-method ul { padding-left: 1.1rem; margin: 0; }
-  .al-method table { max-width: 40rem; }
   .al-foot { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); max-width: 75ch; margin: 0; }
+
+  .al-voll { display: grid; gap: var(--cds-gap-lg); }
+  .al-leer[hidden], .al-voll[hidden] { display: none; }
+  .al-beispiele { margin: var(--cds-gap-sm) 0; padding-left: 1.1rem; display: grid; gap: var(--cds-gap-xs); }
 
   [data-dash-source-state=empty] { color: transparent; }
   [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
-  @media (prefers-reduced-motion: no-preference) {
-    .al-top { animation: al-in var(--cds-dur-slow) var(--cds-ease-out) both; }
-    @keyframes al-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-  }
-  @media (max-width: 40rem) { .al-race-row { grid-template-columns: 6.5rem 1fr auto; } }
-  .al-liste td.name, .al-liste th:first-child { position: sticky; left: 0; background: var(--color-panel); z-index: 1; }
-  .al-liste th:first-child { z-index: 2; }
-  .al-sortbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); }
-  .al-sortbar label { color: var(--color-fg-muted); }
-  .al-richtung { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
-
-  .al-top.gut::before { background: var(--color-ok); }
-  .al-top:not(.gut)::before { background: var(--color-border-line); }
-  .al-top.aus { cursor: default; opacity: .8; }
-  .al-leer { text-align: left; }
-  .al-beispiele { margin: 0 0 var(--cds-gap-md); padding-left: 1.1rem; display: grid; gap: var(--cds-gap-xs); }
-  .al-beispiele li { font-size: var(--cds-font-size-body); }
-  .al-voll { display: grid; gap: var(--cds-gap-lg); }
-  .al-voll[hidden], .al-leer[hidden] { display: none; }
-  .al-news { margin-top: var(--cds-gap-md); display: grid; gap: var(--cds-gap-xs); }
-  .al-news-text { margin: 0; font-size: var(--cds-font-size-body); line-height: 1.45; white-space: normal; }
-  .al-news-links { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); }
-  .al-news-links a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
-  .al-select { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); max-width: 100%; }
-  .al-check { font-size: var(--cds-font-size-caption); display: inline-flex; align-items: center; gap: var(--cds-gap-xs); white-space: nowrap; cursor: pointer; }
-  .al-neu { font-size: 10px; font-weight: 600; letter-spacing: .04em; padding: 0 5px; border-radius: 999px; background: var(--color-ok); color: var(--color-bg); margin-left: var(--cds-gap-xs); vertical-align: 1px; }
-  .al-mehr { font: inherit; font-size: var(--cds-font-size-caption); margin-top: var(--cds-gap-md); padding: var(--cds-pad-xs) var(--cds-pad-md); border: 1px solid var(--color-border-line); border-radius: 999px; background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
-  .al-mehr[hidden] { display: none; }
 </style>
 
 <div class="al">
   <header class="al-hero" id="kopf">
-    <div class="al-hero-top">
-      <h1>Meine Aktien</h1>
-      <span class="al-stand">Stand <span data-draw="stand" data-source="meine_ueberblick">—</span></span>
-    </div>
-    <p class="al-lead">Deine eigene Auswahl, bewertet mit denselben festen Regeln wie rund <b data-draw="gesamt" data-source="meine_ueberblick" data-field="gesamt">—</b> andere Aktien (Reiter „Alle Aktien“). Je mehr Punkte, desto besser die Bewertung.</p>
+    <h1 id="al-titel">Meine Aktien</h1>
+    <span class="al-stand">Stand <span class="al-ph" data-draw="stand" data-source="meine_ueberblick"></span></span>
   </header>
 
   <nav class="al-tabs" role="tablist" aria-label="Bereiche">
     <button type="button" role="tab" data-tab="meine" aria-selected="true">Meine Aktien</button>
     <button type="button" role="tab" data-tab="alle" aria-selected="false">Alle Aktien</button>
+    <button type="button" role="tab" data-tab="etfs" aria-selected="false">ETFs</button>
     <button type="button" role="tab" data-tab="methode" aria-selected="false">So wird gerechnet</button>
   </nav>
 
+  <!-- ========== Meine Aktien ========== -->
   <section class="al-panel" id="meine" data-panel="meine" role="tabpanel">
+    <p class="al-lead">Deine Auswahl, bewertet mit denselben festen Regeln wie rund <b class="al-ph" data-draw="gesamt" data-source="meine_ueberblick" data-field="gesamt"></b> andere Aktien. Mehr Punkte = bessere Bewertung.</p>
+
     <section class="al-card al-leer" data-leer hidden>
       <h2>Noch keine Aktien ausgewählt</h2>
       <p class="al-note">Schreib Claude im Chat, welche Aktien hier stehen sollen. Zum Beispiel:</p>
@@ -200,87 +209,98 @@
 
     <div class="al-voll" data-voll>
       <div class="al-kpis">
-        <div class="al-kpi"><span>Aktien in deiner Liste</span><b data-draw="anzahl" data-source="meine_ueberblick" data-field="anzahl">—</b><small class="muted">davon bewertet: <span data-draw="bewertet" data-source="meine_ueberblick" data-field="bewertet">—</span></small></div>
-        <div class="al-kpi"><span>Beste Bewertung</span><b data-draw="beste" data-source="meine_ueberblick" data-field="beste">—</b><small class="muted" data-draw="beste_platz" data-source="meine_ueberblick">—</small></div>
-        <div class="al-kpi"><span>Erfüllen die Top-Bedingungen</span><b data-draw="topbed" data-source="meine_ueberblick" data-field="top_bedingungen">—</b><small class="muted">siehe „So wird gerechnet“</small></div>
-        <div class="al-kpi"><span>Nächste Quartalszahlen</span><b data-draw="naechste" data-source="meine_ueberblick" data-field="naechste_aktie">—</b><small class="muted" data-draw="naechste_tag" data-source="meine_ueberblick">—</small></div>
+        <div class="al-kpi"><span>Aktien in deiner Liste</span><b class="al-ph" data-draw="anzahl" data-source="meine_ueberblick" data-field="anzahl"></b><small>davon bewertet: <span class="al-ph" data-draw="bewertet" data-source="meine_ueberblick" data-field="bewertet"></span></small></div>
+        <div class="al-kpi"><span>Beste Bewertung</span><b class="al-ph" data-draw="beste" data-source="meine_ueberblick" data-field="beste"></b><small class="al-ph" data-draw="beste_platz" data-source="meine_ueberblick"></small></div>
+        <div class="al-kpi"><span>Erfüllen die Top-Bedingungen</span><b class="al-ph" data-draw="topbed" data-source="meine_ueberblick" data-field="top_bedingungen"></b><small>siehe „So wird gerechnet“</small></div>
+        <div class="al-kpi"><span>Nächste Quartalszahlen</span><b class="al-ph" data-draw="naechste" data-source="meine_ueberblick" data-field="naechste_aktie"></b><small class="al-ph" data-draw="naechste_tag" data-source="meine_ueberblick"></small></div>
       </div>
 
-      <div class="al-sec">
-        <h2>Deine Aktien auf einen Blick</h2>
-        <div class="al-sortbar">
-          <label for="meine-sort">Sortieren nach</label>
-          <select class="al-select" id="meine-sort">
-            <option value="rang">Punkte und Feinwert (Standard)</option>
-            <option value="punkte">Punkte</option>
-            <option value="feinwert">Feinwert</option>
-            <option value="abstand_pct">Abstand zur fairen Mitte</option>
-            <option value="kurs_eur">Kurs</option>
-            <option value="kgv">KGV</option>
-            <option value="wachstum_pct">Gewinnwachstum</option>
-            <option value="peg">PEG</option>
-            <option value="fcf_rendite_pct">Freier Cashflow zum Börsenwert</option>
-            <option value="veraenderung_1m_pct">Letzter Monat</option>
-            <option value="unter_hoch_pct">Abstand zum Jahreshoch</option>
-            <option value="schwankung_pct">Schwankung</option>
-            <option value="analysten">Zahl der Analysten</option>
-            <option value="zahlen_am">Nächste Zahlen</option>
-            <option value="trend">Trend lang</option>
-            <option value="kurztrend">Trend kurz</option>
-            <option value="aktie">Name</option>
-            <option value="sektor">Branche</option>
-          </select>
-          <button type="button" class="al-richtung" id="meine-richtung" aria-label="Richtung umdrehen">↓ absteigend</button>
+      <div class="al-split">
+        <div class="al-main">
+          <section class="al-sec">
+            <div class="al-sec-kopf">
+              <h2>Deine Aktien</h2>
+              <div class="al-sortbar">
+                <label for="meine-sort">Sortieren nach</label>
+                <select class="al-select" id="meine-sort">
+                  <option value="rang">Punkte und Feinwert (Standard)</option>
+                  <option value="punkte">Punkte</option>
+                  <option value="feinwert">Feinwert</option>
+                  <option value="abstand_pct">Abstand zur fairen Mitte</option>
+                  <option value="kurs_eur">Kurs</option>
+                  <option value="kgv">KGV</option>
+                  <option value="wachstum_pct">Gewinnwachstum</option>
+                  <option value="peg">PEG</option>
+                  <option value="fcf_rendite_pct">Freier Cashflow zum Börsenwert</option>
+                  <option value="veraenderung_1m_pct">Letzter Monat</option>
+                  <option value="unter_hoch_pct">Abstand zum Jahreshoch</option>
+                  <option value="schwankung_pct">Schwankung</option>
+                  <option value="analysten">Zahl der Analysten</option>
+                  <option value="zahlen_am">Nächste Zahlen</option>
+                  <option value="trend">Trend lang</option>
+                  <option value="kurztrend">Trend kurz</option>
+                  <option value="aktie">Name</option>
+                  <option value="sektor">Branche</option>
+                </select>
+                <button type="button" class="al-richtung" id="meine-richtung" aria-label="Richtung umdrehen">↓ beste zuerst</button>
+              </div>
+            </div>
+            <p class="al-note">Grüner Balken = faire Spanne, Punkt = Kurs. Klick auf eine Karte zeigt alle Zahlen. Die Sortierung gilt auch für die Tabelle.</p>
+            <div class="al-tops" data-draw="karten" data-source="meine"></div>
+          </section>
+
+          <details class="al-card al-fold" id="meine-fold">
+            <summary><span class="zu">Tabelle zeigen</span><span class="auf">Tabelle verbergen</span></summary>
+            <div class="al-fold-inhalt">
+              <div class="al-tools">
+                <p class="al-note" style="margin:0; flex: 1 1 20rem">Klick auf eine Spalte sortiert. Abstand = um wie viel Prozent die faire Mitte über dem Kurs liegt. Kurse in Euro, 🇪🇺 = Euro-Aktie.</p>
+                <button type="button" class="al-knopf" data-spalten="meine-tabelle" aria-pressed="false">Mehr Spalten</button>
+              </div>
+              <div class="al-scroll">
+                <table data-source="meine" data-row-key="ticker" class="al-liste al-meine" id="meine-tabelle">
+                  <thead>
+                    <tr>
+                      <th data-field="aktie"><button type="button" data-sort="aktie">Aktie</button></th>
+                      <th data-field="ticker" class="x"><button type="button" data-sort="ticker">Kürzel</button></th>
+                      <th data-field="punkte"><button type="button" data-sort="punkte">Punkte</button></th>
+                      <th data-field="feinwert"><button type="button" data-sort="feinwert">Feinwert</button></th>
+                      <th data-field="kurs_eur" class="num"><button type="button" data-sort="kurs_eur">Kurs</button></th>
+                      <th data-field="abstand_pct"><button type="button" data-sort="abstand_pct">Abstand</button></th>
+                      <th data-field="top_bedingungen" class="x"><button type="button" data-sort="top_bedingungen">Top-Bedingungen</button></th>
+                      <th data-field="trend"><button type="button" data-sort="trend">Trend lang</button></th>
+                      <th data-field="kurztrend" class="x"><button type="button" data-sort="kurztrend">Trend kurz</button></th>
+                      <th data-field="kgv" class="num x"><button type="button" data-sort="kgv">KGV</button></th>
+                      <th data-field="wachstum_pct" class="num x"><button type="button" data-sort="wachstum_pct">Wachstum</button></th>
+                      <th data-field="unter_hoch_pct" class="num x"><button type="button" data-sort="unter_hoch_pct">vom Jahreshoch</button></th>
+                      <th data-field="schwankung_pct" class="num x"><button type="button" data-sort="schwankung_pct">Schwankung</button></th>
+                      <th data-field="zahlen_am" class="x"><button type="button" data-sort="zahlen_am">Nächste Zahlen</button></th>
+                      <th data-field="sektor"><button type="button" data-sort="sektor">Branche</button></th>
+                    </tr>
+                  </thead>
+                  <tbody data-draw="tabelle"></tbody>
+                </table>
+              </div>
+            </div>
+          </details>
         </div>
-        <p class="al-note">Der grüne Balken ist die faire Spanne, der Punkt der Kurs. Klick auf eine Karte zeigt alle Zahlen. Die Sortierung gilt für Karten und Tabelle.</p>
-        <div class="al-tops" data-draw="karten" data-source="meine"></div>
+
+        <aside class="al-card al-detail al-side" id="detail">
+          <div class="al-side-kopf"><h2>Details</h2><span>Klick auf eine Karte oder Zeile</span></div>
+          <div data-draw="detail" data-source="meine"></div>
+        </aside>
       </div>
-
-      <section class="al-card">
-        <h2>Alle Zahlen als Tabelle</h2>
-        <p class="al-note">Klick auf eine Spalte sortiert. Auf dem Handy die Tabelle seitlich wischen. Abstand = um wie viel Prozent die faire Mitte über dem Kurs liegt. Kurse in Euro, 🇪🇺 = Euro-Aktie.</p>
-        <div class="al-scroll">
-          <table data-source="meine" data-row-key="ticker" class="al-liste al-meine">
-            <thead>
-              <tr>
-                <th data-field="aktie"><button type="button" data-sort="aktie">Aktie</button></th>
-                <th data-field="ticker" class="opt"><button type="button" data-sort="ticker">Kürzel</button></th>
-                <th data-field="punkte"><button type="button" data-sort="punkte">Punkte</button></th>
-                <th data-field="feinwert" class="opt"><button type="button" data-sort="feinwert">Feinwert</button></th>
-                <th data-field="kurs_eur" class="num"><button type="button" data-sort="kurs_eur">Kurs</button></th>
-                <th data-field="abstand_pct"><button type="button" data-sort="abstand_pct">Abstand</button></th>
-                <th data-field="top_bedingungen" class="opt"><button type="button" data-sort="top_bedingungen">Top-Bedingungen</button></th>
-                <th data-field="trend" class="opt"><button type="button" data-sort="trend">Trend lang</button></th>
-                <th data-field="kurztrend" class="opt"><button type="button" data-sort="kurztrend">Trend kurz</button></th>
-                <th data-field="kgv" class="num opt"><button type="button" data-sort="kgv">KGV</button></th>
-                <th data-field="wachstum_pct" class="num opt"><button type="button" data-sort="wachstum_pct">Wachstum</button></th>
-                <th data-field="unter_hoch_pct" class="num opt"><button type="button" data-sort="unter_hoch_pct">vom Jahreshoch</button></th>
-                <th data-field="schwankung_pct" class="num opt"><button type="button" data-sort="schwankung_pct">Schwankung</button></th>
-                <th data-field="zahlen_am" class="opt"><button type="button" data-sort="zahlen_am">Nächste Zahlen</button></th>
-                <th data-field="sektor" class="opt"><button type="button" data-sort="sektor">Branche</button></th>
-              </tr>
-            </thead>
-            <tbody data-draw="tabelle"></tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="al-card al-detail" id="detail">
-        <h2>Alle Zahlen zu einer Aktie</h2>
-        <p class="al-note">Klick auf eine Karte oder eine Zeile.</p>
-        <div data-draw="detail" data-source="meine"></div>
-      </section>
     </div>
   </section>
 
+  <!-- ========== Alle Aktien ========== -->
   <section class="al-panel" id="alle" data-panel="alle" role="tabpanel" hidden>
-    <div class="al-voll">
-      <section class="al-card">
-        <h2>Alle bewerteten Aktien</h2>
-        <p class="al-note"><span data-draw="alle_info" data-source="alle">—</span> Gleiche Regeln wie bei deinen Aktien, sortiert nach Punkten und Feinwert. ★ = in deiner Liste, <span class="al-neu">NEU</span> = in den letzten 7 Tagen dazugekommen, 🔥 = gerade viel Hype (gibt keine Punkte, oft große Schwankungen). Klick auf eine Zeile zeigt alle Zahlen. Willst du eine davon in deiner Liste haben, sag es Claude im Chat.</p>
+    <p class="al-lead"><span class="al-ph" data-draw="alle_info" data-source="alle"></span> Gleiche Regeln wie bei deinen Aktien. ★ = in deiner Liste, <span class="al-neu" style="margin-left:0">NEU</span> = seit 7 Tagen dabei, 🔥 = viel Hype (gibt keine Punkte, schwankt oft stark). Willst du eine Aktie in deiner Liste, sag es Claude im Chat.</p>
+
+    <div class="al-split">
+      <section class="al-card al-main">
         <div class="al-tools">
           <input type="search" class="al-search" id="alle-suche" placeholder="Name oder Kürzel suchen" aria-label="Aktie suchen">
-          <select class="al-select" id="alle-region" aria-label="Region">
+          <select class="al-select" id="alle-region" aria-label="Land">
             <option value="">Alle Länder</option>
           </select>
           <select class="al-select" id="alle-sektor" aria-label="Branche">
@@ -297,7 +317,7 @@
           <label class="al-check"><input type="checkbox" id="alle-neu"> nur neue</label>
           <label class="al-check"><input type="checkbox" id="alle-hype"> nur Hype 🔥</label>
         </div>
-        <div class="al-sortbar" style="margin-bottom: var(--cds-gap-md)">
+        <div class="al-sortbar" style="margin-top: var(--cds-gap-sm)">
           <label for="alle-sort">Sortieren nach</label>
           <select class="al-select" id="alle-sort">
             <option value="punkte">Punkte und Feinwert (Standard)</option>
@@ -320,27 +340,29 @@
             <option value="region">Land</option>
           </select>
           <button type="button" class="al-richtung" id="alle-richtung" aria-label="Richtung umdrehen">↓ absteigend</button>
+          <span class="al-spacer"></span>
+          <button type="button" class="al-knopf" data-spalten="alle-tabelle" aria-pressed="false">Mehr Spalten</button>
         </div>
         <div class="al-scroll">
-          <table data-source="alle" data-row-key="ticker" class="al-liste al-alle">
+          <table data-source="alle" data-row-key="ticker" class="al-liste al-alle" id="alle-tabelle">
             <thead>
               <tr>
                 <th data-field="aktie"><button type="button" data-sort="aktie">Aktie</button></th>
-                <th data-field="ticker" class="opt"><button type="button" data-sort="ticker">Kürzel</button></th>
+                <th data-field="ticker" class="x"><button type="button" data-sort="ticker">Kürzel</button></th>
                 <th data-field="punkte"><button type="button" data-sort="punkte">Punkte</button></th>
-                <th data-field="feinwert" class="opt"><button type="button" data-sort="feinwert">Feinwert</button></th>
+                <th data-field="feinwert"><button type="button" data-sort="feinwert">Feinwert</button></th>
                 <th data-field="kurs_eur" class="num"><button type="button" data-sort="kurs_eur">Kurs</button></th>
                 <th data-field="abstand_pct"><button type="button" data-sort="abstand_pct">Abstand</button></th>
-                <th data-field="top_bedingungen" class="opt"><button type="button" data-sort="top_bedingungen">Top-Bedingungen</button></th>
-                <th data-field="trend" class="opt"><button type="button" data-sort="trend">Trend lang</button></th>
-                <th data-field="kurztrend" class="opt"><button type="button" data-sort="kurztrend">Trend kurz</button></th>
-                <th data-field="kgv" class="num opt"><button type="button" data-sort="kgv">KGV</button></th>
-                <th data-field="wachstum_pct" class="num opt"><button type="button" data-sort="wachstum_pct">Wachstum</button></th>
-                <th data-field="unter_hoch_pct" class="num opt"><button type="button" data-sort="unter_hoch_pct">vom Jahreshoch</button></th>
-                <th data-field="schwankung_pct" class="num opt"><button type="button" data-sort="schwankung_pct">Schwankung</button></th>
-                <th data-field="zahlen_am" class="opt"><button type="button" data-sort="zahlen_am">Nächste Zahlen</button></th>
-                <th class="opt"><button type="button" data-sort="region">Land</button></th>
-                <th data-field="sektor" class="opt"><button type="button" data-sort="sektor">Branche</button></th>
+                <th data-field="top_bedingungen" class="x"><button type="button" data-sort="top_bedingungen">Top-Bedingungen</button></th>
+                <th data-field="trend"><button type="button" data-sort="trend">Trend</button></th>
+                <th data-field="kurztrend" class="x"><button type="button" data-sort="kurztrend">Trend kurz</button></th>
+                <th data-field="kgv" class="num x"><button type="button" data-sort="kgv">KGV</button></th>
+                <th data-field="wachstum_pct" class="num x"><button type="button" data-sort="wachstum_pct">Wachstum</button></th>
+                <th data-field="unter_hoch_pct" class="num x"><button type="button" data-sort="unter_hoch_pct">vom Jahreshoch</button></th>
+                <th data-field="schwankung_pct" class="num x"><button type="button" data-sort="schwankung_pct">Schwankung</button></th>
+                <th data-field="zahlen_am" class="x"><button type="button" data-sort="zahlen_am">Nächste Zahlen</button></th>
+                <th><button type="button" data-sort="region">Land</button></th>
+                <th data-field="sektor"><button type="button" data-sort="sektor">Branche</button></th>
               </tr>
             </thead>
             <tbody data-draw="alle_tabelle"></tbody>
@@ -349,15 +371,59 @@
         <button type="button" class="al-mehr" id="alle-mehr" data-draw="alle_mehr" data-source="alle" hidden></button>
       </section>
 
-      <section class="al-card al-detail" id="alle-detail">
-        <h2>Alle Zahlen zu einer Aktie</h2>
-        <p class="al-note">Klick auf eine Zeile in der Tabelle.</p>
+      <aside class="al-card al-detail al-side" id="alle-detail">
+        <div class="al-side-kopf"><h2>Details</h2><span>Klick auf eine Zeile</span></div>
         <div data-draw="alle_detail" data-source="alle"></div>
-      </section>
+      </aside>
     </div>
   </section>
 
+  <!-- ========== ETFs ========== -->
+  <section class="al-panel" id="etfs" data-panel="etfs" role="tabpanel" hidden>
+    <p class="al-lead"><span class="al-ph" data-draw="etf_info" data-source="etfs"></span> ETFs stehen hier getrennt von den Aktien. Keine Punkte für ETFs. TER und Größe laut Yahoo, ungeprüft.</p>
+    <section class="al-card">
+      <div class="al-tools">
+        <input type="search" class="al-search" id="etf-suche" placeholder="Name oder Kürzel suchen" aria-label="ETF suchen">
+        <select class="al-select" id="etf-gruppe" aria-label="Gruppe">
+          <option value="">Alle Gruppen</option>
+        </select>
+        <span class="al-note" style="margin:0">Klick auf eine Spalte sortiert. Renditen in Euro, 3 J. und 5 J. pro Jahr. Fehlt ein Wert: –</span>
+      </div>
+      <div class="al-scroll frei">
+        <table data-source="etfs" data-row-key="ticker" class="al-liste al-etfs" id="etf-tabelle">
+          <thead>
+            <tr>
+              <th data-field="name"><button type="button" data-esort="name">Name</button></th>
+              <th data-field="ticker"><button type="button" data-esort="ticker">Kürzel</button></th>
+              <th data-field="gruppe"><button type="button" data-esort="gruppe">Gruppe</button></th>
+              <th data-field="kurs" class="num"><button type="button" data-esort="kurs">Kurs €</button></th>
+              <th data-field="r_1m" class="num"><button type="button" data-esort="r_1m">1 Monat</button></th>
+              <th data-field="r_6m" class="num"><button type="button" data-esort="r_6m">6 Monate</button></th>
+              <th data-field="r_1j" class="num"><button type="button" data-esort="r_1j">1 Jahr</button></th>
+              <th data-field="r_3j_pa" class="num"><button type="button" data-esort="r_3j_pa">3 J. p. a.</button></th>
+              <th data-field="r_5j_pa" class="num"><button type="button" data-esort="r_5j_pa">5 J. p. a.</button></th>
+              <th data-field="vola_1j" class="num"><button type="button" data-esort="vola_1j">Schwankung</button></th>
+              <th data-field="max_rueckgang_5j" class="num"><button type="button" data-esort="max_rueckgang_5j">Größter Rückgang</button></th>
+              <th data-field="trend"><button type="button" data-esort="trend">Trend</button></th>
+              <th data-field="ter_pct" class="num"><button type="button" data-esort="ter_pct">TER</button></th>
+              <th data-field="groesse_mrd" class="num"><button type="button" data-esort="groesse_mrd">Fondsgröße</button></th>
+            </tr>
+          </thead>
+          <tbody data-draw="etf_tabelle"></tbody>
+        </table>
+      </div>
+      <p class="al-note" style="margin-top: var(--cds-gap-md)">Schwankung = wie stark der Kurs im letzten Jahr typischerweise schwankte. Größter Rückgang = stärkster Fall vom Hoch in 5 Jahren. Trend = Kurs über oder unter der 200-Tage-Linie. TER = jährliche Kosten. Vergangene Renditen sagen nichts über die Zukunft.</p>
+    </section>
+  </section>
+
+  <!-- ========== So wird gerechnet ========== -->
   <section class="al-panel" id="methode" data-panel="methode" role="tabpanel" hidden>
+    <section class="al-card" id="trefferquote" data-source="trefferquote">
+      <h2>Trefferquote</h2>
+      <p class="al-note">Wie haben sich Aktien seit einem früheren Schnappschuss entwickelt – je nach Punkten? Kursänderung im Schnitt, in Euro. Wenige Wochen sagen wenig. Rückblick mit heutigen Regeln, kein echter Test aus der Vergangenheit.</p>
+      <div data-draw="trefferquote" data-source="trefferquote"></div>
+    </section>
+
     <section class="al-card al-method">
       <h2>So wird gerechnet</h2>
       <h3>Womit deine Aktien verglichen werden</h3>
@@ -388,6 +454,8 @@
       <p>Erfüllt, wenn der Abstand über 15 % liegt (faire Mitte mehr als 15 % über dem Kurs), der lange Trend nicht fällt und es keine Speicherchip-Firma ist. Das ist nur eine Regel des Programms, keine Empfehlung.</p>
       <h3>Wann eine Aktie nicht bewertet wird</h3>
       <p>Zum Beispiel, wenn der erwartete Gewinn nicht positiv ist, kein Kursziel da ist, das KGV unplausibel ist (über 200) oder es für die Währung keinen Wechselkurs gibt. Firmen, die an zwei Börsen notiert sind, zählen nur einmal. Der Grund steht dann auf der Karte.</p>
+      <h3>ETFs</h3>
+      <p>Für ETFs gibt es keine Punkte. Der Reiter „ETFs“ zeigt nur Zahlen: Kurs, Renditen, Schwankung, größten Rückgang, Trend (200-Tage-Linie), Kosten (TER) und Fondsgröße. TER und Größe kommen von Yahoo und sind noch nicht geprüft.</p>
       <h3>Daten</h3>
       <p>Yahoo Finance (inoffiziell), über GitHub abgerufen (bubelman/aktien-daten): Kennzahlen jeden Morgen, Kurse 5-mal am Börsentag. Gerechnet wird immer mit dem festen Programm bewertung.py, damit jeder Lauf gleich rechnet. Schwankung = wie stark der Kurs im Jahr typischerweise schwankt, über 60 % ist sehr wild.</p>
       <h3>Grenzen – bitte lesen</h3>
@@ -404,6 +472,7 @@
 </div>
 
 <script>
+  // ---------- Hilfen ----------
   const num = (v) => (v === null || v === undefined || v === '' ? NaN : Number(v));
   const nf = (d) => new Intl.NumberFormat('de-DE', {minimumFractionDigits: d, maximumFractionDigits: d});
   const fmtNum = (v, d) => (isNaN(v) ? '–' : nf(d).format(v));
@@ -411,13 +480,14 @@
   const fmtEur2 = (v) => (isNaN(v) ? '–' : nf(2).format(v) + ' €');
   const fmtKurs = (v) => (isNaN(v) ? '–' : (v < 100 ? fmtEur2(v) : fmtEur(v)));
   const fmtPct = (v) => (isNaN(v) ? '–' : (v > 0 ? '+' : '') + nf(0).format(v) + ' %');
+  const fmtPct1 = (v) => (isNaN(v) ? '–' : (v > 0 ? '+' : '') + nf(1).format(v) + ' %');
   const fmtGeld = (v) => { if (isNaN(v)) return '–'; const a = Math.abs(v);
     return a >= 1e12 ? nf(1).format(v / 1e12) + ' Bio. €' : a >= 1e9 ? nf(a >= 1e11 ? 0 : 1).format(v / 1e9) + ' Mrd. €' : a >= 1e6 ? nf(0).format(v / 1e6) + ' Mio. €' : nf(0).format(v) + ' €'; };
   // erster Punkt aus „Dagegen:“ (sonst „Dafür:“) im Text r.warum, für die Karten
   const kurzGrund = (w) => { if (!w) return null; const m = /(Dagegen|Dafür): (.*?)\.(?= [A-ZÄÖÜ]|$)/.exec(String(w).includes('Dagegen: ') ? String(w).slice(String(w).indexOf('Dagegen: ')) : String(w));
     return m ? m[1] + ': ' + m[2].split(', ')[0] : null; };
-  const fmtPct1 = (v) => (isNaN(v) ? '–' : (v > 0 ? '+' : '') + nf(1).format(v) + ' %');
   const fmtDatum = (s) => { const d = new Date(s); return isNaN(d) ? '–' : new Intl.DateTimeFormat('de-DE', {day: '2-digit', month: '2-digit'}).format(d); };
+  const fmtDatumJ = (s) => { const d = new Date(s); return isNaN(d) ? '–' : new Intl.DateTimeFormat('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'}).format(d); };
   const fmtDatumLang = (s) => { const d = new Date(s); return isNaN(d) ? '–' : new Intl.DateTimeFormat('de-DE', {weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric'}).format(d); };
   const fmtStand = (s) => {
     const d = new Date(s);
@@ -425,13 +495,159 @@
     return new Intl.DateTimeFormat('de-DE', {weekday: 'short', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin'}).format(d) + ' Uhr';
   };
   const cls = (v) => (v > 0 ? 'pos' : v < 0 ? 'neg' : '');
-  const PFEIL = {steigend: '↗', 'seitwärts': '→', fallend: '↘'};
+  const PFEIL = {steigend: '↗', 'seitwärts': '→', fallend: '↘', 'aufwärts': '↗', 'abwärts': '↘'};
   const trendText = (t) => (t ? (PFEIL[t] || '') + ' ' + t : '–');
-  const trendCls = (t) => (t === 'steigend' ? 'pos' : t === 'fallend' ? 'neg' : '');
+  const trendCls = (t) => (t === 'steigend' || t === 'aufwärts' ? 'pos' : t === 'fallend' || t === 'abwärts' ? 'neg' : '');
   const el = (tag, className, text) => { const e = document.createElement(tag); if (className) e.className = className; if (text !== undefined) e.textContent = text; return e; };
   const SVG = 'http://www.w3.org/2000/svg';
   const echte = (rows) => rows.filter((r) => r.ticker && !r.leer);
   const bewertet = (r) => r.rang !== null && r.rang !== undefined && r.rang !== '';
+  const daten = (id) => { try { return dash.data(id) || {status: 'missing', data: []}; } catch (e) { return {status: 'missing', data: []}; } };
+  const breit = () => window.matchMedia('(min-width: 1100px)').matches;
+  const LAENDER = [['', 'USA'], ['.DE', 'Deutschland'], ['.L', 'Großbritannien'], ['.PA', 'Frankreich'], ['.AS', 'Niederlande'], ['.MC', 'Spanien'], ['.MI', 'Italien'], ['.SW', 'Schweiz'], ['.ST', 'Schweden'], ['.CO', 'Dänemark'], ['.OL', 'Norwegen'], ['.HE', 'Finnland'], ['.BR', 'Belgien'], ['.TO', 'Kanada'], ['.T', 'Japan'], ['.AX', 'Australien'], ['.HK', 'Hongkong']];
+  const region = (t) => { const m = /\.[A-Z]{1,2}$/.exec(t || ''); const e = m ? m[0] : ''; const f = LAENDER.find((x) => x[0] === e); return f ? f[1] : 'andere'; };
+  const istNeu = (r) => { if (!r.aufgenommen) return false; const d = new Date(r.aufgenommen); return !isNaN(d) && (Date.now() - d.getTime()) < 7 * 864e5; };
+
+  // ---------- Kleine Grafiken ----------
+  const spanne = (r, h) => {
+    const k = num(r.kurs_eur), lo = num(r.fair_lo_eur), hi = num(r.fair_hi_eur), mi = num(r.fair_mitte_eur);
+    const s = document.createElementNS(SVG, 'svg');
+    s.setAttribute('viewBox', `0 0 200 ${h}`);
+    s.setAttribute('preserveAspectRatio', 'none');
+    if ([k, lo, hi].some(isNaN)) return s;
+    const a = Math.min(k, lo) * 0.92, b = Math.max(k, hi) * 1.04;
+    const x = (v) => 4 + (v - a) / (b - a) * 192;
+    const add = (tag, at) => { const n = document.createElementNS(SVG, tag); for (const [kk, vv] of Object.entries(at)) n.setAttribute(kk, vv); s.appendChild(n); return n; };
+    const cy = h / 2;
+    add('rect', {x: 4, y: cy - 2, width: 192, height: 4, rx: 2, style: 'fill: var(--color-border-line)'});
+    add('rect', {x: x(lo), y: cy - 5, width: Math.max(2, x(hi) - x(lo)), height: 10, rx: 4, style: 'fill: color-mix(in srgb, var(--color-ok) 40%, transparent)'});
+    if (!isNaN(mi)) add('rect', {x: x(mi) - 0.75, y: cy - 7, width: 1.5, height: 14, style: 'fill: var(--color-ok)'});
+    add('circle', {cx: x(k), cy, r: Math.min(6, h / 3), style: 'fill: var(--color-fg); stroke: var(--color-panel); stroke-width: 2', 'vector-effect': 'non-scaling-stroke'});
+    return s;
+  };
+  const punkteDots = (p) => {
+    const w = el('span', 'al-dots');
+    for (let i = 1; i <= 10; i++) w.appendChild(el('i', p >= i ? 'on' : ''));
+    if (p < 0) w.firstChild.className = 'minus';
+    return w;
+  };
+  const bar = (frac) => { const b = el('span', 'al-bar'); const i = el('i'); i.style.width = Math.max(0, Math.min(1, frac)) * 100 + '%'; b.appendChild(i); return b; };
+  const linkListe = (urls) => {
+    const q = el('div', 'al-news-links');
+    (urls || []).forEach((u) => {
+      let host = 'Quelle'; try { host = new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return; }
+      const lnk = el('a', '', host); lnk.href = u; lnk.target = '_blank'; lnk.rel = 'noopener noreferrer'; q.appendChild(lnk);
+    });
+    return q;
+  };
+
+  // ---------- Detailansicht (eine Spalte, nichts doppelt) ----------
+  const zeigeDetail = (box, r) => {
+    const w = `ticker=${encodeURIComponent(r.ticker)}`;
+    const mark = (e, f) => { e.dataset.field = f; e.dataset.where = w; return e; };
+    const sek = (titel) => { const s = el('section', 'al-d-sek'); s.appendChild(el('h4', '', titel)); return s; };
+    const d = el('div', 'al-d');
+
+    // 1. Kopf
+    const kopf = el('div');
+    const nm = mark(el('h3', 'al-d-name', (r.in_meine ? '★ ' : '') + r.aktie + (r.waehrung === 'EUR' ? ' 🇪🇺' : '')), 'aktie');
+    if (r.hype) { const f = el('span', '', ' 🔥'); f.title = 'Hype: ' + r.hype; nm.appendChild(f); }
+    if (istNeu(r)) nm.appendChild(el('span', 'al-neu', 'NEU'));
+    const chips = el('div', 'al-d-chips');
+    const pb = mark(el('span', 'al-badge', r.punkte + ' von 10 Punkten'), 'punkte');
+    chips.append(pb, mark(el('span', 'al-chip', 'Feinwert ' + fmtNum(num(r.feinwert), 0) + ' von 100'), 'feinwert'),
+      mark(el('span', 'al-chip ' + (r.top_bedingungen ? 'pos' : 'muted'), r.top_bedingungen ? 'Top-Bedingungen ✓' : 'Top-Bedingungen ✗'), 'top_bedingungen'));
+    kopf.append(nm, el('div', 'al-top-sub', r.ticker + ' · ' + (r.sektor || '–') + ' · ' + region(r.ticker)), chips);
+    d.appendChild(kopf);
+
+    // 2. Kurs und Abstand groß, 3. faire Spanne
+    const kz = el('div');
+    const kurs = el('div', 'al-d-kurs');
+    const k1 = el('div'); k1.append(el('span', '', 'Kurs'), mark(el('b', '', fmtKurs(num(r.kurs_eur))), 'kurs_eur'));
+    const k2 = el('div'); k2.append(el('span', '', 'Abstand zur fairen Mitte'), mark(el('b', cls(num(r.abstand_pct)), fmtPct(num(r.abstand_pct))), 'abstand_pct'));
+    kurs.append(k1, k2);
+    const sp = spanne(r, 28); sp.setAttribute('class', 'al-range'); sp.setAttribute('aria-hidden', 'true'); sp.style.marginTop = 'var(--cds-gap-sm)';
+    const lbl = el('div', 'al-range-lbl');
+    lbl.append(mark(el('span', '', 'fair ab ' + fmtKurs(num(r.fair_lo_eur))), 'fair_lo_eur'), mark(el('span', '', 'Mitte ' + fmtKurs(num(r.fair_mitte_eur))), 'fair_mitte_eur'), mark(el('span', '', 'bis ' + fmtKurs(num(r.fair_hi_eur))), 'fair_hi_eur'));
+    kz.append(kurs, sp, lbl, el('p', 'al-note', 'Faire Spanne (grün), Strich = faire Mitte, Punkt = Kurs.'));
+    d.appendChild(kz);
+
+    // 4./5. Texte
+    for (const [titel, f] of [['Warum diese Bewertung', 'warum'], ['Finanzielle Lage', 'finanzen']]) {
+      if (!r[f]) continue;
+      const s = sek(titel); s.appendChild(mark(el('p', '', String(r[f])), f)); d.appendChild(s);
+    }
+
+    // 6. Haken
+    if (r.haken) {
+      const s = sek('Haken');
+      const ul = el('ul', 'al-hakenliste');
+      for (const h of String(r.haken).split(', ')) ul.appendChild(el('li', '', h));
+      s.appendChild(mark(ul, 'haken'));
+      d.appendChild(s);
+    }
+
+    // 7. Punkte-Balken
+    const ps = sek('Woher die ' + r.punkte + ' Punkte kommen');
+    const sc = el('div', 'al-score');
+    const teile = [['Bewertung', num(r.bewertungs_pkt), 0, 4], ['Qualität', num(r.qualitaets_pkt), -3, 3], ['Trend lang', num(r.trend_pkt), -1, 1], ['Trend kurz', num(r.kurztrend_pkt), -1, 1], ['Schätzungen', num(r.revision_pkt), -1, 1], ['Nachrichten', num(r.nachrichten_pkt ?? 0), -2, 1]];
+    for (const [name, v, lo, hi] of teile) {
+      const tr = el('div', 'track'); const i = el('i');
+      const z = (0 - lo) / (hi - lo), f = (Math.max(lo, Math.min(hi, v || 0)) - lo) / (hi - lo);
+      i.style.left = Math.min(z, f) * 100 + '%'; i.style.width = Math.max(2, Math.abs(f - z) * 100) + '%';
+      i.style.background = v > 0 ? 'var(--color-ok)' : v < 0 ? 'var(--color-bad)' : 'var(--color-fg-muted)';
+      tr.appendChild(i);
+      sc.append(el('span', '', name), tr, el('span', 'num ' + cls(v), isNaN(v) ? '–' : (v > 0 ? '+' : '') + v));
+    }
+    ps.appendChild(sc);
+    d.appendChild(ps);
+
+    // 8. Nachrichten
+    const ns = sek('Nachrichten' + (r.nachrichten_datum ? ' (geprüft ' + fmtDatum(r.nachrichten_datum) + ')' : ''));
+    if (r.nachrichten) {
+      ns.appendChild(mark(el('p', num(r.nachrichten_pkt) > 0 ? 'pos' : num(r.nachrichten_pkt) < 0 ? 'neg' : '', (r.nachrichten_urteil ? r.nachrichten_urteil[0].toUpperCase() + r.nachrichten_urteil.slice(1) + ': ' : '') + r.nachrichten), 'nachrichten'));
+      ns.appendChild(linkListe(r.nachrichten_quellen));
+    } else {
+      ns.appendChild(el('p', 'muted', 'Keine geprüften Nachrichten aus den letzten 7 Tagen.'));
+    }
+    d.appendChild(ns);
+
+    // 9. Hype
+    if (r.hype) {
+      const hs = sek('🔥 Hype' + (r.hype_datum ? ' (' + fmtDatum(r.hype_datum) + ')' : '') + ' – gibt keine Punkte');
+      hs.appendChild(mark(el('p', '', r.hype), 'hype'));
+      hs.appendChild(linkListe(r.hype_quellen));
+      d.appendChild(hs);
+    }
+
+    // 10. Zahlen in 2 Spalten
+    const zs = sek('Alle Zahlen');
+    const dl = el('dl', 'al-zahlen');
+    const paar = (k, v, f, ccls) => { const z = el('div'); z.appendChild(el('dt', '', k)); const dd = el('dd', ccls || '', v); if (f) mark(dd, f); z.appendChild(dd); dl.appendChild(z); };
+    paar('KGV (nächstes Jahr)', fmtNum(num(r.kgv), 1), 'kgv');
+    paar('Gewinnwachstum', fmtPct(num(r.wachstum_pct)), 'wachstum_pct');
+    paar('PEG', fmtNum(num(r.peg), 2), 'peg');
+    paar('Wert nach KGV', fmtKurs(num(r.wert_kgv_eur)), 'wert_kgv_eur');
+    paar('Wert nach Cashflow (DCF)', r.wert_cf_eur == null ? 'nicht rechenbar' : fmtKurs(num(r.wert_cf_eur)), 'wert_cf_eur');
+    paar('Kursziel Analysten (Median)', fmtKurs(num(r.kursziel_eur)), 'kursziel_eur');
+    paar('Freier Cashflow zum Börsenwert', r.fcf_rendite_pct == null ? '–' : fmtNum(num(r.fcf_rendite_pct), 1) + ' %', 'fcf_rendite_pct');
+    paar('Börsenwert', fmtGeld(num(r.marktwert_eur)), 'marktwert_eur');
+    paar('Umsatz im Jahr', fmtGeld(num(r.umsatz_eur)), 'umsatz_eur');
+    paar('Operative Marge', isNaN(num(r.operative_marge_pct)) ? '–' : fmtNum(num(r.operative_marge_pct), 0) + ' %', 'operative_marge_pct');
+    paar(num(r.nettoschulden_eur) < 0 ? 'Nettoliquidität' : 'Nettoschulden', fmtGeld(Math.abs(num(r.nettoschulden_eur))), 'nettoschulden_eur');
+    paar('Dividende', isNaN(num(r.dividende_pct)) ? '–' : fmtNum(num(r.dividende_pct), 1) + ' %', 'dividende_pct');
+    paar('Zahl der Analysten', String(r.analysten ?? '–'), 'analysten');
+    paar('Trend lang', trendText(r.trend), 'trend', trendCls(r.trend));
+    paar('Trend kurz', trendText(r.kurztrend), 'kurztrend', trendCls(r.kurztrend));
+    paar('Letzter Monat', fmtPct1(num(r.veraenderung_1m_pct)), 'veraenderung_1m_pct', cls(num(r.veraenderung_1m_pct)));
+    paar('Vom Jahreshoch', fmtPct(num(r.unter_hoch_pct)), 'unter_hoch_pct');
+    paar('Schwankung im Jahr', isNaN(num(r.schwankung_pct)) ? '–' : fmtNum(num(r.schwankung_pct), 0) + ' %', 'schwankung_pct');
+    paar('Nächste Zahlen', r.zahlen_am ? fmtDatumLang(r.zahlen_am) : '–', 'zahlen_am');
+    zs.appendChild(dl);
+    d.appendChild(zs);
+
+    box.appendChild(d);
+  };
 
   // ---------- Berechnete Werte ----------
   dash.calc('meine_ueberblick', {
@@ -458,20 +674,22 @@
       }];
     },
   });
-  const row0 = (id) => { const g = dash.data(id); return g.status === 'ok' && g.data[0] ? g.data[0] : null; };
+  const row0 = (id) => { const g = daten(id); return g.status === 'ok' && g.data[0] ? g.data[0] : null; };
 
   // ---------- Leer oder voll ----------
   dash.onData(() => {
-    const g = dash.data('meine');
+    const g = daten('meine');
     const leer = g.status === 'ok' && echte(g.data).length === 0;
     document.querySelectorAll('[data-leer]').forEach((e) => { if (leer) e.removeAttribute('hidden'); else e.setAttribute('hidden', ''); });
     document.querySelectorAll('[data-voll]').forEach((e) => { if (leer) e.setAttribute('hidden', ''); else e.removeAttribute('hidden'); });
   });
 
   // ---------- Reiter ----------
+  const TITEL = {meine: 'Meine Aktien', alle: 'Alle Aktien', etfs: 'ETFs', methode: 'So wird gerechnet'};
   const zeigeReiter = (name, link) => {
     document.querySelectorAll('.al-tabs [data-tab]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === name)));
     document.querySelectorAll('[data-panel]').forEach((p) => { if (p.dataset.panel === name) p.removeAttribute('hidden'); else p.setAttribute('hidden', ''); });
+    const t = document.getElementById('al-titel'); if (t) t.textContent = TITEL[name] || 'Aktien-Liste';
     if (link) dash.setLink(name);
   };
   document.querySelectorAll('.al-tabs [data-tab]').forEach((b) => b.addEventListener('click', () => zeigeReiter(b.dataset.tab, true)));
@@ -479,11 +697,30 @@
     const h = location.hash.slice(1);
     if (h && document.querySelector(`[data-panel="${CSS.escape(h)}"]`)) zeigeReiter(h, false);
   }
+
+  // ---------- „Mehr Spalten“ (nur Klasse an der Tabelle, kein data-draw-Element) ----------
+  document.querySelectorAll('[data-spalten]').forEach((b) => b.addEventListener('click', () => {
+    const t = document.getElementById(b.dataset.spalten);
+    if (!t) return;
+    const an = !t.classList.contains('alle-spalten');
+    t.classList.toggle('alle-spalten', an);
+    b.setAttribute('aria-pressed', String(an));
+    b.textContent = an ? 'Weniger Spalten' : 'Mehr Spalten';
+  }));
+
+  // ---------- Meine Aktien: Auswahl ----------
+  const meineAuswahl = () => {
+    const g = daten('meine');
+    if (g.status !== 'ok') return null;
+    const ok = echte(g.data).filter(bewertet).sort((a, b) => num(a.rang) - num(b.rang));
+    return ok.find((x) => x.ticker === window.alAuswahl) || ok[0] || null;
+  };
   window.alZeigeAktie = (ticker) => {
     window.alAuswahl = ticker;
     dash.draw('detail');
+    dash.draw('karten');
     dash.draw('tabelle');
-    document.querySelectorAll('#detail').forEach((d) => d.scrollIntoView({behavior: 'smooth', block: 'start'}));
+    if (!breit()) document.querySelectorAll('#detail').forEach((d) => d.scrollIntoView({behavior: 'smooth', block: 'start'}));
   };
 
   // ---------- Kopf und Kennzahlen ----------
@@ -493,35 +730,11 @@
   dash.draw('anzahl', ub((r) => String(r.anzahl)));
   dash.draw('bewertet', ub((r) => String(r.bewertet)));
   dash.draw('beste', ub((r) => r.beste || '–'));
+  // Markierung heißt historisch „beste_platz“, gezeigt werden nur Punkte (kein Platz)
   dash.draw('beste_platz', ub((r) => (r.beste_punkte != null ? r.beste_punkte + ' von 10 Punkten' : '–')));
   dash.draw('topbed', ub((r) => String(r.top_bedingungen) + ' von ' + r.bewertet));
   dash.draw('naechste', ub((r) => r.naechste_aktie || 'keine bekannt'));
   dash.draw('naechste_tag', ub((r) => (r.naechste_tag ? fmtDatumLang(r.naechste_tag) : '–')));
-
-  // ---------- Kleine Grafiken ----------
-  const spanne = (r, h) => {
-    const k = num(r.kurs_eur), lo = num(r.fair_lo_eur), hi = num(r.fair_hi_eur), mi = num(r.fair_mitte_eur);
-    const s = document.createElementNS(SVG, 'svg');
-    s.setAttribute('viewBox', `0 0 200 ${h}`);
-    s.setAttribute('preserveAspectRatio', 'none');
-    if ([k, lo, hi].some(isNaN)) return s;
-    const a = Math.min(k, lo) * 0.92, b = Math.max(k, hi) * 1.04;
-    const x = (v) => 4 + (v - a) / (b - a) * 192;
-    const add = (tag, at) => { const n = document.createElementNS(SVG, tag); for (const [kk, vv] of Object.entries(at)) n.setAttribute(kk, vv); s.appendChild(n); return n; };
-    const cy = h / 2;
-    add('rect', {x: 4, y: cy - 2, width: 192, height: 4, rx: 2, style: 'fill: var(--color-border-line)'});
-    add('rect', {x: x(lo), y: cy - 5, width: Math.max(2, x(hi) - x(lo)), height: 10, rx: 4, style: 'fill: color-mix(in srgb, var(--color-ok) 40%, transparent)'});
-    if (!isNaN(mi)) add('rect', {x: x(mi) - 0.75, y: cy - 7, width: 1.5, height: 14, style: 'fill: var(--color-ok)'});
-    add('circle', {cx: x(k), cy, r: Math.min(6, h / 3), style: 'fill: var(--color-fg); stroke: var(--color-panel); stroke-width: 2', 'vector-effect': 'non-scaling-stroke'});
-    return s;
-  };
-  const punkteDots = (p) => {
-    const w = el('span', 'al-dots');
-    for (let i = 1; i <= 10; i++) w.appendChild(el('i', p >= i ? 'on' : ''));
-    if (p < 0) w.firstChild.className = 'minus';
-    return w;
-  };
-  const bar = (frac) => { const b = el('span', 'al-bar'); const i = el('i'); i.style.width = Math.max(0, Math.min(1, frac)) * 100 + '%'; b.appendChild(i); return b; };
 
   // ---------- Sortierung (Karten und Tabelle) ----------
   let sortKey = 'rang', sortDir = 1;
@@ -544,17 +757,17 @@
   // ---------- Karten ----------
   dash.draw('karten', (box) => {
     box.replaceChildren();
-    const g = dash.data('meine');
+    const g = daten('meine');
     if (g.status !== 'ok') return;
     const rows = echte(g.data).sort(meineVergleich);
-    rows.forEach((r, i) => {
+    const aktiv = meineAuswahl();
+    rows.forEach((r) => {
       const w = `ticker=${encodeURIComponent(r.ticker)}`;
       const mark = (e, f) => { e.dataset.field = f; e.dataset.where = w; return e; };
-      const c = el('article', 'al-top' + (bewertet(r) ? (r.top_bedingungen ? ' gut' : '') : ' aus'));
-      c.style.animationDelay = (i * 50) + 'ms';
+      const c = el('article', 'al-top' + (bewertet(r) ? (r.top_bedingungen ? ' gut' : '') : ' aus') + (aktiv && aktiv.ticker === r.ticker ? ' sel' : ''));
       if (!bewertet(r)) {
-        c.append(el('div', 'al-top-head'), mark(el('h3', 'al-top-name', r.aktie || r.ticker), 'aktie'), el('div', 'al-top-sub', r.ticker));
-        c.firstChild.append(el('span', 'al-top-rang', 'nicht bewertet'));
+        const h0 = el('div', 'al-top-head'); h0.append(el('span', 'al-top-rang', 'nicht bewertet'));
+        c.append(h0, mark(el('h3', 'al-top-name', r.aktie || r.ticker), 'aktie'), el('div', 'al-top-sub', r.ticker));
         c.append(mark(el('p', 'al-note', String(r.grund || 'keine Bewertung möglich')), 'grund'));
         box.appendChild(c);
         return;
@@ -565,27 +778,29 @@
       const head = el('div', 'al-top-head');
       head.append(mark(el('span', 'al-top-rang', 'Feinwert ' + fmtNum(num(r.feinwert), 0)), 'feinwert'), mark(el('span', 'al-badge', r.punkte + ' Punkte'), 'punkte'));
       const nm = mark(el('h3', 'al-top-name', r.aktie + (r.waehrung === 'EUR' ? ' 🇪🇺' : '')), 'aktie');
+      if (r.hype) { const f = el('span', '', ' 🔥'); f.title = 'Hype: ' + r.hype; nm.appendChild(f); }
       const sub = el('div', 'al-top-sub', r.ticker + ' · ' + (r.sektor || '–'));
-      const kg = kurzGrund(r.warum);
-      const kt = kg ? mark(el('p', 'al-kurztext', kg), 'warum') : null;
       const zeile = el('div', 'al-top-row');
       const ab = mark(el('span', 'al-top-ab ' + cls(num(r.abstand_pct)), fmtPct(num(r.abstand_pct))), 'abstand_pct');
       ab.title = 'Abstand: so viel liegt die faire Mitte über dem Kurs';
       zeile.append(mark(el('span', 'al-top-kurs', fmtKurs(num(r.kurs_eur))), 'kurs_eur'), ab);
-      const sp = spanne(r, 34); sp.setAttribute('class', 'al-range'); sp.setAttribute('aria-hidden', 'true');
+      const sp = spanne(r, 28); sp.setAttribute('class', 'al-range'); sp.setAttribute('aria-hidden', 'true');
       const lbl = el('div', 'al-range-lbl');
       lbl.append(mark(el('span', '', 'fair ab ' + fmtKurs(num(r.fair_lo_eur))), 'fair_lo_eur'), mark(el('span', '', 'bis ' + fmtKurs(num(r.fair_hi_eur))), 'fair_hi_eur'));
+      const kg = kurzGrund(r.warum);
+      const kt = kg ? mark(el('p', 'al-kurztext', kg), 'warum') : null;
+      // ruhige Zeile statt vieler Chips
       const meta = el('div', 'al-top-meta');
-      meta.append(el('span', 'al-chip ' + trendCls(r.trend), 'lang ' + (PFEIL[r.trend] || '–')), el('span', 'al-chip ' + trendCls(r.kurztrend), 'kurz ' + (PFEIL[r.kurztrend] || '–')));
-      if (r.zahlen_am) meta.append(el('span', 'al-chip', 'Zahlen ' + fmtDatum(r.zahlen_am)));
-      if (r.hype) { const hc = el('span', 'al-chip', '🔥 Hype'); hc.title = r.hype; meta.append(hc); }
-      meta.append(mark(el('span', 'al-chip ' + (r.top_bedingungen ? 'pos' : 'muted'), r.top_bedingungen ? 'Top-Bedingungen ✓' : 'Top-Bedingungen ✗'), 'top_bedingungen'));
-      c.append(head, nm, sub, ...(kt ? [kt] : []), zeile, sp, lbl, meta);
+      const tl = el('span'); tl.append('Trend lang ', el('span', trendCls(r.trend), PFEIL[r.trend] || '–'), ' · kurz ', el('span', trendCls(r.kurztrend), PFEIL[r.kurztrend] || '–'));
+      meta.append(tl);
+      if (r.zahlen_am) meta.append(el('span', '', 'Zahlen ' + fmtDatum(r.zahlen_am)));
+      meta.append(mark(el('span', r.top_bedingungen ? 'pos' : '', r.top_bedingungen ? 'Top-Bed. ✓' : 'Top-Bed. ✗'), 'top_bedingungen'));
+      c.append(head, nm, sub, zeile, sp, lbl, ...(kt ? [kt] : []), meta);
       box.appendChild(c);
     });
   });
 
-  // ---------- Tabelle ----------
+  // ---------- Tabelle Meine Aktien ----------
   const richtungText = (d) => (d > 0 ? '↑ aufsteigend' : '↓ absteigend');
   const meineSortSync = () => {
     const sel = document.getElementById('meine-sort');
@@ -609,174 +824,70 @@
   }));
   dash.draw('tabelle', (tbody) => {
     tbody.replaceChildren();
-    const g = dash.data('meine');
+    const g = daten('meine');
     if (g.status !== 'ok') return;
     const rows = echte(g.data);
     rows.sort(meineVergleich);
+    const aktiv = meineAuswahl();
     for (const r of rows) {
-      const tr = el('tr', (bewertet(r) ? 'click' : '') + (window.alAuswahl === r.ticker ? ' sel' : ''));
+      const tr = el('tr', (bewertet(r) ? 'click' : '') + (aktiv && aktiv.ticker === r.ticker ? ' sel' : ''));
       tr.dataset.key = r.ticker;
       const td = (text, c) => { const t = el('td', c, text); tr.appendChild(t); return t; };
       if (!bewertet(r)) {
-        td(r.aktie || r.ticker, 'name'); td(r.ticker, 'tick opt');
+        td(r.aktie || r.ticker, 'name'); td(r.ticker, 'tick x');
         const t = td('nicht bewertet: ' + (r.grund || ''), 'muted'); t.colSpan = 13;
         tbody.appendChild(tr);
         continue;
       }
-      tr.addEventListener('click', () => { window.alAuswahl = r.ticker; dash.draw('detail'); dash.draw('tabelle'); });
-      td(r.aktie + (r.waehrung === 'EUR' ? ' 🇪🇺' : ''), 'name');
-      td(r.ticker, 'tick opt');
+      tr.addEventListener('click', () => window.alZeigeAktie(r.ticker));
+      const n = td(r.aktie + (r.waehrung === 'EUR' ? ' 🇪🇺' : ''), 'name');
+      if (r.hype) { const f = el('span', '', ' 🔥'); f.title = 'Hype: ' + r.hype; n.appendChild(f); }
+      td(r.ticker, 'tick x');
       td(String(r.punkte), '').appendChild(punkteDots(num(r.punkte)));
-      td(fmtNum(num(r.feinwert), 0), 'opt').appendChild(bar(num(r.feinwert) / 100));
+      td(fmtNum(num(r.feinwert), 0), '').appendChild(bar(num(r.feinwert) / 100));
       td(fmtKurs(num(r.kurs_eur)), 'num');
       const ab = num(r.abstand_pct);
       const a = td(fmtPct(ab), cls(ab));
       const mini = spanne(r, 12); mini.setAttribute('class', 'al-mini'); mini.setAttribute('aria-hidden', 'true');
       a.appendChild(mini);
-      td(r.top_bedingungen ? 'ja' : 'nein', 'opt ' + (r.top_bedingungen ? 'pos' : 'muted'));
-      td(trendText(r.trend), 'opt ' + trendCls(r.trend));
+      td(r.top_bedingungen ? 'ja' : 'nein', 'x ' + (r.top_bedingungen ? 'pos' : 'muted'));
+      td(trendText(r.trend), trendCls(r.trend));
       const m1 = num(r.veraenderung_1m_pct);
-      td(trendText(r.kurztrend) + (isNaN(m1) ? '' : ' (' + fmtPct1(m1) + ')'), 'opt ' + trendCls(r.kurztrend));
-      td(fmtNum(num(r.kgv), 1), 'num opt');
-      td(fmtPct(num(r.wachstum_pct)), 'num opt');
+      td(trendText(r.kurztrend) + (isNaN(m1) ? '' : ' (' + fmtPct1(m1) + ')'), 'x ' + trendCls(r.kurztrend));
+      td(fmtNum(num(r.kgv), 1), 'num x');
+      td(fmtPct(num(r.wachstum_pct)), 'num x');
       const uh = num(r.unter_hoch_pct);
-      td(fmtPct(uh), 'num opt ' + (uh < -40 ? 'neg' : ''));
+      td(fmtPct(uh), 'num x ' + (uh < -40 ? 'neg' : ''));
       const sw = num(r.schwankung_pct);
-      td(isNaN(sw) ? '–' : fmtNum(sw, 0) + ' %', 'num opt ' + (sw > 60 ? 'neg' : ''));
-      td(r.zahlen_am ? fmtDatum(r.zahlen_am) : '–', 'opt');
-      td(r.sektor || '–', 'opt');
+      td(isNaN(sw) ? '–' : fmtNum(sw, 0) + ' %', 'num x ' + (sw > 60 ? 'neg' : ''));
+      td(r.zahlen_am ? fmtDatum(r.zahlen_am) : '–', 'x');
+      td(r.sektor || '–', 'lang');
       tbody.appendChild(tr);
     }
   });
 
-  // ---------- Detail ----------
+  // ---------- Detail Meine Aktien ----------
   dash.draw('detail', (box) => {
     box.replaceChildren();
-    const g = dash.data('meine');
-    if (g.status !== 'ok') return;
-    const ok = echte(g.data).filter(bewertet).sort((a, b) => num(a.rang) - num(b.rang));
-    if (!ok.length) return;
-    zeigeDetail(box, ok.find((x) => x.ticker === window.alAuswahl) || ok[0]);
+    const r = meineAuswahl();
+    if (!r) { if (daten('meine').status === 'ok') box.appendChild(el('p', 'al-note', 'Noch keine bewertete Aktie in deiner Liste.')); return; }
+    zeigeDetail(box, r);
   });
-  const zeigeDetail = (box, r) => {
-    const w = `ticker=${encodeURIComponent(r.ticker)}`;
-    const mark = (e, f) => { e.dataset.field = f; e.dataset.where = w; return e; };
-    const grid = el('div', 'al-det-grid');
-    if (r.warum || r.finanzen) {
-      const tx = el('div', 'al-texte');
-      for (const [titel, f] of [['Warum diese Bewertung', 'warum'], ['Finanzielle Lage', 'finanzen']]) {
-        if (!r[f]) continue;
-        const d = el('div');
-        d.append(el('div', 'al-note', titel), mark(el('p', '', String(r[f])), f));
-        tx.appendChild(d);
-      }
-      box.appendChild(tx);
-    }
-
-    const a = el('div');
-    const kopf = el('div', 'al-top-head');
-    kopf.append(mark(el('span', 'al-chip ' + (r.top_bedingungen ? 'pos' : 'muted'), r.top_bedingungen ? 'Top-Bedingungen ✓' : 'Top-Bedingungen ✗'), 'top_bedingungen'),
-      mark(el('span', 'al-top-rang', 'Feinwert ' + fmtNum(num(r.feinwert), 0)), 'feinwert'));
-    a.append(kopf, mark(el('h3', 'al-det-name', r.aktie + (r.waehrung === 'EUR' ? ' 🇪🇺' : '')), 'aktie'), el('div', 'al-top-sub', r.ticker + ' · ' + (r.sektor || '–')));
-    const zeile = el('div', 'al-top-row'); zeile.style.marginTop = 'var(--cds-gap-md)';
-    zeile.append(mark(el('span', 'al-top-kurs', fmtKurs(num(r.kurs_eur))), 'kurs_eur'), mark(el('span', 'al-top-ab ' + cls(num(r.abstand_pct)), fmtPct(num(r.abstand_pct)) + ' Abstand'), 'abstand_pct'));
-    const sp = spanne(r, 34); sp.setAttribute('class', 'al-range'); sp.setAttribute('aria-hidden', 'true');
-    const lbl = el('div', 'al-range-lbl');
-    lbl.append(mark(el('span', '', 'fair ab ' + fmtKurs(num(r.fair_lo_eur))), 'fair_lo_eur'), mark(el('span', '', 'Mitte ' + fmtKurs(num(r.fair_mitte_eur))), 'fair_mitte_eur'), mark(el('span', '', 'bis ' + fmtKurs(num(r.fair_hi_eur))), 'fair_hi_eur'));
-    a.append(zeile, sp, lbl);
-    if (r.haken) {
-      const ul = el('ul', 'al-hakenliste');
-      for (const h of String(r.haken).split(', ')) ul.appendChild(el('li', '', h));
-      a.append(el('div', 'al-note', 'Haken:'), ul);
-    }
-
-    const b = el('div');
-    b.appendChild(el('div', 'al-note', 'Woher die ' + r.punkte + ' Punkte kommen'));
-    const sc = el('div', 'al-score');
-    const teile = [['Bewertung', num(r.bewertungs_pkt), 0, 4], ['Qualität', num(r.qualitaets_pkt), -3, 3], ['Trend lang', num(r.trend_pkt), -1, 1], ['Trend kurz', num(r.kurztrend_pkt), -1, 1], ['Schätzungen', num(r.revision_pkt), -1, 1], ['Nachrichten', num(r.nachrichten_pkt ?? 0), -2, 1]];
-    for (const [name, v, lo, hi] of teile) {
-      const tr = el('div', 'track'); const i = el('i');
-      const z = (0 - lo) / (hi - lo), f = (Math.max(lo, Math.min(hi, v || 0)) - lo) / (hi - lo);
-      i.style.left = Math.min(z, f) * 100 + '%'; i.style.width = Math.max(2, Math.abs(f - z) * 100) + '%';
-      i.style.background = v > 0 ? 'var(--color-ok)' : v < 0 ? 'var(--color-bad)' : 'var(--color-fg-muted)';
-      tr.appendChild(i);
-      sc.append(el('span', '', name), tr, el('span', 'num ' + cls(v), isNaN(v) ? '–' : (v > 0 ? '+' : '') + v));
-    }
-    b.appendChild(sc);
-    const nb = el('div', 'al-news');
-    nb.appendChild(el('div', 'al-note', 'Nachrichten' + (r.nachrichten_datum ? ' (geprüft ' + fmtDatum(r.nachrichten_datum) + ')' : '')));
-    if (r.nachrichten) {
-      nb.appendChild(mark(el('p', 'al-news-text ' + (num(r.nachrichten_pkt) > 0 ? 'pos' : num(r.nachrichten_pkt) < 0 ? 'neg' : ''), (r.nachrichten_urteil ? r.nachrichten_urteil[0].toUpperCase() + r.nachrichten_urteil.slice(1) + ': ' : '') + r.nachrichten), 'nachrichten'));
-      const q = el('div', 'al-news-links');
-      (r.nachrichten_quellen || []).forEach((u, i) => {
-        let host = 'Quelle'; try { host = new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return; }
-        const lnk = el('a', '', host); lnk.href = u; lnk.target = '_blank'; lnk.rel = 'noopener noreferrer';
-        q.appendChild(lnk);
-      });
-      nb.appendChild(q);
-    } else {
-      nb.appendChild(el('p', 'al-news-text muted', 'Keine geprüften Nachrichten aus den letzten 7 Tagen.'));
-    }
-    b.appendChild(nb);
-    if (r.hype) {
-      const hb = el('div', 'al-news');
-      hb.appendChild(el('div', 'al-note', '🔥 Hype' + (r.hype_datum ? ' (' + fmtDatum(r.hype_datum) + ')' : '') + ' – gibt keine Punkte'));
-      hb.appendChild(mark(el('p', 'al-news-text', r.hype), 'hype'));
-      const q = el('div', 'al-news-links');
-      (r.hype_quellen || []).forEach((u) => {
-        let host = 'Quelle'; try { host = new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return; }
-        const lnk = el('a', '', host); lnk.href = u; lnk.target = '_blank'; lnk.rel = 'noopener noreferrer'; q.appendChild(lnk);
-      });
-      hb.appendChild(q);
-      b.appendChild(hb);
-    }
-    const fw = el('div', 'al-note'); fw.style.marginTop = 'var(--cds-gap-md)';
-    fw.append('Feinwert ', mark(el('b', '', fmtNum(num(r.feinwert), 0)), 'feinwert'), ' von 100');
-    b.appendChild(fw);
-
-    const c = el('div');
-    const dl = el('dl', 'al-det-list');
-    const paar = (k, v, f, ccls) => { dl.appendChild(el('dt', '', k)); const dd = el('dd', ccls || '', v); if (f) mark(dd, f); dl.appendChild(dd); };
-    paar('KGV (nächstes Jahr)', fmtNum(num(r.kgv), 1), 'kgv');
-    paar('Gewinnwachstum', fmtPct(num(r.wachstum_pct)), 'wachstum_pct');
-    paar('PEG', fmtNum(num(r.peg), 2), 'peg');
-    paar('Wert nach KGV', fmtKurs(num(r.wert_kgv_eur)), 'wert_kgv_eur');
-    paar('Wert nach Cashflow (DCF)', r.wert_cf_eur == null ? 'nicht rechenbar' : fmtKurs(num(r.wert_cf_eur)), 'wert_cf_eur');
-    paar('Kursziel Analysten (Median)', fmtKurs(num(r.kursziel_eur)), 'kursziel_eur');
-    paar('Freier Cashflow zum Börsenwert', r.fcf_rendite_pct == null ? '–' : fmtNum(num(r.fcf_rendite_pct), 1) + ' %', 'fcf_rendite_pct');
-    paar('Börsenwert', fmtGeld(num(r.marktwert_eur)), 'marktwert_eur');
-    paar('Umsatz im Jahr', fmtGeld(num(r.umsatz_eur)), 'umsatz_eur');
-    paar('Operative Marge', isNaN(num(r.operative_marge_pct)) ? '–' : fmtNum(num(r.operative_marge_pct), 0) + ' %', 'operative_marge_pct');
-    paar(num(r.nettoschulden_eur) < 0 ? 'Nettoliquidität' : 'Nettoschulden', fmtGeld(Math.abs(num(r.nettoschulden_eur))), 'nettoschulden_eur');
-    paar('Dividende', isNaN(num(r.dividende_pct)) ? '–' : fmtNum(num(r.dividende_pct), 1) + ' %', 'dividende_pct');
-    paar('Zahl der Analysten', String(r.analysten ?? '–'), 'analysten');
-    paar('Trend lang', trendText(r.trend), 'trend', trendCls(r.trend));
-    paar('Trend kurz', trendText(r.kurztrend), 'kurztrend', trendCls(r.kurztrend));
-    paar('Letzter Monat', fmtPct1(num(r.veraenderung_1m_pct)), 'veraenderung_1m_pct', cls(num(r.veraenderung_1m_pct)));
-    paar('Vom Jahreshoch', fmtPct(num(r.unter_hoch_pct)), 'unter_hoch_pct');
-    paar('Schwankung im Jahr', isNaN(num(r.schwankung_pct)) ? '–' : fmtNum(num(r.schwankung_pct), 0) + ' %', 'schwankung_pct');
-    paar('Nächste Zahlen', r.zahlen_am ? fmtDatumLang(r.zahlen_am) : '–', 'zahlen_am');
-    c.appendChild(dl);
-
-    grid.append(a, b, c);
-    box.appendChild(grid);
-  };
 
   // ---------- Alle Aktien ----------
-  const LAENDER = [['', 'USA'], ['.DE', 'Deutschland'], ['.L', 'Großbritannien'], ['.PA', 'Frankreich'], ['.AS', 'Niederlande'], ['.MC', 'Spanien'], ['.MI', 'Italien'], ['.SW', 'Schweiz'], ['.ST', 'Schweden'], ['.CO', 'Dänemark'], ['.OL', 'Norwegen'], ['.HE', 'Finnland'], ['.BR', 'Belgien'], ['.TO', 'Kanada'], ['.T', 'Japan'], ['.AX', 'Australien'], ['.HK', 'Hongkong']];
-  const region = (t) => { const m = /\.[A-Z]{1,2}$/.exec(t || ''); const e = m ? m[0] : ''; const f = LAENDER.find((x) => x[0] === e); return f ? f[1] : 'andere'; };
-  const istNeu = (r) => { if (!r.aufgenommen) return false; const d = new Date(r.aufgenommen); return !isNaN(d) && (Date.now() - d.getTime()) < 7 * 864e5; };
   const alleF = {suche: '', region: '', sektor: '', punkte: '', top: false, neu: false, hype: false, limit: 100};
   let aSortKey = 'punkte', aSortDir = -1, alleAuswahl = null;
   {
     const sel = document.getElementById('alle-region');
     for (const [, n] of LAENDER) { const o = el('option', '', n); o.value = n; sel.appendChild(o); }
   }
-  const neuZeichnen = () => { alleF.limit = 100; dash.draw('alle_tabelle'); };
+  // Tabelle und „Mehr zeigen“ werden jeweils von ihrer eigenen draw-Funktion gezeichnet (kein Zeichnen ineinander)
+  const alleNeu = () => { dash.draw('alle_tabelle'); dash.draw('alle_mehr'); };
+  const neuZeichnen = () => { alleF.limit = 100; alleNeu(); };
   document.getElementById('alle-suche').addEventListener('input', (e) => { alleF.suche = e.target.value.trim().toLowerCase(); neuZeichnen(); });
   for (const [id, k] of [['alle-region', 'region'], ['alle-sektor', 'sektor'], ['alle-punkte', 'punkte']]) document.getElementById(id).addEventListener('change', (e) => { alleF[k] = e.target.value; neuZeichnen(); });
   for (const [id, k] of [['alle-top', 'top'], ['alle-neu', 'neu'], ['alle-hype', 'hype']]) document.getElementById(id).addEventListener('change', (e) => { alleF[k] = e.target.checked; neuZeichnen(); });
-  document.getElementById('alle-mehr').addEventListener('click', () => { alleF.limit += 200; dash.draw('alle_tabelle'); });
+  document.getElementById('alle-mehr').addEventListener('click', () => { alleF.limit += 200; alleNeu(); });
   const alleSortSync = () => {
     const sel = document.getElementById('alle-sort');
     if ([...sel.options].some((o) => o.value === aSortKey)) sel.value = aSortKey;
@@ -787,15 +898,15 @@
     if (k === aSortKey) aSortDir = -aSortDir; else { aSortKey = k; aSortDir = AUF.includes(k) ? 1 : -1; }
     document.querySelectorAll('.al-alle th').forEach((th) => th.removeAttribute('aria-sort'));
     const th = b.closest('th'); if (th) th.setAttribute('aria-sort', aSortDir > 0 ? 'ascending' : 'descending');
-    alleSortSync(); dash.draw('alle_tabelle');
+    alleSortSync(); alleNeu();
   }));
   document.getElementById('alle-sort').addEventListener('change', (e) => {
     aSortKey = e.target.value; aSortDir = AUF.includes(aSortKey) ? 1 : -1;
     document.querySelectorAll('.al-alle th').forEach((th) => th.removeAttribute('aria-sort'));
-    alleSortSync(); alleF.limit = 100; dash.draw('alle_tabelle');
+    alleSortSync(); neuZeichnen();
   });
-  document.getElementById('alle-richtung').addEventListener('click', () => { aSortDir = -aSortDir; alleSortSync(); alleF.limit = 100; dash.draw('alle_tabelle'); });
-  const alleZeilen = () => { const g = dash.data('alle'); return g.status === 'ok' ? g.data.filter((r) => r.ticker) : null; };
+  document.getElementById('alle-richtung').addEventListener('click', () => { aSortDir = -aSortDir; alleSortSync(); neuZeichnen(); });
+  const alleZeilen = () => { const g = daten('alle'); return g.status === 'ok' ? g.data.filter((r) => r.ticker) : null; };
   const standard = (a, b) => (num(b.punkte) - num(a.punkte)) || (num(b.feinwert) - num(a.feinwert));
   let sektorenGefuellt = false;
   dash.onData(() => {
@@ -837,61 +948,189 @@
     });
     return rows;
   };
+  const alleAktiv = () => { const rows = alleZeilen(); if (!rows || !rows.length) return null; return rows.find((x) => x.ticker === alleAuswahl) || rows.slice().sort(standard)[0]; };
   dash.draw('alle_mehr', (mehr) => {
     const rows = gefiltert();
     const rest = rows ? rows.length - Math.min(rows.length, alleF.limit) : 0;
     mehr.hidden = rest <= 0;
-    mehr.textContent = 'Mehr zeigen (' + nf(0).format(rest) + ' weitere)';
+    mehr.textContent = rest > 0 ? 'Mehr zeigen (' + nf(0).format(rest) + ' weitere)' : '';
   });
   dash.draw('alle_tabelle', (tbody) => {
     tbody.replaceChildren();
     const alleR = gefiltert();
-    dash.draw('alle_mehr');
     if (!alleR) return;
     const rows = alleR.slice(0, alleF.limit);
     if (!rows.length) {
       const tr = el('tr'); const t = el('td', 'muted', 'Keine Aktie passt zu diesen Filtern.'); t.colSpan = 16; tr.appendChild(t); tbody.appendChild(tr);
     }
+    const aktiv = alleAktiv();
     for (const r of rows) {
-      const tr = el('tr', 'click' + (alleAuswahl === r.ticker ? ' sel' : ''));
+      const tr = el('tr', 'click' + (aktiv && aktiv.ticker === r.ticker ? ' sel' : ''));
       tr.dataset.key = r.ticker;
       const td = (text, c) => { const t = el('td', c, text); tr.appendChild(t); return t; };
       tr.addEventListener('click', () => {
         alleAuswahl = r.ticker; dash.draw('alle_detail'); dash.draw('alle_tabelle');
-        document.getElementById('alle-detail').scrollIntoView({behavior: 'smooth', block: 'start'});
+        if (!breit()) document.getElementById('alle-detail').scrollIntoView({behavior: 'smooth', block: 'start'});
       });
       const n = td((r.in_meine ? '★ ' : '') + r.aktie + (r.waehrung === 'EUR' ? ' 🇪🇺' : ''), 'name');
       if (r.hype) { const f = el('span', '', ' 🔥'); f.title = 'Hype: ' + r.hype; n.appendChild(f); }
       if (istNeu(r)) n.appendChild(el('span', 'al-neu', 'NEU'));
-      td(r.ticker, 'tick opt');
+      td(r.ticker, 'tick x');
       td(String(r.punkte), '').appendChild(punkteDots(num(r.punkte)));
-      td(fmtNum(num(r.feinwert), 0), 'opt').appendChild(bar(num(r.feinwert) / 100));
+      td(fmtNum(num(r.feinwert), 0), '').appendChild(bar(num(r.feinwert) / 100));
       td(fmtKurs(num(r.kurs_eur)), 'num');
       const ab = num(r.abstand_pct);
       const a = td(fmtPct(ab), cls(ab));
       const mini = spanne(r, 12); mini.setAttribute('class', 'al-mini'); mini.setAttribute('aria-hidden', 'true');
       a.appendChild(mini);
-      td(r.top_bedingungen ? 'ja' : 'nein', 'opt ' + (r.top_bedingungen ? 'pos' : 'muted'));
-      td(trendText(r.trend), 'opt ' + trendCls(r.trend));
+      td(r.top_bedingungen ? 'ja' : 'nein', 'x ' + (r.top_bedingungen ? 'pos' : 'muted'));
+      td(trendText(r.trend), trendCls(r.trend));
       const m1 = num(r.veraenderung_1m_pct);
-      td(trendText(r.kurztrend) + (isNaN(m1) ? '' : ' (' + fmtPct1(m1) + ')'), 'opt ' + trendCls(r.kurztrend));
-      td(fmtNum(num(r.kgv), 1), 'num opt');
-      td(fmtPct(num(r.wachstum_pct)), 'num opt');
+      td(trendText(r.kurztrend) + (isNaN(m1) ? '' : ' (' + fmtPct1(m1) + ')'), 'x ' + trendCls(r.kurztrend));
+      td(fmtNum(num(r.kgv), 1), 'num x');
+      td(fmtPct(num(r.wachstum_pct)), 'num x');
       const uh = num(r.unter_hoch_pct);
-      td(fmtPct(uh), 'num opt ' + (uh < -40 ? 'neg' : ''));
+      td(fmtPct(uh), 'num x ' + (uh < -40 ? 'neg' : ''));
       const sw = num(r.schwankung_pct);
-      td(isNaN(sw) ? '–' : fmtNum(sw, 0) + ' %', 'num opt ' + (sw > 60 ? 'neg' : ''));
-      td(r.zahlen_am ? fmtDatum(r.zahlen_am) : '–', 'opt');
-      td(region(r.ticker), 'opt');
-      td(r.sektor || '–', 'opt');
+      td(isNaN(sw) ? '–' : fmtNum(sw, 0) + ' %', 'num x ' + (sw > 60 ? 'neg' : ''));
+      td(r.zahlen_am ? fmtDatum(r.zahlen_am) : '–', 'x');
+      td(region(r.ticker), '');
+      td(r.sektor || '–', 'lang');
       tbody.appendChild(tr);
     }
   });
   dash.draw('alle_detail', (box) => {
     box.replaceChildren();
-    const rows = alleZeilen();
-    if (!rows || !rows.length) return;
-    const r = rows.find((x) => x.ticker === alleAuswahl) || rows.slice().sort(standard)[0];
-    zeigeDetail(box, r);
+    const r = alleAktiv();
+    if (r) zeigeDetail(box, r);
+  });
+
+  // ---------- ETFs ----------
+  const etfF = {suche: '', gruppe: ''};
+  let eSortKey = null, eSortDir = -1;
+  const E_AUF = ['name', 'ticker', 'gruppe', 'trend', 'ter_pct', 'vola_1j'];
+  const E_TREND = {'aufwärts': 0, 'seitwärts': 1, 'abwärts': 2};
+  const etfZeilen = () => { const g = daten('etfs'); return g.status === 'ok' && Array.isArray(g.data) ? g.data.filter((r) => r && r.ticker) : null; };
+  document.getElementById('etf-suche').addEventListener('input', (e) => { etfF.suche = e.target.value.trim().toLowerCase(); dash.draw('etf_tabelle'); });
+  document.getElementById('etf-gruppe').addEventListener('change', (e) => { etfF.gruppe = e.target.value; dash.draw('etf_tabelle'); });
+  document.querySelectorAll('.al-etfs th button[data-esort]').forEach((b) => b.addEventListener('click', () => {
+    const k = b.dataset.esort;
+    if (k === eSortKey) eSortDir = -eSortDir; else { eSortKey = k; eSortDir = E_AUF.includes(k) ? 1 : -1; }
+    document.querySelectorAll('.al-etfs th').forEach((th) => th.removeAttribute('aria-sort'));
+    const th = b.closest('th'); if (th) th.setAttribute('aria-sort', eSortDir > 0 ? 'ascending' : 'descending');
+    dash.draw('etf_tabelle');
+  }));
+  let gruppenGefuellt = false;
+  dash.onData(() => {
+    const rows = etfZeilen();
+    if (!rows || gruppenGefuellt) return;
+    const sel = document.getElementById('etf-gruppe');
+    for (const s of [...new Set(rows.map((r) => r.gruppe).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'de'))) { const o = el('option', '', s); o.value = s; sel.appendChild(o); }
+    gruppenGefuellt = true;
+  });
+  dash.draw('etf_info', (e) => {
+    const rows = etfZeilen();
+    if (!rows) { e.textContent = daten('etfs').status === 'loading' ? '—' : 'Noch keine ETF-Daten.'; return; }
+    const st = rows.map((r) => r.kurs_stand).filter(Boolean).sort().pop();
+    e.textContent = nf(0).format(rows.length) + ' ETFs' + (st ? ', Kurse vom ' + fmtDatumJ(st) : '') + '.';
+  });
+  dash.draw('etf_tabelle', (tbody) => {
+    tbody.replaceChildren();
+    const alle = etfZeilen();
+    if (!alle) return;
+    const rows = alle.filter((r) => {
+      if (etfF.gruppe && r.gruppe !== etfF.gruppe) return false;
+      if (etfF.suche && !(String(r.name || '').toLowerCase().includes(etfF.suche) || String(r.ticker).toLowerCase().includes(etfF.suche))) return false;
+      return true;
+    });
+    if (eSortKey) {
+      rows.sort((a, b) => {
+        let x = a[eSortKey], y = b[eSortKey];
+        if (eSortKey === 'trend') { x = E_TREND[x] ?? null; y = E_TREND[y] ?? null; }
+        const lx = x == null || x === '', ly = y == null || y === '';
+        if (lx || ly) return lx && ly ? 0 : lx ? 1 : -1;
+        const nx = num(x), ny = num(y);
+        if (!isNaN(nx) && !isNaN(ny)) return (nx - ny) * eSortDir;
+        return String(x).localeCompare(String(y), 'de') * eSortDir;
+      });
+    }
+    if (!rows.length) {
+      const tr = el('tr'); const t = el('td', 'muted', 'Kein ETF passt zu dieser Suche.'); t.colSpan = 14; tr.appendChild(t); tbody.appendChild(tr);
+    }
+    for (const r of rows) {
+      const w = `ticker=${encodeURIComponent(r.ticker)}`;
+      const tr = el('tr');
+      tr.dataset.key = r.ticker;
+      const td = (text, c, f) => { const t = el('td', c, text); if (f) { t.dataset.field = f; t.dataset.where = w; } tr.appendChild(t); return t; };
+      const pct = (f) => { const v = num(r[f]); td(fmtPct1(v), 'num ' + cls(v), f); };
+      td(r.name || r.ticker, 'name', 'name');
+      td(r.ticker, 'tick', 'ticker');
+      td(r.gruppe || '–', 'lang', 'gruppe');
+      td(fmtEur2(num(r.kurs)), 'num', 'kurs');
+      pct('r_1m'); pct('r_6m'); pct('r_1j'); pct('r_3j_pa'); pct('r_5j_pa');
+      const vo = num(r.vola_1j); td(isNaN(vo) ? '–' : fmtNum(vo, 1) + ' %', 'num', 'vola_1j');
+      const mr = num(r.max_rueckgang_5j); td(isNaN(mr) ? '–' : fmtNum(mr, 1) + ' %', 'num', 'max_rueckgang_5j');
+      td(trendText(r.trend), trendCls(r.trend), 'trend');
+      const ter = num(r.ter_pct); td(isNaN(ter) ? '–' : fmtNum(ter, 2) + ' %', 'num', 'ter_pct');
+      const gr = num(r.groesse_mrd); td(isNaN(gr) ? '–' : fmtNum(gr, gr < 10 ? 1 : 0) + ' Mrd.', 'num', 'groesse_mrd');
+      tbody.appendChild(tr);
+    }
+  });
+
+  // ---------- Trefferquote ----------
+  const TQ_ZEIT = ['1 Woche', '1 Monat', '3 Monate', '6 Monate', '1 Jahr'];
+  const TQ_GRUPPE = ['7–10', '5–6', '3–4', 'unter 3'];
+  const tqName = (g) => { const s = String(g || '').trim(); return /^alle/i.test(s) ? s : s.replace(/\s*Punkten?$/i, '') + ' Punkten'; };
+  const tqZeilen = () => {
+    const g = daten('trefferquote');
+    if (g.status !== 'ok' || !Array.isArray(g.data)) return [];
+    let rows = g.data.filter(Boolean);
+    // auch das Rohformat aus trefferquote.json ({zeitraeume: {...}}) verstehen
+    if (rows.length && rows[0].zeitraeume && typeof rows[0].zeitraeume === 'object') {
+      const out = [];
+      for (const [zeit, z] of Object.entries(rows[0].zeitraeume)) {
+        for (const [gr, v] of Object.entries((z && z.nach_punkten) || {})) out.push({zeitraum: zeit, seit: z.seit, gruppe: gr, anzahl: v.anzahl, schnitt_pct: v.mittel_pct, alle_schnitt_pct: z.alle ? z.alle.mittel_pct : null, alle_anzahl: z.alle ? z.alle.anzahl : null});
+      }
+      rows = out;
+    }
+    return rows.filter((r) => r.zeitraum && r.gruppe != null);
+  };
+  dash.draw('trefferquote', (box) => {
+    box.replaceChildren();
+    const g = daten('trefferquote');
+    if (g.status === 'loading') return;
+    const rows = tqZeilen();
+    if (!rows.length) {
+      box.appendChild(el('p', 'al-note', 'Noch zu wenige Schnappschüsse. Seit dem 15.11.2026 wird an jedem Börsentag einer gespeichert. Die erste Auswertung gibt es nach einer Woche.'));
+      return;
+    }
+    const zeiten = [...new Set(rows.map((r) => r.zeitraum))].sort((a, b) => ((TQ_ZEIT.indexOf(a) + 1) || 99) - ((TQ_ZEIT.indexOf(b) + 1) || 99));
+    const wrap = el('div', 'al-tq');
+    for (const zeit of zeiten) {
+      const zr = rows.filter((r) => r.zeitraum === zeit);
+      const gruppen = zr.filter((r) => !/^alle/i.test(String(r.gruppe))).sort((a, b) => ((TQ_GRUPPE.indexOf(String(a.gruppe).replace(/\s*Punkte?$/i, '')) + 1) || 99) - ((TQ_GRUPPE.indexOf(String(b.gruppe).replace(/\s*Punkte?$/i, '')) + 1) || 99));
+      const alleZ = zr.find((r) => /^alle/i.test(String(r.gruppe)));
+      const alleWert = alleZ ? num(alleZ.schnitt_pct) : num((zr.find((r) => r.alle_schnitt_pct != null) || {}).alle_schnitt_pct);
+      const alleAnz = alleZ ? num(alleZ.anzahl) : num((zr.find((r) => r.alle_anzahl != null) || {}).alle_anzahl);
+      const werte = gruppen.map((r) => num(r.schnitt_pct)).concat([alleWert]).filter((v) => !isNaN(v));
+      const maxAbs = Math.max(1, ...werte.map(Math.abs));
+      const seit = (zr.find((r) => r.seit) || {}).seit;
+      const blk = el('div', 'al-tq-block');
+      const h = el('h3', '', zeit + ' '); h.appendChild(el('span', '', seit ? 'seit ' + fmtDatumJ(seit) : '')); blk.appendChild(h);
+      const zeile = (label, v, anz, extra, r) => {
+        const z = el('div', 'al-tq-row' + (extra ? ' alle' : ''));
+        const b = el('div', 'al-tq-bar'); b.appendChild(el('span', 'null'));
+        if (!isNaN(v)) { const i = el('i'); const f = Math.min(1, Math.abs(v) / maxAbs) * 50; i.style.left = (v < 0 ? 50 - f : 50) + '%'; i.style.width = Math.max(0.5, f) + '%'; i.style.background = v > 0 ? 'var(--color-ok)' : v < 0 ? 'var(--color-bad)' : 'var(--color-fg-muted)'; b.appendChild(i); }
+        const wv = el('span', 'num ' + cls(v), isNaN(v) ? '–' : fmtPct1(v));
+        const wa = el('span', 'num anz muted', isNaN(anz) ? '' : nf(0).format(anz) + ' Aktien');
+        if (r) { const w = `zeitraum=${encodeURIComponent(r.zeitraum)}&gruppe=${encodeURIComponent(r.gruppe)}`; wv.dataset.field = 'schnitt_pct'; wv.dataset.where = w; wa.dataset.field = 'anzahl'; wa.dataset.where = w; }
+        z.append(el('span', '', label), b, wv, wa);
+        blk.appendChild(z);
+      };
+      for (const r of gruppen) zeile('Aktien mit ' + tqName(r.gruppe), num(r.schnitt_pct), num(r.anzahl), false, r);
+      zeile('alle Aktien (Vergleich)', alleWert, alleAnz, true, alleZ || null);
+      wrap.appendChild(blk);
+    }
+    box.appendChild(wrap);
   });
 </script>
