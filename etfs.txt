@@ -1,0 +1,40 @@
+# ETFs (eigene Liste, nicht bei den Aktien). Ein Kürzel pro Zeile (Yahoo-Schreibweise), danach | Gruppe.
+# Levin, 15.11.2026: „dass er auch ETFs reinmacht, extra, nicht bei den Aktien“. Die Nachtschicht ergänzt jede Nacht.
+# Nur ETFs, die in Deutschland handelbar sind (Xetra .DE). etf.py prüft jedes Kürzel bei Yahoo (muss ein ETF sein).
+EUNL.DE | Welt
+VWCE.DE | Welt
+VGWL.DE | Welt
+XDWD.DE | Welt
+IQQW.DE | Welt
+IUSQ.DE | Welt
+SPYI.DE | Welt
+IUSN.DE | Welt (kleine Firmen)
+IS3Q.DE | Welt (Qualität)
+IS3R.DE | Welt (Momentum)
+XDEV.DE | Welt (Value)
+SXR8.DE | USA
+VUAA.DE | USA
+VUSA.DE | USA
+SXRV.DE | USA (Nasdaq-100)
+EQQQ.DE | USA (Nasdaq-100)
+EXSA.DE | Europa
+EUNK.DE | Europa
+SXRT.DE | Europa (Euro Stoxx 50)
+EXS1.DE | Deutschland
+DBXD.DE | Deutschland
+EXS3.DE | Deutschland (MDAX)
+IS3N.DE | Schwellenländer
+XMME.DE | Schwellenländer
+VFEM.DE | Schwellenländer
+QDV5.DE | Indien
+EUNN.DE | Japan
+VGWD.DE | Dividende
+ISPA.DE | Dividende
+TDIV.DE | Dividende
+VVSM.DE | Branche: Halbleiter
+QDVE.DE | Branche: Technik USA
+XDWT.DE | Branche: Technik Welt
+XDWH.DE | Branche: Gesundheit
+2B76.DE | Thema: Roboter und Automatisierung
+IQQH.DE | Thema: Saubere Energie
+DFNS.DE | Thema: Rüstung
