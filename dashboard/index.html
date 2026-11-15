@@ -1,0 +1,897 @@
+<meta name="dash-one-writer">
+<style>
+  #dash-root { --dash-gutter: clamp(12px, 3vw, 32px); }
+  .al { font-family: var(--font-anthropic-sans); display: grid; gap: var(--cds-gap-lg); max-width: 1320px; margin-inline: auto; }
+  .al b { font-variant-numeric: tabular-nums; }
+  .al .pos { color: var(--color-ok); }
+  .al .neg { color: var(--color-bad); }
+  .al .muted { color: var(--color-fg-muted); }
+
+  /* Kopf */
+  .al-hero { display: grid; gap: var(--cds-gap-md); padding: var(--cds-pad-lg) 0 0; }
+  .al-hero-top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--cds-gap-sm); }
+  .al-hero h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: calc(var(--cds-font-size-title) * 1.35); line-height: 1.1; margin: 0; letter-spacing: -0.01em; }
+  .al-stand { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); display: inline-flex; align-items: center; gap: var(--cds-gap-xs); }
+  .al-stand::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--color-ok); }
+  .al-lead { margin: 0; font-size: var(--cds-font-size-heading); line-height: 1.45; max-width: 62ch; text-wrap: pretty; }
+  .al-lead b { font-weight: 600; }
+  .al-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--cds-gap-md); }
+  .al-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); min-width: 0; }
+  .al-kpi span { display: block; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .al-kpi b { display: block; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin-top: var(--cds-gap-xs); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .al-kpi small { display: block; font-size: var(--cds-font-size-caption); margin-top: 2px; }
+
+  /* Reiter */
+  .al-tabs { display: flex; gap: var(--cds-gap-xs); border-bottom: 1px solid var(--color-border-line); overflow-x: auto; scrollbar-width: none; position: sticky; top: 0; z-index: 3; background: var(--color-bg); }
+  .al-tabs button { font: inherit; font-size: var(--cds-font-size-body); background: none; border: 0; border-bottom: 2px solid transparent; color: var(--color-fg-muted); padding: var(--cds-pad-sm) var(--cds-pad-md); cursor: pointer; white-space: nowrap; margin-bottom: -1px; }
+  .al-tabs button:hover { color: var(--color-fg); }
+  .al-tabs button[aria-selected="true"] { color: var(--color-fg); border-bottom-color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+  .al-panel { display: grid; gap: var(--cds-gap-lg); }
+  .al-panel[hidden] { display: none; }
+
+  /* Karten */
+  .al-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; }
+  .al-card > h2, .al-sec > h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; }
+  .al-note { margin: var(--cds-gap-xs) 0 var(--cds-gap-md); color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); max-width: 75ch; }
+  .al-grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: var(--cds-gap-lg); }
+  .al-sec { display: grid; gap: var(--cds-gap-sm); }
+
+  /* Top-Treffer */
+  .al-tops { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: var(--cds-gap-md); min-height: 15rem; }
+  .al-top { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-sm); align-content: start; position: relative; overflow: hidden; cursor: pointer; transition: border-color var(--cds-dur-slow); }
+  .al-top:hover { border-color: var(--color-fg-muted); }
+  .al-top::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--color-ok); }
+  .al-top-head { display: flex; justify-content: space-between; align-items: center; gap: var(--cds-gap-sm); }
+  .al-top-rang { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .al-top-name { font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-title); line-height: 1.15; margin: 0; overflow-wrap: anywhere; }
+  .al-top-sub { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+  .al-top-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--cds-gap-sm); }
+  .al-top-kurs { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+  .al-top-ab { font-size: var(--cds-font-size-heading); font-weight: 600; }
+  .al-top-meta { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); }
+  .al-chip { font-size: var(--cds-font-size-caption); padding: 1px var(--cds-pad-sm); border-radius: 999px; background: var(--color-bg); border: 1px solid var(--color-border-line); white-space: nowrap; }
+  .al-range { display: block; width: 100%; height: 34px; }
+  .al-range-lbl { display: flex; justify-content: space-between; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: -4px; }
+  .al-empty { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+
+  /* Punkte-Punkte */
+  .al-dots { display: inline-flex; gap: 2px; vertical-align: middle; margin-left: var(--cds-gap-xs); }
+  .al-dots i { width: 6px; height: 10px; border-radius: 2px; background: var(--color-border-line); }
+  .al-dots i.on { background: var(--color-ok); }
+  .al-dots i.minus { background: var(--color-bad); }
+  .al-badge { display: inline-flex; align-items: center; gap: 4px; font-size: var(--cds-font-size-caption); font-weight: 600; padding: 2px var(--cds-pad-sm); border-radius: 999px; background: color-mix(in srgb, var(--color-ok) 14%, transparent); color: var(--color-ok); white-space: nowrap; }
+
+  /* Status-Pillen */
+  .al-pill { display: inline-block; font-size: var(--cds-font-size-caption); padding: 1px var(--cds-pad-sm); border-radius: 999px; white-space: nowrap; font-weight: var(--cds-font-weight-medium); }
+  .al-pill.top { background: color-mix(in srgb, var(--color-ok) 16%, transparent); color: var(--color-ok); }
+  .al-pill.beobachten { background: color-mix(in srgb, var(--color-warn) 16%, transparent); color: var(--color-warn); }
+  .al-pill.neu { background: color-mix(in srgb, var(--color-fg) 9%, transparent); color: var(--color-fg); }
+  .al-pill.gepruft { color: var(--color-fg-muted); border: 1px solid var(--color-border-line); }
+
+  /* Werkzeugleiste */
+  .al-tools { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); align-items: center; margin-bottom: var(--cds-gap-md); }
+  .al-search { font: inherit; font-size: var(--cds-font-size-body); flex: 1 1 14rem; min-width: 0; max-width: 22rem; padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); }
+  .al-filter { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); }
+  .al-filter button { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: 999px; background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
+  .al-filter button[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); border-color: var(--color-fg); }
+
+  /* Tabellen */
+  .al-scroll { overflow: auto; max-height: 40rem; border-radius: var(--cds-radius); }
+  .al-scroll.short { max-height: 26rem; }
+  .al table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+  .al th { position: sticky; top: 0; z-index: 1; background: var(--color-panel); text-align: left; font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); padding: var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+  .al th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  .al th[aria-sort] { color: var(--color-fg); }
+  .al th[aria-sort="ascending"] button::after { content: " ↑"; }
+  .al th[aria-sort="descending"] button::after { content: " ↓"; }
+  .al th.num, .al td.num { text-align: right; }
+  .al td { padding: var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); vertical-align: middle; white-space: nowrap; }
+  .al tbody tr:hover td { background: color-mix(in srgb, var(--color-fg) 4%, transparent); }
+  .al tbody tr.click { cursor: pointer; }
+  .al tbody tr.sel td { background: color-mix(in srgb, var(--color-ok) 10%, transparent); }
+  .al td.name { font-weight: var(--cds-font-weight-medium); }
+  .al td.tick { color: var(--color-fg-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; }
+  .al td.wrap { white-space: normal; min-width: 14rem; color: var(--color-fg-muted); }
+  .al td.rang { color: var(--color-fg-muted); }
+  .al-bar { display: inline-block; vertical-align: middle; height: 6px; border-radius: 3px; background: var(--color-border-line); width: 48px; margin-left: var(--cds-gap-xs); position: relative; overflow: hidden; }
+  .al-bar i { position: absolute; inset: 0 auto 0 0; border-radius: 3px; background: var(--color-fg-muted); }
+  .al-bar.ok i { background: var(--color-ok); }
+  .al-bar.bad i { background: var(--color-bad); }
+  .al-mini { display: inline-block; vertical-align: middle; width: 72px; height: 12px; margin-left: var(--cds-gap-xs); }
+  .al tr.cash td { color: var(--color-fg-muted); font-style: italic; }
+
+  /* Detail */
+  .al-detail { min-height: 6rem; }
+  .al-det-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: var(--cds-gap-lg); }
+  .al-det-name { font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-title); margin: 0; }
+  .al-det-list { display: grid; grid-template-columns: auto 1fr; gap: var(--cds-gap-xs) var(--cds-gap-md); margin: 0; font-size: var(--cds-font-size-caption); }
+  .al-det-list dt { color: var(--color-fg-muted); }
+  .al-texte { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md) var(--cds-gap-lg); margin-bottom: var(--cds-gap-lg); }
+  .al-texte p { margin: 0; font-size: var(--cds-font-size-body); line-height: 1.5; max-width: 70ch; text-wrap: pretty; }
+  .al-texte .al-note { margin: 0 0 var(--cds-gap-xs); }
+  .al-kurztext { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.35; margin: 0; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .al-det-list dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+  .al-score { display: grid; grid-template-columns: 8rem 1fr 2.5rem; gap: var(--cds-gap-xs) var(--cds-gap-sm); align-items: center; font-size: var(--cds-font-size-caption); }
+  .al-score .track { height: 8px; border-radius: 4px; background: var(--color-border-line); position: relative; overflow: hidden; }
+  .al-score .track i { position: absolute; top: 0; bottom: 0; border-radius: 4px; }
+  .al-hakenliste { margin: var(--cds-gap-sm) 0 0; padding-left: 1.1rem; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+
+  /* Depots */
+  .al-race { display: grid; gap: var(--cds-gap-sm); margin-bottom: var(--cds-gap-md); }
+  .al-race-row { display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr auto; gap: var(--cds-gap-md); align-items: center; font-size: var(--cds-font-size-body); }
+  .al-race-row .lab { font-weight: var(--cds-font-weight-medium); }
+  .al-race-row .lab small { display: block; font-weight: 400; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  .al-race-row .val { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .al-race-row .val b { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-heading); }
+  .al-race-bar { height: 10px; position: relative; }
+  .al-race-bar .zero { position: absolute; left: 50%; top: -4px; bottom: -4px; width: 1px; background: var(--cds-chart-axis); }
+  .al-race-bar i { position: absolute; top: 0; bottom: 0; border-radius: 5px; }
+  .al-chart { position: relative; min-height: 16rem; }
+  .al-chart.tall { min-height: 22rem; }
+  .al-tip { position: absolute; pointer-events: none; z-index: 4; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; }
+  .al-tip .t { color: var(--cds-text-secondary); }
+
+  /* Methode */
+  .al-method summary { cursor: pointer; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+  .al-method h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin: var(--cds-gap-lg) 0 var(--cds-gap-xs); }
+  .al-method p, .al-method li { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); max-width: 75ch; line-height: 1.55; }
+  .al-method ul { padding-left: 1.1rem; margin: 0; }
+  .al-method table { max-width: 40rem; }
+  .al-foot { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); max-width: 75ch; margin: 0; }
+
+  [data-dash-source-state=empty] { color: transparent; }
+  [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+  @media (prefers-reduced-motion: no-preference) {
+    .al-top { animation: al-in var(--cds-dur-slow) var(--cds-ease-out) both; }
+    @keyframes al-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  }
+  @media (max-width: 40rem) { .al-race-row { grid-template-columns: 6.5rem 1fr auto; } }
+  .al-liste td.name, .al-liste th:first-child { position: sticky; left: 0; background: var(--color-panel); z-index: 1; }
+  .al-liste th:first-child { z-index: 2; }
+  .al-sortbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); }
+  .al-sortbar label { color: var(--color-fg-muted); }
+  .al-richtung { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
+
+  .al-top.gut::before { background: var(--color-ok); }
+  .al-top:not(.gut)::before { background: var(--color-border-line); }
+  .al-top.aus { cursor: default; opacity: .8; }
+  .al-leer { text-align: left; }
+  .al-beispiele { margin: 0 0 var(--cds-gap-md); padding-left: 1.1rem; display: grid; gap: var(--cds-gap-xs); }
+  .al-beispiele li { font-size: var(--cds-font-size-body); }
+  .al-voll { display: grid; gap: var(--cds-gap-lg); }
+  .al-voll[hidden], .al-leer[hidden] { display: none; }
+  .al-news { margin-top: var(--cds-gap-md); display: grid; gap: var(--cds-gap-xs); }
+  .al-news-text { margin: 0; font-size: var(--cds-font-size-body); line-height: 1.45; white-space: normal; }
+  .al-news-links { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); }
+  .al-news-links a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  .al-select { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); max-width: 100%; }
+  .al-check { font-size: var(--cds-font-size-caption); display: inline-flex; align-items: center; gap: var(--cds-gap-xs); white-space: nowrap; cursor: pointer; }
+  .al-neu { font-size: 10px; font-weight: 600; letter-spacing: .04em; padding: 0 5px; border-radius: 999px; background: var(--color-ok); color: var(--color-bg); margin-left: var(--cds-gap-xs); vertical-align: 1px; }
+  .al-mehr { font: inherit; font-size: var(--cds-font-size-caption); margin-top: var(--cds-gap-md); padding: var(--cds-pad-xs) var(--cds-pad-md); border: 1px solid var(--color-border-line); border-radius: 999px; background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
+  .al-mehr[hidden] { display: none; }
+</style>
+
+<div class="al">
+  <header class="al-hero" id="kopf">
+    <div class="al-hero-top">
+      <h1>Meine Aktien</h1>
+      <span class="al-stand">Stand <span data-draw="stand" data-source="meine_ueberblick">—</span></span>
+    </div>
+    <p class="al-lead">Deine eigene Auswahl, bewertet mit denselben festen Regeln wie rund <b data-draw="gesamt" data-source="meine_ueberblick" data-field="gesamt">—</b> andere Aktien (Reiter „Alle Aktien“). Je mehr Punkte, desto besser die Bewertung.</p>
+  </header>
+
+  <nav class="al-tabs" role="tablist" aria-label="Bereiche">
+    <button type="button" role="tab" data-tab="meine" aria-selected="true">Meine Aktien</button>
+    <button type="button" role="tab" data-tab="alle" aria-selected="false">Alle Aktien</button>
+    <button type="button" role="tab" data-tab="methode" aria-selected="false">So wird gerechnet</button>
+  </nav>
+
+  <section class="al-panel" id="meine" data-panel="meine" role="tabpanel">
+    <section class="al-card al-leer" data-leer hidden>
+      <h2>Noch keine Aktien ausgewählt</h2>
+      <p class="al-note">Schreib Claude im Chat, welche Aktien hier stehen sollen. Zum Beispiel:</p>
+      <ul class="al-beispiele">
+        <li>„Nimm SAP, NVIDIA und Rheinmetall in meine Liste.“</li>
+        <li>„Nimm Siemens wieder raus.“</li>
+        <li>„Such mir eine Aktie aus Europa mit wenig Schulden und steigendem Trend.“</li>
+      </ul>
+      <p class="al-note">Claude sucht dann aus rund 1.700 Aktien (Reiter „Alle Aktien“) und trägt deine Auswahl hier ein. Danach wird sie an jedem Börsentag 5-mal neu bewertet.</p>
+    </section>
+
+    <div class="al-voll" data-voll>
+      <div class="al-kpis">
+        <div class="al-kpi"><span>Aktien in deiner Liste</span><b data-draw="anzahl" data-source="meine_ueberblick" data-field="anzahl">—</b><small class="muted">davon bewertet: <span data-draw="bewertet" data-source="meine_ueberblick" data-field="bewertet">—</span></small></div>
+        <div class="al-kpi"><span>Beste Bewertung</span><b data-draw="beste" data-source="meine_ueberblick" data-field="beste">—</b><small class="muted" data-draw="beste_platz" data-source="meine_ueberblick">—</small></div>
+        <div class="al-kpi"><span>Erfüllen die Top-Bedingungen</span><b data-draw="topbed" data-source="meine_ueberblick" data-field="top_bedingungen">—</b><small class="muted">siehe „So wird gerechnet“</small></div>
+        <div class="al-kpi"><span>Nächste Quartalszahlen</span><b data-draw="naechste" data-source="meine_ueberblick" data-field="naechste_aktie">—</b><small class="muted" data-draw="naechste_tag" data-source="meine_ueberblick">—</small></div>
+      </div>
+
+      <div class="al-sec">
+        <h2>Deine Aktien auf einen Blick</h2>
+        <div class="al-sortbar">
+          <label for="meine-sort">Sortieren nach</label>
+          <select class="al-select" id="meine-sort">
+            <option value="rang">Punkte und Feinwert (Standard)</option>
+            <option value="punkte">Punkte</option>
+            <option value="feinwert">Feinwert</option>
+            <option value="abstand_pct">Abstand zur fairen Mitte</option>
+            <option value="kurs_eur">Kurs</option>
+            <option value="kgv">KGV</option>
+            <option value="wachstum_pct">Gewinnwachstum</option>
+            <option value="peg">PEG</option>
+            <option value="fcf_rendite_pct">Freier Cashflow zum Börsenwert</option>
+            <option value="veraenderung_1m_pct">Letzter Monat</option>
+            <option value="unter_hoch_pct">Abstand zum Jahreshoch</option>
+            <option value="schwankung_pct">Schwankung</option>
+            <option value="analysten">Zahl der Analysten</option>
+            <option value="zahlen_am">Nächste Zahlen</option>
+            <option value="trend">Trend lang</option>
+            <option value="kurztrend">Trend kurz</option>
+            <option value="aktie">Name</option>
+            <option value="sektor">Branche</option>
+          </select>
+          <button type="button" class="al-richtung" id="meine-richtung" aria-label="Richtung umdrehen">↓ absteigend</button>
+        </div>
+        <p class="al-note">Der grüne Balken ist die faire Spanne, der Punkt der Kurs. Klick auf eine Karte zeigt alle Zahlen. Die Sortierung gilt für Karten und Tabelle.</p>
+        <div class="al-tops" data-draw="karten" data-source="meine"></div>
+      </div>
+
+      <section class="al-card">
+        <h2>Alle Zahlen als Tabelle</h2>
+        <p class="al-note">Klick auf eine Spalte sortiert. Auf dem Handy die Tabelle seitlich wischen. Abstand = um wie viel Prozent die faire Mitte über dem Kurs liegt. Kurse in Euro, 🇪🇺 = Euro-Aktie.</p>
+        <div class="al-scroll">
+          <table data-source="meine" data-row-key="ticker" class="al-liste al-meine">
+            <thead>
+              <tr>
+                <th data-field="aktie"><button type="button" data-sort="aktie">Aktie</button></th>
+                <th data-field="ticker" class="opt"><button type="button" data-sort="ticker">Kürzel</button></th>
+                <th data-field="punkte"><button type="button" data-sort="punkte">Punkte</button></th>
+                <th data-field="feinwert" class="opt"><button type="button" data-sort="feinwert">Feinwert</button></th>
+                <th data-field="kurs_eur" class="num"><button type="button" data-sort="kurs_eur">Kurs</button></th>
+                <th data-field="abstand_pct"><button type="button" data-sort="abstand_pct">Abstand</button></th>
+                <th data-field="top_bedingungen" class="opt"><button type="button" data-sort="top_bedingungen">Top-Bedingungen</button></th>
+                <th data-field="trend" class="opt"><button type="button" data-sort="trend">Trend lang</button></th>
+                <th data-field="kurztrend" class="opt"><button type="button" data-sort="kurztrend">Trend kurz</button></th>
+                <th data-field="kgv" class="num opt"><button type="button" data-sort="kgv">KGV</button></th>
+                <th data-field="wachstum_pct" class="num opt"><button type="button" data-sort="wachstum_pct">Wachstum</button></th>
+                <th data-field="unter_hoch_pct" class="num opt"><button type="button" data-sort="unter_hoch_pct">vom Jahreshoch</button></th>
+                <th data-field="schwankung_pct" class="num opt"><button type="button" data-sort="schwankung_pct">Schwankung</button></th>
+                <th data-field="zahlen_am" class="opt"><button type="button" data-sort="zahlen_am">Nächste Zahlen</button></th>
+                <th data-field="sektor" class="opt"><button type="button" data-sort="sektor">Branche</button></th>
+              </tr>
+            </thead>
+            <tbody data-draw="tabelle"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="al-card al-detail" id="detail">
+        <h2>Alle Zahlen zu einer Aktie</h2>
+        <p class="al-note">Klick auf eine Karte oder eine Zeile.</p>
+        <div data-draw="detail" data-source="meine"></div>
+      </section>
+    </div>
+  </section>
+
+  <section class="al-panel" id="alle" data-panel="alle" role="tabpanel" hidden>
+    <div class="al-voll">
+      <section class="al-card">
+        <h2>Alle bewerteten Aktien</h2>
+        <p class="al-note"><span data-draw="alle_info" data-source="alle">—</span> Gleiche Regeln wie bei deinen Aktien, sortiert nach Punkten und Feinwert. ★ = in deiner Liste, <span class="al-neu">NEU</span> = in den letzten 7 Tagen dazugekommen, 🔥 = gerade viel Hype (gibt keine Punkte, oft große Schwankungen). Klick auf eine Zeile zeigt alle Zahlen. Willst du eine davon in deiner Liste haben, sag es Claude im Chat.</p>
+        <div class="al-tools">
+          <input type="search" class="al-search" id="alle-suche" placeholder="Name oder Kürzel suchen" aria-label="Aktie suchen">
+          <select class="al-select" id="alle-region" aria-label="Region">
+            <option value="">Alle Länder</option>
+          </select>
+          <select class="al-select" id="alle-sektor" aria-label="Branche">
+            <option value="">Alle Branchen</option>
+          </select>
+          <select class="al-select" id="alle-punkte" aria-label="Mindestpunkte">
+            <option value="">Alle Punkte</option>
+            <option value="4">ab 4 Punkten</option>
+            <option value="5">ab 5 Punkten</option>
+            <option value="6">ab 6 Punkten</option>
+            <option value="7">ab 7 Punkten</option>
+          </select>
+          <label class="al-check"><input type="checkbox" id="alle-top"> nur Top-Bedingungen</label>
+          <label class="al-check"><input type="checkbox" id="alle-neu"> nur neue</label>
+          <label class="al-check"><input type="checkbox" id="alle-hype"> nur Hype 🔥</label>
+        </div>
+        <div class="al-sortbar" style="margin-bottom: var(--cds-gap-md)">
+          <label for="alle-sort">Sortieren nach</label>
+          <select class="al-select" id="alle-sort">
+            <option value="punkte">Punkte und Feinwert (Standard)</option>
+            <option value="feinwert">Feinwert</option>
+            <option value="abstand_pct">Abstand zur fairen Mitte</option>
+            <option value="kurs_eur">Kurs</option>
+            <option value="kgv">KGV</option>
+            <option value="wachstum_pct">Gewinnwachstum</option>
+            <option value="peg">PEG</option>
+            <option value="fcf_rendite_pct">Freier Cashflow zum Börsenwert</option>
+            <option value="veraenderung_1m_pct">Letzter Monat</option>
+            <option value="unter_hoch_pct">Abstand zum Jahreshoch</option>
+            <option value="schwankung_pct">Schwankung</option>
+            <option value="analysten">Zahl der Analysten</option>
+            <option value="zahlen_am">Nächste Zahlen</option>
+            <option value="trend">Trend lang</option>
+            <option value="kurztrend">Trend kurz</option>
+            <option value="aktie">Name</option>
+            <option value="sektor">Branche</option>
+            <option value="region">Land</option>
+          </select>
+          <button type="button" class="al-richtung" id="alle-richtung" aria-label="Richtung umdrehen">↓ absteigend</button>
+        </div>
+        <div class="al-scroll">
+          <table data-source="alle" data-row-key="ticker" class="al-liste al-alle">
+            <thead>
+              <tr>
+                <th data-field="aktie"><button type="button" data-sort="aktie">Aktie</button></th>
+                <th data-field="ticker" class="opt"><button type="button" data-sort="ticker">Kürzel</button></th>
+                <th data-field="punkte"><button type="button" data-sort="punkte">Punkte</button></th>
+                <th data-field="feinwert" class="opt"><button type="button" data-sort="feinwert">Feinwert</button></th>
+                <th data-field="kurs_eur" class="num"><button type="button" data-sort="kurs_eur">Kurs</button></th>
+                <th data-field="abstand_pct"><button type="button" data-sort="abstand_pct">Abstand</button></th>
+                <th data-field="top_bedingungen" class="opt"><button type="button" data-sort="top_bedingungen">Top-Bedingungen</button></th>
+                <th data-field="trend" class="opt"><button type="button" data-sort="trend">Trend lang</button></th>
+                <th data-field="kurztrend" class="opt"><button type="button" data-sort="kurztrend">Trend kurz</button></th>
+                <th data-field="kgv" class="num opt"><button type="button" data-sort="kgv">KGV</button></th>
+                <th data-field="wachstum_pct" class="num opt"><button type="button" data-sort="wachstum_pct">Wachstum</button></th>
+                <th data-field="unter_hoch_pct" class="num opt"><button type="button" data-sort="unter_hoch_pct">vom Jahreshoch</button></th>
+                <th data-field="schwankung_pct" class="num opt"><button type="button" data-sort="schwankung_pct">Schwankung</button></th>
+                <th data-field="zahlen_am" class="opt"><button type="button" data-sort="zahlen_am">Nächste Zahlen</button></th>
+                <th class="opt"><button type="button" data-sort="region">Land</button></th>
+                <th data-field="sektor" class="opt"><button type="button" data-sort="sektor">Branche</button></th>
+              </tr>
+            </thead>
+            <tbody data-draw="alle_tabelle"></tbody>
+          </table>
+        </div>
+        <button type="button" class="al-mehr" id="alle-mehr" data-draw="alle_mehr" data-source="alle" hidden></button>
+      </section>
+
+      <section class="al-card al-detail" id="alle-detail">
+        <h2>Alle Zahlen zu einer Aktie</h2>
+        <p class="al-note">Klick auf eine Zeile in der Tabelle.</p>
+        <div data-draw="alle_detail" data-source="alle"></div>
+      </section>
+    </div>
+  </section>
+
+  <section class="al-panel" id="methode" data-panel="methode" role="tabpanel" hidden>
+    <section class="al-card al-method">
+      <h2>So wird gerechnet</h2>
+      <h3>Womit deine Aktien verglichen werden</h3>
+      <p>Im Programm sind rund 1.700 Aktien: der S&amp;P 500 und der S&amp;P 400 (mittelgroße US-Firmen) sowie die großen und mittleren Index-Aktien aus Deutschland, London, Frankreich, den Niederlanden, Spanien, Italien, der Schweiz, Skandinavien und Belgien (🇪🇺 = Euro-Aktie), dazu der S&amp;P 600 (kleinere US-Firmen) und große Aktien aus Kanada, Japan, Australien und Hongkong. Jede Nacht und beim Aktien-Scout kommen neue dazu. Nicht jede lässt sich bewerten (siehe unten). Alle bewerteten stehen im Reiter „Alle Aktien“. Eine fehlende Aktie nimmt Claude auf Wunsch auf.</p>
+      <h3>Punkte (höchstens 10)</h3>
+      <ul>
+        <li>PEG (KGV geteilt durch Gewinnwachstum): unter 0,6 gibt 2 Punkte, unter 1 gibt 1 Punkt.</li>
+        <li>Kursziel der Analysten (der mittlere Wert aller Kursziele, der Median): liegt es mehr als 40 % über dem Kurs, gibt es 2 Punkte, mehr als 20 % gibt 1 Punkt.</li>
+        <li>Je 1 Punkt für Eigenkapitalrendite über 15 %, freien Cashflow über 1,5 % des Börsenwerts und Nettoschulden unter dem 1,5-Fachen des EBITDA.</li>
+        <li>Trend lang: +1, wenn der Kurs über dem 200-Tage-Schnitt liegt und in 6 Monaten gestiegen ist; −1, wenn beides fällt.</li>
+        <li>Trend kurz: +1, wenn der Kurs über dem 50-Tage-Schnitt liegt und im letzten Monat gestiegen ist; −1, wenn beides fällt.</li>
+        <li>Schätzungen: +1, wenn Analysten ihre Gewinnschätzung in 30 Tagen um mehr als 2 % angehoben haben; −1, wenn gesenkt.</li>
+        <li>Abzug: −1 bei weniger als 5 Analysten, −2 bei Speicherchip-Firmen (Gewinn vermutlich nahe der Spitze).</li>
+        <li>Nachrichten: An jedem Börsentag lesen News-Agenten dreimal seriöse Nachrichten zu deinen Aktien und den Aktien mit den meisten Punkten. Gute Nachrichten (z. B. höherer Ausblick, Hochstufungen) geben +1, schlechte −1, sehr schlechte −2 (z. B. Skandal, Ermittlungen, Gewinnwarnung). Das zählt nur mit Quellen-Link und höchstens 7 Tage lang. Mehr als 10 Punkte gibt es nicht. Die Einschätzung ist eine Meinung der Agenten, die Links stehen in der Detailansicht.</li>
+        <li>Hype 🔥: Der Aktien-Scout markiert Aktien, über die gerade besonders viel geredet wird oder die stark steigen. Das gibt keine Punkte, denn Hype sagt nichts über den Wert einer Firma, und solche Aktien schwanken oft stark.</li>
+      </ul>
+      <h3>Reihenfolge und Feinwert</h3>
+      <p>Sortiert wird erst nach den Punkten. Bei gleichen Punkten entscheidet der Feinwert (0–100). Dafür wird jede Kennzahl mit allen bewerteten Aktien verglichen: Bewertung zählt 35 %, Qualität 30 %, Trend 20 %, Änderung der Gewinnschätzungen 15 %. 100 hieße: überall die beste.</p>
+      <h3>Faire Spanne</h3>
+      <p>Drei Wege, wie bei Banken üblich:</p>
+      <ul>
+        <li><b>Wert nach KGV:</b> geschätzter Gewinn je Aktie im nächsten Geschäftsjahr mal ein faires KGV. Das faire KGV ist so hoch wie das erwartete Gewinnwachstum in Prozent, aber mindestens 12 und höchstens 25. Bei Speicherchip-Firmen ist es fest 10.</li>
+        <li><b>Wert nach Cashflow (DCF):</b> der freie Cashflow der letzten 12 Monate je Aktie. Er wächst 5 Jahre lang mit dem halben erwarteten Gewinnwachstum (höchstens 15 % pro Jahr), danach sinkt das Wachstum bis Jahr 10 auf 2,5 % und bleibt dort. Alles wird mit 9 % pro Jahr abgezinst. Nicht gerechnet bei Banken und Versicherungen und wenn der freie Cashflow nicht positiv ist. Diese Rechnung ist absichtlich vorsichtig und beruht auf Geld, das die Firma schon verdient hat, nicht auf Schätzungen.</li>
+        <li><b>Kursziel der Analysten</b> (Median).</li>
+      </ul>
+      <p>Die faire Mitte ist der mittlere der drei Werte. So zählt ein Ausreißer nicht. „Fair ab“ liegt auf halbem Weg zwischen dem kleinsten Wert und der Mitte, „fair bis“ auf halbem Weg zwischen der Mitte und dem größten Wert. Gibt es nur zwei Werte, reicht die Spanne vom kleineren zum größeren, und die Mitte liegt genau dazwischen. Eine breite Spanne heißt: Die Wege sind sich uneinig, die Bewertung ist unsicher. Alle drei Einzelwerte stehen in der Detailansicht. Abstand = um wie viel Prozent die faire Mitte über dem Kurs liegt.</p>
+      <h3>Top-Bedingungen</h3>
+      <p>Erfüllt, wenn der Abstand über 15 % liegt (faire Mitte mehr als 15 % über dem Kurs), der lange Trend nicht fällt und es keine Speicherchip-Firma ist. Das ist nur eine Regel des Programms, keine Empfehlung.</p>
+      <h3>Wann eine Aktie nicht bewertet wird</h3>
+      <p>Zum Beispiel, wenn der erwartete Gewinn nicht positiv ist, kein Kursziel da ist, das KGV unplausibel ist (über 200) oder es für die Währung keinen Wechselkurs gibt. Firmen, die an zwei Börsen notiert sind, zählen nur einmal. Der Grund steht dann auf der Karte.</p>
+      <h3>Daten</h3>
+      <p>Yahoo Finance (inoffiziell), über GitHub abgerufen (bubelman/aktien-daten): Kennzahlen jeden Morgen, Kurse 5-mal am Börsentag. Gerechnet wird immer mit dem festen Programm bewertung.py, damit jeder Lauf gleich rechnet. Schwankung = wie stark der Kurs im Jahr typischerweise schwankt, über 60 % ist sehr wild.</p>
+      <h3>Grenzen – bitte lesen</h3>
+      <ul>
+        <li>Yahoo Finance ist eine kostenlose, inoffizielle Quelle. Einzelne Zahlen können falsch, veraltet oder unvollständig sein. Das Programm sortiert grobe Fehler aus, aber nicht jeden.</li>
+        <li>Kursziele und Gewinnschätzungen sind Meinungen von Analysten, keine Fakten. Sie liegen oft daneben.</li>
+        <li>Viele Punkte heißen nicht, dass eine Aktie steigt. Die Regeln sind einfach und wurden nicht über viele Jahre getestet.</li>
+        <li>Prüfe wichtige Zahlen immer selbst nach, zum Beispiel im Geschäftsbericht der Firma.</li>
+      </ul>
+    </section>
+  </section>
+
+  <p class="al-foot">Niemand kann Kurse sicher vorhersagen. Das ist keine Anlageberatung.</p>
+</div>
+
+<script>
+  const num = (v) => (v === null || v === undefined || v === '' ? NaN : Number(v));
+  const nf = (d) => new Intl.NumberFormat('de-DE', {minimumFractionDigits: d, maximumFractionDigits: d});
+  const fmtNum = (v, d) => (isNaN(v) ? '–' : nf(d).format(v));
+  const fmtEur = (v) => (isNaN(v) ? '–' : nf(0).format(v) + ' €');
+  const fmtEur2 = (v) => (isNaN(v) ? '–' : nf(2).format(v) + ' €');
+  const fmtKurs = (v) => (isNaN(v) ? '–' : (v < 100 ? fmtEur2(v) : fmtEur(v)));
+  const fmtPct = (v) => (isNaN(v) ? '–' : (v > 0 ? '+' : '') + nf(0).format(v) + ' %');
+  const fmtGeld = (v) => { if (isNaN(v)) return '–'; const a = Math.abs(v);
+    return a >= 1e12 ? nf(1).format(v / 1e12) + ' Bio. €' : a >= 1e9 ? nf(a >= 1e11 ? 0 : 1).format(v / 1e9) + ' Mrd. €' : a >= 1e6 ? nf(0).format(v / 1e6) + ' Mio. €' : nf(0).format(v) + ' €'; };
+  // erster Punkt aus „Dagegen:“ (sonst „Dafür:“) im Text r.warum, für die Karten
+  const kurzGrund = (w) => { if (!w) return null; const m = /(Dagegen|Dafür): (.*?)\.(?= [A-ZÄÖÜ]|$)/.exec(String(w).includes('Dagegen: ') ? String(w).slice(String(w).indexOf('Dagegen: ')) : String(w));
+    return m ? m[1] + ': ' + m[2].split(', ')[0] : null; };
+  const fmtPct1 = (v) => (isNaN(v) ? '–' : (v > 0 ? '+' : '') + nf(1).format(v) + ' %');
+  const fmtDatum = (s) => { const d = new Date(s); return isNaN(d) ? '–' : new Intl.DateTimeFormat('de-DE', {day: '2-digit', month: '2-digit'}).format(d); };
+  const fmtDatumLang = (s) => { const d = new Date(s); return isNaN(d) ? '–' : new Intl.DateTimeFormat('de-DE', {weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric'}).format(d); };
+  const fmtStand = (s) => {
+    const d = new Date(s);
+    if (isNaN(d)) return '–';
+    return new Intl.DateTimeFormat('de-DE', {weekday: 'short', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Berlin'}).format(d) + ' Uhr';
+  };
+  const cls = (v) => (v > 0 ? 'pos' : v < 0 ? 'neg' : '');
+  const PFEIL = {steigend: '↗', 'seitwärts': '→', fallend: '↘'};
+  const trendText = (t) => (t ? (PFEIL[t] || '') + ' ' + t : '–');
+  const trendCls = (t) => (t === 'steigend' ? 'pos' : t === 'fallend' ? 'neg' : '');
+  const el = (tag, className, text) => { const e = document.createElement(tag); if (className) e.className = className; if (text !== undefined) e.textContent = text; return e; };
+  const SVG = 'http://www.w3.org/2000/svg';
+  const echte = (rows) => rows.filter((r) => r.ticker && !r.leer);
+  const bewertet = (r) => r.rang !== null && r.rang !== undefined && r.rang !== '';
+
+  // ---------- Berechnete Werte ----------
+  dash.calc('meine_ueberblick', {
+    title: 'Überblick meiner Aktien',
+    description: 'Zählt deine Aktien, nennt die mit der besten Bewertung, wie viele die Top-Bedingungen erfüllen und welche als Nächstes Quartalszahlen hat.',
+    inputs: ['meine'],
+    fn: (meine) => {
+      const rows = meine.filter((r) => r.ticker && !r.leer);
+      const ok = rows.filter((r) => r.rang !== null && r.rang !== undefined && r.rang !== '');
+      const beste = ok.slice().sort((a, b) => Number(a.rang) - Number(b.rang))[0];
+      const heute = new Date().toISOString().slice(0, 10);
+      const zahlen = ok.filter((r) => r.zahlen_am && r.zahlen_am >= heute).sort((a, b) => String(a.zahlen_am).localeCompare(String(b.zahlen_am)))[0];
+      const irgendeine = meine[0] || {};
+      return [{
+        anzahl: rows.length,
+        bewertet: ok.length,
+        beste: beste ? beste.aktie : null,
+        beste_punkte: beste ? Number(beste.punkte) : null,
+        top_bedingungen: ok.filter((r) => r.top_bedingungen === true).length,
+        naechste_aktie: zahlen ? zahlen.aktie : null,
+        naechste_tag: zahlen ? zahlen.zahlen_am : null,
+        gesamt: Number((meine.find((r) => r.bewertet) || {}).bewertet) || null,
+        stand: irgendeine.stand || null,
+      }];
+    },
+  });
+  const row0 = (id) => { const g = dash.data(id); return g.status === 'ok' && g.data[0] ? g.data[0] : null; };
+
+  // ---------- Leer oder voll ----------
+  dash.onData(() => {
+    const g = dash.data('meine');
+    const leer = g.status === 'ok' && echte(g.data).length === 0;
+    document.querySelectorAll('[data-leer]').forEach((e) => { if (leer) e.removeAttribute('hidden'); else e.setAttribute('hidden', ''); });
+    document.querySelectorAll('[data-voll]').forEach((e) => { if (leer) e.setAttribute('hidden', ''); else e.removeAttribute('hidden'); });
+  });
+
+  // ---------- Reiter ----------
+  const zeigeReiter = (name, link) => {
+    document.querySelectorAll('.al-tabs [data-tab]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === name)));
+    document.querySelectorAll('[data-panel]').forEach((p) => { if (p.dataset.panel === name) p.removeAttribute('hidden'); else p.setAttribute('hidden', ''); });
+    if (link) dash.setLink(name);
+  };
+  document.querySelectorAll('.al-tabs [data-tab]').forEach((b) => b.addEventListener('click', () => zeigeReiter(b.dataset.tab, true)));
+  {
+    const h = location.hash.slice(1);
+    if (h && document.querySelector(`[data-panel="${CSS.escape(h)}"]`)) zeigeReiter(h, false);
+  }
+  window.alZeigeAktie = (ticker) => {
+    window.alAuswahl = ticker;
+    dash.draw('detail');
+    dash.draw('tabelle');
+    document.querySelectorAll('#detail').forEach((d) => d.scrollIntoView({behavior: 'smooth', block: 'start'}));
+  };
+
+  // ---------- Kopf und Kennzahlen ----------
+  const ub = (f) => (e) => { const r = row0('meine_ueberblick'); e.className = e.className.replace(/\b(pos|neg)\b/g, '').trim(); const v = r ? f(r, e) : null; e.textContent = v === null || v === undefined ? '—' : v; };
+  dash.draw('stand', ub((r) => (r.stand ? fmtStand(r.stand) : null)));
+  dash.draw('gesamt', ub((r) => (r.gesamt ? nf(0).format(r.gesamt) : null)));
+  dash.draw('anzahl', ub((r) => String(r.anzahl)));
+  dash.draw('bewertet', ub((r) => String(r.bewertet)));
+  dash.draw('beste', ub((r) => r.beste || '–'));
+  dash.draw('beste_platz', ub((r) => (r.beste_punkte != null ? r.beste_punkte + ' von 10 Punkten' : '–')));
+  dash.draw('topbed', ub((r) => String(r.top_bedingungen) + ' von ' + r.bewertet));
+  dash.draw('naechste', ub((r) => r.naechste_aktie || 'keine bekannt'));
+  dash.draw('naechste_tag', ub((r) => (r.naechste_tag ? fmtDatumLang(r.naechste_tag) : '–')));
+
+  // ---------- Kleine Grafiken ----------
+  const spanne = (r, h) => {
+    const k = num(r.kurs_eur), lo = num(r.fair_lo_eur), hi = num(r.fair_hi_eur), mi = num(r.fair_mitte_eur);
+    const s = document.createElementNS(SVG, 'svg');
+    s.setAttribute('viewBox', `0 0 200 ${h}`);
+    s.setAttribute('preserveAspectRatio', 'none');
+    if ([k, lo, hi].some(isNaN)) return s;
+    const a = Math.min(k, lo) * 0.92, b = Math.max(k, hi) * 1.04;
+    const x = (v) => 4 + (v - a) / (b - a) * 192;
+    const add = (tag, at) => { const n = document.createElementNS(SVG, tag); for (const [kk, vv] of Object.entries(at)) n.setAttribute(kk, vv); s.appendChild(n); return n; };
+    const cy = h / 2;
+    add('rect', {x: 4, y: cy - 2, width: 192, height: 4, rx: 2, style: 'fill: var(--color-border-line)'});
+    add('rect', {x: x(lo), y: cy - 5, width: Math.max(2, x(hi) - x(lo)), height: 10, rx: 4, style: 'fill: color-mix(in srgb, var(--color-ok) 40%, transparent)'});
+    if (!isNaN(mi)) add('rect', {x: x(mi) - 0.75, y: cy - 7, width: 1.5, height: 14, style: 'fill: var(--color-ok)'});
+    add('circle', {cx: x(k), cy, r: Math.min(6, h / 3), style: 'fill: var(--color-fg); stroke: var(--color-panel); stroke-width: 2', 'vector-effect': 'non-scaling-stroke'});
+    return s;
+  };
+  const punkteDots = (p) => {
+    const w = el('span', 'al-dots');
+    for (let i = 1; i <= 10; i++) w.appendChild(el('i', p >= i ? 'on' : ''));
+    if (p < 0) w.firstChild.className = 'minus';
+    return w;
+  };
+  const bar = (frac) => { const b = el('span', 'al-bar'); const i = el('i'); i.style.width = Math.max(0, Math.min(1, frac)) * 100 + '%'; b.appendChild(i); return b; };
+
+  // ---------- Sortierung (Karten und Tabelle) ----------
+  let sortKey = 'rang', sortDir = 1;
+  const ORDNUNG = {trend: {steigend: 0, 'seitwärts': 1, fallend: 2}, kurztrend: {steigend: 0, 'seitwärts': 1, fallend: 2}, top_bedingungen: {true: 0, false: 1}};
+  const AUF = ['rang', 'ticker', 'aktie', 'trend', 'kurztrend', 'sektor', 'zahlen_am', 'kgv', 'peg', 'schwankung_pct', 'top_bedingungen', 'region'];
+  const meineVergleich = (a, b) => {
+    const rg = (r) => (bewertet(r) ? num(r.rang) : 1e9);
+    if (bewertet(a) !== bewertet(b)) return bewertet(a) ? -1 : 1;
+    let x = a[sortKey], y = b[sortKey];
+    if (sortKey === 'rang') return (rg(a) - rg(b)) * sortDir;
+    if (ORDNUNG[sortKey]) { x = ORDNUNG[sortKey][x] ?? 9; y = ORDNUNG[sortKey][y] ?? 9; }
+    if (x === y || (x == null && y == null)) return rg(a) - rg(b);
+    if (x == null || x === '') return 1;
+    if (y == null || y === '') return -1;
+    const nx = num(x), ny = num(y);
+    if (!isNaN(nx) && !isNaN(ny)) return (nx - ny) * sortDir || rg(a) - rg(b);
+    return String(x).localeCompare(String(y), 'de') * sortDir;
+  };
+
+  // ---------- Karten ----------
+  dash.draw('karten', (box) => {
+    box.replaceChildren();
+    const g = dash.data('meine');
+    if (g.status !== 'ok') return;
+    const rows = echte(g.data).sort(meineVergleich);
+    rows.forEach((r, i) => {
+      const w = `ticker=${encodeURIComponent(r.ticker)}`;
+      const mark = (e, f) => { e.dataset.field = f; e.dataset.where = w; return e; };
+      const c = el('article', 'al-top' + (bewertet(r) ? (r.top_bedingungen ? ' gut' : '') : ' aus'));
+      c.style.animationDelay = (i * 50) + 'ms';
+      if (!bewertet(r)) {
+        c.append(el('div', 'al-top-head'), mark(el('h3', 'al-top-name', r.aktie || r.ticker), 'aktie'), el('div', 'al-top-sub', r.ticker));
+        c.firstChild.append(el('span', 'al-top-rang', 'nicht bewertet'));
+        c.append(mark(el('p', 'al-note', String(r.grund || 'keine Bewertung möglich')), 'grund'));
+        box.appendChild(c);
+        return;
+      }
+      c.tabIndex = 0;
+      c.addEventListener('click', () => window.alZeigeAktie(r.ticker));
+      c.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') window.alZeigeAktie(r.ticker); });
+      const head = el('div', 'al-top-head');
+      head.append(mark(el('span', 'al-top-rang', 'Feinwert ' + fmtNum(num(r.feinwert), 0)), 'feinwert'), mark(el('span', 'al-badge', r.punkte + ' Punkte'), 'punkte'));
+      const nm = mark(el('h3', 'al-top-name', r.aktie + (r.waehrung === 'EUR' ? ' 🇪🇺' : '')), 'aktie');
+      const sub = el('div', 'al-top-sub', r.ticker + ' · ' + (r.sektor || '–'));
+      const kg = kurzGrund(r.warum);
+      const kt = kg ? mark(el('p', 'al-kurztext', kg), 'warum') : null;
+      const zeile = el('div', 'al-top-row');
+      const ab = mark(el('span', 'al-top-ab ' + cls(num(r.abstand_pct)), fmtPct(num(r.abstand_pct))), 'abstand_pct');
+      ab.title = 'Abstand: so viel liegt die faire Mitte über dem Kurs';
+      zeile.append(mark(el('span', 'al-top-kurs', fmtKurs(num(r.kurs_eur))), 'kurs_eur'), ab);
+      const sp = spanne(r, 34); sp.setAttribute('class', 'al-range'); sp.setAttribute('aria-hidden', 'true');
+      const lbl = el('div', 'al-range-lbl');
+      lbl.append(mark(el('span', '', 'fair ab ' + fmtKurs(num(r.fair_lo_eur))), 'fair_lo_eur'), mark(el('span', '', 'bis ' + fmtKurs(num(r.fair_hi_eur))), 'fair_hi_eur'));
+      const meta = el('div', 'al-top-meta');
+      meta.append(el('span', 'al-chip ' + trendCls(r.trend), 'lang ' + (PFEIL[r.trend] || '–')), el('span', 'al-chip ' + trendCls(r.kurztrend), 'kurz ' + (PFEIL[r.kurztrend] || '–')));
+      if (r.zahlen_am) meta.append(el('span', 'al-chip', 'Zahlen ' + fmtDatum(r.zahlen_am)));
+      if (r.hype) { const hc = el('span', 'al-chip', '🔥 Hype'); hc.title = r.hype; meta.append(hc); }
+      meta.append(mark(el('span', 'al-chip ' + (r.top_bedingungen ? 'pos' : 'muted'), r.top_bedingungen ? 'Top-Bedingungen ✓' : 'Top-Bedingungen ✗'), 'top_bedingungen'));
+      c.append(head, nm, sub, ...(kt ? [kt] : []), zeile, sp, lbl, meta);
+      box.appendChild(c);
+    });
+  });
+
+  // ---------- Tabelle ----------
+  const richtungText = (d) => (d > 0 ? '↑ aufsteigend' : '↓ absteigend');
+  const meineSortSync = () => {
+    const sel = document.getElementById('meine-sort');
+    if (sel && [...sel.options].some((o) => o.value === sortKey)) sel.value = sortKey;
+    const b = document.getElementById('meine-richtung');
+    if (b) b.textContent = sortKey === 'rang' ? (sortDir > 0 ? '↓ beste zuerst' : '↑ schwächste zuerst') : richtungText(sortDir);
+  };
+  document.getElementById('meine-sort').addEventListener('change', (e) => {
+    sortKey = e.target.value; sortDir = AUF.includes(sortKey) ? 1 : -1;
+    document.querySelectorAll('.al-meine th[data-field]').forEach((th) => th.removeAttribute('aria-sort'));
+    meineSortSync(); dash.draw('karten'); dash.draw('tabelle');
+  });
+  document.getElementById('meine-richtung').addEventListener('click', () => { sortDir = -sortDir; meineSortSync(); dash.draw('karten'); dash.draw('tabelle'); });
+  document.querySelectorAll('.al-meine th button[data-sort]').forEach((b) => b.addEventListener('click', () => {
+    const k = b.dataset.sort;
+    if (k === sortKey) sortDir = -sortDir; else { sortKey = k; sortDir = AUF.includes(k) ? 1 : -1; }
+    document.querySelectorAll('.al-meine th[data-field]').forEach((th) => th.removeAttribute('aria-sort'));
+    const th = b.closest('th');
+    if (th) th.setAttribute('aria-sort', sortDir > 0 ? 'ascending' : 'descending');
+    meineSortSync(); dash.draw('karten'); dash.draw('tabelle');
+  }));
+  dash.draw('tabelle', (tbody) => {
+    tbody.replaceChildren();
+    const g = dash.data('meine');
+    if (g.status !== 'ok') return;
+    const rows = echte(g.data);
+    rows.sort(meineVergleich);
+    for (const r of rows) {
+      const tr = el('tr', (bewertet(r) ? 'click' : '') + (window.alAuswahl === r.ticker ? ' sel' : ''));
+      tr.dataset.key = r.ticker;
+      const td = (text, c) => { const t = el('td', c, text); tr.appendChild(t); return t; };
+      if (!bewertet(r)) {
+        td(r.aktie || r.ticker, 'name'); td(r.ticker, 'tick opt');
+        const t = td('nicht bewertet: ' + (r.grund || ''), 'muted'); t.colSpan = 13;
+        tbody.appendChild(tr);
+        continue;
+      }
+      tr.addEventListener('click', () => { window.alAuswahl = r.ticker; dash.draw('detail'); dash.draw('tabelle'); });
+      td(r.aktie + (r.waehrung === 'EUR' ? ' 🇪🇺' : ''), 'name');
+      td(r.ticker, 'tick opt');
+      td(String(r.punkte), '').appendChild(punkteDots(num(r.punkte)));
+      td(fmtNum(num(r.feinwert), 0), 'opt').appendChild(bar(num(r.feinwert) / 100));
+      td(fmtKurs(num(r.kurs_eur)), 'num');
+      const ab = num(r.abstand_pct);
+      const a = td(fmtPct(ab), cls(ab));
+      const mini = spanne(r, 12); mini.setAttribute('class', 'al-mini'); mini.setAttribute('aria-hidden', 'true');
+      a.appendChild(mini);
+      td(r.top_bedingungen ? 'ja' : 'nein', 'opt ' + (r.top_bedingungen ? 'pos' : 'muted'));
+      td(trendText(r.trend), 'opt ' + trendCls(r.trend));
+      const m1 = num(r.veraenderung_1m_pct);
+      td(trendText(r.kurztrend) + (isNaN(m1) ? '' : ' (' + fmtPct1(m1) + ')'), 'opt ' + trendCls(r.kurztrend));
+      td(fmtNum(num(r.kgv), 1), 'num opt');
+      td(fmtPct(num(r.wachstum_pct)), 'num opt');
+      const uh = num(r.unter_hoch_pct);
+      td(fmtPct(uh), 'num opt ' + (uh < -40 ? 'neg' : ''));
+      const sw = num(r.schwankung_pct);
+      td(isNaN(sw) ? '–' : fmtNum(sw, 0) + ' %', 'num opt ' + (sw > 60 ? 'neg' : ''));
+      td(r.zahlen_am ? fmtDatum(r.zahlen_am) : '–', 'opt');
+      td(r.sektor || '–', 'opt');
+      tbody.appendChild(tr);
+    }
+  });
+
+  // ---------- Detail ----------
+  dash.draw('detail', (box) => {
+    box.replaceChildren();
+    const g = dash.data('meine');
+    if (g.status !== 'ok') return;
+    const ok = echte(g.data).filter(bewertet).sort((a, b) => num(a.rang) - num(b.rang));
+    if (!ok.length) return;
+    zeigeDetail(box, ok.find((x) => x.ticker === window.alAuswahl) || ok[0]);
+  });
+  const zeigeDetail = (box, r) => {
+    const w = `ticker=${encodeURIComponent(r.ticker)}`;
+    const mark = (e, f) => { e.dataset.field = f; e.dataset.where = w; return e; };
+    const grid = el('div', 'al-det-grid');
+    if (r.warum || r.finanzen) {
+      const tx = el('div', 'al-texte');
+      for (const [titel, f] of [['Warum diese Bewertung', 'warum'], ['Finanzielle Lage', 'finanzen']]) {
+        if (!r[f]) continue;
+        const d = el('div');
+        d.append(el('div', 'al-note', titel), mark(el('p', '', String(r[f])), f));
+        tx.appendChild(d);
+      }
+      box.appendChild(tx);
+    }
+
+    const a = el('div');
+    const kopf = el('div', 'al-top-head');
+    kopf.append(mark(el('span', 'al-chip ' + (r.top_bedingungen ? 'pos' : 'muted'), r.top_bedingungen ? 'Top-Bedingungen ✓' : 'Top-Bedingungen ✗'), 'top_bedingungen'),
+      mark(el('span', 'al-top-rang', 'Feinwert ' + fmtNum(num(r.feinwert), 0)), 'feinwert'));
+    a.append(kopf, mark(el('h3', 'al-det-name', r.aktie + (r.waehrung === 'EUR' ? ' 🇪🇺' : '')), 'aktie'), el('div', 'al-top-sub', r.ticker + ' · ' + (r.sektor || '–')));
+    const zeile = el('div', 'al-top-row'); zeile.style.marginTop = 'var(--cds-gap-md)';
+    zeile.append(mark(el('span', 'al-top-kurs', fmtKurs(num(r.kurs_eur))), 'kurs_eur'), mark(el('span', 'al-top-ab ' + cls(num(r.abstand_pct)), fmtPct(num(r.abstand_pct)) + ' Abstand'), 'abstand_pct'));
+    const sp = spanne(r, 34); sp.setAttribute('class', 'al-range'); sp.setAttribute('aria-hidden', 'true');
+    const lbl = el('div', 'al-range-lbl');
+    lbl.append(mark(el('span', '', 'fair ab ' + fmtKurs(num(r.fair_lo_eur))), 'fair_lo_eur'), mark(el('span', '', 'Mitte ' + fmtKurs(num(r.fair_mitte_eur))), 'fair_mitte_eur'), mark(el('span', '', 'bis ' + fmtKurs(num(r.fair_hi_eur))), 'fair_hi_eur'));
+    a.append(zeile, sp, lbl);
+    if (r.haken) {
+      const ul = el('ul', 'al-hakenliste');
+      for (const h of String(r.haken).split(', ')) ul.appendChild(el('li', '', h));
+      a.append(el('div', 'al-note', 'Haken:'), ul);
+    }
+
+    const b = el('div');
+    b.appendChild(el('div', 'al-note', 'Woher die ' + r.punkte + ' Punkte kommen'));
+    const sc = el('div', 'al-score');
+    const teile = [['Bewertung', num(r.bewertungs_pkt), 0, 4], ['Qualität', num(r.qualitaets_pkt), -3, 3], ['Trend lang', num(r.trend_pkt), -1, 1], ['Trend kurz', num(r.kurztrend_pkt), -1, 1], ['Schätzungen', num(r.revision_pkt), -1, 1], ['Nachrichten', num(r.nachrichten_pkt ?? 0), -2, 1]];
+    for (const [name, v, lo, hi] of teile) {
+      const tr = el('div', 'track'); const i = el('i');
+      const z = (0 - lo) / (hi - lo), f = (Math.max(lo, Math.min(hi, v || 0)) - lo) / (hi - lo);
+      i.style.left = Math.min(z, f) * 100 + '%'; i.style.width = Math.max(2, Math.abs(f - z) * 100) + '%';
+      i.style.background = v > 0 ? 'var(--color-ok)' : v < 0 ? 'var(--color-bad)' : 'var(--color-fg-muted)';
+      tr.appendChild(i);
+      sc.append(el('span', '', name), tr, el('span', 'num ' + cls(v), isNaN(v) ? '–' : (v > 0 ? '+' : '') + v));
+    }
+    b.appendChild(sc);
+    const nb = el('div', 'al-news');
+    nb.appendChild(el('div', 'al-note', 'Nachrichten' + (r.nachrichten_datum ? ' (geprüft ' + fmtDatum(r.nachrichten_datum) + ')' : '')));
+    if (r.nachrichten) {
+      nb.appendChild(mark(el('p', 'al-news-text ' + (num(r.nachrichten_pkt) > 0 ? 'pos' : num(r.nachrichten_pkt) < 0 ? 'neg' : ''), (r.nachrichten_urteil ? r.nachrichten_urteil[0].toUpperCase() + r.nachrichten_urteil.slice(1) + ': ' : '') + r.nachrichten), 'nachrichten'));
+      const q = el('div', 'al-news-links');
+      (r.nachrichten_quellen || []).forEach((u, i) => {
+        let host = 'Quelle'; try { host = new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return; }
+        const lnk = el('a', '', host); lnk.href = u; lnk.target = '_blank'; lnk.rel = 'noopener noreferrer';
+        q.appendChild(lnk);
+      });
+      nb.appendChild(q);
+    } else {
+      nb.appendChild(el('p', 'al-news-text muted', 'Keine geprüften Nachrichten aus den letzten 7 Tagen.'));
+    }
+    b.appendChild(nb);
+    if (r.hype) {
+      const hb = el('div', 'al-news');
+      hb.appendChild(el('div', 'al-note', '🔥 Hype' + (r.hype_datum ? ' (' + fmtDatum(r.hype_datum) + ')' : '') + ' – gibt keine Punkte'));
+      hb.appendChild(mark(el('p', 'al-news-text', r.hype), 'hype'));
+      const q = el('div', 'al-news-links');
+      (r.hype_quellen || []).forEach((u) => {
+        let host = 'Quelle'; try { host = new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return; }
+        const lnk = el('a', '', host); lnk.href = u; lnk.target = '_blank'; lnk.rel = 'noopener noreferrer'; q.appendChild(lnk);
+      });
+      hb.appendChild(q);
+      b.appendChild(hb);
+    }
+    const fw = el('div', 'al-note'); fw.style.marginTop = 'var(--cds-gap-md)';
+    fw.append('Feinwert ', mark(el('b', '', fmtNum(num(r.feinwert), 0)), 'feinwert'), ' von 100');
+    b.appendChild(fw);
+
+    const c = el('div');
+    const dl = el('dl', 'al-det-list');
+    const paar = (k, v, f, ccls) => { dl.appendChild(el('dt', '', k)); const dd = el('dd', ccls || '', v); if (f) mark(dd, f); dl.appendChild(dd); };
+    paar('KGV (nächstes Jahr)', fmtNum(num(r.kgv), 1), 'kgv');
+    paar('Gewinnwachstum', fmtPct(num(r.wachstum_pct)), 'wachstum_pct');
+    paar('PEG', fmtNum(num(r.peg), 2), 'peg');
+    paar('Wert nach KGV', fmtKurs(num(r.wert_kgv_eur)), 'wert_kgv_eur');
+    paar('Wert nach Cashflow (DCF)', r.wert_cf_eur == null ? 'nicht rechenbar' : fmtKurs(num(r.wert_cf_eur)), 'wert_cf_eur');
+    paar('Kursziel Analysten (Median)', fmtKurs(num(r.kursziel_eur)), 'kursziel_eur');
+    paar('Freier Cashflow zum Börsenwert', r.fcf_rendite_pct == null ? '–' : fmtNum(num(r.fcf_rendite_pct), 1) + ' %', 'fcf_rendite_pct');
+    paar('Börsenwert', fmtGeld(num(r.marktwert_eur)), 'marktwert_eur');
+    paar('Umsatz im Jahr', fmtGeld(num(r.umsatz_eur)), 'umsatz_eur');
+    paar('Operative Marge', isNaN(num(r.operative_marge_pct)) ? '–' : fmtNum(num(r.operative_marge_pct), 0) + ' %', 'operative_marge_pct');
+    paar(num(r.nettoschulden_eur) < 0 ? 'Nettoliquidität' : 'Nettoschulden', fmtGeld(Math.abs(num(r.nettoschulden_eur))), 'nettoschulden_eur');
+    paar('Dividende', isNaN(num(r.dividende_pct)) ? '–' : fmtNum(num(r.dividende_pct), 1) + ' %', 'dividende_pct');
+    paar('Zahl der Analysten', String(r.analysten ?? '–'), 'analysten');
+    paar('Trend lang', trendText(r.trend), 'trend', trendCls(r.trend));
+    paar('Trend kurz', trendText(r.kurztrend), 'kurztrend', trendCls(r.kurztrend));
+    paar('Letzter Monat', fmtPct1(num(r.veraenderung_1m_pct)), 'veraenderung_1m_pct', cls(num(r.veraenderung_1m_pct)));
+    paar('Vom Jahreshoch', fmtPct(num(r.unter_hoch_pct)), 'unter_hoch_pct');
+    paar('Schwankung im Jahr', isNaN(num(r.schwankung_pct)) ? '–' : fmtNum(num(r.schwankung_pct), 0) + ' %', 'schwankung_pct');
+    paar('Nächste Zahlen', r.zahlen_am ? fmtDatumLang(r.zahlen_am) : '–', 'zahlen_am');
+    c.appendChild(dl);
+
+    grid.append(a, b, c);
+    box.appendChild(grid);
+  };
+
+  // ---------- Alle Aktien ----------
+  const LAENDER = [['', 'USA'], ['.DE', 'Deutschland'], ['.L', 'Großbritannien'], ['.PA', 'Frankreich'], ['.AS', 'Niederlande'], ['.MC', 'Spanien'], ['.MI', 'Italien'], ['.SW', 'Schweiz'], ['.ST', 'Schweden'], ['.CO', 'Dänemark'], ['.OL', 'Norwegen'], ['.HE', 'Finnland'], ['.BR', 'Belgien'], ['.TO', 'Kanada'], ['.T', 'Japan'], ['.AX', 'Australien'], ['.HK', 'Hongkong']];
+  const region = (t) => { const m = /\.[A-Z]{1,2}$/.exec(t || ''); const e = m ? m[0] : ''; const f = LAENDER.find((x) => x[0] === e); return f ? f[1] : 'andere'; };
+  const istNeu = (r) => { if (!r.aufgenommen) return false; const d = new Date(r.aufgenommen); return !isNaN(d) && (Date.now() - d.getTime()) < 7 * 864e5; };
+  const alleF = {suche: '', region: '', sektor: '', punkte: '', top: false, neu: false, hype: false, limit: 100};
+  let aSortKey = 'punkte', aSortDir = -1, alleAuswahl = null;
+  {
+    const sel = document.getElementById('alle-region');
+    for (const [, n] of LAENDER) { const o = el('option', '', n); o.value = n; sel.appendChild(o); }
+  }
+  const neuZeichnen = () => { alleF.limit = 100; dash.draw('alle_tabelle'); };
+  document.getElementById('alle-suche').addEventListener('input', (e) => { alleF.suche = e.target.value.trim().toLowerCase(); neuZeichnen(); });
+  for (const [id, k] of [['alle-region', 'region'], ['alle-sektor', 'sektor'], ['alle-punkte', 'punkte']]) document.getElementById(id).addEventListener('change', (e) => { alleF[k] = e.target.value; neuZeichnen(); });
+  for (const [id, k] of [['alle-top', 'top'], ['alle-neu', 'neu'], ['alle-hype', 'hype']]) document.getElementById(id).addEventListener('change', (e) => { alleF[k] = e.target.checked; neuZeichnen(); });
+  document.getElementById('alle-mehr').addEventListener('click', () => { alleF.limit += 200; dash.draw('alle_tabelle'); });
+  const alleSortSync = () => {
+    const sel = document.getElementById('alle-sort');
+    if ([...sel.options].some((o) => o.value === aSortKey)) sel.value = aSortKey;
+    document.getElementById('alle-richtung').textContent = richtungText(aSortDir);
+  };
+  document.querySelectorAll('.al-alle th button[data-sort]').forEach((b) => b.addEventListener('click', () => {
+    const k = b.dataset.sort;
+    if (k === aSortKey) aSortDir = -aSortDir; else { aSortKey = k; aSortDir = AUF.includes(k) ? 1 : -1; }
+    document.querySelectorAll('.al-alle th').forEach((th) => th.removeAttribute('aria-sort'));
+    const th = b.closest('th'); if (th) th.setAttribute('aria-sort', aSortDir > 0 ? 'ascending' : 'descending');
+    alleSortSync(); dash.draw('alle_tabelle');
+  }));
+  document.getElementById('alle-sort').addEventListener('change', (e) => {
+    aSortKey = e.target.value; aSortDir = AUF.includes(aSortKey) ? 1 : -1;
+    document.querySelectorAll('.al-alle th').forEach((th) => th.removeAttribute('aria-sort'));
+    alleSortSync(); alleF.limit = 100; dash.draw('alle_tabelle');
+  });
+  document.getElementById('alle-richtung').addEventListener('click', () => { aSortDir = -aSortDir; alleSortSync(); alleF.limit = 100; dash.draw('alle_tabelle'); });
+  const alleZeilen = () => { const g = dash.data('alle'); return g.status === 'ok' ? g.data.filter((r) => r.ticker) : null; };
+  const standard = (a, b) => (num(b.punkte) - num(a.punkte)) || (num(b.feinwert) - num(a.feinwert));
+  let sektorenGefuellt = false;
+  dash.onData(() => {
+    const rows = alleZeilen();
+    if (!rows || sektorenGefuellt) return;
+    const sel = document.getElementById('alle-sektor');
+    for (const s of [...new Set(rows.map((r) => r.sektor).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'de'))) { const o = el('option', '', s); o.value = s; sel.appendChild(o); }
+    sektorenGefuellt = true;
+  });
+  dash.draw('alle_info', (e) => {
+    const rows = alleZeilen();
+    if (!rows) { e.textContent = '—'; return; }
+    const st = (rows.find((r) => r.stand) || {}).stand;
+    const neu = rows.filter(istNeu).length;
+    e.textContent = nf(0).format(rows.length) + ' Aktien bewertet' + (neu ? ', davon ' + nf(0).format(neu) + ' neu' : '') + (st ? ' (Stand ' + fmtStand(st) + ').' : '.');
+  });
+  const gefiltert = () => {
+    const alle = alleZeilen();
+    if (!alle) return null;
+    const rows = alle.filter((r) => {
+      if (alleF.suche && !(String(r.aktie || '').toLowerCase().includes(alleF.suche) || String(r.ticker).toLowerCase().includes(alleF.suche))) return false;
+      if (alleF.region && region(r.ticker) !== alleF.region) return false;
+      if (alleF.sektor && r.sektor !== alleF.sektor) return false;
+      if (alleF.punkte && num(r.punkte) < Number(alleF.punkte)) return false;
+      if (alleF.top && r.top_bedingungen !== true) return false;
+      if (alleF.neu && !istNeu(r)) return false;
+      if (alleF.hype && !r.hype) return false;
+      return true;
+    });
+    rows.sort((a, b) => {
+      let x = aSortKey === 'region' ? region(a.ticker) : a[aSortKey], y = aSortKey === 'region' ? region(b.ticker) : b[aSortKey];
+      if (ORDNUNG[aSortKey]) { x = ORDNUNG[aSortKey][x] ?? 9; y = ORDNUNG[aSortKey][y] ?? 9; }
+      if (x === y || (x == null && y == null)) return standard(a, b);
+      if (x == null || x === '') return 1;
+      if (y == null || y === '') return -1;
+      const nx = num(x), ny = num(y);
+      if (!isNaN(nx) && !isNaN(ny)) return (nx - ny) * aSortDir || standard(a, b);
+      return String(x).localeCompare(String(y), 'de') * aSortDir;
+    });
+    return rows;
+  };
+  dash.draw('alle_mehr', (mehr) => {
+    const rows = gefiltert();
+    const rest = rows ? rows.length - Math.min(rows.length, alleF.limit) : 0;
+    mehr.hidden = rest <= 0;
+    mehr.textContent = 'Mehr zeigen (' + nf(0).format(rest) + ' weitere)';
+  });
+  dash.draw('alle_tabelle', (tbody) => {
+    tbody.replaceChildren();
+    const alleR = gefiltert();
+    dash.draw('alle_mehr');
+    if (!alleR) return;
+    const rows = alleR.slice(0, alleF.limit);
+    if (!rows.length) {
+      const tr = el('tr'); const t = el('td', 'muted', 'Keine Aktie passt zu diesen Filtern.'); t.colSpan = 16; tr.appendChild(t); tbody.appendChild(tr);
+    }
+    for (const r of rows) {
+      const tr = el('tr', 'click' + (alleAuswahl === r.ticker ? ' sel' : ''));
+      tr.dataset.key = r.ticker;
+      const td = (text, c) => { const t = el('td', c, text); tr.appendChild(t); return t; };
+      tr.addEventListener('click', () => {
+        alleAuswahl = r.ticker; dash.draw('alle_detail'); dash.draw('alle_tabelle');
+        document.getElementById('alle-detail').scrollIntoView({behavior: 'smooth', block: 'start'});
+      });
+      const n = td((r.in_meine ? '★ ' : '') + r.aktie + (r.waehrung === 'EUR' ? ' 🇪🇺' : ''), 'name');
+      if (r.hype) { const f = el('span', '', ' 🔥'); f.title = 'Hype: ' + r.hype; n.appendChild(f); }
+      if (istNeu(r)) n.appendChild(el('span', 'al-neu', 'NEU'));
+      td(r.ticker, 'tick opt');
+      td(String(r.punkte), '').appendChild(punkteDots(num(r.punkte)));
+      td(fmtNum(num(r.feinwert), 0), 'opt').appendChild(bar(num(r.feinwert) / 100));
+      td(fmtKurs(num(r.kurs_eur)), 'num');
+      const ab = num(r.abstand_pct);
+      const a = td(fmtPct(ab), cls(ab));
+      const mini = spanne(r, 12); mini.setAttribute('class', 'al-mini'); mini.setAttribute('aria-hidden', 'true');
+      a.appendChild(mini);
+      td(r.top_bedingungen ? 'ja' : 'nein', 'opt ' + (r.top_bedingungen ? 'pos' : 'muted'));
+      td(trendText(r.trend), 'opt ' + trendCls(r.trend));
+      const m1 = num(r.veraenderung_1m_pct);
+      td(trendText(r.kurztrend) + (isNaN(m1) ? '' : ' (' + fmtPct1(m1) + ')'), 'opt ' + trendCls(r.kurztrend));
+      td(fmtNum(num(r.kgv), 1), 'num opt');
+      td(fmtPct(num(r.wachstum_pct)), 'num opt');
+      const uh = num(r.unter_hoch_pct);
+      td(fmtPct(uh), 'num opt ' + (uh < -40 ? 'neg' : ''));
+      const sw = num(r.schwankung_pct);
+      td(isNaN(sw) ? '–' : fmtNum(sw, 0) + ' %', 'num opt ' + (sw > 60 ? 'neg' : ''));
+      td(r.zahlen_am ? fmtDatum(r.zahlen_am) : '–', 'opt');
+      td(region(r.ticker), 'opt');
+      td(r.sektor || '–', 'opt');
+      tbody.appendChild(tr);
+    }
+  });
+  dash.draw('alle_detail', (box) => {
+    box.replaceChildren();
+    const rows = alleZeilen();
+    if (!rows || !rows.length) return;
+    const r = rows.find((x) => x.ticker === alleAuswahl) || rows.slice().sort(standard)[0];
+    zeigeDetail(box, r);
+  });
+</script>

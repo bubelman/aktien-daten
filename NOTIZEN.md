@@ -135,7 +135,29 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
-(zurzeit keine)
+### A2 (15.11.2026, ab Nachtschicht 15.11. 21:41): Dashboard am PC schöner und übersichtlicher
+Levin: „es soll auf PC und es soll schöner und übersichtlicher“, „du machst es einfach in der Nachtschicht schöner“.
+Seite: ArtifactData collection "files", doc_id "index.html", Feld "text" (immer die aktuelle Version lesen!).
+Beobachtungen am PC (1440 px, 15.11. abends):
+1. Überschrift heißt immer „Meine Aktien“, auch im Reiter „Alle Aktien“ → neutraler Titel (z. B. „Aktien-Liste“)
+   oder Titel je Reiter; der Einleitungssatz ist lang.
+2. Detailansicht liegt ganz unten; nach Klick muss man weit scrollen. Besser ab ca. 1100 px Breite zwei Spalten:
+   links Liste/Karten/Tabelle, rechts die Detailansicht fest mitlaufend (position: sticky; eigene Scrollleiste).
+   Auf schmalen Bildschirmen bleibt alles untereinander. Kein automatisches Scrollen zum Detail am PC.
+3. Detailansicht doppelt sich (Name und Kurs stehen unter den Texten nochmal). Neu ordnen, eine Spalte:
+   Kopf (Name, Kürzel, Branche, Punkte, Feinwert, 🔥/NEU), Kurs + Abstand groß, faire Spanne mit Beschriftung,
+   „Warum diese Bewertung“, „Finanzielle Lage“, Haken, Punkte-Balken, Nachrichten, Hype, Zahlenliste in 2 Spalten.
+4. Tabelle „Alle Aktien“ ist breiter als der Bildschirm (seitlich scrollen). Standard: wenige Spalten (Aktie,
+   Punkte, Feinwert, Kurs, Abstand, Trend, Land, Branche) und ein Knopf „Mehr Spalten“ für den Rest.
+5. „Meine Aktien“: Karten und Tabelle zeigen fast dasselbe → Tabelle einklappbar („Tabelle zeigen“), Karten
+   ruhiger (weniger Chips), KPI-Leiste kompakter.
+6. Insgesamt: ruhigere Abstände, klare Überschriften, gleiche Schriftgrößen; Farben nur für gut/schlecht.
+   Alle bestehenden Funktionen müssen bleiben (Suche, Filter, Sortieren, NEU, 🔥, ★, Texte, Nachrichten, Links,
+   „Mehr zeigen“). data-draw/data-source/data-field-Markierungen beibehalten; Elemente mit data-draw leer lassen.
+Vorgehen: lokal mit Ersatz für window.dash und echten meine.json/alle.json in Chromium testen (1440 px und
+390 px), Bildschirmfotos ansehen, keine Konsolenfehler; dann hochladen, data/users/me "runs" prüfen (keine
+"stray_write"/"not_empty"-Warnungen). Im Bericht kurz sagen, was anders ist. Danach weitere Nächte: weiter
+verbessern (siehe Regeln für die Nachtschicht).
 
 ## Bekannte Grenzen und offene Ideen
 - Yahoo-Schätzungen sind oft „bereinigt“ (ohne Sonderkosten); andere Quellen nennen niedrigere Gewinne
@@ -168,6 +190,10 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   mehr für Verbesserungen und neue Aktien – alles, was sich sauber prüfen lässt; höchstens 2 Regel-Vorschläge je Bericht.
   Regeländerungen (Punkte, Gewichte, faire Spanne, Top-Bedingungen) nur auf Zweig `vorschlag/<name>` mit
   Rückblick-Test vorbereiten und nach Levins Ja übernehmen. „zurück“ von Levin = git revert.
+- Seit 15.11.2026 (Levins Ja): die Dashboard-Seite darf jede Nacht verbessert werden (schöner, übersichtlicher,
+  vor allem am PC) – immer mit lokalem Test (PC und Handy), keine Funktion entfernen, im Bericht sagen, was neu ist;
+  „zurück“ von Levin = vorherige Version von files/index.html wiederherstellen (vorher Kopie im Repository unter
+  dashboard/index.html ablegen und mit committen).
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
 
 ## Skills
