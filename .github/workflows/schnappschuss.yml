@@ -1,0 +1,31 @@
+name: Schnappschuss und Trefferquote
+# Jeden Börsentag nach US-Börsenschluss: Bewertungen aller Aktien speichern und messen, wie sich Aktien mit
+# vielen und wenigen Punkten seit früheren Schnappschüssen entwickelt haben.
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "37 22 * * 1-5"
+permissions:
+  contents: write
+jobs:
+  schnappschuss:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python schnappschuss.py
+      - name: Speichern
+        run: |
+          git config user.name "aktien-bot"
+          git config user.email "aktien-bot@users.noreply.github.com"
+          for i in 1 2 3 4 5; do
+            git add data/verlauf data/trefferquote.json
+            git diff --cached --quiet && exit 0
+            git commit -q -m "Schnappschuss $(date -u +%F)"
+            git pull -q --rebase -X theirs && git push -q && exit 0
+            sleep 15
+          done
+          exit 1

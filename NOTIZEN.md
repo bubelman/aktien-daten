@@ -159,6 +159,23 @@ Vorgehen: lokal mit Ersatz für window.dash und echten meine.json/alle.json in C
 "stray_write"/"not_empty"-Warnungen). Im Bericht kurz sagen, was anders ist. Danach weitere Nächte: weiter
 verbessern (siehe Regeln für die Nachtschicht).
 
+### A3 (15.11.2026, ab Nachtschicht 15.11. 21:41): Trefferquote – funktioniert die Bewertung?
+Levin: „geht noch besser“. Grundlage seit 15.11.: schnappschuss.py + schnappschuss.yml (Börsentage 22:37 UTC)
+speichern data/verlauf/JJJJ-MM-TT.json (Punkte, Feinwert, Kurs €, Abstand, Top je Aktie) und rechnen
+data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punktegruppe und mit/ohne Top-Bedingungen).
+1. Rückwirkend füllen: aus der Git-Geschichte von data/aktien.json (Daten seit Ende Oktober) für jeden Börsentag
+   die letzte Version holen, bewertung.py darauf laufen lassen (heutige Regeln; fehlende Felder → Aktie überspringen)
+   und als data/verlauf/<Datum>.json speichern, mit Feld "rueckwirkend": true. Ehrlich kennzeichnen: das ist ein
+   Rückblick mit heutigen Regeln, kein echter Test aus der Vergangenheit.
+2. Zusätzlich mit Kursdaten (yfinance im GitHub-Workflow, z. B. einmaliger Workflow) einen längeren Rückblick-Test
+   der Trend- und Bewertungsregeln vorbereiten, wenn machbar – nur als Auswertung, keine Regeländerung.
+3. Dashboard: neuer kleiner Bereich (z. B. im Reiter „So wird gerechnet“ oder eigener Reiter „Trefferquote“):
+   Tabelle/Balken „Aktien mit 7–10 / 5–6 / 3–4 / unter 3 Punkten: im Schnitt X % seit <Datum>“, Vergleich mit allen
+   Aktien, Hinweis „wenige Wochen sagen wenig“. Dafür einen Datensatz "trefferquote" anlegen (Datei aus
+   data/trefferquote.json hochladen, datasets/trefferquote) und in der Aufgabe „Meine Aktien aktualisieren“ ergänzen,
+   dass sie die Datei bei jedem Lauf mit hochlädt (update_trigger, ganzer Text plus Ergänzung).
+4. Wochenbericht montags: eine Zeile zur Trefferquote.
+
 ## Bekannte Grenzen und offene Ideen
 - Yahoo-Schätzungen sind oft „bereinigt“ (ohne Sonderkosten); andere Quellen nennen niedrigere Gewinne
   (z. B. Infineon). Analysten können optimistischer sein als die Firma (z. B. Siemens Energy 2027).
