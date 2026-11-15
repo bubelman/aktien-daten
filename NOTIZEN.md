@@ -110,6 +110,15 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   R3NK.DE, IOS.DE, ELG.DE, SIX2.DE (TecDAX/SDAX/MDAX-Lücke). 10 bewertet; TEAM und ALNY: „Wachstum unplausibel“.
   Nasdaq-100 aktuell (seit 22.06.2026): ALAB, CRWV, NBIS, RKLB, TER neu; CHTR, CTSH, INSM, VRSK, ZS raus.
   CRWV, NBIS, RKLB ohne Gewinn → nicht aufgenommen. Noch offen: SDAX-Rest (z. B. 1U1, KWS, DUE, DRW3, WAC).
+- 15.11.2026 (Nachtschicht 3:41): **15 neue Aktien** (SDAX-Lücke, Börsenwert laut boerse.de 13.11.): SPG, FIE, OHB, 1SXP,
+  OBCK, SZU, DMP, TNIE, VH2, ACT, WAC, GYC, YSN, SFQ, S92 (.DE) – Commit 2d0f45a. Kürzel korrigiert: SATS → ECHO
+  (EchoStar, neues Kürzel seit 24.06.2026; SATS zeigte ein Vorzugspapier mit 15 % „Dividende“), FAGR.AS → FAGR.BR.
+  Entfernt: ROKU (von Fox übernommen, 06.11.2026), SIX/ULTI/TIME (ETFs), INCR (zu klein), INGA.BR (doppelt).
+  SPY bleibt (Vergleichswert der Depots). universum.yml (sonntags) gestartet.
+- 15.11.2026 (Nachtschicht, Arbeitsweise): **Kürzel-Verdacht** (Commit 6d7b98d): bericht.json hat "kuerzel_verdacht" –
+  kein neuer Kurs seit mehr als 3 Börsentagen (Übernahme/neues Kürzel) oder weder Börsenwert noch Schätzungen (ETF,
+  Vorzugspapier, falsche Börse). Test: findet alle 7 Fälle dieser Nacht (+ JCH.L und 2 Fonds aus London); Punkte und
+  Listen byte-gleich. universum.py nimmt Kürzel aus `tickers_gesperrt.txt` nicht wieder auf (Kürzel + Datum + Grund).
 - 13.11.2026 (Nachtschicht 21:41): Kurse-Schleife war nach dem Push (18:51 UTC) nie gelaufen – letzte
   Starthilfe 18:11 UTC lag davor, also keine Kurse nach 18:48 UTC. Von Hand gestartet (Lauf 43504676163),
   damit der US-Schluss vom Freitag noch kommt. Keine Code-Änderung.
@@ -120,7 +129,9 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   vermutlich veralteter Vergleichswert.
 - AVGO: 14.11.2026 – Gewinn FY2026 Yahoo 11,66 $ / vcpscanner.com 11,68 $ (passt). Kurs Yahoo 347 $ (13.11.),
   dort 364 $ (12.11.) → Tagesbewegung. Kursziel-Durchschnitt (Yahoo 529 $) noch ohne zweite Quelle.
-- SAP, IFX.DE, ENR.DE: noch nicht geprüft (als Nächstes, in dieser Reihenfolge).
+- SAP: 15.11.2026 – Kursziel-Durchschnitt Yahoo 284,50 $ / stockanalysis.com 280,83 $ (passt). Gewinn 2026/2027 Yahoo
+  8,06/9,53 $ (ADR, in Dollar) = 7,29/8,62 € / stockanalysis 7,16/8,44 € bereinigt (+2 %, passt).
+- IFX.DE, ENR.DE: noch nicht geprüft (als Nächstes, in dieser Reihenfolge).
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
@@ -135,8 +146,11 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   Kursziel liegen, wird die Mitte sehr hoch. Oft steckt ein Sondereffekt im freien Cashflow (Kundenanzahlungen bei
   Reise- und Postfirmen). Idee für die Nachtschicht: Vorschlag mit Rückblick-Test (z. B. Mitte höchstens doppelt so
   hoch wie das Kursziel oder Cashflow-Rendite über 15 % als Sondereffekt behandeln).
+- Rund 70 Londoner Investmentfonds (Investment Trusts aus dem FTSE 250, z. B. SMT.L, FCIT.L) haben kein Kursziel und
+  werden nie bewertet. Idee: in tickers_gesperrt.txt verschieben (mit Levin klären, ob er sie sehen will).
+- ML.PA (Michelin): Yahoo liefert seit dem 14.11. keine Gewinnschätzung und Börsenwert 0 → fällt raus (beobachten).
+- SDAX noch offen (Börsenwert prüfen): 1U1, KWS, DUE, AOF, HBH, KTN, VBK, DEQ; danach SBF 120 und STOXX 600.
 - Noch „Währung unklar“: SHC.L, ABB.ST, EQT.ST, HEXA-B.ST (forwardEps passt zu keiner Umrechnung, Abweichung 25–60 %).
-- Alle Kurse der Daten stammen vom 13.11.; ROKU hat seit 09.11. keinen neuen Kurs (beobachten, ggf. Übernahme?).
 - Ideen: Rückblick-Test der Trend-Regeln mit Kursdaten; Kurs-Gegenprüfung mit Twelve Data; Hinweis, wenn
   Analystenschätzung deutlich über dem Firmenausblick liegt.
 
@@ -154,3 +168,4 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 
 ## Skills
 - (noch keine von der Nachtschicht vorgeschlagen; 14.11.: bewusst keiner, A1 hatte Vorrang)
+- 15.11.: keiner (kein Werkzeug propose_skills; für die NVIDIA-Zahlen am 17.11. gibt es schon equity-research:earnings-preview).
