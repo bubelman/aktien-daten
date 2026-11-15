@@ -7,3 +7,11 @@ TIME 15.11.2026 ETF, keine Aktie
 INCR 15.11.2026 Börsenwert unter 50 Mio. $
 INGA.BR 15.11.2026 ING doppelt (INGA.AS), keine Daten
 FAGR.AS 15.11.2026 falsche Börse, Fagron = FAGR.BR
+BRWM.L 15.11.2026 Londoner Investmentfonds (BlackRock World Mining Trust), keine Aktie
+JCH.L 15.11.2026 Londoner Investmentfonds (JPMorgan Claverhouse), keine Aktie
+SDP.L 15.11.2026 Londoner Investmentfonds (Schroder AsiaPacific), keine Aktie
+SOI.L 15.11.2026 Londoner Investmentfonds (Schroder Oriental Income), keine Aktie
+VAS.AX 15.11.2026 ETF (Vanguard Australian Shares), keine Aktie
+NYR.BR 15.11.2026 Nyrstar: bei Yahoo weder Börsenwert noch Schätzungen
+INDV 15.11.2026 Indivior mit Supernus fusioniert (02.11.2026), Firma läuft als SUPN (schon in der Liste) – finviz.com/news/413321
+LXP 15.11.2026 Übernahme durch Brookfield/CPP abgeschlossen (02.11.2026), nicht mehr gehandelt – finviz.com/news/412967
