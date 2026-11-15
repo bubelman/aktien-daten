@@ -62,6 +62,8 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
 - Aktien-Scout: Börsentage 11:48 und 18:48 (Berlin), siehe Abschnitt „Aktien-Scout“.
 - Aufpasser (seit 15.11.): täglich 9:13, 13:13, 19:13, 23:13 (Berlin). Prüft Aufgaben, GitHub-Läufe, Daten, Dashboard;
   behebt Kleines selbst (Workflows neu starten, Dashboard-Daten neu schreiben), Größeres als Auftrag für die Nachtschicht.
+  Seit 15.11. auch Token-Wächter: prüft Laufzeiten der Aufgaben, setzt/löscht den Sparmodus nach Levins Zahl,
+  schreibt bei Leerlauf-Arbeit einen Auftrag „Token sparen bei …“ für die Nachtschicht.
 - Chef (seit 15.11., auf Levins Wunsch „öfter“): täglich 20:27 (vor der Nachtschicht), sonntags mit großem Bericht.
   Schaut auf das ganze System („Firma“), plant die nächsten 1–2 Wochen, schreibt
   Aufträge für die Nachtschicht (Abschnitt „Chef – Plan“), schickt Levin den Chef-Bericht; Regeländerungen, mehr
