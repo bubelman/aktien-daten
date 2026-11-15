@@ -232,6 +232,10 @@ data/trefferquote.json (Kursentwicklung seit 1 Woche/1/3/6/12 Monaten je Punkteg
   es richtig gut ist“): gründlich und tief arbeiten, dritter Lauf um 0:41 nur für große Aufgaben. Richtwert: höchstens
   etwa die Hälfte von Levins Wochenlimit. Den echten Verbrauch sieht nur Levin in seinen Claude-Einstellungen. Sagt er,
   es wird zu viel: weniger Agenten, Lauf 0:41 nur bei offenen großen Aufträgen.
+- Grenze (Levin, 15.11.2026): alle Aufgaben zusammen höchstens **75 % von Levins Wochenlimit** (neu jeden Mittwoch).
+  Den Zähler sieht nur Levin (Einstellungen → Nutzung). Er schreibt die Zahl in den Chat, sie wird hier eingetragen.
+  Ab 60 %: Sparmodus wie unten. Ab 75 %: Nachtschicht nur noch Schritt 1 (Prüfen), keine Agenten, bis Mittwoch.
+  Letzte Zahl: 42 % am So 15.11. 19:22.
 - **SPARMODUS bis Mittwoch 18.11.2026** (Levin am 15.11. um 19:22: schon 42 % vom Wochenlimit verbraucht, Mittwoch
   wird es neu). Gilt vor allen anderen Regeln hier und in der Aufgabe:
   • Lauf 0:41: sofort beenden, nur eine Zeile „Sparmodus bis Mittwoch“.
