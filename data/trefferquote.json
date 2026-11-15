@@ -1,4 +1,88 @@
 {
  "stand": "2026-11-15",
- "zeitraeume": {}
+ "zeitraeume": {
+  "1 Woche": {
+   "seit": "2026-11-06",
+   "rueckwirkend": true,
+   "nach_punkten": {
+    "7–10": {
+     "anzahl": 3,
+     "mittel_pct": 7.5
+    },
+    "5–6": {
+     "anzahl": 134,
+     "mittel_pct": 3.8
+    },
+    "3–4": {
+     "anzahl": 242,
+     "mittel_pct": 3.1
+    },
+    "unter 3": {
+     "anzahl": 202,
+     "mittel_pct": 3.1
+    }
+   },
+   "top_bedingungen": {
+    "ja": {
+     "anzahl": 77,
+     "mittel_pct": 2.6
+    },
+    "nein": {
+     "anzahl": 504,
+     "mittel_pct": 3.4
+    }
+   },
+   "alle": {
+    "anzahl": 581,
+    "mittel_pct": 3.3
+   }
+  },
+  "seit Beginn": {
+   "seit": "2026-10-30",
+   "rueckwirkend": true,
+   "nach_punkten": {
+    "7–10": {
+     "anzahl": 3,
+     "mittel_pct": -5.9
+    },
+    "5–6": {
+     "anzahl": 49,
+     "mittel_pct": -2.1
+    },
+    "3–4": {
+     "anzahl": 79,
+     "mittel_pct": 0.7
+    },
+    "unter 3": {
+     "anzahl": 38,
+     "mittel_pct": 2.4
+    }
+   },
+   "top_bedingungen": {
+    "ja": {
+     "anzahl": 17,
+     "mittel_pct": -3.9
+    },
+    "nein": {
+     "anzahl": 152,
+     "mittel_pct": 0.6
+    }
+   },
+   "alle": {
+    "anzahl": 169,
+    "mittel_pct": 0.1
+   }
+  }
+ },
+ "ausreisser": [
+  {
+   "zeitraum": "seit Beginn",
+   "seit": "2026-10-30",
+   "ticker": "APP",
+   "kurs_eur_vorher": 204.64,
+   "kurs_eur_jetzt": 370.22,
+   "aenderung_pct": 81
+  }
+ ],
+ "hinweis": "Rückblick mit heutigen Regeln auf alte Yahoo-Daten (rueckwirkend), kein echter Test aus der Vergangenheit; wenige Wochen sagen wenig."
 }
