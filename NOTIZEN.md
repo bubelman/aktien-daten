@@ -164,7 +164,8 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
   Depots wieder starten; Aktien in „Meine Aktien“ aufnehmen oder entfernen. Solche Ideen nur vorschlagen.
 - Jede Änderung hier im Protokoll eintragen. Keine Zahlen erfinden.
 - Seit 14.11.2026 (Levins Wunsch): jede Nacht Verbesserungen der Arbeitsweise (mit Test vorher/nachher);
-  seit 15.11. („jeden Tag die Sachen verbessern“): um 21:41 bis zu drei, um 3:41 eine. Neue Aktien bis 40 pro Nacht.
+  seit 15.11. („jeden Tag die Sachen verbessern“, „immer so viel machen, wie er findet“): keine feste Obergrenze
+  mehr für Verbesserungen und neue Aktien – alles, was sich sauber prüfen lässt; höchstens 2 Regel-Vorschläge je Bericht.
   Regeländerungen (Punkte, Gewichte, faire Spanne, Top-Bedingungen) nur auf Zweig `vorschlag/<name>` mit
   Rückblick-Test vorbereiten und nach Levins Ja übernehmen. „zurück“ von Levin = git revert.
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
