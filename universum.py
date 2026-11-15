@@ -34,8 +34,15 @@ INDIZES = [
     ("OBX", "https://en.wikipedia.org/wiki/OBX_Index", ".OL"),
     ("BEL 20", "https://en.wikipedia.org/wiki/BEL_20", ".BR"),
     ("OMX Helsinki 25", "https://en.wikipedia.org/wiki/OMX_Helsinki_25", ".HE"),
+    # 15.11.2026 (Levin: „mehr neu hinzufügen“): kleinere US-Firmen und weitere Länder
+    ("S&P SmallCap 600", "https://en.wikipedia.org/wiki/List_of_S%26P_600_companies", ""),
+    ("S&P/TSX 60", "https://en.wikipedia.org/wiki/S%26P/TSX_60", ".TO"),
+    ("Nikkei 225", "https://en.wikipedia.org/wiki/Nikkei_225", ".T"),
+    ("S&P/ASX 50", "https://en.wikipedia.org/wiki/S%26P/ASX_50", ".AX"),
+    ("Hang Seng", "https://en.wikipedia.org/wiki/Hang_Seng_Index", ".HK"),
 ]
-ENDUNGEN = {".DE", ".L", ".PA", ".AS", ".MC", ".MI", ".SW", ".ST", ".CO", ".OL", ".BR", ".HE", ".VI", ".LS", ".IR", ".F"}
+ENDUNGEN = {".DE", ".L", ".PA", ".AS", ".MC", ".MI", ".SW", ".ST", ".CO", ".OL", ".BR", ".HE", ".VI", ".LS", ".IR", ".F",
+            ".TO", ".AX", ".HK", ".T"}
 SPALTE = re.compile(r"ticker|symbol|epic|^code$|kürzel", re.I)
 GUELTIG = re.compile(r"^[A-Z0-9][A-Z0-9\-&]{0,11}(\.[A-Z]{1,2})?$")
 UA = {"User-Agent": "aktien-daten/1.0 (https://github.com/bubelman/aktien-daten; Bildungsprojekt)"}
@@ -48,6 +55,12 @@ def yahoo(v, endung):
     if ":" in v:  # z. B. "EPA: AI" oder "XETRA:SAP"
         v = v.split(":")[-1].strip()
     v = v.split()[0] if endung == "" else v
+    if re.fullmatch(r"\d+\.0", v):  # Zahlen-Kürzel, die pandas als Kommazahl gelesen hat (Japan, Hongkong)
+        v = v[:-2]
+    if endung == ".HK" and v.isdigit():
+        v = v.zfill(4)  # Yahoo schreibt Hongkong vierstellig: 0700.HK
+    if endung in (".T", ".HK") and not re.fullmatch(r"[0-9][0-9A-Z]{3}", v):
+        return None  # dort sind nur Zahlen-Codes gültig (z. B. 7203, 130A)
     m = re.match(r"^(.*?)(\.[A-Z]{1,2})$", v)
     if m and m.group(2) in ENDUNGEN:
         basis, eigene = m.group(1), m.group(2)

@@ -250,7 +250,7 @@ def main():
     # Euro-Kurse weiterer Währungen (1 € = x), für Aktien aus London, der Schweiz und Skandinavien
     fx_eur = dict(alt.get("fx_eur") or {})
     fx_eur["USD"] = eurusd
-    for c in ("GBP", "CHF", "DKK", "SEK", "NOK"):
+    for c in ("GBP", "CHF", "DKK", "SEK", "NOK", "JPY", "CAD", "AUD", "HKD"):
         try:
             fx_eur[c] = float(yf.Ticker(f"EUR{c}=X").history(period="5d")["Close"].dropna().iloc[-1])
         except Exception:
