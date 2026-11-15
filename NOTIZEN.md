@@ -151,6 +151,8 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - ML.PA (Michelin): Yahoo liefert seit dem 14.11. keine Gewinnschätzung und Börsenwert 0 → fällt raus (beobachten).
 - SDAX noch offen (Börsenwert prüfen): 1U1, KWS, DUE, AOF, HBH, KTN, VBK, DEQ; danach SBF 120 und STOXX 600.
 - Noch „Währung unklar“: SHC.L, ABB.ST, EQT.ST, HEXA-B.ST (forwardEps passt zu keiner Umrechnung, Abweichung 25–60 %).
+- 15.11.2026: Universum um S&P 600, TSX 60, ASX 50, Hang Seng erweitert (1724 → 2438); Nikkei 225 ohne
+  Kürzel-Tabelle auf Wikipedia → Nachtschicht füllt aus anderer Quelle. Neue Währungen JPY, CAD, AUD, HKD.
 - Ideen: Rückblick-Test der Trend-Regeln mit Kursdaten; Kurs-Gegenprüfung mit Twelve Data; Hinweis, wenn
   Analystenschätzung deutlich über dem Firmenausblick liegt.
 
@@ -161,7 +163,8 @@ Diese Datei fasst zusammen, was Levin im Chat gewünscht und entschieden hat. Je
 - Darf NICHT ohne Levins Ja: Punkte-Regeln, Gewichte, faire-Spanne-Methode oder Top-Bedingungen ändern;
   Depots wieder starten; Aktien in „Meine Aktien“ aufnehmen oder entfernen. Solche Ideen nur vorschlagen.
 - Jede Änderung hier im Protokoll eintragen. Keine Zahlen erfinden.
-- Seit 14.11.2026 (Levins Wunsch): jede Nacht genau eine Verbesserung der Arbeitsweise (mit Test vorher/nachher).
+- Seit 14.11.2026 (Levins Wunsch): jede Nacht Verbesserungen der Arbeitsweise (mit Test vorher/nachher);
+  seit 15.11. („jeden Tag die Sachen verbessern“): um 21:41 bis zu drei, um 3:41 eine. Neue Aktien bis 40 pro Nacht.
   Regeländerungen (Punkte, Gewichte, faire Spanne, Top-Bedingungen) nur auf Zweig `vorschlag/<name>` mit
   Rückblick-Test vorbereiten und nach Levins Ja übernehmen. „zurück“ von Levin = git revert.
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
