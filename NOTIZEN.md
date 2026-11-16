@@ -94,6 +94,9 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 16.11.2026 (Chat): **ETFs wieder entfernt** auf Levins Wunsch („mach die ETF weg, das ist unnötig“): Reiter ETFs, Datensatz
+  etfs, etf.py, etfs.txt, etf.yml, data/etfs.json gelöscht. Keine ETFs mehr aufnehmen. Seite: Quellen-Links vertragen jetzt auch Text
+  statt Liste (Fehler „(urls || []).forEach is not a function“ in runs).
 - 30.10.2026: Musterdepots A (Top-Treffer) und B (alle 50) gestartet.
 - 01.11.2026: ~600 Aktien statt 187; Feinwert und Rang; neues Design; danach auf Levins Wunsch nur noch
   „Meine Aktien“, 50er-Liste läuft unsichtbar weiter, **Depots gestoppt** (Daten bleiben gespeichert).
@@ -191,23 +194,16 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
 ### A6 (15.11.2026, Nachtschicht): Aufgaben-Texte ändern – braucht Levins Freigabe im Chat
 Die geplante Nachtschicht darf update_trigger nicht ausführen („Permission denied … Scheduled Task Write“). Darum offen:
 1. „Meine Aktien aktualisieren“ (trig_01CkcqBfDNXG1orD3A9WFXB8), ein Aufruf, ganzer Text:
-   - „rund 1.700“ → „rund 2.400“ (zwei Stellen); Reiter „ETFs“ und „So wird gerechnet (mit Trefferquote)“ nennen.
-   - Erlaubte Datensätze: liste, aenderungen, meine, alle, etfs, trefferquote.
-   - Schritt 1: auch datasets/etfs und datasets/trefferquote lesen (version).
-   - Schritt 4: ist "stand" in data/etfs.json neuer als updated.at von datasets/etfs → Liste aus Feld "etfs" als etfs.json hochladen;
-     ist "stand" in data/trefferquote.json neuer als updated.at von datasets/trefferquote → data/trefferquote_zeilen.json als
-     trefferquote.json hochladen; nie leere Liste; sonst nicht anfassen. (A4.2, A3.3)
+   - „rund 1.700“ → „rund 2.400“ (zwei Stellen); Reiter „So wird gerechnet (mit Trefferquote)“ nennen.
+   - Erlaubte Datensätze: liste, aenderungen, meine, alle, trefferquote.
+   - Schritt 1: auch datasets/trefferquote lesen (version).
+   - Schritt 4: ist "stand" in data/trefferquote.json neuer als updated.at von datasets/trefferquote → data/trefferquote_zeilen.json als
+     trefferquote.json hochladen; nie leere Liste; sonst nicht anfassen. (A3.3)
    - Wochenbericht: eine Zeile zur Trefferquote mit Hinweis „wenige Wochen sagen wenig; vor dem 15.11. rückwirkend“. (A3.4)
 2. „Nachtschicht Aktien“ (trig_01S5nJRTnMwn8cKRnQR1DUfy): „DREI LÄUFE PRO NACHT“ → zwei Läufe (21:41 alles inkl. großer Aufgaben;
    3:41 alles, dazu US-Schluss, Termine, Zahlen-Check nach Zahlen von Levins Aktien); alle anderen Erwähnungen von 0:41 streichen. (A5.2)
-Bis dahin: ETFs und Trefferquote im Dashboard nur so aktuell wie der letzte Upload von Hand (15.11. abends).
+Bis dahin: Trefferquote im Dashboard nur so aktuell wie der letzte Upload von Hand (15.11. abends).
 Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
-
-### A4 (Rest): ETFs
-- A4.3 TER gegen Anbieter/justETF prüfen → etfs_pruefung.json (ab Do 19.11.). Werte der ETF-Recherche vom 15.11. (justETF) als Start:
-  siehe Commit e8f8280 (Nachricht) bzw. Protokoll.
-- A4.4: DFNS.DE ersetzt durch DFEN.DE (VanEck Defense, Xetra-Kürzel laut justETF) – nach etf.yml prüfen, ob gültig. TDIV.DE noch offen.
-- Neue ETFs prüfen: steht eines in data/etfs.json "ungueltig" → aus etfs.txt entfernen.
 
 ### A3 (Rest): Trefferquote
 - A3.2 langer Rückblick-Test mit Kursdaten (yfinance im GitHub-Workflow) – ab Do 19.11. (nach Sparmodus).
@@ -293,21 +289,17 @@ Stand Chef-Aufträge: A5.1 und A5.4 erledigt (15.11. Nachtschicht), A5.2/A5.3 h�
     Ziel: nach etwa 45 Minuten fertig.
   • Lauf 3:41 nur Schritt 1 (Prüfen) ohne Agenten, etwa 15 Minuten. Ausnahme: Zahlen-Check nach Zahlen von Levins
     Aktien (bis 3 Agenten).
-  • Ein Prüf-Agent am Schluss statt zwei. Recherche neue Aktien/ETFs mit 1 Agent für alle Regionen.
+  • Ein Prüf-Agent am Schluss statt zwei. Recherche neue Aktien mit 1 Agent für alle Regionen.
   • Levin schickt ab und zu seine Zahl; liegt eine Nacht klar über 10 %, weiter kürzen.
 - **STRENGER SPARMODUS bis Mittwoch 18.11.2026, 21:00** (Levin am 16.11.: die Nacht hat etwa 20 % verbraucht, Stand etwa
   62 %, Grenze 75 %). Gilt vor allen anderen Regeln, für ALLE Aufgaben:
-  • Nachtschicht (21:41 und 3:41): nur Schritt 1 (Prüfen) und echte Fehler beheben. Keine neuen Aktien, keine ETFs, keine
+  • Nachtschicht (21:41 und 3:41): nur Schritt 1 (Prüfen) und echte Fehler beheben. Keine neuen Aktien, keine
     Seite, keine Verbesserungen, höchstens 1 Agent. Ausnahme: Mi 18.11. 3:41 Zahlen-Check NVIDIA (bis 3 Agenten).
   • News-Agenten: nur Levins Aktien, 1 Agent, kein Prüf-Agent (selbst eine Quelle öffnen). Keine weiteren Aktien.
   • Aktien-Scout: nur Teil (A) aus den Daten, keine Websuche für Hype, keine neuen Aktien.
   • Chef: bis Mittwoch pausiert (am 16.11. abgeschaltet, wird am Mi 18.11. wieder eingeschaltet).
   • Aufpasser und „Meine Aktien aktualisieren“: normal, aber ohne Agenten.
   • Ab Mi 18.11. 21:00 wieder normal. Diesen Punkt dann löschen (Aufpasser oder Nachtschicht).
-- Seit 15.11.2026 (Levin): jede Nacht auch neue ETFs in etfs.txt aufnehmen (Format „KÜRZEL | Gruppe“), extra von den
-  Aktien. Nur in Deutschland handelbar (Xetra .DE), Fondsgröße über 500 Mio. €, Kürzel mit Quelle geprüft (Anbieter,
-  justETF, Xetra). Dieselben Fonds nicht doppelt (eine Anteilsklasse reicht, außer thesaurierend/ausschüttend sind beide
-  beliebt). Der Push startet etf.yml; ungültige Kürzel stehen in data/etfs.json "ungueltig" → wieder entfernen.
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
 
 ## Skills
