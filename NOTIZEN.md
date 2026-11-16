@@ -57,6 +57,7 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   GitHub ließ geplante Läufe massiv aus (nur 2–3 Kurs-Abrufe am Tag). Starthilfen 5:11–18:11 UTC.
 - Geplante Aufgabe „Meine Aktien aktualisieren“: Börsentage 7:33, 10:33, 13:33, 18:33, 21:33 (Berlin).
   Kurs-Alarm ab ±5 %, Zahlen-Check an Zahlentagen, Wochenbericht montags.
+- Screener (GitHub, ohne KI): jeden Abend 22:47 bis 150 neue Aktien, siehe Protokoll 16.11.
 - Nachtschicht: jeden Tag 21:41 und 3:41 (Berlin), prüft alles und verbessert. Der Lauf 0:41 ist auf Levins Wunsch
   wieder gestrichen (15.11.2026, 19:31). Große Aufgaben machen die Läufe 21:41 und 3:41; was nicht fertig wird, macht
   der nächste Lauf weiter. Steht in der Aufgabe noch etwas von 0:41, gilt das nicht mehr.
@@ -94,6 +95,10 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 16.11.2026 (Chat, Levin: „mehr Aktien rein und weniger verbrauchen“): **screener.py + screener.yml** – jeden Abend 22:47
+  fragt GitHub den Aktien-Filter von Yahoo ab (18 Börsen), nimmt Firmen über 1 Mrd. € Börsenwert und mind. 1 Mio. € Handel/Tag,
+  ohne Zweitlistings (Firmenname, höchster Handelswert = Heimatbörse), die größten 150 pro Abend, danach Grunddaten.
+  Kostet keine Tokens. Erster Lauf: +150 (2454 → 2604), es gibt noch rund 2.500 weitere Kandidaten (data/screener.json).
 - 16.11.2026 (Chat): **ETFs wieder entfernt** auf Levins Wunsch („mach die ETF weg, das ist unnötig“): Reiter ETFs, Datensatz
   etfs, etf.py, etfs.txt, etf.yml, data/etfs.json gelöscht. Keine ETFs mehr aufnehmen. Seite: Quellen-Links vertragen jetzt auch Text
   statt Liste (Fehler „(urls || []).forEach is not a function“ in runs).
@@ -289,7 +294,8 @@ Stand Chef-Aufträge: A5.1 und A5.4 erledigt (15.11. Nachtschicht), A5.2/A5.3 h�
     Ziel: nach etwa 45 Minuten fertig.
   • Lauf 3:41 nur Schritt 1 (Prüfen) ohne Agenten, etwa 15 Minuten. Ausnahme: Zahlen-Check nach Zahlen von Levins
     Aktien (bis 3 Agenten).
-  • Ein Prüf-Agent am Schluss statt zwei. Recherche neue Aktien mit 1 Agent für alle Regionen.
+  • Ein Prüf-Agent am Schluss statt zwei. Neue Aktien sucht seit 16.11. screener.py automatisch (ohne KI): keine
+    Recherche-Agenten mehr, nur prüfen, ob die neuen Kürzel Daten bekommen (sonst in tickers_gesperrt.txt).
   • Levin schickt ab und zu seine Zahl; liegt eine Nacht klar über 10 %, weiter kürzen.
 - **STRENGER SPARMODUS bis Mittwoch 18.11.2026, 21:00** (Levin am 16.11.: die Nacht hat etwa 20 % verbraucht, Stand etwa
   62 %, Grenze 75 %). Gilt vor allen anderen Regeln, für ALLE Aufgaben:
