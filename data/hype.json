@@ -1,5 +1,83 @@
 {
- "stand": null,
+ "stand": "2026-11-16T12:05:00+01:00",
  "hinweis": "Aktien mit viel Aufmerksamkeit (Aktien-Scout). Gibt KEINE Punkte, nur eine Markierung im Dashboard. Gilt 3 Tage ab datum und nur mit Quelle. Felder je Aktie: grund (1 Satz), quellen (URLs), datum, staerke (1-3), von.",
- "aktien": {}
+ "aktien": {
+  "APP": {
+   "grund": "+46 % in einem Monat nach Rekord-Quartal (Umsatz +55 %), Kurs sprang nach den Zahlen um rund 25 %.",
+   "quellen": [
+    "https://stockstory.org/us/stocks/nasdaq/app/news/earnings/applovin-nasdaqapp-delivers-strong-q3-2026-numbers-stock-jumps-249percent",
+    "https://stocktwits.com/news-articles/markets/equity/why-app-stock-soaring-today-q3-earnings-ai-advertising/cNG1cUMR9EJ"
+   ],
+   "datum": "2026-11-16",
+   "staerke": 3,
+   "von": "Aktien-Scout"
+  },
+  "LQDA": {
+   "grund": "+65 % in einem Monat, Rekordumsatz mit dem Mittel Yutrepia.",
+   "quellen": [
+    "https://kalkine.ca/news/healthcare/what-drove-liquidia-nasdaqlqda-up-6479-in-a-month-after-a-court-setback",
+    "https://simplywall.st/stocks/us/pharmaceuticals-biotech/nasdaq-lqda/liquidia/news/liquidia-lqda-is-up-177-after-yutrepia-drives-record-revenue"
+   ],
+   "datum": "2026-11-16",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "GMAB.CO": {
+   "grund": "+41 % in einem Monat; am 03.11. rund +48 % nach starker Studie zum Krebsmittel Petosemtamab.",
+   "quellen": [
+    "https://www.newsbytesapp.com/news/business/genmab-rises-48-after-petosemtamab-halves-death-risk-with-keytruda/tldr",
+    "https://stocktwits.com/news-articles/markets/equity/gmab-stock-hits-all-time-high-after-genmab-cancer-drug-trial-meets-primary-goals/cZU9Nu2R9Gh"
+   ],
+   "datum": "2026-11-16",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "UCB.BR": {
+   "grund": "+44 % in einem Monat; am 22.10. über 20 % Plus nach höherem Ausblick dank Bimzelx.",
+   "quellen": [
+    "https://business-news-today.com/ucb-shares-surge-as-bimzelx-turns-a-mid-teens-outlook-into-20-plus-growth/",
+    "https://www.finanztrends.de/news/ucb-aktie-bimzelx-rakete/"
+   ],
+   "datum": "2026-11-16",
+   "staerke": 1,
+   "von": "Aktien-Scout"
+  },
+  "AMD": {
+   "grund": "Rund +19 % in der Woche bis 13.11., Anleger schichten nach dem NVIDIA-Chefwechsel um; am Freitag aber größter Verlierer im S&P 500.",
+   "quellen": [
+    "https://www.alainguillot.com/weekly-stock-market-recap-november-9-13-2026/",
+    "https://www.chartmill.com/news/APP/Chartmill-58679-SP-500-Top-Movers-for-Nov-13-2026-Charter-Communications-Leads-Gainers-AMD-Leads-Losers"
+   ],
+   "datum": "2026-11-16",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "MU": {
+   "grund": "Rund +13 % in der Woche bis 13.11., Anleger schichten zu anderen Chip-Firmen um.",
+   "quellen": [
+    "https://www.alainguillot.com/weekly-stock-market-recap-november-9-13-2026/"
+   ],
+   "datum": "2026-11-16",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "CRWV": {
+   "grund": "Rund +14,5 % in der Woche bis 13.11. nach starken Zahlen, Auftragsbestand fast 133 Mrd. $.",
+   "quellen": [
+    "https://www.alainguillot.com/weekly-stock-market-recap-november-9-13-2026/"
+   ],
+   "datum": "2026-11-16",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "NU": {
+   "grund": "+11,75 % am 13.11. nach Rekordgewinn und Rekordumsatz im 3. Quartal.",
+   "quellen": [
+    "https://bigmoves.substack.com/p/big-moves-november-13-2026"
+   ],
+   "datum": "2026-11-16",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  }
+ }
 }
