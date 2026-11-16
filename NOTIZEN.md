@@ -172,6 +172,7 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   Nach dem Grunddaten-Abruf (21:10 UTC): alle 23 neuen Aktien mit Daten, 22 bewertet (2141 → 2163; ALO.PA „Wachstum 664 %
   unplausibel“), kuerzel_verdacht leer; alle 46 ETFs gültig, Datensatz etfs von Hand neu hochgeladen. "runs" zeigt noch den alten
   Stand (Seite seit dem Upload nicht geöffnet) → Aufpasser/nächster Lauf prüft, ob stray_write weg ist.
+- 16.11.2026 19:15 Aufpasser: alles läuft (Kurse, Grunddaten, News, Dashboard 18:35, Programm ok). stray_write noch da → A5.4 offen.
 - 16.11.2026 (Scout 11:48): 2 neue Aktien: NU (Nu Holdings, Rekordquartal, +11,75 % am 13.11., bigmoves.substack.com), EWBC
   (East West Bancorp, neue Kaufempfehlung Hovde 10.11., behindthemarkets.com). Hype-Liste: 8 Aktien in data/hype.json.
 - 16.11.2026 (Aufpasser 9:18): Kurse-Schleife lief Montag früh nicht (geplante Starts 5:11 und 7:11 UTC fehlten, letzter Lauf Fr 13.11.). Von Hand gestartet (Lauf 43830295701). Keine Code-Änderung.
@@ -216,6 +217,8 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 
 ### A5 (Rest)
 - A5.2/A5.3 siehe A6. A5.4 (stray_write) behoben – nach dem nächsten Öffnen der Seite in data/users/me "runs" bestätigen.
+- A5.4 noch offen (vom Aufpasser, 16.11.2026 19:15): Seite wurde am 16.11. um 17:45 Uhr geöffnet, data/users/me "runs" zeigt weiter
+  drawings: stray_write (count 1). Ursache weiter suchen und beheben; Test: runs ohne Warnung nach dem nächsten Öffnen.
 
 ### A7 (vom Aufpasser, 16.11.2026): Kurse-Schleife startet montags nicht
 - Fund: Am Mo 16.11. kein Lauf der Kurse-Schleife um 5:11 und 7:11 UTC (gh run list: letzter Lauf Fr 13.11. 20:46 UTC). GitHub-Zeitpläne fallen offenbar aus.
