@@ -285,12 +285,16 @@ Stand Chef-Aufträge: A5.1 und A5.4 erledigt (15.11. Nachtschicht), A5.2/A5.3 h�
 - Grenze (Levin, 15.11.2026): alle Aufgaben zusammen höchstens **75 % von Levins Wochenlimit** (neu jeden Mittwoch).
   Den Zähler sieht nur Levin (Einstellungen → Nutzung). Er schreibt die Zahl in den Chat, sie wird hier eingetragen.
   Ab 60 %: Sparmodus wie unten. Ab 75 %: Nachtschicht nur noch Schritt 1 (Prüfen), keine Agenten, bis Mittwoch.
-  Letzte Zahl: 42 % am So 15.11. 19:22.
-- **SPARMODUS bis Mittwoch 18.11.2026** (Levin am 15.11. um 19:22: schon 42 % vom Wochenlimit verbraucht, Mittwoch
-  wird es neu). Gilt vor allen anderen Regeln hier und in der Aufgabe:
-  • Lauf 21:41: Aufträge A2/A3 und neue Aktien ja, aber höchstens 5 Agenten gleichzeitig und nur 1 Prüf-Agent am Schluss.
-  • Lauf 3:41: nur Schritt 1 (Prüfen) und Fehler beheben, keine neuen großen Arbeiten, höchstens 2 Agenten.
-  • Ab Nachtschicht Mittwoch 18.11. 21:41 wieder voller Betrieb. Diesen Punkt dann aus den Notizen löschen.
+  Letzte Zahl: 42 % am So 15.11. 19:22; die Nacht 15./16.11. hat laut Levin etwa 20 % verbraucht → etwa 62 % (Mo 16.11.).
+- **STRENGER SPARMODUS bis Mittwoch 18.11.2026, 21:00** (Levin am 16.11.: die Nacht hat etwa 20 % verbraucht, Stand etwa
+  62 %, Grenze 75 %). Gilt vor allen anderen Regeln, für ALLE Aufgaben:
+  • Nachtschicht (21:41 und 3:41): nur Schritt 1 (Prüfen) und echte Fehler beheben. Keine neuen Aktien, keine ETFs, keine
+    Seite, keine Verbesserungen, höchstens 1 Agent. Ausnahme: Mi 18.11. 3:41 Zahlen-Check NVIDIA (bis 3 Agenten).
+  • News-Agenten: nur Levins Aktien, 1 Agent, kein Prüf-Agent (selbst eine Quelle öffnen). Keine weiteren Aktien.
+  • Aktien-Scout: nur Teil (A) aus den Daten, keine Websuche für Hype, keine neuen Aktien.
+  • Chef: bis Mittwoch pausiert (am 16.11. abgeschaltet, wird am Mi 18.11. wieder eingeschaltet).
+  • Aufpasser und „Meine Aktien aktualisieren“: normal, aber ohne Agenten.
+  • Ab Mi 18.11. 21:00 wieder normal. Diesen Punkt dann löschen (Aufpasser oder Nachtschicht).
 - Seit 15.11.2026 (Levin): jede Nacht auch neue ETFs in etfs.txt aufnehmen (Format „KÜRZEL | Gruppe“), extra von den
   Aktien. Nur in Deutschland handelbar (Xetra .DE), Fondsgröße über 500 Mio. €, Kürzel mit Quelle geprüft (Anbieter,
   justETF, Xetra). Dieselben Fonds nicht doppelt (eine Anteilsklasse reicht, außer thesaurierend/ausschüttend sind beide
