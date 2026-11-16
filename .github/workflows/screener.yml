@@ -1,0 +1,47 @@
+name: Neue Aktien (Screener)
+# Jeden Abend: neue Aktien über den Aktien-Filter von Yahoo finden (ohne KI, kostet keine Tokens) und die
+# größten 150 an tickers.txt anhängen; danach Grunddaten für die neuen holen. Levin, 16.11.2026.
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "47 21 * * *"
+permissions:
+  contents: write
+  actions: write
+jobs:
+  screener:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install yfinance
+      - run: python screener.py
+      - name: Speichern
+        run: |
+          git config user.name "aktien-bot"
+          git config user.email "aktien-bot@users.noreply.github.com"
+          cp tickers.txt "$RUNNER_TEMP/t.txt"; cp data/screener.json "$RUNNER_TEMP/s.json"
+          neu=$(python -c "import json;print(len(json.load(open('data/screener.json'))['neu']))")
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            # neue Kürzel an die aktuelle Liste anhängen (falls tickers.txt inzwischen anders ist)
+            python -c "
+          import json
+          alt=open('tickers.txt').read().split(); neu=[t for t in json.load(open('$RUNNER_TEMP/s.json'))['neu'] if t not in alt]
+          open('tickers.txt','w').write('\n'.join(alt+neu)+'\n')"
+            cp "$RUNNER_TEMP/s.json" data/screener.json
+            git add tickers.txt data/screener.json
+            git diff --cached --quiet && exit 0
+            git commit -q -m "Screener: $neu neue Aktien"
+            git push -q && break
+            sleep 15
+          done
+          echo "NEU=$neu" >> "$GITHUB_ENV"
+      - name: Grunddaten der neuen Aktien holen
+        if: env.NEU != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run grunddaten.yml --ref main

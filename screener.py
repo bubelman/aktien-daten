@@ -10,6 +10,9 @@ import yfinance as yf
 from yfinance import EquityQuery as Q
 
 GRENZE_EUR = 1e9
+MIN_HANDEL_EUR = 1e6   # mindestens 1 Mio. € Handel pro Tag (sortiert Zweitlistings und Datenfehler aus)
+MAX_NEU = 150          # höchstens so viele neue pro Lauf, die größten zuerst (Abruf bleibt kurz)
+AUSLANDS_BOERSEN = {"de", "at", "ch", "gb"}  # dort sind viele ausländische Firmen gelistet
 # Region (Yahoo), Haupt-Börsen (Yahoo-Code), Endung des Kürzels
 BOERSEN = [
     ("us", ["NMS", "NYQ", "NGM", "NCM"], ""), ("de", ["GER"], ".DE"), ("gb", ["LSE"], ".L"),
@@ -72,6 +75,7 @@ def main():
     except Exception:
         bekannt = set()
     bekannt.discard("")
+    erste_worte = {f.split()[0] for f in bekannt if f}
     kandidaten = {}  # Firma -> (Handelswert in EUR pro Tag, Kürzel, Name, Börsenwert Mrd. €, Region)
     for region, boersen, endung in BOERSEN:
         quotes = abfragen(region, boersen)
@@ -85,7 +89,7 @@ def main():
             if cur not in fx:
                 ohne_fx += 1; continue
             eur = mc / fx[cur]
-            if eur < GRENZE_EUR:
+            if eur < GRENZE_EUR or eur > 4e12:  # über 4 Billionen € = Datenfehler
                 continue
             gross += 1
             name = z.get("longName") or z.get("shortName") or ""
@@ -93,11 +97,17 @@ def main():
             if not f or f in bekannt or s in vorhanden:
                 continue
             wert = (z.get("averageDailyVolume3Month") or 0) * (z.get("regularMarketPrice") or 0) / fx[cur]
+            if wert < MIN_HANDEL_EUR:
+                continue
+            if region in AUSLANDS_BOERSEN and f.split()[0] in erste_worte:
+                continue  # z. B. „HERMES INTERNATIONAL“ in Zürich, wenn Hermès schon da ist
             if f not in kandidaten or wert > kandidaten[f][0]:
                 kandidaten[f] = (wert, s, name, round(eur / 1e9, 1), region)
         bericht["boersen"][region] = {"gefunden": len(quotes), "ueber_grenze": gross, "ohne_wechselkurs": ohne_fx}
         print(region, len(quotes), "gefunden,", gross, "über Grenze")
-    neu = [k[1] for k in sorted(kandidaten.values(), key=lambda k: -k[3])]
+    alle_neu = [k[1] for k in sorted(kandidaten.values(), key=lambda k: -k[3])]
+    neu = alle_neu[:MAX_NEU]
+    bericht["kandidaten_gesamt"] = len(alle_neu)
     for f, (w, s, name, mrd, region) in kandidaten.items():
         bericht["boersen"][region].setdefault("neu", 0)
         bericht["boersen"][region]["neu"] += 1
