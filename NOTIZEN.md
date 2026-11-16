@@ -164,6 +164,8 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   Nach dem Grunddaten-Abruf (21:10 UTC): alle 23 neuen Aktien mit Daten, 22 bewertet (2141 → 2163; ALO.PA „Wachstum 664 %
   unplausibel“), kuerzel_verdacht leer; alle 46 ETFs gültig, Datensatz etfs von Hand neu hochgeladen. "runs" zeigt noch den alten
   Stand (Seite seit dem Upload nicht geöffnet) → Aufpasser/nächster Lauf prüft, ob stray_write weg ist.
+- 16.11.2026 (Scout 11:48): 2 neue Aktien: NU (Nu Holdings, Rekordquartal, +11,75 % am 13.11., bigmoves.substack.com), EWBC
+  (East West Bancorp, neue Kaufempfehlung Hovde 10.11., behindthemarkets.com). Hype-Liste: 8 Aktien in data/hype.json.
 - 16.11.2026 (Aufpasser 9:18): Kurse-Schleife lief Montag früh nicht (geplante Starts 5:11 und 7:11 UTC fehlten, letzter Lauf Fr 13.11.). Von Hand gestartet (Lauf 43830295701). Keine Code-Änderung.
 - 13.11.2026 (Nachtschicht 21:41): Kurse-Schleife war nach dem Push (18:51 UTC) nie gelaufen – letzte
   Starthilfe 18:11 UTC lag davor, also keine Kurse nach 18:48 UTC. Von Hand gestartet (Lauf 43504676163),
