@@ -164,6 +164,7 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   Nach dem Grunddaten-Abruf (21:10 UTC): alle 23 neuen Aktien mit Daten, 22 bewertet (2141 → 2163; ALO.PA „Wachstum 664 %
   unplausibel“), kuerzel_verdacht leer; alle 46 ETFs gültig, Datensatz etfs von Hand neu hochgeladen. "runs" zeigt noch den alten
   Stand (Seite seit dem Upload nicht geöffnet) → Aufpasser/nächster Lauf prüft, ob stray_write weg ist.
+- 16.11.2026 (Aufpasser 9:18): Kurse-Schleife lief Montag früh nicht (geplante Starts 5:11 und 7:11 UTC fehlten, letzter Lauf Fr 13.11.). Von Hand gestartet (Lauf 43830295701). Keine Code-Änderung.
 - 13.11.2026 (Nachtschicht 21:41): Kurse-Schleife war nach dem Push (18:51 UTC) nie gelaufen – letzte
   Starthilfe 18:11 UTC lag davor, also keine Kurse nach 18:48 UTC. Von Hand gestartet (Lauf 43504676163),
   damit der US-Schluss vom Freitag noch kommt. Keine Code-Änderung.
@@ -212,6 +213,10 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 
 ### A5 (Rest)
 - A5.2/A5.3 siehe A6. A5.4 (stray_write) behoben – nach dem nächsten Öffnen der Seite in data/users/me "runs" bestätigen.
+
+### A7 (vom Aufpasser, 16.11.2026): Kurse-Schleife startet montags nicht
+- Fund: Am Mo 16.11. kein Lauf der Kurse-Schleife um 5:11 und 7:11 UTC (gh run list: letzter Lauf Fr 13.11. 20:46 UTC). GitHub-Zeitpläne fallen offenbar aus.
+- Ziel: Wochenstart robust machen (z. B. weitere Zeitplan-Einträge mit anderen Minuten, oder Starthilfe aus einem anderen Workflow). Test: nächster Montag Kurse-Commit vor 9 Uhr Berlin.
 
 ## Chef – Plan
 ### 15.11.2026 (So, erster Chef-Lauf) – Plan für die nächsten 1–2 Wochen
