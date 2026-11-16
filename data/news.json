@@ -1,14 +1,14 @@
 {
- "stand": "2026-11-16T13:04:34+01:00",
+ "stand": "2026-11-16T21:02:27+01:00",
  "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
  "aktien": {
   "NVDA": {
    "urteil": "sehr negativ",
    "kurz": "Chef zurückgetreten nach Untersuchung",
-   "grund": "Jensen Huang trat als Chef zurück (Vorstand nahm den Rücktritt am 11.11.2026 an, Mitteilung am 12.11.), wenige Tage nach einer Affäre mit einer mutmaßlichen chinesischen Spionin. Colette Kress führt übergangsweise; die Aktie fiel am 12.11. fast 12 %.",
+   "grund": "Jensen Huang trat am 11.11.2026 als Chef zurück (Mitteilung 12.11., laut SEC-Meldung mit sofortiger Wirkung), nach einer internen Untersuchung wegen Berichten über Kontakt zu einer mutmaßlichen chinesischen Geheimdienstquelle. Colette Kress führt übergangsweise.",
    "quellen": [
+    "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000082/nvidiaannouncesceotransiti.htm",
     "https://techcrunch.com/2026/11/12/nvidias-jensen-huang-resigns-chipmaker-names-cfo-colette-kress-as-interim-ceo/",
-    "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-CEO-Transition/default.aspx",
     "https://fortune.com/2026/11/11/nvidia-oust-jensen-huang-spy-affairs/"
    ],
    "datum": "2026-11-16",
@@ -27,11 +27,11 @@
   },
   "SAP": {
    "urteil": "neutral",
-   "kurz": "JPMorgan-Hochstufung und Aktienrückkauf",
-   "grund": "JPMorgan stufte SAP am 10.11.2026 auf Overweight hoch (Ziel 275 Euro). Eine einzelne Hochstufung reicht nicht für positiv; am 11.11. schloss SAP eine kritische Sicherheitslücke.",
+   "kurz": "JPMorgan stuft auf Overweight hoch",
+   "grund": "JPMorgan stufte SAP um den 09./10.11.2026 auf Overweight hoch (Ziel 275 statt 175 Euro). Nur eine einzelne Hochstufung, sonst Aktienrückkäufe und Kundenmeldungen.",
    "quellen": [
     "https://www.boerse-express.com/news/articles/sap-aktie-jpmorgan-dreht-auf-overweight-961221",
-    "https://boerse-express.com/news/articles/sap-aktie-das-loch-im-gateway-ist-gestopft-961907"
+    "https://goldesel.de/aktien/news/sap-aktie-jpmorgan-stuft-auf-overweight-hoch-und-setzt-kursziel-auf-275-euro"
    ],
    "datum": "2026-11-16",
    "von": "News-Agenten"
@@ -39,28 +39,31 @@
   "AVGO": {
    "urteil": "neutral",
    "kurz": "Redburn-Abstufung nach starker Rally",
-   "grund": "Rothschild & Co Redburn stufte Broadcom am 13.11.2026 auf Neutral ab (Ziel 398 statt 595 Dollar), die Aktie fiel 4,8 %. Nur eine Abstufung, keine neuen Zahlen.",
+   "grund": "Rothschild & Co Redburn stufte Broadcom am 13.11.2026 auf Neutral ab (Ziel 398 statt 595 Dollar), die Aktie fiel 4,8 %. Nur eine Abstufung, keine neuen Zahlen. Zahlen kommen am 09.12.2026.",
    "quellen": [
-    "https://www.fool.com/investing/2026/11/13/why-broadcom-stock-dove-today/"
+    "https://www.fool.com/investing/2026/11/13/why-broadcom-stock-dove-today/",
+    "https://finviz.com/news/418980/broadcom-inc-to-announce-fourth-quarter-and-fiscal-year-2026-financial-results-on-wednesday-december-9-2026"
    ],
    "datum": "2026-11-16",
    "von": "News-Agenten"
   },
   "IFX.DE": {
    "urteil": "neutral",
-   "kurz": "Ziel 2027 leicht über Konsens",
-   "grund": "Am 10.11.2026 meldete Infineon 16,35 Mrd. Euro Umsatz (+12 %) und nannte für 2027 rund 20 Mrd. Euro, knapp über dem Konsens. Neuer Ausblick, keine Anhebung.",
+   "kurz": "Starker Ausblick aber gemischte Zahlen",
+   "grund": "Am 10.11.2026 nannte Infineon für 2027 rund 20 Mrd. Euro Umsatz (über 20 % Wachstum). Dagegen lag der Gewinn je Aktie im vierten Quartal leicht unter der Erwartung und der geplante freie Cashflow 2027 unter den Schätzungen.",
    "quellen": [
-    "https://stock3.com/news/20-milliarden-euro-ziel-2027-die-infineon-aktie-startet-durch-17386945"
+    "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf",
+    "https://www.boerse-express.com/news/articles/infineon-aktie-ki-strom-treibt-rebound-961433"
    ],
    "datum": "2026-11-16",
    "von": "News-Agenten"
   },
   "ENR.DE": {
    "urteil": "neutral",
-   "kurz": "Rekordjahr aber Gewinnausblick unter Erwartung",
-   "grund": "Am 11.11.2026 meldete Siemens Energy Rekordzahlen über den Prognosen und höhere Ziele bis 2030. Dagegen liegt der Gewinnausblick 2027 rund 10 % unter dem Konsens, der Auftragseingang verfehlte die Schätzungen.",
+   "kurz": "Rekordjahr aber Gewinnziel unter Konsens",
+   "grund": "Am 11.11.2026 meldete Siemens Energy 4,1 Mrd. Euro Nettogewinn, höhere Ziele für 2030 und bis zu 9 Mrd. Euro weitere Aktienrückkäufe. Der Gewinnausblick 2027 von rund 5 Mrd. Euro liegt aber etwa 10 % unter der Erwartung.",
    "quellen": [
+    "https://siemens-energy.com/global/en/home/press-releases/earnings-release-q4-fy-2026--siemens-energy-reports-a-record-yea.html",
     "https://www.kapitalmarktexperten.de/siemens-energy-aktie-rekordjahr-vorsichtiger-gewinnausblick/"
    ],
    "datum": "2026-11-16",
@@ -911,6 +914,589 @@
    "grund": "Die Q3-Zahlen kamen Ende Oktober 2026. Vom 09. bis 16.11. keine wesentliche Unternehmensnachricht.",
    "quellen": [
     "https://oilprice.com/Latest-Energy-News/World-News/PetroChina-Q3-Profit-Jumps-to-778-Billion.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "VWS.CO": {
+   "urteil": "negativ",
+   "kurz": "Q3 unter Erwartung Ausblick eingeengt",
+   "grund": "Am 11.11.2026 lag Q3 unter dem Konsens: Umsatz 5,7 statt rund 6,0 Mrd. Euro, EBIT 483 statt 526 Mio. Euro. Die Prognose 2026 wurde eingeengt (Mitte gleich), Vestas nannte steigende Energiekosten.",
+   "quellen": [
+    "https://finimize.com/content/vestas-tightens-its-2026-outlook-after-a-soft-q3",
+    "https://www.connaissancedesenergies.org/afp/vestas-resserre-ses-previsions-2026-citant-la-hausse-des-couts-de-lenergie-261111"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "4568.T": {
+   "urteil": "neutral",
+   "kurz": "Forschungskooperation mit iDEL Therapeutics",
+   "grund": "Am 09.11.2026 meldete iDEL Therapeutics eine Forschungskooperation mit Daiichi Sankyo. Nicht kursrelevant.",
+   "quellen": [
+    "https://globenewswire.com/news-release/2026/11/09/3398086/0/en/idel-therapeutics-enters-global-research-collaboration-with-daiichi-sankyo-to-develop-multi-drug-conjugate-with-targeted-cytosolic-delivery-into-solid-tumor-cells.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "VIK": {
+   "urteil": "neutral",
+   "kurz": "Q3-Zahlen erst am 17.11.",
+   "grund": "Viking legt die Q3-Zahlen am 17.11.2026 vor. Zwischen 09.11. und 16.11. keine wichtigen Nachrichten.",
+   "quellen": [
+    "https://cruiseindustrynews.com/cruise-news/2026/11/viking-schedules-conference-call-on-third-quarter-2026-financial-results/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CALY": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen wichtigen Nachrichten",
+   "grund": "Der angehobene Ausblick kam am 05.11.2026 und zählt nicht mehr. Im Zeitraum nichts Wichtiges.",
+   "quellen": [
+    "https://finviz.com/news/417811/callaway-golf-company-announces-third-quarter-2026-results"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "IVZ": {
+   "urteil": "neutral",
+   "kurz": "Verwaltetes Vermögen im Oktober gesunken",
+   "grund": "Am 10.11.2026 meldete Invesco 2.453,5 Mrd. USD verwaltetes Vermögen (−3,3 %), vor allem wegen Abflüssen aus Geldmarktfonds.",
+   "quellen": [
+    "https://finviz.com/news/420584/invesco-ltd-announces-october-31-2026-assets-under-management"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "VSXY": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen wichtigen Nachrichten",
+   "grund": "Kurszielerhöhungen vom 03.11.2026 zählen nicht mehr. Q3-Zahlen kommen am 02.12.",
+   "quellen": [
+    "https://stocktwits.com/news-articles/markets/equity/wells-fargo-sees-significant-2028-eps-potential-for-victoria-s-secret-raises-target-to-120/cNGXBLsR9dT"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "BCG.L": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen Mitteilungen im Zeitraum",
+   "grund": "Zwischen 09.11. und 16.11.2026 keine wichtigen Mitteilungen. Halbjahreszahlen kommen meist Anfang Dezember.",
+   "quellen": [
+    "https://www.lse.co.uk/rns/BCG/half-year-financial-report-xiytoehd7m09hc6.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "VIRT": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen wichtigen Nachrichten",
+   "grund": "Q3-Zahlen kamen am 05.11.2026, vor dem Zeitraum. Danach nichts Wichtiges.",
+   "quellen": [
+    "https://finviz.com/news/416631/virtu-announces-third-quarter-2026-results"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "HLNE": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen wichtigen Nachrichten",
+   "grund": "Gemischte Quartalszahlen vom 03.11.2026 zählen nicht mehr. Im Zeitraum nichts Wichtiges.",
+   "quellen": [
+    "https://finviz.com/news/414037/hamilton-lane-incorporated-reports-second-quarter-fiscal-2027-results"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "WDAY": {
+   "urteil": "neutral",
+   "kurz": "Q3-Zahlen erst am 24.11.",
+   "grund": "Workday legt Q3-Zahlen am 24.11.2026 vor. Im Zeitraum keine wichtigen Nachrichten.",
+   "quellen": [
+    "https://newsroom.workday.com/2026-11-02-Workday-to-Announce-Fiscal-2027-Third-Quarter-Financial-Results-on-November-24,-2026"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "BEN": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Nachrichten im Zeitraum",
+   "grund": "Q4-Zahlen kamen am 05./06.11.2026, vor dem Zeitraum. Danach nichts Wichtiges.",
+   "quellen": [
+    "https://finviz.com/news/418558/franklin-templeton-ben-beats-by-20-and-lifts-its-margin-ambitions-to-35-but-a-shrinking-pipeline-and-softer-fee-rate-temper-the-story"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "SKY": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Nachrichten im Zeitraum",
+   "grund": "Quartalszahlen kamen am 03.11.2026, vor dem Zeitraum. Danach nichts Wichtiges.",
+   "quellen": [
+    "https://finviz.com/news/415569/champion-homes-beats-as-orders-surge-17-and-backlog-nears-500-million-but-re-accelerating-cost-inflation-clouds-the-margin-outlook"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "AM.PA": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Nachrichten im Zeitraum",
+   "grund": "Zwischen 09.11. und 16.11.2026 nichts Kursrelevantes gefunden. Letzte Meldung vom 02.11.: erster Rafale für Tests des Standards F5 übergeben.",
+   "quellen": [
+    "https://www.optionfinance.fr/info-financiere-en-continu/d/2026-11-02-la-dga-receptionne-le-premier-rafale-destine-aux-essais-du-standard-f5.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "BEKB.BR": {
+   "urteil": "neutral",
+   "kurz": "Übernahme von Dextra für 140 Mio. Euro",
+   "grund": "Am 10.11.2026 kündigte Bekaert den Kauf von Dextra an (Unternehmenswert 140 Mio. Euro, Abschluss 1. Halbjahr 2027). Keine Änderung am Ausblick.",
+   "quellen": [
+    "https://www.steelorbis.com/steel-news/latest-news/bekaert-to-acquire-dextra-for-140-million-to-expand-construction-reinforcement-portfolio-1489550.htm"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "UAL": {
+   "urteil": "neutral",
+   "kurz": "FAA-Startstopp kurz und behoben",
+   "grund": "Am 13.11.2026 stoppte die FAA kurz landesweit Inlandsstarts, United meldete am 15.11. die Störung als behoben. Sonst nur Routinemeldungen.",
+   "quellen": [
+    "https://united.mediaroom.com/news-releases?l=10&o=0"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "IWG.L": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Nachrichten im Zeitraum",
+   "grund": "Das Q3-Update kam am 03.11.2026, vor dem Zeitraum. Danach nichts Wichtiges.",
+   "quellen": [
+    "https://www.investegate.co.uk/announcement/rns/iwg--iwg/third-quarter-2026-trading-statement-/9854473"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "TNIE.DE": {
+   "urteil": "neutral",
+   "kurz": "Q3 stark Prognose nur bestätigt",
+   "grund": "Am 12.11.2026 meldete tonies für Q3 28 % mehr Umsatz (179,9 Mio. Euro). Die Prognose 2026 wurde nur bestätigt, die Aktie fiel rund 3 %.",
+   "quellen": [
+    "https://www.mynewsdesk.com/us/tonies/pressreleases/tonies-delivers-strong-q3-with-double-digit-growth-across-all-segments-nine-month-revenue-up-33-prozent-3477994",
+    "https://www.rttnews.com/3713908/tonies-q3-revenue-up-reiterates-fy26-estimates-shares-down.aspx"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "HUBS": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Schwacher Q4-Ausblick und Abstufungen kamen am 04./05.11.2026, vor dem Zeitraum. Danach nichts Wichtiges.",
+   "quellen": [
+    "https://finviz.com/news/416357/hubspots-margin-driven-beat-masks-a-deepening-demand-slowdown-as-q4-guide-implies-growth-sliding-to-12"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "ALV": {
+   "urteil": "neutral",
+   "kurz": "Dividende erhöht neues Boardmitglied",
+   "grund": "Am 09.11.2026 erhöhte Autoliv die Quartalsdividende. Am 10.11. kam Joachim Rosenberg in das Board.",
+   "quellen": [
+    "https://finviz.com/news/419653/autoliv-declares-increased-quarterly-dividend",
+    "https://finviz.com/news/419723/autoliv-appoints-joachim-rosenberg-to-its-board-of-directors"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "TLN": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Meldungen",
+   "grund": "Q3-Zahlen kamen am 03.11.2026 und zählen nicht mehr. Im Zeitraum nichts Wichtiges.",
+   "quellen": [
+    "https://finviz.com/news/414066/talen-energy-reports-third-quarter-2026-results-reaffirms-2026-guidance-and-introduces-2027-guidance"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CROX": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Meldungen",
+   "grund": "Q3-Zahlen mit angehobenem Ausblick kamen am 29.10.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://www.fool.com/investing/2026/10/29/why-crocs-stock-skyrocketed-today/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "ALSYDB.CO": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Meldungen",
+   "grund": "Die angehobene Gewinnprognose kam am 05.11.2026, vor dem Zeitraum. Danach nichts Wichtiges.",
+   "quellen": [
+    "https://www.inderes.dk/en/releases/al-sydbank-delivers-best-quarterly-performance-and-raises-its-expectations"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "ECPG": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Meldungen",
+   "grund": "Q3-Zahlen und angehobener Ausblick kamen um den 05.11.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://finviz.com/news/415861/encore-capital-group-announces-third-quarter-2026-financial-results"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "HBR.L": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Meldungen",
+   "grund": "Höhere Förderprognose und Rückkauf kamen am 05.11.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://worldoil.com/news/2026/11/5/harbour-energy-raises-2026-production-guidance-to-500-000-boed-after-record-year/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "HALO": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Meldungen",
+   "grund": "Q3-Zahlen mit angehobenem Ausblick kamen am 05.11.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://finviz.com/news/417648/halozyme-reports-third-quarter-2026-results-and-raises-full-year-2026-financial-guidance"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "TPC": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Meldungen",
+   "grund": "Rekordzahlen und höhere Prognose kamen Anfang November, vor dem Zeitraum.",
+   "quellen": [
+    "https://finviz.com/news/416058/tutor-perini-reports-record-third-quarter-2026-financial-results-raises-2026-adjusted-eps-guidance"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "DCOM": {
+   "urteil": "neutral",
+   "kurz": "Nur Routinemeldungen",
+   "grund": "Im Zeitraum nur Routine, etwa eine neue Filiale.",
+   "quellen": [
+    "https://www.barchart.com/story/news/36205388/dime-announces-plans-to-open-locust-valley-branch"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "MRP": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Meldungen",
+   "grund": "Q3-Zahlen kamen am 27.10.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://walnutinvest.com/stocks/mrp/earnings"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CARS": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Meldungen",
+   "grund": "Q3-Zahlen (Ausblick bestätigt) kamen am 05.11.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://finviz.com/news/416810/carscom-reports-third-quarter-2026-results"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "LPG": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen wichtigen Nachrichten",
+   "grund": "Rekordzahlen kamen am 05.11.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://www.bairdmaritime.com/shipping/tankers/gas/dorian-lpg-reports-record-profit"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "GEN": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen wichtigen Nachrichten",
+   "grund": "Angehobener Jahresausblick kam am 28.10.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://finviz.com/news/410503/gen-delivers-another-double-digit-growth-quarter-in-q2-fy27-and-raises-fy27-outlook"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "VAR.OL": {
+   "urteil": "neutral",
+   "kurz": "Hauptversammlung zur Q3-Dividende",
+   "grund": "Am 11.11.2026 genehmigte eine Hauptversammlung die Q3-Dividende von 1,368 NOK je Aktie. Sonst nichts Wesentliches.",
+   "quellen": [
+    "https://varenergi.no/en/newsroom/stock-exchange-announcements"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "PARR": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen wichtigen Nachrichten",
+   "grund": "Q3-Zahlen kamen Anfang November, vor dem Zeitraum.",
+   "quellen": [
+    "https://finviz.com/news/414834/par-pacific-holdings-reports-third-quarter-2026-results"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "VH2.DE": {
+   "urteil": "neutral",
+   "kurz": "Prognoseanhebung schon im Oktober",
+   "grund": "Rekordzahlen und höhere Prognose wurden am 21.10.2026 gemeldet und zählen nicht mehr. Im Zeitraum nichts Neues gefunden.",
+   "quellen": [
+    "https://www.kapitalmarktexperten.de/friedrich-vorwerk-aktie-rekordquartal-hoehere-ziele/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "JYSK.CO": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen wichtigen Nachrichten",
+   "grund": "Bericht mit angehobenem Ausblick kam am 28.10.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://www.globenewswire.com/news-release/2026/10/28/3389872/0/en/interim-financial-report-q1-q3-2026.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "VYX": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen wichtigen Nachrichten",
+   "grund": "Q3-Zahlen kamen am 05.11.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://finviz.com/news/416611/ncr-voyix-reports-third-quarter-2026-results"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "WIX.L": {
+   "urteil": "neutral",
+   "kurz": "Q3-Update Prognose bestätigt",
+   "grund": "Laut Q3-Update stieg der Umsatz um 4,5 %, die Gewinnprognose 2026 wurde bestätigt. Datum unklar, wohl vor dem Zeitraum.",
+   "quellen": [
+    "https://www.investegate.co.uk/announcement/rns/wickes-group--wix/q3-trading-update/9830638"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "GDDY": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen wichtigen Nachrichten",
+   "grund": "Q3-Zahlen kamen am 29.10.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://investor.wedbush.com/wedbush/article/stockstory-2026-10-29-godaddys-nysegddy-q3-2026-sales-top-estimates"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "HAUTO.OL": {
+   "urteil": "neutral",
+   "kurz": "Oktober-Update ohne Überraschung",
+   "grund": "Am 11.11.2026 kam das Oktober-Update, Q3-Zahlen folgen am 19.11.",
+   "quellen": [
+    "https://www.hoeghautoliners.com/investors"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CATY": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Nachrichten",
+   "grund": "Q3-Zahlen kamen am 21.10.2026. Im November nur Routine (Dividende 0,38 USD).",
+   "quellen": [
+    "https://www.quantisnow.com/company/CATY"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "BBT": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Nachrichten",
+   "grund": "Letzte wichtige Meldung waren die Q3-Zahlen vom 21.10.2026.",
+   "quellen": [
+    "https://www.earningswhispers.com/article/BBT/2610210688"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "EAT": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Quartalszahlen und Prognose kamen am 28.10.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://www.franchising.com/news/20261028_brinker_international_reports_first_quarter_fiscal_2027_results_and_updates.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "III.L": {
+   "urteil": "neutral",
+   "kurz": "Halbjahr solide Wachstum langsamer",
+   "grund": "Am 12.11.2026 meldete 3i für das Halbjahr 5 % Gesamtrendite und einen Inventarwert je Aktie von 3.154p (vorher 3.030p). Ausblick für Action bestätigt.",
+   "quellen": [
+    "https://quartr.com/companies/3i-group-plc_12126"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "EMG.L": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Nachrichten",
+   "grund": "Q3-Update mit Abflüssen kam am 05.11.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://www.opalesque.com/705739/Man_Group_Q3_outflows_hit_AUM_falls573.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "ARCAD.AS": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Q3-Update kam am 28.10.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://www.arcadis.com/en/news/global/2026/arcadis-q3-2026-trading-update"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "LAUR": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Q3-Zahlen kamen am 29.10.2026, vor dem Zeitraum.",
+   "quellen": [
+    "https://www.sec.gov/Archives/edgar/data/0000912766/000091276626000004/laur09302026earningsreleas.htm"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "SAN.PA": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Nachrichten",
+   "grund": "Prognoseanhebung kam am 30.10.2026, vor dem Zeitraum. Danach keine wesentlichen Mitteilungen.",
+   "quellen": [
+    "https://www.sanofi.com/en/media-room/press-releases/2026"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "HRMY": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Letzte Mitteilung waren die Q3-Zahlen vom 04.11.2026.",
+   "quellen": [
+    "https://ir.harmonybiosciences.com/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CHDN": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Nachrichten",
+   "grund": "Q3-Rekordzahlen kamen vor dem Zeitraum. Danach nichts Kursrelevantes.",
+   "quellen": [
+    "https://www.gambling.com/us/news/churchill-downs-posts-record-q3-revenue"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "POLN.L": {
+   "urteil": "neutral",
+   "kurz": "Strategische Prüfung samt Übernahmegesprächen",
+   "grund": "Seit 23.09.2026 prüft Pollen Street Optionen bis zum Börsenrückzug (Angebotsphase). Ein konkretes Angebot im Zeitraum gab es nicht.",
+   "quellen": [
+    "https://www.ajbell.co.uk/news/articles/pollen-street-shares-surge-starts-takeover-talks-part-review"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "HPE": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Nachrichten",
+   "grund": "Im Zeitraum nichts Kursrelevantes. Q4-Zahlen kommen Anfang Dezember.",
+   "quellen": [
+    "https://www.webull.com/news/15769906861648896"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "NXPI": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Nachrichten",
+   "grund": "Q3-Zahlen kamen Ende Oktober, vor dem Zeitraum.",
+   "quellen": [
+    "https://www.sec.gov/Archives/edgar/data/0001413447/000141344726000057/nxp3q26exhibit991.htm"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "UCB": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Nachrichten",
+   "grund": "Q3-Verlust durch Bilanzumbau wurde im Oktober gemeldet und zählt nicht mehr.",
+   "quellen": [
+    "https://www.quiverquant.com/news/United+Community+Banks+Reports+%24139.7+Million+Third-Quarter+Net+Loss"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "EG": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Nachrichten",
+   "grund": "Schwache Q3-Zahlen kamen Ende Oktober und zählen nicht mehr.",
+   "quellen": [
+    "https://www.zacks.com/stock/news/3018955/everest-group-q3-earnings-miss-estimates-on-higher-catastrophe-losses"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "OSB.L": {
+   "urteil": "neutral",
+   "kurz": "Anleihe-Rückkauf und Neuemission",
+   "grund": "Laut Meldung vom 05.11.2026 wurden Anleihen zurückgekauft und eine neue 700-Mio.-Pfund-Anleihe ausgegeben (Abwicklung 16.11.). Neun-Monats-Zahlen im Rahmen.",
+   "quellen": [
+    "https://www.rttnews.com/3710656/osb-group-reports-9-month-performance-in-line-with-expectations-launches-700-mln-notes-offering.aspx"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "IOS.DE": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen gefunden",
+   "grund": "Im Zeitraum keine Meldung gefunden. Zuletzt am 10.09.2026 Stellenabbau und bestätigte Prognose.",
+   "quellen": [
+    "https://goldesel.de/aktien/news/ionos-baut-rund-450-vollzeitstellen-ab-und-bestatigt-2026-ebitda-prognose-von-530-mio-euro"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "SCHW": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen neuen Nachrichten",
+   "grund": "Q3-Rekordzahlen vom 15.10.2026 liegen vor dem Zeitraum.",
+   "quellen": [
+    "https://www.marketbeat.com/instant-alerts/transcript-charles-schwab-q3-earnings-call-highlights-2026-10-15/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CCL": {
+   "urteil": "neutral",
+   "kurz": "Nur Meldungen zu neuen Reiserouten",
+   "grund": "Im Zeitraum nur Angebotsmeldungen, etwa neue Routen ab Port Canaveral.",
+   "quellen": [
+    "https://cruiseindustrynews.com/cruise-news/2026/11/carnival-unveils-2028-29-port-canaveral-lineup/"
    ],
    "datum": "2026-11-16",
    "von": "News-Agenten"
