@@ -159,8 +159,18 @@ def grunddaten(sym):
     return out
 
 
-def kurse_und_trends(rows):
-    """Ein Sammelabruf: 14 Monate Tageskurse für alle Aktien -> Kurs, 52-Wochen-Spanne, Trends, Schwankung."""
+KURS_FELDER = ("kurs", "hoch_52w", "tief_52w", "kurs_stand", "sma200", "veraenderung_6m", "schwankung", "trend",
+               "sma50", "veraenderung_1m", "kurztrend")
+
+
+def kurse_und_trends(rows, alt_by=None):
+    """Ein Sammelabruf: 14 Monate Tageskurse für alle Aktien -> Kurs, 52-Wochen-Spanne, Trends, Schwankung.
+
+    Schutz gegen Rückschritt: Nach Mitternacht Ortszeit (Hongkong/Tokio, ab ca. 15–16 Uhr UTC) liefert Yahoo für
+    asiatische Börsen den letzten Handelstag nicht mehr mit; der Kurs fiel dann jeden Abend auf den Vortag zurück
+    (gesehen am 16.11.2026: 105 .HK und 69 .T mit Stand Freitag statt Montag). Ist der neue Kurs älter als der
+    gespeicherte, bleiben die gespeicherten Kursfelder stehen."""
+    alt_by = alt_by or {}
     syms = [r["ticker"] for r in rows]
     frisch = set()
     for i in range(0, len(syms), 200):
@@ -184,6 +194,13 @@ def kurse_und_trends(rows):
             if len(h) < 1:
                 continue
             r = next(x for x in rows if x["ticker"] == s)
+            alt_r = alt_by.get(s) or {}
+            if str(h.index[-1])[:10] < str(alt_r.get("kurs_stand") or ""):
+                for k in KURS_FELDER:
+                    if k in alt_r:
+                        r[k] = alt_r[k]
+                frisch.add(s)
+                continue
             c = float(h.iloc[-1])  # auch bei kurzer Historie (z. B. Neuling an der Börse) den Kurs aktualisieren
             j = h.iloc[-252:]
             r.update(kurs=c, hoch_52w=float(j.max()), tief_52w=float(j.min()), kurs_stand=str(h.index[-1])[:10])
@@ -241,7 +258,7 @@ def main():
         rows = [alt_by.get(s) or {"ticker": s} for s in TICKERS]
         grund_stand = alt.get("grunddaten_stand")
 
-    frisch = kurse_und_trends(rows)
+    frisch = kurse_und_trends(rows, alt_by)
 
     try:
         eurusd = float(yf.Ticker("EURUSD=X").history(period="5d")["Close"].dropna().iloc[-1])

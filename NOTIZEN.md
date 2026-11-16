@@ -95,6 +95,13 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 16.11.2026 (Nachtschicht 21:41, strenger Sparmodus, 0 Agenten): **Fehler behoben: Kurse aus Hongkong und Tokio fielen jeden
+  Abend auf den Vortag zurück.** Nach Mitternacht Ortszeit (ab ca. 15–16 Uhr UTC) liefert Yahoo den letzten Handelstag dort nicht
+  mehr; 0700.HK z. B. 12:18 UTC 390,40 HKD (Mo), ab 16:18 UTC wieder 386,60 (Fr). Am Abend standen alle 105 .HK und 69 .T auf Freitag.
+  fetch.py überschreibt jetzt keinen Kurs mehr mit einem älteren (Test mit Ersatzdaten). **A7:** kurse-schleife.yml hat zusätzliche
+  Starthilfen 4:43, 6:43, 8:43 UTC (Mo–Fr) und Mo 6:29 UTC. Prüfung: bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
+  2302 von 2604 bewertet. Auffällig, aber laut Quellen kein Datenfehler: Kioxia (285A.T) KGV 2,7 – Split 3:1 am 01.10.2026 und −39 %
+  in 30 Tagen (boerse-express.com).
 - 16.11.2026 (Chat, Levin: „mehr Aktien rein und weniger verbrauchen“): **screener.py + screener.yml** – jeden Abend 22:47
   fragt GitHub den Aktien-Filter von Yahoo ab (18 Börsen), nimmt Firmen über 1 Mrd. € Börsenwert und mind. 1 Mio. € Handel/Tag,
   ohne Zweitlistings (Firmenname, höchster Handelswert = Heimatbörse), die größten 150 pro Abend, danach Grunddaten.
@@ -221,8 +228,8 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
   drawings: stray_write (count 1). Ursache weiter suchen und beheben; Test: runs ohne Warnung nach dem nächsten Öffnen.
 
 ### A7 (vom Aufpasser, 16.11.2026): Kurse-Schleife startet montags nicht
-- Fund: Am Mo 16.11. kein Lauf der Kurse-Schleife um 5:11 und 7:11 UTC (gh run list: letzter Lauf Fr 13.11. 20:46 UTC). GitHub-Zeitpläne fallen offenbar aus.
-- Ziel: Wochenstart robust machen (z. B. weitere Zeitplan-Einträge mit anderen Minuten, oder Starthilfe aus einem anderen Workflow). Test: nächster Montag Kurse-Commit vor 9 Uhr Berlin.
+- Stand 16.11. 21:41: zusätzliche Starthilfen eingebaut (siehe Protokoll). Offen nur noch der Test: Mo 23.11. Kurse-Commit vor 9 Uhr Berlin?
+  Dann diesen Auftrag löschen. Zusätzlich prüfen: Di 17.11. abends .HK/.T mit Stand 17.11. (nicht 16.11.).
 
 ## Chef – Plan
 ### 15.11.2026 (So, erster Chef-Lauf) – Plan für die nächsten 1–2 Wochen

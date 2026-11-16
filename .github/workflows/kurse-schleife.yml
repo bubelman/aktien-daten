@@ -7,6 +7,10 @@ on:
   workflow_dispatch: {}
   schedule:
     - cron: "11 5,7,9,12,15,18 * * 1-5"
+    # Zusätzliche Starthilfen mit anderer Minute (A7: am Mo 16.11.2026 fielen 5:11 und 7:11 UTC aus).
+    # Doppelte Starts sind harmlos: concurrency "daten" lässt nur einen Lauf gleichzeitig zu.
+    - cron: "43 4,6,8 * * 1-5"
+    - cron: "29 6 * * 1"
 permissions:
   contents: write
   actions: write
