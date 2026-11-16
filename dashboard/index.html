@@ -188,7 +188,6 @@
   <nav class="al-tabs" role="tablist" aria-label="Bereiche">
     <button type="button" role="tab" data-tab="meine" aria-selected="true">Meine Aktien</button>
     <button type="button" role="tab" data-tab="alle" aria-selected="false">Alle Aktien</button>
-    <button type="button" role="tab" data-tab="etfs" aria-selected="false">ETFs</button>
     <button type="button" role="tab" data-tab="methode" aria-selected="false">So wird gerechnet</button>
   </nav>
 
@@ -378,44 +377,6 @@
     </div>
   </section>
 
-  <!-- ========== ETFs ========== -->
-  <section class="al-panel" id="etfs" data-panel="etfs" role="tabpanel" hidden>
-    <p class="al-lead"><span class="al-ph" data-draw="etf_info" data-source="etfs"></span> ETFs stehen hier getrennt von den Aktien. Keine Punkte für ETFs. TER und Größe laut Yahoo, ungeprüft.</p>
-    <section class="al-card">
-      <div class="al-tools">
-        <input type="search" class="al-search" id="etf-suche" placeholder="Name oder Kürzel suchen" aria-label="ETF suchen">
-        <select class="al-select" id="etf-gruppe" aria-label="Gruppe">
-          <option value="">Alle Gruppen</option>
-        </select>
-        <span class="al-note" style="margin:0">Klick auf eine Spalte sortiert. Renditen in Euro, 3 J. und 5 J. pro Jahr. Fehlt ein Wert: –</span>
-      </div>
-      <div class="al-scroll frei">
-        <table data-source="etfs" data-row-key="ticker" class="al-liste al-etfs" id="etf-tabelle">
-          <thead>
-            <tr>
-              <th data-field="name"><button type="button" data-esort="name">Name</button></th>
-              <th data-field="ticker"><button type="button" data-esort="ticker">Kürzel</button></th>
-              <th data-field="gruppe"><button type="button" data-esort="gruppe">Gruppe</button></th>
-              <th data-field="kurs" class="num"><button type="button" data-esort="kurs">Kurs €</button></th>
-              <th data-field="r_1m" class="num"><button type="button" data-esort="r_1m">1 Monat</button></th>
-              <th data-field="r_6m" class="num"><button type="button" data-esort="r_6m">6 Monate</button></th>
-              <th data-field="r_1j" class="num"><button type="button" data-esort="r_1j">1 Jahr</button></th>
-              <th data-field="r_3j_pa" class="num"><button type="button" data-esort="r_3j_pa">3 J. p. a.</button></th>
-              <th data-field="r_5j_pa" class="num"><button type="button" data-esort="r_5j_pa">5 J. p. a.</button></th>
-              <th data-field="vola_1j" class="num"><button type="button" data-esort="vola_1j">Schwankung</button></th>
-              <th data-field="max_rueckgang_5j" class="num"><button type="button" data-esort="max_rueckgang_5j">Größter Rückgang</button></th>
-              <th data-field="trend"><button type="button" data-esort="trend">Trend</button></th>
-              <th data-field="ter_pct" class="num"><button type="button" data-esort="ter_pct">TER</button></th>
-              <th data-field="groesse_mrd" class="num"><button type="button" data-esort="groesse_mrd">Fondsgröße</button></th>
-            </tr>
-          </thead>
-          <tbody data-draw="etf_tabelle"></tbody>
-        </table>
-      </div>
-      <p class="al-note" style="margin-top: var(--cds-gap-md)">Schwankung = wie stark der Kurs im letzten Jahr typischerweise schwankte. Größter Rückgang = stärkster Fall vom Hoch in 5 Jahren. Trend = Kurs über oder unter der 200-Tage-Linie. TER = jährliche Kosten. Vergangene Renditen sagen nichts über die Zukunft.</p>
-    </section>
-  </section>
-
   <!-- ========== So wird gerechnet ========== -->
   <section class="al-panel" id="methode" data-panel="methode" role="tabpanel" hidden>
     <section class="al-card" id="trefferquote" data-source="trefferquote">
@@ -454,8 +415,6 @@
       <p>Erfüllt, wenn der Abstand über 15 % liegt (faire Mitte mehr als 15 % über dem Kurs), der lange Trend nicht fällt und es keine Speicherchip-Firma ist. Das ist nur eine Regel des Programms, keine Empfehlung.</p>
       <h3>Wann eine Aktie nicht bewertet wird</h3>
       <p>Zum Beispiel, wenn der erwartete Gewinn nicht positiv ist, kein Kursziel da ist, das KGV unplausibel ist (über 200) oder es für die Währung keinen Wechselkurs gibt. Firmen, die an zwei Börsen notiert sind, zählen nur einmal. Der Grund steht dann auf der Karte.</p>
-      <h3>ETFs</h3>
-      <p>Für ETFs gibt es keine Punkte. Der Reiter „ETFs“ zeigt nur Zahlen: Kurs, Renditen, Schwankung, größten Rückgang, Trend (200-Tage-Linie), Kosten (TER) und Fondsgröße. TER und Größe kommen von Yahoo und sind noch nicht geprüft.</p>
       <h3>Daten</h3>
       <p>Yahoo Finance (inoffiziell), über GitHub abgerufen (bubelman/aktien-daten): Kennzahlen jeden Morgen, Kurse 5-mal am Börsentag. Gerechnet wird immer mit dem festen Programm bewertung.py, damit jeder Lauf gleich rechnet. Schwankung = wie stark der Kurs im Jahr typischerweise schwankt, über 60 % ist sehr wild.</p>
       <h3>Grenzen – bitte lesen</h3>
@@ -534,7 +493,8 @@
   const bar = (frac) => { const b = el('span', 'al-bar'); const i = el('i'); i.style.width = Math.max(0, Math.min(1, frac)) * 100 + '%'; b.appendChild(i); return b; };
   const linkListe = (urls) => {
     const q = el('div', 'al-news-links');
-    (urls || []).forEach((u) => {
+    const liste = Array.isArray(urls) ? urls : String(urls || '').split(/[\s,|;]+/).filter(Boolean);
+    liste.forEach((u) => {
       let host = 'Quelle'; try { host = new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return; }
       const lnk = el('a', '', host); lnk.href = u; lnk.target = '_blank'; lnk.rel = 'noopener noreferrer'; q.appendChild(lnk);
     });
@@ -685,7 +645,7 @@
   });
 
   // ---------- Reiter ----------
-  const TITEL = {meine: 'Meine Aktien', alle: 'Alle Aktien', etfs: 'ETFs', methode: 'So wird gerechnet'};
+  const TITEL = {meine: 'Meine Aktien', alle: 'Alle Aktien', methode: 'So wird gerechnet'};
   const zeigeReiter = (name, link) => {
     document.querySelectorAll('.al-tabs [data-tab]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === name)));
     document.querySelectorAll('[data-panel]').forEach((p) => { if (p.dataset.panel === name) p.removeAttribute('hidden'); else p.setAttribute('hidden', ''); });
@@ -1003,78 +963,6 @@
     box.replaceChildren();
     const r = alleAktiv();
     if (r) zeigeDetail(box, r);
-  });
-
-  // ---------- ETFs ----------
-  const etfF = {suche: '', gruppe: ''};
-  let eSortKey = null, eSortDir = -1;
-  const E_AUF = ['name', 'ticker', 'gruppe', 'trend', 'ter_pct', 'vola_1j'];
-  const E_TREND = {'aufwärts': 0, 'seitwärts': 1, 'abwärts': 2};
-  const etfZeilen = () => { const g = daten('etfs'); return g.status === 'ok' && Array.isArray(g.data) ? g.data.filter((r) => r && r.ticker) : null; };
-  document.getElementById('etf-suche').addEventListener('input', (e) => { etfF.suche = e.target.value.trim().toLowerCase(); dash.draw('etf_tabelle'); });
-  document.getElementById('etf-gruppe').addEventListener('change', (e) => { etfF.gruppe = e.target.value; dash.draw('etf_tabelle'); });
-  document.querySelectorAll('.al-etfs th button[data-esort]').forEach((b) => b.addEventListener('click', () => {
-    const k = b.dataset.esort;
-    if (k === eSortKey) eSortDir = -eSortDir; else { eSortKey = k; eSortDir = E_AUF.includes(k) ? 1 : -1; }
-    document.querySelectorAll('.al-etfs th').forEach((th) => th.removeAttribute('aria-sort'));
-    const th = b.closest('th'); if (th) th.setAttribute('aria-sort', eSortDir > 0 ? 'ascending' : 'descending');
-    dash.draw('etf_tabelle');
-  }));
-  let gruppenGefuellt = false;
-  dash.onData(() => {
-    const rows = etfZeilen();
-    if (!rows || gruppenGefuellt) return;
-    const sel = document.getElementById('etf-gruppe');
-    for (const s of [...new Set(rows.map((r) => r.gruppe).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'de'))) { const o = el('option', '', s); o.value = s; sel.appendChild(o); }
-    gruppenGefuellt = true;
-  });
-  dash.draw('etf_info', (e) => {
-    const rows = etfZeilen();
-    if (!rows) { e.textContent = daten('etfs').status === 'loading' ? '—' : 'Noch keine ETF-Daten.'; return; }
-    const st = rows.map((r) => r.kurs_stand).filter(Boolean).sort().pop();
-    e.textContent = nf(0).format(rows.length) + ' ETFs' + (st ? ', Kurse vom ' + fmtDatumJ(st) : '') + '.';
-  });
-  dash.draw('etf_tabelle', (tbody) => {
-    tbody.replaceChildren();
-    const alle = etfZeilen();
-    if (!alle) return;
-    const rows = alle.filter((r) => {
-      if (etfF.gruppe && r.gruppe !== etfF.gruppe) return false;
-      if (etfF.suche && !(String(r.name || '').toLowerCase().includes(etfF.suche) || String(r.ticker).toLowerCase().includes(etfF.suche))) return false;
-      return true;
-    });
-    if (eSortKey) {
-      rows.sort((a, b) => {
-        let x = a[eSortKey], y = b[eSortKey];
-        if (eSortKey === 'trend') { x = E_TREND[x] ?? null; y = E_TREND[y] ?? null; }
-        const lx = x == null || x === '', ly = y == null || y === '';
-        if (lx || ly) return lx && ly ? 0 : lx ? 1 : -1;
-        const nx = num(x), ny = num(y);
-        if (!isNaN(nx) && !isNaN(ny)) return (nx - ny) * eSortDir;
-        return String(x).localeCompare(String(y), 'de') * eSortDir;
-      });
-    }
-    if (!rows.length) {
-      const tr = el('tr'); const t = el('td', 'muted', 'Kein ETF passt zu dieser Suche.'); t.colSpan = 14; tr.appendChild(t); tbody.appendChild(tr);
-    }
-    for (const r of rows) {
-      const w = `ticker=${encodeURIComponent(r.ticker)}`;
-      const tr = el('tr');
-      tr.dataset.key = r.ticker;
-      const td = (text, c, f) => { const t = el('td', c, text); if (f) { t.dataset.field = f; t.dataset.where = w; } tr.appendChild(t); return t; };
-      const pct = (f) => { const v = num(r[f]); td(fmtPct1(v), 'num ' + cls(v), f); };
-      td(r.name || r.ticker, 'name', 'name');
-      td(r.ticker, 'tick', 'ticker');
-      td(r.gruppe || '–', 'lang', 'gruppe');
-      td(fmtEur2(num(r.kurs)), 'num', 'kurs');
-      pct('r_1m'); pct('r_6m'); pct('r_1j'); pct('r_3j_pa'); pct('r_5j_pa');
-      const vo = num(r.vola_1j); td(isNaN(vo) ? '–' : fmtNum(vo, 1) + ' %', 'num', 'vola_1j');
-      const mr = num(r.max_rueckgang_5j); td(isNaN(mr) ? '–' : fmtNum(mr, 1) + ' %', 'num', 'max_rueckgang_5j');
-      td(trendText(r.trend), trendCls(r.trend), 'trend');
-      const ter = num(r.ter_pct); td(isNaN(ter) ? '–' : fmtNum(ter, 2) + ' %', 'num', 'ter_pct');
-      const gr = num(r.groesse_mrd); td(isNaN(gr) ? '–' : fmtNum(gr, gr < 10 ? 1 : 0) + ' Mrd.', 'num', 'groesse_mrd');
-      tbody.appendChild(tr);
-    }
   });
 
   // ---------- Trefferquote ----------
