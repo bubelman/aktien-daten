@@ -286,6 +286,15 @@ Stand Chef-Aufträge: A5.1 und A5.4 erledigt (15.11. Nachtschicht), A5.2/A5.3 h�
   Den Zähler sieht nur Levin (Einstellungen → Nutzung). Er schreibt die Zahl in den Chat, sie wird hier eingetragen.
   Ab 60 %: Sparmodus wie unten. Ab 75 %: Nachtschicht nur noch Schritt 1 (Prüfen), keine Agenten, bis Mittwoch.
   Letzte Zahl: 42 % am So 15.11. 19:22; die Nacht 15./16.11. hat laut Levin etwa 20 % verbraucht → etwa 62 % (Mo 16.11.).
+- **BUDGET NACHTSCHICHT (Levin, 16.11.2026): etwa 10 % von Levins Wochenlimit pro Nacht** (beide Läufe zusammen).
+  Gilt vor der Aufgabe und ersetzt dort „Hälfte der Wochen-Tokens“, „noch mehr Agenten“ und „keine feste Obergrenze“.
+  Zum Vergleich: die Nacht 15./16.11. (5 Agenten, Aufträge A2, A3, A4, neue Aktien und ETFs) kostete etwa 20 %. Darum:
+  • Lauf 21:41 macht die Arbeit: höchstens 3 Agenten, wichtigste Aufträge zuerst, Rest bleibt für die nächste Nacht.
+    Ziel: nach etwa 45 Minuten fertig.
+  • Lauf 3:41 nur Schritt 1 (Prüfen) ohne Agenten, etwa 15 Minuten. Ausnahme: Zahlen-Check nach Zahlen von Levins
+    Aktien (bis 3 Agenten).
+  • Ein Prüf-Agent am Schluss statt zwei. Recherche neue Aktien/ETFs mit 1 Agent für alle Regionen.
+  • Levin schickt ab und zu seine Zahl; liegt eine Nacht klar über 10 %, weiter kürzen.
 - **STRENGER SPARMODUS bis Mittwoch 18.11.2026, 21:00** (Levin am 16.11.: die Nacht hat etwa 20 % verbraucht, Stand etwa
   62 %, Grenze 75 %). Gilt vor allen anderen Regeln, für ALLE Aufgaben:
   • Nachtschicht (21:41 und 3:41): nur Schritt 1 (Prüfen) und echte Fehler beheben. Keine neuen Aktien, keine ETFs, keine
