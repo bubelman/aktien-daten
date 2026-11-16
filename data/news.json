@@ -1,15 +1,15 @@
 {
- "stand": "2026-11-16T06:56:20+01:00",
+ "stand": "2026-11-16T13:04:34+01:00",
  "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
  "aktien": {
   "NVDA": {
    "urteil": "sehr negativ",
    "kurz": "Chef zurückgetreten nach Untersuchung",
-   "grund": "Jensen Huang trat am 12.11.2026 sofort als Chef zurück, ohne genannten Grund; Colette Kress führt übergangsweise. Vier Tage vorher (08.11.) leitete der Vorstand eine unabhängige Untersuchung ein, am 09.11. folgte eine Sammelklage.",
+   "grund": "Jensen Huang trat als Chef zurück (Vorstand nahm den Rücktritt am 11.11.2026 an, Mitteilung am 12.11.), wenige Tage nach einer Affäre mit einer mutmaßlichen chinesischen Spionin. Colette Kress führt übergangsweise; die Aktie fiel am 12.11. fast 12 %.",
    "quellen": [
+    "https://techcrunch.com/2026/11/12/nvidias-jensen-huang-resigns-chipmaker-names-cfo-colette-kress-as-interim-ceo/",
     "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-CEO-Transition/default.aspx",
-    "https://investor.nvidia.com/news/press-release-details/2026/Statement-from-NVIDIA-Board-of-Directors/",
-    "https://stocktwits.com/news-articles/markets/equity/nvidia-faces-class-action-suit-over-huang-allegations-senator-seeks-probe-analyst-puts-ceo-exit-odds-at-15/cNGuT97R97g"
+    "https://fortune.com/2026/11/11/nvidia-oust-jensen-huang-spy-affairs/"
    ],
    "datum": "2026-11-16",
    "von": "News-Agenten"
@@ -313,6 +313,604 @@
    "grund": "Q3-Zahlen und höhere Prognose kamen am 29.10.2026, vor dem 7-Tage-Fenster. Seitdem nichts Wichtiges.",
    "quellen": [
     "https://stockstory.org/us/stocks/nyse/apg/news/earnings/api-nyseapg-surprises-with-strong-q3-2026-guides-for-strong-full-year-sales"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "NU": {
+   "urteil": "neutral",
+   "kurz": "Rekordgewinn aber Umsatz knapp verfehlt",
+   "grund": "Am 12.11.2026 meldete Nu für Q3 einen Rekordgewinn von rund 1,1 Mrd. USD (+31 %). Der Umsatz lag etwa 2 % unter dem Konsens, der Gewinn je Aktie traf die Erwartung.",
+   "quellen": [
+    "https://www.sec.gov/Archives/edgar/data/0001691493/000129281426005273/nupr3q26_6k.htm",
+    "https://stockstory.org/us/stocks/nyse/nu/news/earnings/nubank-delivers-impressive-q3-2026"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "TUI1.DE": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 keine wichtige Meldung. Die Jahreszahlen kommen am 09.12.2026.",
+   "quellen": [
+    "https://www.boerse-express.com/news/articles/tui-aktie-ltur-baut-last-minute-angebot-aus-950480"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CHWY": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 keine wesentliche Meldung. Am 05.11.2026 gab es nur einen Insider-Verkauf; die Q3-Zahlen stehen noch aus.",
+   "quellen": [
+    "https://www.marketbeat.com/instant-alerts/insider-chewy-nyse-chwy-cao-sells-11074500-in-stock-2026-11-05/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "SAGA.L": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 keine wesentliche Meldung. Die Prognoseanhebung kam schon am 30.09.2026.",
+   "quellen": [
+    "https://www.hl.co.uk/shares/stock-market-news/company--news/saga-boosts-outlook-after-bumper-first-half,-shares-soar"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "WAWI.OL": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten seit Q3",
+   "grund": "Die Q3-Zahlen kamen am 04.11.2026 (Prognose bestätigt), also vor dem Zeitraum. Vom 09. bis 16.11.2026 keine weitere wesentliche Meldung.",
+   "quellen": [
+    "https://www.bairdmaritime.com/shipping/dry-cargo/pcc-pctc/wallenius-wilhelmsen-earnings-rise-2026"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "IPO.L": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 keine wesentliche Meldung. Die letzte Mitteilung vom 02.11.2026 betraf ein neues Verwaltungsmandat.",
+   "quellen": [
+    "https://www.londonstockexchange.com/en/news/article/IPO/ip-group-appointed-to-manage-uk-growth-portfolio/d42c-5c-1a-97-a3-444b89"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "DAVE": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten seit Q3",
+   "grund": "Die Q3-Zahlen mit angehobener Prognose kamen am 04.11.2026, vor dem Zeitraum. Danach keine wesentliche Meldung.",
+   "quellen": [
+    "https://finviz.com/news/416342/dave-misses-on-eps-as-credit-costs-bite-but-accelerating-revenue-drives-a-fourth-straight-guidance-raise"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "GEO": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten seit Q3",
+   "grund": "Die Q3-Zahlen kamen am 05.11.2026, vor dem Zeitraum. Vom 09. bis 16.11.2026 keine weitere wesentliche Meldung.",
+   "quellen": [
+    "https://stockstory.org/us/stocks/nyse/geo/news/earnings/geo-group-nysegeo-misses-q3-2026-revenue-estimates"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CUBI": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 keine wesentliche Meldung. Die Q3-Zahlen kamen Ende Oktober 2026.",
+   "quellen": [
+    "https://www.mychesco.com/a/news/regional/customers-bancorp-posts-78-4-million-profit-as-lending-grows/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "2359.HK": {
+   "urteil": "neutral",
+   "kurz": "Pentagon streicht WuXi von Liste",
+   "grund": "Am 09.11.2026 strich das US-Verteidigungsministerium WuXi AppTec nach einer Gerichtsverfügung von der Liste chinesischer Militärfirmen. Eine erneute Aufnahme ist nicht ausgeschlossen.",
+   "quellen": [
+    "https://www.pharmamanufacturing.com/quality-risk/supply-chain/article/55417484/pentagon-removes-wuxi-apptec-from-1260h-list-of-chinese-military-companies"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "TREE": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 keine wichtige Meldung. Die Q3-Zahlen kamen am 03.11.2026.",
+   "quellen": [
+    "https://finviz.com/news/415022/lendingtrees-99-million-write-down-produces-a-headline-miss-but-a-revenue-beat-higher-ebitda-outlook-and-first-buyback-since-2022-tell-a-firmer-story"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "DBK.DE": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 keine wesentliche Unternehmensnachricht. Am 08.11.2026 hob Goldman Sachs das Kursziel auf 47,75 Euro an.",
+   "quellen": [
+    "https://www.finanztrends.de/news/deutsche-bank-aktie-goldman-schraubt-kursziel-hoch/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "SM": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 nichts Wichtiges. Die schwachen Q3-Zahlen vom 04.11.2026 liegen vor dem Zeitraum.",
+   "quellen": [
+    "https://finviz.com/news/416197/sm-energy-misses-on-eps-as-hedges-and-oil-slippage-offset-merger-synergy-gains"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "FCH.L": {
+   "urteil": "positiv",
+   "kurz": "Umsatzprognose 2026 erneut angehoben",
+   "grund": "Am 10.11.2026 hob Funding Circle die Umsatzprognose 2026 auf mindestens 275 Mio. £ an (vorher mehr als 255 Mio. £). Die Aktie stieg um rund 10 %.",
+   "quellen": [
+    "https://www.globenewswire.com/news-release/2026/11/10/3399193/0/en/fy-2026-guidance-upgraded.html",
+    "https://www.ajbell.co.uk/news/articles/funding-circle-shares-jump-upgrades-annual-revenue-guidance"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "SBH": {
+   "urteil": "positiv",
+   "kurz": "Q4 besser Prognose 2027 stark",
+   "grund": "Am 10.11.2026 lag Sally Beauty im vierten Quartal über den Erwartungen (0,62 $ statt 0,60 $ je Aktie). Die Gewinnprognose 2027 von 2,20–2,30 $ liegt klar über dem Konsens von 2,07 $; der Ausblick für Q1 ist etwas schwächer.",
+   "quellen": [
+    "https://finviz.com/news/420232/sally-beauty-reports-q4-earnings-above-estimates-and-raises-fy2027-outlook-above-consensus",
+    "https://www.sec.gov/Archives/edgar/data/0001368458/000136845826000018/exhibit991.htm"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CARG": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 nichts Wesentliches. Die Q3-Zahlen vom 05.11.2026 liegen vor dem Zeitraum.",
+   "quellen": [
+    "https://finviz.com/news/418093/cargurus-hits-the-whisper-and-lifts-profit-outlook-but-q4-guide-shows-revenue-growth-slowing-to-7-9"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "VSNT": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 keine wichtige Meldung. Die Q3-Zahlen kamen Anfang November.",
+   "quellen": [
+    "https://finviz.com/news/414393/versant-clears-a-low-eps-bar-as-cash-flow-and-platforms-growth-outrun-a-shrinking-core"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "REZI": {
+   "urteil": "positiv",
+   "kurz": "Q3 klar besser Prognose angehoben",
+   "grund": "Am 10.11.2026 meldete Resideo für Q3 bereinigt 0,52 $ je Aktie, deutlich über dem Konsens von 0,45 $, und hob die Jahresprognose leicht an. Die Aktie stieg am 11.11. um rund 18 %.",
+   "quellen": [
+    "https://finviz.com/news/420761/resideo-tops-estimates-in-first-post-spin-quarter-but-inflation-and-a-soft-q4-guide-temper-the-clean-beat",
+    "https://finviz.com/news/420488/resideo-announces-third-quarter-2026-financial-results-and-updates-2026-outlook"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "LNC": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 nichts Wesentliches. Die Q3-Zahlen vom 05.11.2026 liegen vor dem Zeitraum.",
+   "quellen": [
+    "https://finviz.com/news/417246/lincoln-national-misses-as-group-disability-deteriorates-but-its-capital-return-inflection-has-arrived"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CART": {
+   "urteil": "neutral",
+   "kurz": "DoorDash-Übernahme zu 65 Dollar",
+   "grund": "Im Zeitraum nichts Neues. Anfang November 2026 wurde die Übernahme durch DoorDash für rund 17 Mrd. $ (65 $ je Aktie) bekannt; Abschluss frühestens Ende 2027.",
+   "quellen": [
+    "https://www.foodbusinessnews.net/articles/31280-doordash-set-to-add-instacart-for-17-billion"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "APH": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen neuen Nachrichten",
+   "grund": "Vom 09. bis 16.11.2026 nur ein Konferenzauftritt und eine Kurszielanhebung durch Bernstein. Die Q3-Zahlen kamen am 28.10.2026.",
+   "quellen": [
+    "https://ad-hoc-news.de/boerse/news/unternehmensnachrichten/amphenol-aktie-bernstein-hebt-kursziel-an/70508344"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CRBG": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Die Q3-Zahlen kamen Anfang November 2026 im Rahmen der Erwartungen. Danach keine wesentliche Meldung.",
+   "quellen": [
+    "https://insurancenewsnet.com/oarticle/corebridge-financial-announces-third-quarter-2026-results"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CSU.TO": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Die Q3-Zahlen kamen um den 06.11.2026, vor dem Zeitraum (Gewinn unter Erwartung, Umsatz im Rahmen). Danach keine wesentliche Meldung.",
+   "quellen": [
+    "https://www.zacks.com/stock/news/3025948/constellation-software-inc-cnswf-lags-q3-earnings-estimates"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "EGBN": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen neuen Nachrichten",
+   "grund": "Vom 09. bis 16.11.2026 nichts Wesentliches. Die Q3-Zahlen kamen im Oktober 2026.",
+   "quellen": [
+    "https://ir.eaglebankcorp.com/news/news-details/2026/Eagle-Bancorp-Inc--Announces-Third-Quarter-2026-Results/default.aspx"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "APA": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Die Q3-Zahlen kamen am 04./05.11.2026, vor dem Zeitraum. Vom 09. bis 16.11.2026 nichts Wesentliches.",
+   "quellen": [
+    "https://www.marketbeat.com/instant-alerts/transcript-what-apa-apa-said-on-its-q3-earnings-call-2026-11-05/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "SVS.L": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen neuen Nachrichten",
+   "grund": "Im Zeitraum nur eine Pflichtmitteilung zu Aktiengeschäften eines Direktors.",
+   "quellen": [
+    "https://www.investegate.co.uk/announcement/rns/savills--svs/director-pdmr-shareholding/9870392"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "9999.HK": {
+   "urteil": "neutral",
+   "kurz": "Q3-Zahlen erst am 19.11.",
+   "grund": "Im Zeitraum keine wesentlichen Nachrichten. NetEase legt die Q3-Zahlen am 19.11.2026 vor.",
+   "quellen": [
+    "https://www.morningstar.com/news/pr-newswire/20261105cn89888/netease-to-report-third-quarter-2026-financial-results-on-november-19"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CRBN.AS": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Die letzte Mitteilung waren die Q3-Zahlen vom 28.10.2026 (Prognose bestätigt). Vom 09. bis 16.11.2026 nichts Wesentliches.",
+   "quellen": [
+    "https://www.globenewswire.com/news-release/2026/10/28/3389864/0/en/corbion-delivers-strong-volume-led-sales-growth-and-significant-margin-improvement-in-q3-full-year-guidance-maintained.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "ZAL.DE": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Die Q3-Zahlen vom 03.11.2026 liegen vor dem Zeitraum (Prognose bestätigt). Seit dem 09.11.2026 nichts Wesentliches.",
+   "quellen": [
+    "https://goldesel.de/aktien/news/zalando-aktie-umsatz-und-bereinigtes-ebit-schlagen-q3-schatzungen-ausblick-bleibt-bestatigt"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "ICG.L": {
+   "urteil": "neutral",
+   "kurz": "Halbjahr gemischt Prognose bestätigt",
+   "grund": "Am 11.11.2026 meldete ICG 18 % höhere Gebührenerträge und 5 % mehr Dividende. Der Vorsteuergewinn fiel aber um 18 %, die Prognose blieb unverändert.",
+   "quellen": [
+    "https://www.globenewswire.com/news-release/2026/11/11/3400464/0/en/interim-results-statement-for-the-six-months-ended-30-september-2026.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "ALSN": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Vom 09. bis 16.11.2026 keine wichtige Meldung. Die Q3-Zahlen mit angehobener Prognose kamen schon am 02.11.2026.",
+   "quellen": [
+    "https://finviz.com/news/413497/allison-announces-third-quarter-2026-results"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "ADS.DE": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Impulse im Zeitraum",
+   "grund": "Im Zeitraum nichts Wesentliches. Rekord-Q3 und Kurszielanhebungen kamen vor dem 09.11.2026.",
+   "quellen": [
+    "https://www.boerse-express.com/news/articles/adidas-aktie-deutsche-bank-hebt-kursziel-an-958662"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "R": {
+   "urteil": "neutral",
+   "kurz": "Nur Konferenzankündigung",
+   "grund": "Am 10.11.2026 kündigte Ryder einen Konferenzauftritt des Chefs am 17.11. an. Sonst keine wichtigen Meldungen.",
+   "quellen": [
+    "https://finviz.com/news/419868/ryder-ceo-john-diez-to-address-stephens-annual-investment-conference"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "TGS.OL": {
+   "urteil": "neutral",
+   "kurz": "Seismikauftrag vor Namibia",
+   "grund": "Am 12.11.2026 meldete TGS einen Seismikauftrag vor Namibia. Das Volumen ist nicht genannt.",
+   "quellen": [
+    "https://www.tgs.com/press-releases/archive/2026/11"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "1177.HK": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Im Zeitraum keine wichtige Meldung. Der Lizenzdeal mit Boehringer Ingelheim kam schon am 04.11.2026.",
+   "quellen": [
+    "https://www.yicaiglobal.com/news/sino-biopharm-surges-after-striking-over-usd7-billion-cancer-drug-deal-with-boehringer-ingelheim"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "ALGT": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Im Zeitraum keine wichtige Meldung. Die Q3-Zahlen vom 04.11.2026 liegen davor (Prognose unverändert).",
+   "quellen": [
+    "https://finviz.com/news/416324/allegiant-crushes-q3-loss-estimates-as-unit-revenue-accelerates-but-fuel-and-a-heavier-balance-sheet-keep-the-full-year-outlook-pinned-at-6"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "LTMC.MI": {
+   "urteil": "neutral",
+   "kurz": "Nur Aktienrückkauf gemeldet",
+   "grund": "Am 11.11.2026 meldete Lottomatica den Rückkauf von 82.000 Aktien. Die Q3-Zahlen vom 03.11. lagen im Rahmen.",
+   "quellen": [
+    "https://www.borsaitaliana.it/borsa/notizie/teleborsa/finanza/lottomatica-buyback-di-82000-azioni-tra-il-2-e-il-6-novembre-2026-205_2026-11-11_TLB.html?lang=it"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "BNP.PA": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Im Zeitraum keine wichtige Meldung. Q3 und Aktienrückkauf kamen am 28.10.2026.",
+   "quellen": [
+    "https://group.bnpparibas/en/press-release/bnp-paribas-launches-a-share-buyback-programme-of-eur-1-3-billion-for-the-2026-financial-year-results"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "CHRD": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Im Zeitraum keine wichtige Meldung. Die Q3-Zahlen vom 04.11.2026 liegen davor.",
+   "quellen": [
+    "https://finviz.com/news/416012/chord-energy-reports-third-quarter-2026-financial-and-operating-results-declares-base-dividend-and-updates-2026-outlook"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "TEN.MI": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Nachrichten im Zeitraum",
+   "grund": "Im Zeitraum keine wichtige Meldung. Q3-Zahlen (04.11.) und Mediobanca-Hochstufung (06.11.) liegen davor.",
+   "quellen": [
+    "https://www.teleborsa.it/AMP/News/2026/11/06/tenaris-ancora-in-rialzo-con-outlook-positivo-promozione-a-outperform-da-mediobanca-133.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "DV": {
+   "urteil": "neutral",
+   "kurz": "Nielsen-Übernahme läuft",
+   "grund": "Im Zeitraum keine wichtige neue Meldung. Die Übernahme durch Nielsen für 13,60 $ je Aktie (angekündigt im August 2026) soll bis Mai 2027 abgeschlossen sein.",
+   "quellen": [
+    "https://www.nielsen.com/news-center/2026/nielsen-to-acquire-doubleverify/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "UPBD": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Im Zeitraum keine wichtige Meldung. Die Q3-Zahlen kamen am 29.10.2026.",
+   "quellen": [
+    "https://finviz.com/news/411892/upbound-beats-on-profit-and-cash-but-acimas-shrinking-volume-keeps-the-revenue-story-under-pressure"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "REP.MC": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Neuigkeiten im Zeitraum",
+   "grund": "Im Zeitraum keine wichtige Meldung. Zuletzt am 29.10.2026 Neunmonatszahlen und neuer Aktienrückkauf.",
+   "quellen": [
+    "https://www.teleborsa.it/AMP/News/2026/10/29/repsol-l-utile-vola-a-5-miliardi-nei-nove-mesi-nuovo-buyback-da-950-milioni-45.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "2020.HK": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Neuigkeiten im Zeitraum",
+   "grund": "Im Zeitraum keine wichtige Meldung. Zuletzt wurde ANTA am 09.10.2026 größter Aktionär von Puma.",
+   "quellen": [
+    "https://www.thestar.com.my/business/business-news/2026/10/09/anta-becomes-puma039s-largest-shareholder-as-firm-accelerates-global-expansion"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "LYFT": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen nach Q3",
+   "grund": "Im Zeitraum nichts Wichtiges. Die Q3-Zahlen vom 05.11.2026 liegen davor.",
+   "quellen": [
+    "https://stockstory.org/us/stocks/nasdaq/lyft/news/earnings/lyft-nasdaqlyft-misses-q3-2026-revenue-estimates-stock-drops"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "EOG": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen nach Q3",
+   "grund": "Im Zeitraum keine neue wichtige Meldung. Die starken Q3-Zahlen vom 05./06.11.2026 liegen davor.",
+   "quellen": [
+    "https://finviz.com/news/417814/eog-resources-reports-third-quarter-2026-results-and-raises-regular-dividend-8"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "HOG": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Im Zeitraum keine wichtige Meldung. Die Prognoseanhebung kam am 29.10.2026.",
+   "quellen": [
+    "https://www.securities.io/harley-davidson-raises-2026-guidance-as-q3-hdmc-revenue-falls-10/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "HSX.L": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen nach Q3-Update",
+   "grund": "Im Zeitraum keine neue wichtige Meldung. Das Q3-Update kam am 03.11.2026.",
+   "quellen": [
+    "https://www.investegate.co.uk/announcement/rns/hiscox-limited-di---hsx/q3-2026-trading-statement/9854485"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "VFC": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Im Zeitraum keine wichtige Meldung. Die Quartalszahlen vom 28.10.2026 lagen über den Erwartungen.",
+   "quellen": [
+    "https://fashionunited.com/news/business/vf-corporation-exceeds-expectations-in-second-quarter/2026102875428"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "KFY": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Neuigkeiten im Zeitraum",
+   "grund": "Im Zeitraum keine wichtige Meldung. Die nächsten Quartalszahlen kommen im Dezember.",
+   "quellen": [],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "RHI": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Unternehmensnachrichten",
+   "grund": "Vom 09. bis 16.11.2026 nur kleine Schätzungsänderungen von Analysten. Die Q3-Zahlen kamen im Oktober.",
+   "quellen": [
+    "https://www.marketbeat.com/instant-alerts/estimates-zacks-research-reduces-earnings-estimates-for-robert-half-2026-11-13/"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "TTE.PA": {
+   "urteil": "neutral",
+   "kurz": "Aktienrückkauf und LNG-Rechtsstreit",
+   "grund": "Laut Bericht vom 15.11.2026 kaufte TotalEnergies vom 02. bis 06.11. eigene Aktien für rund 200 Mio. Euro zurück. Dazu ein laufender US-Rechtsstreit um Mosambik LNG.",
+   "quellen": [
+    "https://ad-hoc-news.de/boerse/news/unternehmensnachrichten/totalenergies-aktie-lng-grundsatzvereinbarung-mit-jiangsu-guoxin/70514630"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "SIG": {
+   "urteil": "neutral",
+   "kurz": "Nur Zacks-Abstufung auf Hold",
+   "grund": "Am 11.11.2026 stufte Zacks Research Signet auf Hold ab. Die Q3-Zahlen kommen Anfang Dezember.",
+   "quellen": [
+    "https://www.defenseworld.net/2026/11/12/signet-jewelers-nysesig-cut-to-hold-at-zacks-research.html"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "STLD": {
+   "urteil": "neutral",
+   "kurz": "Neuer Rückkauf über 3 Mrd. Dollar",
+   "grund": "Am 09.11.2026 genehmigte Steel Dynamics weitere Aktienrückkäufe über 3,0 Mrd. $ und eine Dividende von 0,53 $. Keine Anhebung des Ausblicks.",
+   "quellen": [
+    "https://finviz.com/news/419574/steel-dynamics-announces-additional-30-billion-share-repurchase-authorization-and-fourth-quarter-2026-cash-dividend"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "JSG.L": {
+   "urteil": "neutral",
+   "kurz": "Keine wesentlichen Unternehmensnachrichten",
+   "grund": "Im Zeitraum keine Unternehmensmeldung gefunden.",
+   "quellen": [],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "BTRW.L": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Das letzte Update kam am 04.11.2026 (weniger Reservierungen, Prognose bestätigt). Vom 09. bis 16.11. nichts Neues.",
+   "quellen": [
+    "https://www.hl.co.uk/shares/stock-market-news/company--news/challenging-conditions-hit-reservations-at-barratt-redrow"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "PENG": {
+   "urteil": "neutral",
+   "kurz": "Kursplus durch Tech-Rally",
+   "grund": "Am 11.11.2026 stieg die Aktie um rund 10 % mit der Tech-Rally, ohne eigene Unternehmensnachricht.",
+   "quellen": [
+    "https://www.gurufocus.com/news/9192904/penguin-solutions-peng-shares-surge-10-amid-tech-sector-rally-on-november-11-2026"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "UNH": {
+   "urteil": "neutral",
+   "kurz": "Angebot für Surgery Partners abgelehnt",
+   "grund": "Am 09.11.2026 wurde bekannt, dass Surgery Partners ein Kaufangebot von UnitedHealth (rund 28 $ je Aktie) abgelehnt hat. UnitedHealth ist der Käufer.",
+   "quellen": [
+    "https://goldesel.de/aktien/news/unitedhealth-aktie-surgery-partners-lehnt-28-dollar-angebot-ab"
+   ],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "BFIT.AS": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Das letzte Update kam am 21.10.2026 (Prognose bestätigt). Vom 09. bis 16.11. keine wichtige Nachricht gefunden.",
+   "quellen": [],
+   "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "0857.HK": {
+   "urteil": "neutral",
+   "kurz": "Keine neuen Meldungen im Zeitraum",
+   "grund": "Die Q3-Zahlen kamen Ende Oktober 2026. Vom 09. bis 16.11. keine wesentliche Unternehmensnachricht.",
+   "quellen": [
+    "https://oilprice.com/Latest-Energy-News/World-News/PetroChina-Q3-Profit-Jumps-to-778-Billion.html"
    ],
    "datum": "2026-11-16",
    "von": "News-Agenten"
