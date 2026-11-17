@@ -1,40 +1,40 @@
 {
- "stand": "2026-11-15",
+ "stand": "2026-11-17",
  "zeitraeume": {
   "1 Woche": {
-   "seit": "2026-11-06",
+   "seit": "2026-11-10",
    "rueckwirkend": true,
    "nach_punkten": {
     "7–10": {
-     "anzahl": 3,
-     "mittel_pct": 7.5
+     "anzahl": 5,
+     "mittel_pct": -1.8
     },
     "5–6": {
-     "anzahl": 134,
-     "mittel_pct": 3.8
+     "anzahl": 135,
+     "mittel_pct": 0.6
     },
     "3–4": {
-     "anzahl": 242,
-     "mittel_pct": 3.1
+     "anzahl": 260,
+     "mittel_pct": 0.4
     },
     "unter 3": {
-     "anzahl": 202,
-     "mittel_pct": 3.1
+     "anzahl": 180,
+     "mittel_pct": 0.6
     }
    },
    "top_bedingungen": {
     "ja": {
-     "anzahl": 77,
-     "mittel_pct": 2.6
+     "anzahl": 75,
+     "mittel_pct": 0.1
     },
     "nein": {
-     "anzahl": 504,
-     "mittel_pct": 3.4
+     "anzahl": 505,
+     "mittel_pct": 0.5
     }
    },
    "alle": {
-    "anzahl": 581,
-    "mittel_pct": 3.3
+    "anzahl": 580,
+    "mittel_pct": 0.5
    }
   },
   "seit Beginn": {
@@ -43,34 +43,34 @@
    "nach_punkten": {
     "7–10": {
      "anzahl": 3,
-     "mittel_pct": -5.9
+     "mittel_pct": -9.9
     },
     "5–6": {
      "anzahl": 50,
-     "mittel_pct": -0.5
+     "mittel_pct": -2.0
     },
     "3–4": {
      "anzahl": 79,
-     "mittel_pct": 0.7
+     "mittel_pct": -0.6
     },
     "unter 3": {
      "anzahl": 38,
-     "mittel_pct": 2.4
+     "mittel_pct": 1.2
     }
    },
    "top_bedingungen": {
     "ja": {
      "anzahl": 17,
-     "mittel_pct": -3.9
+     "mittel_pct": -5.6
     },
     "nein": {
      "anzahl": 153,
-     "mittel_pct": 1.1
+     "mittel_pct": -0.2
     }
    },
    "alle": {
     "anzahl": 170,
-    "mittel_pct": 0.6
+    "mittel_pct": -0.8
    }
   }
  },
