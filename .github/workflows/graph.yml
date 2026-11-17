@@ -19,6 +19,10 @@ jobs:
           python-version: "3.12"
       - run: pip install graphifyy
       - run: graphify update .
+      - name: Bibliothek einbauen (Karte geht dann auch ohne fremde Skripte)
+        run: |
+          curl -sSfL https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js -o "$RUNNER_TEMP/vis.js"
+          python graph_inline.py "$RUNNER_TEMP/vis.js"
       - name: Speichern
         run: |
           git config user.name "aktien-bot"
