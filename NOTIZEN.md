@@ -17,6 +17,13 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
 5. **Gründlich bleibt Pflicht:** Tests, Gegenprüfung und Quellen nie weglassen. Gespart wird bei Leerlauf, nicht
    bei der Qualität.
 
+## Code-Karte (graphify, seit 17.11.2026)
+graphify-out/GRAPH_REPORT.md zeigt, wie das Programm aufgebaut ist (Funktionen, wer ruft wen, Gruppen). Wird bei jeder
+Code-Änderung automatisch neu gebaut (graph.yml, ohne KI). **Token sparen:** Bevor eine Aufgabe große Dateien wie
+bewertung.py liest, erst GRAPH_REPORT.md ansehen; für Details `pip install graphifyy --break-system-packages`, dann
+`graphify explain "bewerte"` oder `graphify path "main" "dcf_wert"` (liest graphify-out/graph.json) und danach nur die
+nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
+
 ## Wer und was
 - Levin (Leipzig), Einsteiger an der Börse. Will einen „Wall-Street-Computer“: Aktien gründlich und so
   zuverlässig wie möglich bewerten, automatisch, mit kostenlosen Quellen. „Ich möchte das Beste, was geht.“

@@ -1,0 +1,10 @@
+# graphify: nur den Python-Code abbilden (Levin, 17.11.2026)
+.github/
+data/
+dashboard/
+skills/
+graphify-out/
+*.json
+*.md
+*.txt
+*.html

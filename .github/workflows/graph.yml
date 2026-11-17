@@ -1,0 +1,33 @@
+name: Code-Karte (graphify)
+# Baut bei jeder Code-Änderung die Karte des Programms neu (graphify, nur Code, ohne KI, kostet keine Tokens).
+# Ergebnis: graphify-out/graph.html (zum Anklicken), GRAPH_REPORT.md (Überblick), graph.json (für Abfragen).
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["*.py"]
+permissions:
+  contents: write
+jobs:
+  karte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install graphifyy
+      - run: graphify update .
+      - name: Speichern
+        run: |
+          git config user.name "aktien-bot"
+          git config user.email "aktien-bot@users.noreply.github.com"
+          mkdir -p "$RUNNER_TEMP/g"; cp graphify-out/graph.html graphify-out/graph.json graphify-out/GRAPH_REPORT.md "$RUNNER_TEMP/g/"
+          for i in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            mkdir -p graphify-out; cp "$RUNNER_TEMP"/g/* graphify-out/
+            git add graphify-out/graph.html graphify-out/graph.json graphify-out/GRAPH_REPORT.md
+            git diff --cached --quiet && exit 0
+            git commit -q -m "Code-Karte neu (graphify)"; git push -q && exit 0; sleep 10
+          done
