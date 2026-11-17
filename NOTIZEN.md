@@ -219,6 +219,25 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
+### A10 (17.11.2026, Levin: „dann füge die hinzu“): Drei Open-Source-Werkzeuge einbauen – ab Mi 18.11. 21:41, Schritt für Schritt
+Alles läuft bei GitHub ohne KI (keine Tokens). Je Nacht höchstens ein Teil, im 10-%-Budget. Jeder Teil einzeln testen und committen.
+1. **FinanceDatabase** (pip `financedatabase`, MIT, kein Schlüssel; https://pypi.org/project/financedatabase/):
+   in screener.py nutzen – Heimatland je Firma, damit Zweitlistings sicher wegfallen (nur Notierung im Heimatland bzw. an
+   der Hauptbörse nehmen; ADRs nur, wenn das Heimatland nicht unterstützt wird, z. B. Taiwan, Indien, Brasilien). Optional:
+   Land/Branche ins Feld der Aktie schreiben. Test: Probelauf --trocken, Beispiele prüfen (Apple nur AAPL, Toyota nur 7203.T).
+2. **Piotroski-Wert 0–9 als Info** (selbst aus den Yahoo-Jahresabschlüssen in fetch.py rechnen, Formel nach Piotroski:
+   Gewinn > 0, operativer Cashflow > 0, Gesamtkapitalrendite steigt, Cashflow > Gewinn, Verschuldung sinkt, Liquidität steigt,
+   keine neuen Aktien, Bruttomarge steigt, Kapitalumschlag steigt). Neues Feld "piotroski" in aktien.json und alle.json,
+   im Dashboard als Spalte und in der Detailansicht mit kurzer Erklärung. **Keine Punkte** dafür (nur nach Levins Ja).
+   FinanceToolkit (https://pypi.org/project/financetoolkit/) nur zum Gegenprüfen einzelner Werte nutzen (braucht sonst FMP-Schlüssel).
+   Dazu Schätzungs-Trend (Yahoo eps trend 30/90 Tage) und Momentum 12 Monate als Info-Felder, ebenfalls ohne Punkte.
+3. **alphalens-reloaded** (pip `alphalens-reloaded`, Apache; https://pypi.org/project/alphalens-reloaded/): in schnappschuss.py
+   bzw. eigenem Skript aus data/verlauf die Vorhersagekraft von Punkten, Feinwert, Piotroski und Schätzungs-Trend messen
+   (Information Coefficient, Rendite je Fünftel). Ergebnis in data/trefferquote.json ergänzen, im Reiter „So wird gerechnet“
+   kurz zeigen, mit ehrlichem Hinweis, dass wenige Wochen wenig aussagen.
+Nach allen drei Teilen: Levin in 3 Sätzen berichten und fragen, ob Piotroski oder Schätzungs-Trend Punkte geben sollen
+(erst wenn die Trefferquote nach einigen Wochen etwas zeigt).
+
 ### A8 (17.11.2026, vom Aufpasser): Schnappschuss mit falschem Datum – heute 21:41 erledigen (vor 23:37 Uhr)
 - Fund: Der Schnappschuss-Lauf für Mo 16.11. (Zeitplan 22:37 UTC) startete bei GitHub erst um 04:44 UTC am 17.11.
   schnappschuss.py nimmt das Datum der Uhr (HEUTE = UTC-Datum) → Montags-Daten liegen als data/verlauf/2026-11-17.json,
