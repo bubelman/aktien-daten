@@ -1,17 +1,17 @@
 # Graph Report - aktien-daten  (2026-11-17)
 
 ## Corpus Check
-- 7 files · ~11,654 words
+- 7 files · ~11,698 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 2 file(s) not represented in the graph (top: (none) 2)
 
 ## Summary
-- 120 nodes · 256 edges · 11 communities (7 shown, 4 thin omitted)
+- 120 nodes · 257 edges · 11 communities (7 shown, 4 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0a717436`
+- Built from commit: `6c909535`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -92,7 +92,7 @@ Nodes (7): abfragen(), firma(), fx_tabelle(), heimat(), laender(), main(), zweit
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `main()` connect `main` to `json`, `fetch.py`, `bewertung.py`, `texte`?**
-  _High betweenness centrality (0.113) - this node is a cross-community bridge._
+  _High betweenness centrality (0.112) - this node is a cross-community bridge._
 - **Why does `bewerte()` connect `bewertung.py` to `main`, `texte`, `dcf_wert`, `name_wahl`, `nachricht`, `schaetz_faktor`?**
   _High betweenness centrality (0.054) - this node is a cross-community bridge._
 - **Why does `name_wahl()` connect `name_wahl` to `universum.py`, `bewertung.py`?**
