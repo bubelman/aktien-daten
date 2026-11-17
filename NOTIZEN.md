@@ -187,6 +187,7 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   Stand (Seite seit dem Upload nicht geöffnet) → Aufpasser/nächster Lauf prüft, ob stray_write weg ist.
 - 16.11.2026 19:15 Aufpasser: alles läuft (Kurse, Grunddaten, News, Dashboard 18:35, Programm ok). stray_write noch da → A5.4 offen.
 - 17.11.2026 09:13 Aufpasser: Kurse, Grunddaten, Dashboard (07:34) ok. Schnappschuss-Datum falsch → A8; Prüfung 0881.HK → A9. News ohne neuen Stand (Sparmodus, nichts fällig).
+- 17.11.2026 13:16 Aufpasser: Kurse-Schleife lief Di nicht (letzter Kurse-Commit Mo 21:18 UTC, alle Starthilfen ab 4:43 UTC fehlten). Von Hand gestartet (Lauf 44081738530). Dashboard 10:36, Grunddaten ok. A9 und stray_write (A5.4) weiter offen.
 - 16.11.2026 (Scout 11:48): 2 neue Aktien: NU (Nu Holdings, Rekordquartal, +11,75 % am 13.11., bigmoves.substack.com), EWBC
   (East West Bancorp, neue Kaufempfehlung Hovde 10.11., behindthemarkets.com). Hype-Liste: 8 Aktien in data/hype.json.
 - 16.11.2026 (Aufpasser 9:18): Kurse-Schleife lief Montag früh nicht (geplante Starts 5:11 und 7:11 UTC fehlten, letzter Lauf Fr 13.11.). Von Hand gestartet (Lauf 43830295701). Keine Code-Änderung.
@@ -249,6 +250,8 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 ### A7 (vom Aufpasser, 16.11.2026): Kurse-Schleife startet montags nicht
 - Stand 16.11. 21:41: zusätzliche Starthilfen eingebaut (siehe Protokoll). Offen nur noch der Test: Mo 23.11. Kurse-Commit vor 9 Uhr Berlin?
   Dann diesen Auftrag löschen. Zusätzlich prüfen: Di 17.11. abends .HK/.T mit Stand 17.11. (nicht 16.11.).
+- Aufpasser 17.11. 13:16: auch Di 17.11. kein einziger Start (weder 4:43–12:11 UTC geplant). Starthilfen reichen nicht – Ursache suchen
+  (evtl. concurrency "daten" mit Grunddaten-Lauf 4:16–5:26 UTC verwirft wartende Läufe; nach Grunddaten Kurse-Schleife anstoßen?).
 
 ## Chef – Plan
 ### 15.11.2026 (So, erster Chef-Lauf) – Plan für die nächsten 1–2 Wochen
