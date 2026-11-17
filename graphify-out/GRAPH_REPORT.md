@@ -1,7 +1,7 @@
 # Graph Report - aktien-daten  (2026-11-17)
 
 ## Corpus Check
-- 7 files · ~11,586 words
+- 7 files · ~11,654 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 2 file(s) not represented in the graph (top: (none) 2)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6917ccf3`
+- Built from commit: `0a717436`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
