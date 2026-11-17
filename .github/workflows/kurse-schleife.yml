@@ -58,5 +58,6 @@ jobs:
           if [ "$(date -u +%u)" -le 5 ] && [ "$(date -u +%H)" -lt 21 ]; then
             gh workflow run kurse-schleife.yml --ref main && echo "nächste Runde gestartet"
           else
-            echo "Heute keine weitere Runde"
+            # Abends/Wochenende: der Wecker startet die Schleife am nächsten Börsentag um 4:30 UTC (A7)
+            gh workflow run kurse-wecker.yml --ref main && echo "Heute keine weitere Runde – Wecker gestartet"
           fi

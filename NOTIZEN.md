@@ -102,6 +102,16 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 17.11.2026 (Nachtschicht 21:41, strenger Sparmodus): **A8 erledigt** (Commit 6917ccf): data/verlauf/2026-11-17.json → 2026-11-16.json
+  (Feld datum), schnappschuss.py nimmt den US-Handelstag aus "stand" in aktien.json statt der Uhr; Trefferquote neu (Stand 16.11.).
+  **A9 erledigt, kein Datenfehler:** 0881.HK (Zhongsheng) fällt seit Monaten (4,67 HKD am 20.08. → 2,35 am 12.10., ohne Split laut
+  stockanalysis.com/quote/hkg/0881/history/; Verlust 2025, Dividende gestoppt laut webull.com/news/14650939927446528), heute 1,82 HKD.
+  Die Prüfung meldete heute 1816.HK (CGN Power): Fehlalarm durch Rundung bei Kursen unter 1 € (0,396 → 0,40 €, Mitte 0,436 → 0,43 €).
+  pruefe_zeile rechnet die Rundung von Kurs UND fairer Mitte jetzt in die Toleranz ein. Test: Fehlercode 0, "pruefung" leer, 2438 statt
+  2437 bewertet (1816.HK dazu), Punkte aller Aktien und Levins Aktien unverändert. **A7:** neuer Workflow kurse-wecker.yml – die letzte
+  Abendrunde startet einen Wecker (ohne Gruppe "daten"), der bis zum nächsten Börsentag 4:30 UTC wartet (nach 5,5 h startet er sich
+  selbst neu) und dann die Kurse-Schleife startet. Damit hängt der Morgen nicht mehr an GitHubs Zeitplänen (Mo/Di fielen alle aus,
+  Screener lief 6,5 h zu spät). Wecker heute von Hand gestartet. .HK/.T stehen am Di-Abend auf 17.11. (A7-Test ok). Test: Mi 18.11. Kurse-Commit gegen 4:30–5:30 UTC?
 - 17.11.2026 (Nachtschicht 3:41, strenger Sparmodus, 0 Agenten): **Fehler behoben: Nordea (NDA-SE.ST) mit KGV 121 statt 10,9.**
   Kurs in Kronen, aber auch Yahoos forwardEps in Euro (1,37) → Gewinn wurde nicht umgerechnet; Abstand −39 % statt +11 %. Die
   richtige Zeile aus Helsinki (NDA-FI.HE, KGV 10,9) fiel als „doppelt“ raus. schaetz_faktor prüft jetzt mit Kurs und Kursziel gegen
@@ -238,18 +248,6 @@ Alles läuft bei GitHub ohne KI (keine Tokens). Je Nacht höchstens ein Teil, im
 Nach allen drei Teilen: Levin in 3 Sätzen berichten und fragen, ob Piotroski oder Schätzungs-Trend Punkte geben sollen
 (erst wenn die Trefferquote nach einigen Wochen etwas zeigt).
 
-### A8 (17.11.2026, vom Aufpasser): Schnappschuss mit falschem Datum – heute 21:41 erledigen (vor 23:37 Uhr)
-- Fund: Der Schnappschuss-Lauf für Mo 16.11. (Zeitplan 22:37 UTC) startete bei GitHub erst um 04:44 UTC am 17.11.
-  schnappschuss.py nimmt das Datum der Uhr (HEUTE = UTC-Datum) → Montags-Daten liegen als data/verlauf/2026-11-17.json,
-  2026-11-16.json fehlt. Der Lauf heute Abend überschreibt 2026-11-17.json → Montag geht verloren.
-- Beleg: gh run 44019269030 (schedule, 2026-11-17T04:44:39Z), Commit „Schnappschuss 2026-11-17“, Feld datum "2026-11-17".
-- Auftrag: Datei in 2026-11-16.json umbenennen (Feld datum anpassen) und schnappschuss.py das Datum aus dem Datenstand
-  ("stand" in data/aktien.json, US-Handelstag) nehmen lassen statt der Uhrzeit. Trefferquote danach neu rechnen.
-
-### A9 (17.11.2026, vom Aufpasser): Prüfung meldet 0881.HK (Zhongsheng)
-- bewertung.py: "pruefung" = ['0881.HK: Abstand']. Daten: Kurs 1,85 HKD = 52-Wochen-Tief, Hoch 12,92, Kursziel-Mittel 6,94, KGV 2,1.
-- Prüfen, ob der Kurs stimmt (echter Absturz oder Datenfehler, z. B. Aktienteilung) und Kürzel ggf. sperren oder korrigieren.
-
 ### A6 (15.11.2026, Nachtschicht): Aufgaben-Texte ändern – braucht Levins Freigabe im Chat
 Die geplante Nachtschicht darf update_trigger nicht ausführen („Permission denied … Scheduled Task Write“). Darum offen:
 1. „Meine Aktien aktualisieren“ (trig_01CkcqBfDNXG1orD3A9WFXB8), ein Aufruf, ganzer Text:
@@ -278,6 +276,7 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
   Dann diesen Auftrag löschen. Zusätzlich prüfen: Di 17.11. abends .HK/.T mit Stand 17.11. (nicht 16.11.).
 - Aufpasser 17.11. 13:16: auch Di 17.11. kein einziger Start (weder 4:43–12:11 UTC geplant). Starthilfen reichen nicht – Ursache suchen
   (evtl. concurrency "daten" mit Grunddaten-Lauf 4:16–5:26 UTC verwirft wartende Läufe; nach Grunddaten Kurse-Schleife anstoßen?).
+- Stand 17.11. 21:41: Wecker (kurse-wecker.yml) eingebaut, siehe Protokoll. Test: Mi 18.11. und Mo 23.11. Kurse vor 6:30 UTC? Dann löschen.
 
 ## Chef – Plan
 ### 15.11.2026 (So, erster Chef-Lauf) – Plan für die nächsten 1–2 Wochen

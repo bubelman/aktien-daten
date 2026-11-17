@@ -1,0 +1,48 @@
+name: Kurse-Wecker
+# A7 (17.11.2026): GitHub startete die geplanten Starthilfen der Kurse-Schleife am Mo 16.11. und Di 17.11. gar nicht
+# (auch der Screener lief 6,5 h zu spät) – bis mittags keine Kurse. Darum wartet abends ein Wecker-Lauf (ohne KI,
+# für öffentliche Repositorys kostenlos) bis zum nächsten Börsentag 4:30 UTC und startet dann die Kurse-Schleife.
+# Ein Lauf darf höchstens 6 h dauern: bei längerer Pause (Nacht, Wochenende) startet er sich nach 5,5 h selbst neu.
+# concurrency "wecker": nie mehr als ein Wecker gleichzeitig (doppelte Starts ersetzen den wartenden).
+# Der Wecker hält NICHT die Gruppe "daten" – Grunddaten-Läufe in der Nacht werden nicht blockiert.
+on:
+  workflow_dispatch: {}
+permissions:
+  actions: write
+concurrency:
+  group: wecker
+  cancel-in-progress: false
+jobs:
+  wecker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    steps:
+      - name: Warten und wecken
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          jetzt=$(date -u +%s)
+          ziel=$(python3 -c "
+          import datetime as dt
+          n = dt.datetime.now(dt.timezone.utc)
+          z = n.replace(hour=4, minute=30, second=0, microsecond=0)
+          if n.weekday() < 5 and z <= n < n.replace(hour=21, minute=0, second=0, microsecond=0):
+              print(0)  # Handelszeit: Kurse-Schleife sofort starten
+          else:
+              while z <= n or z.weekday() >= 5:
+                  z += dt.timedelta(days=1)
+              print(int(z.timestamp()))
+          ")
+          if [ "$ziel" = "0" ]; then
+            gh workflow run kurse-schleife.yml --ref main && echo "Handelszeit – Kurse-Schleife gestartet"; exit 0
+          fi
+          rest=$(( ziel - jetzt ))
+          echo "Ziel $(date -u -d @$ziel), noch $(( rest / 60 )) min"
+          if [ $rest -gt $(( 330 * 60 )) ]; then
+            sleep $(( 330 * 60 ))
+            gh workflow run kurse-wecker.yml --ref main && echo "Wecker neu gestartet"
+          else
+            sleep $rest
+            gh workflow run kurse-schleife.yml --ref main && echo "Kurse-Schleife gestartet"
+          fi

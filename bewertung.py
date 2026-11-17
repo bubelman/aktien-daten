@@ -622,7 +622,12 @@ def pruefe_zeile(z):
     if z["punkte"] != min(10, z["bewertungs_pkt"] + z["qualitaets_pkt"] + z["trend_pkt"] + z["revision_pkt"] + z["kurztrend_pkt"] + z["nachrichten_pkt"]):
         p.append("Punktesumme")
     ab = round((z["fair_mitte_eur"] / z["kurs_eur"] - 1) * 100)
-    if abs(ab - z["abstand_pct"]) > max(2, abs(z["abstand_pct"]) * 0.02 + 100 * 0.005 / max(z["kurs_eur"], 0.01)):  # Rundung bei Kursen unter 1 €
+    # Toleranz: Kurs (0,01 €) und faire Mitte (rf) sind gerundet – bei Kursen unter 1 € macht das mehrere Prozent aus
+    # (17.11.2026: 1816.HK Kurs 0,396 → 0,40 €, Mitte 0,436 → 0,43 €: echt +10 %, aus gerundeten Werten +7 %).
+    k, m = max(z["kurs_eur"], 0.01), z["fair_mitte_eur"]
+    fehler_m = 0.005 if m < 10 else 0.05 if m < 100 else 0.5
+    rundung = 100 * (fehler_m + 0.005 * max(m, 0) / k) / k + 1
+    if abs(ab - z["abstand_pct"]) > max(2, abs(z["abstand_pct"]) * 0.02 + rundung):
         p.append("Abstand")
     if z["unter_hoch_pct"] is not None and z["unter_hoch_pct"] > 1:
         p.append("Jahreshoch")
