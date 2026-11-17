@@ -24,7 +24,7 @@ jobs:
           for i in 1 2 3 4 5; do
             git add data/verlauf data/trefferquote.json data/trefferquote_zeilen.json
             git diff --cached --quiet && exit 0
-            git commit -q -m "Schnappschuss $(date -u +%F)"
+            git commit -q -m "Schnappschuss $(python -c 'import schnappschuss as s; print(s.datenstand_datum())')"
             git pull -q --rebase -X theirs && git push -q && exit 0
             sleep 15
           done

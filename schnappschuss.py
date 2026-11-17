@@ -9,7 +9,7 @@ rueckwirkend.py nutzt bewerten(), schnappschuss() und trefferquote() für Tage v
 """
 import datetime as dt, glob, json, os, subprocess, sys, tempfile
 
-HEUTE = dt.datetime.now(dt.timezone.utc).date()
+HEUTE = dt.datetime.now(dt.timezone.utc).date()  # nur Ersatz, wenn aktien.json kein "stand" hat
 ORDNER = "data/verlauf"
 FELDER = ["punkte", "feinwert", "kurs_eur", "abstand_pct", "top"]
 ZEITRAEUME = (("1 Woche", 7), ("1 Monat", 30), ("3 Monate", 91), ("6 Monate", 182), ("1 Jahr", 365))
@@ -103,10 +103,23 @@ def trefferquote(ende):
     return ergebnis
 
 
+def datenstand_datum(yahoo="data/aktien.json"):
+    """Handelstag der Kurse: Datum von "stand" in aktien.json in New Yorker Zeit (US-Handelstag).
+    Nicht die Uhr nehmen: GitHub startet geplante Läufe manchmal Stunden zu spät (17.11.2026: Lauf für Mo 16.11.
+    erst um 04:44 UTC am Di → Montags-Daten landeten als 2026-11-17.json, Auftrag A8)."""
+    from zoneinfo import ZoneInfo
+    try:
+        stand = json.load(open(yahoo)).get("stand")
+        return dt.datetime.fromisoformat(stand.replace("Z", "+00:00")).astimezone(ZoneInfo("America/New_York")).date()
+    except Exception:
+        return HEUTE
+
+
 def main():
     os.makedirs(ORDNER, exist_ok=True)
-    s = schnappschuss(bewerten(), HEUTE.isoformat())
-    json.dump(s, open(f"{ORDNER}/{HEUTE.isoformat()}.json", "w"), separators=(",", ":"))
+    tag = datenstand_datum().isoformat()
+    s = schnappschuss(bewerten(), tag)
+    json.dump(s, open(f"{ORDNER}/{tag}.json", "w"), separators=(",", ":"))
     ergebnis = trefferquote(s)
     print(json.dumps(ergebnis, ensure_ascii=False)[:600])
 

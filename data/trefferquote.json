@@ -1,40 +1,40 @@
 {
- "stand": "2026-11-17",
+ "stand": "2026-11-16",
  "zeitraeume": {
   "1 Woche": {
-   "seit": "2026-11-10",
+   "seit": "2026-11-09",
    "rueckwirkend": true,
    "nach_punkten": {
     "7–10": {
      "anzahl": 5,
-     "mittel_pct": -1.8
+     "mittel_pct": 0.8
     },
     "5–6": {
-     "anzahl": 135,
-     "mittel_pct": 0.6
+     "anzahl": 138,
+     "mittel_pct": 1.3
     },
     "3–4": {
-     "anzahl": 260,
-     "mittel_pct": 0.4
+     "anzahl": 255,
+     "mittel_pct": 0.9
     },
     "unter 3": {
-     "anzahl": 180,
-     "mittel_pct": 0.6
+     "anzahl": 182,
+     "mittel_pct": 1.0
     }
    },
    "top_bedingungen": {
     "ja": {
-     "anzahl": 75,
-     "mittel_pct": 0.1
+     "anzahl": 74,
+     "mittel_pct": 0.5
     },
     "nein": {
-     "anzahl": 505,
-     "mittel_pct": 0.5
+     "anzahl": 506,
+     "mittel_pct": 1.1
     }
    },
    "alle": {
     "anzahl": 580,
-    "mittel_pct": 0.5
+    "mittel_pct": 1.0
    }
   },
   "seit Beginn": {
