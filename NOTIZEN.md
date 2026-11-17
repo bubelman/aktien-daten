@@ -62,7 +62,7 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 - GitHub: `kurse-schleife.yml` – ein Lauf bleibt bis 5,5 h aktiv, holt stündlich um :17 die Kurse (am ersten
   Lauf des Tages auch die Grunddaten) und startet am Ende selbst den nächsten (Mo–Fr bis 21 Uhr UTC). Grund:
   GitHub ließ geplante Läufe massiv aus (nur 2–3 Kurs-Abrufe am Tag). Starthilfen 5:11–18:11 UTC.
-- Geplante Aufgabe „Meine Aktien aktualisieren“: Börsentage 7:33, 10:33, 13:33, 18:33, 21:33 (Berlin).
+- Geplante Aufgabe „Meine Aktien aktualisieren“: Börsentage 7:33, 13:33, 21:33 (Berlin; seit 17.11. nur noch 3-mal, Levin).
   Kurs-Alarm ab ±5 %, Zahlen-Check an Zahlentagen, Wochenbericht montags.
 - Screener (GitHub, ohne KI): jeden Abend 22:47 bis 150 neue Aktien, siehe Protokoll 16.11.
 - Nachtschicht: jeden Tag 21:41 und 3:41 (Berlin), prüft alles und verbessert. Der Lauf 0:41 ist auf Levins Wunsch
@@ -73,12 +73,12 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   Lauf 3:41 einen gründlichen Zahlen-Check: Umsatz und Gewinn gegen Erwartung, Ausblick, erste Reaktion, mit Quellen;
   danach bewertung.py und kurzer Bericht an Levin. Dafür gilt der Sparmodus nicht (bis 3 Agenten). Termine: config/zahlencheck
   und Quartalstermine (z. B. NVIDIA Di 17.11.2026 abends → Check Mi 18.11. 3:41).
-- Aktien-Scout: Börsentage 11:48 und 18:48 (Berlin), siehe Abschnitt „Aktien-Scout“.
-- Aufpasser (seit 15.11.): täglich 9:13, 13:13, 19:13, 23:13 (Berlin). Prüft Aufgaben, GitHub-Läufe, Daten, Dashboard;
+- Aktien-Scout: Börsentage 11:48 (Berlin; seit 17.11. nur noch 1-mal, Levin), siehe Abschnitt „Aktien-Scout“.
+- Aufpasser (seit 15.11.): täglich 9:13 und 23:13 (Berlin; seit 17.11. nur noch 2-mal, Levin). Prüft Aufgaben, GitHub-Läufe, Daten, Dashboard;
   behebt Kleines selbst (Workflows neu starten, Dashboard-Daten neu schreiben), Größeres als Auftrag für die Nachtschicht.
   Seit 15.11. auch Token-Wächter: prüft Laufzeiten der Aufgaben, setzt/löscht den Sparmodus nach Levins Zahl,
   schreibt bei Leerlauf-Arbeit einen Auftrag „Token sparen bei …“ für die Nachtschicht.
-- Chef (seit 15.11., auf Levins Wunsch „öfter“): täglich 20:27 (vor der Nachtschicht), sonntags mit großem Bericht.
+- Chef (seit 15.11.): seit 17.11. nur noch mittwochs und sonntags 20:27 (Levin, Tokens sparen), sonntags mit großem Bericht.
   Schaut auf das ganze System („Firma“), plant die nächsten 1–2 Wochen, schreibt
   Aufträge für die Nachtschicht (Abschnitt „Chef – Plan“), schickt Levin den Chef-Bericht; Regeländerungen, mehr
   Kosten und neue Aufgaben nur nach Levins Ja.
