@@ -200,7 +200,16 @@ def schaetz_faktor(y, e1, f):
     d1, df = abs(math.log(r)), abs(math.log(r / f)) if f and f > 0 else 99
     if min(d1, df) > math.log(1.25):
         return None
-    return 1.0 if d1 <= df else f
+    if d1 <= df:
+        # Gegenprobe mit Kurs und Kursziel (Fehler gefunden 17.11.2026): Bei manchen Aktien steht auch forwardEps
+        # in der Berichtswährung, nicht in der Kurswährung (Nordea in Stockholm: Kurs in Kronen, forwardEps 1,37 €).
+        # Dann ergäbe Faktor 1 ein KGV über 60 (Nordea 121), mit Umrechnung ein normales. Nur bei großem Faktor.
+        kurs, ziel = y.get("kurs"), y.get("kursziel_median") or y.get("kursziel_mittel")
+        if kurs and ziel and (f > 3 or f < 1 / 3) and kurs / e1 > 60 and ziel / e1 > 60 \
+                and 3 <= kurs / (e1 * f) <= 60 and 3 <= ziel / (e1 * f) <= 80:
+            return f
+        return 1.0
+    return f
 
 
 DCF_ZINS, DCF_ENDWACHSTUM = 0.09, 0.025  # Abzinsung 9 % pro Jahr, ewiges Wachstum 2,5 %

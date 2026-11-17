@@ -95,6 +95,12 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 17.11.2026 (Nachtschicht 3:41, strenger Sparmodus, 0 Agenten): **Fehler behoben: Nordea (NDA-SE.ST) mit KGV 121 statt 10,9.**
+  Kurs in Kronen, aber auch Yahoos forwardEps in Euro (1,37) → Gewinn wurde nicht umgerechnet; Abstand −39 % statt +11 %. Die
+  richtige Zeile aus Helsinki (NDA-FI.HE, KGV 10,9) fiel als „doppelt“ raus. schaetz_faktor prüft jetzt mit Kurs und Kursziel gegen
+  (nur bei großem Wechselkurs-Faktor, KGV ohne Umrechnung > 60, mit Umrechnung 3–60). Test: nur NDA-SE.ST geändert (Feinwert bei
+  94 Aktien ±0,1), Levins Aktien gleich, Fehlercode 0, "pruefung" leer, 2303 von 2604 bewertet. Daten: US-Schluss Mo 16.11. da,
+  .HK/.T mit Stand 16.11. (Fix A7 wirkt). BBBY, TCBI, NWE, ACT.DE seit Fr 13.11. ohne neuen Kurs → beobachten (Übernahme?).
 - 16.11.2026 (Nachtschicht 21:41, strenger Sparmodus, 0 Agenten): **Fehler behoben: Kurse aus Hongkong und Tokio fielen jeden
   Abend auf den Vortag zurück.** Nach Mitternacht Ortszeit (ab ca. 15–16 Uhr UTC) liefert Yahoo den letzten Handelstag dort nicht
   mehr; 0700.HK z. B. 12:18 UTC 390,40 HKD (Mo), ab 16:18 UTC wieder 386,60 (Fr). Am Abend standen alle 105 .HK und 69 .T auf Freitag.
