@@ -35,7 +35,7 @@ jobs:
               print(int(z.timestamp()))
           ")
           if [ "$ziel" = "0" ]; then
-            gh workflow run kurse-schleife.yml --ref main && echo "Handelszeit – Kurse-Schleife gestartet"; exit 0
+            gh workflow run kurse-schleife.yml --ref main && echo "Handelszeit – Kurse-Schleife gestartet"; exit $?
           fi
           rest=$(( ziel - jetzt ))
           echo "Ziel $(date -u -d @$ziel), noch $(( rest / 60 )) min"

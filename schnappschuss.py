@@ -110,7 +110,10 @@ def datenstand_datum(yahoo="data/aktien.json"):
     from zoneinfo import ZoneInfo
     try:
         stand = json.load(open(yahoo)).get("stand")
-        return dt.datetime.fromisoformat(stand.replace("Z", "+00:00")).astimezone(ZoneInfo("America/New_York")).date()
+        t = dt.datetime.fromisoformat(stand.replace("Z", "+00:00")).astimezone(ZoneInfo("America/New_York"))
+        # 8 Stunden abziehen: Kurse aus der Nacht/vom frühen Morgen (vor 8 Uhr New York, z. B. Wecker-Lauf 4:30 UTC)
+        # gehören noch zum letzten US-Handelstag – auch im Sommer, wenn Mitternacht New York schon 4 Uhr UTC ist.
+        return (t - dt.timedelta(hours=8)).date()
     except Exception:
         return HEUTE
 
