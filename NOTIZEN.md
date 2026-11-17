@@ -82,8 +82,8 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   Schaut auf das ganze System („Firma“), plant die nächsten 1–2 Wochen, schreibt
   Aufträge für die Nachtschicht (Abschnitt „Chef – Plan“), schickt Levin den Chef-Bericht; Regeländerungen, mehr
   Kosten und neue Aufgaben nur nach Levins Ja.
-- News-Agenten: Börsentage 6:51, 12:51, 20:51 (Berlin). 3 Agenten parallel prüfen Levins Aktien + bis zu
-  30 weitere (Top-Bedingungen zuerst), Ergebnis selbst nachprüfen, data/news.json pushen.
+- News-Agenten: Börsentage 6:51 und 20:51 (seit 17.11. schlank, Levin: „nur immer die besten Aktien“): Levins Aktien +
+  die 15 mit den meisten Punkten, höchstens 2 Agenten, Nachprüfung selbst, data/news.json pushen.
 
 ## Aktien-Scout (Levin, 14.11.2026: „einen, der die ganze Zeit nach neuen guten Aktien sucht“)
 - Liest `alle.json` (alle bewerteten Aktien, schreibt bewertung.py seit 14.11.) und meldet bis zu 5 Kandidaten:
