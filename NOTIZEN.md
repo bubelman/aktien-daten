@@ -186,6 +186,7 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
   unplausibel“), kuerzel_verdacht leer; alle 46 ETFs gültig, Datensatz etfs von Hand neu hochgeladen. "runs" zeigt noch den alten
   Stand (Seite seit dem Upload nicht geöffnet) → Aufpasser/nächster Lauf prüft, ob stray_write weg ist.
 - 16.11.2026 19:15 Aufpasser: alles läuft (Kurse, Grunddaten, News, Dashboard 18:35, Programm ok). stray_write noch da → A5.4 offen.
+- 17.11.2026 09:13 Aufpasser: Kurse, Grunddaten, Dashboard (07:34) ok. Schnappschuss-Datum falsch → A8; Prüfung 0881.HK → A9. News ohne neuen Stand (Sparmodus, nichts fällig).
 - 16.11.2026 (Scout 11:48): 2 neue Aktien: NU (Nu Holdings, Rekordquartal, +11,75 % am 13.11., bigmoves.substack.com), EWBC
   (East West Bancorp, neue Kaufempfehlung Hovde 10.11., behindthemarkets.com). Hype-Liste: 8 Aktien in data/hype.json.
 - 16.11.2026 (Aufpasser 9:18): Kurse-Schleife lief Montag früh nicht (geplante Starts 5:11 und 7:11 UTC fehlten, letzter Lauf Fr 13.11.). Von Hand gestartet (Lauf 43830295701). Keine Code-Änderung.
@@ -209,6 +210,18 @@ einer keine Arbeit hat, er sich abschaltet“. Darum:
 - Als Nächstes: NVDA (nach den Zahlen 17.11.), dann AVGO.
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
+
+### A8 (17.11.2026, vom Aufpasser): Schnappschuss mit falschem Datum – heute 21:41 erledigen (vor 23:37 Uhr)
+- Fund: Der Schnappschuss-Lauf für Mo 16.11. (Zeitplan 22:37 UTC) startete bei GitHub erst um 04:44 UTC am 17.11.
+  schnappschuss.py nimmt das Datum der Uhr (HEUTE = UTC-Datum) → Montags-Daten liegen als data/verlauf/2026-11-17.json,
+  2026-11-16.json fehlt. Der Lauf heute Abend überschreibt 2026-11-17.json → Montag geht verloren.
+- Beleg: gh run 44019269030 (schedule, 2026-11-17T04:44:39Z), Commit „Schnappschuss 2026-11-17“, Feld datum "2026-11-17".
+- Auftrag: Datei in 2026-11-16.json umbenennen (Feld datum anpassen) und schnappschuss.py das Datum aus dem Datenstand
+  ("stand" in data/aktien.json, US-Handelstag) nehmen lassen statt der Uhrzeit. Trefferquote danach neu rechnen.
+
+### A9 (17.11.2026, vom Aufpasser): Prüfung meldet 0881.HK (Zhongsheng)
+- bewertung.py: "pruefung" = ['0881.HK: Abstand']. Daten: Kurs 1,85 HKD = 52-Wochen-Tief, Hoch 12,92, Kursziel-Mittel 6,94, KGV 2,1.
+- Prüfen, ob der Kurs stimmt (echter Absturz oder Datenfehler, z. B. Aktienteilung) und Kürzel ggf. sperren oder korrigieren.
 
 ### A6 (15.11.2026, Nachtschicht): Aufgaben-Texte ändern – braucht Levins Freigabe im Chat
 Die geplante Nachtschicht darf update_trigger nicht ausführen („Permission denied … Scheduled Task Write“). Darum offen:
