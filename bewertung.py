@@ -541,6 +541,11 @@ def bewerte(y, fx, alt_by, heute=None):
         nachrichten_pkt=news_pkt, nachrichten_urteil=nw["urteil"] if nw else None, nachrichten=nw.get("grund") if nw else None,
         nachrichten_quellen=(nw.get("quellen") or [])[:3] if nw else None, nachrichten_datum=nw.get("datum") if nw else None,
         hype=(hy or {}).get("grund"), hype_quellen=((hy or {}).get("quellen") or [])[:3] or None, hype_datum=(hy or {}).get("datum"),
+        # nur Info, keine Punkte (Levin, 17.11.2026): Piotroski 0–9, Schätzungs-Trend 90 Tage, Momentum 12-1 Monate
+        piotroski=y.get("piotroski"), piotroski_von=y.get("piotroski_von"),
+        revision_30t_pct=None if y.get("revision_30t") is None else round(y["revision_30t"] * 100, 1),
+        revision_90t_pct=None if y.get("revision_90t") is None else round(y["revision_90t"] * 100, 1),
+        momentum_12m_pct=None if y.get("momentum_12m") is None else round(y["momentum_12m"] * 100),
     )
     # Finanzielle Lage in Euro (Auftrag A1). Börsenwert ist in der Kurswährung (Pence schon korrigiert),
     # Umsatz, Cashflow und Schulden in der Berichtswährung.

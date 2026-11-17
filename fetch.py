@@ -59,6 +59,64 @@ def fcf_aus_cashflow(t):
     return None, None
 
 
+PIO_MAX = 700        # so viele Piotroski-Werte höchstens je Lauf neu rechnen (3 Abrufe je Aktie); Rest rollt nach
+PIO_TAGE = 7         # Piotroski-Wert hält eine Woche (Jahresabschlüsse ändern sich selten)
+_pio_zaehler = [0]
+
+
+def _zeile(df, *namen):
+    for n in namen:
+        if df is not None and n in df.index:
+            return [num(x) for x in df.loc[n].tolist()]
+    return None
+
+
+def piotroski(t):
+    """Piotroski-F-Wert (0–9) aus den Jahresabschlüssen (Levin, 17.11.2026; nur Info, keine Punkte).
+    Neun Prüfungen, je 1 Punkt: Gewinn > 0, operativer Cashflow > 0, Gesamtkapitalrendite steigt, Cashflow > Gewinn,
+    Verschuldung (langfristige Schulden / Bilanzsumme) sinkt, Liquidität (Umlaufvermögen / kurzfr. Schulden) steigt,
+    keine neuen Aktien, Bruttomarge steigt, Kapitalumschlag (Umsatz / Bilanzsumme) steigt.
+    Rückgabe (Wert, Zahl der prüfbaren Punkte); None, wenn weniger als 7 Prüfungen möglich sind."""
+    ist, bil, cfl = t.income_stmt, t.balance_sheet, t.cashflow
+    ni = _zeile(ist, "Net Income", "Net Income Common Stockholders")
+    rev = _zeile(ist, "Total Revenue", "Operating Revenue")
+    gp = _zeile(ist, "Gross Profit")
+    ta = _zeile(bil, "Total Assets")
+    ltd = _zeile(bil, "Long Term Debt", "Long Term Debt And Capital Lease Obligation")
+    ca = _zeile(bil, "Current Assets")
+    cl = _zeile(bil, "Current Liabilities")
+    sh = _zeile(bil, "Ordinary Shares Number", "Share Issued")
+    cfo = _zeile(cfl, "Operating Cash Flow", "Cash Flow From Continuing Operating Activities")
+    g = lambda r, i: r[i] if r and len(r) > i and r[i] is not None else None
+    tests = []
+    def test(bed):
+        tests.append(bed)
+    n0, c0, a0, a1, a2 = g(ni, 0), g(cfo, 0), g(ta, 0), g(ta, 1), g(ta, 2)
+    test(None if n0 is None else n0 > 0)
+    test(None if c0 is None else c0 > 0)
+    n1 = g(ni, 1)
+    roa0 = n0 / (a1 or a0) if n0 is not None and (a1 or a0) else None
+    roa1 = n1 / (a2 or a1) if n1 is not None and (a2 or a1) else None
+    test(None if roa0 is None or roa1 is None else roa0 > roa1)
+    test(None if n0 is None or c0 is None else c0 > n0)
+    l0, l1 = (g(ltd, 0) or 0.0) if ltd else None, (g(ltd, 1) or 0.0) if ltd else None
+    test(None if l0 is None or not a0 or not a1 else l0 / a0 < l1 / a1 or (l0 == 0 and l1 == 0))
+    cr0 = g(ca, 0) / g(cl, 0) if g(ca, 0) and g(cl, 0) else None
+    cr1 = g(ca, 1) / g(cl, 1) if g(ca, 1) and g(cl, 1) else None
+    test(None if cr0 is None or cr1 is None else cr0 > cr1)
+    test(None if g(sh, 0) is None or g(sh, 1) is None else g(sh, 0) <= g(sh, 1) * 1.005)
+    gm0 = g(gp, 0) / g(rev, 0) if g(gp, 0) is not None and g(rev, 0) else None
+    gm1 = g(gp, 1) / g(rev, 1) if g(gp, 1) is not None and g(rev, 1) else None
+    test(None if gm0 is None or gm1 is None else gm0 > gm1)
+    at0 = g(rev, 0) / (a1 or a0) if g(rev, 0) and (a1 or a0) else None
+    at1 = g(rev, 1) / (a2 or a1) if g(rev, 1) and (a2 or a1) else None
+    test(None if at0 is None or at1 is None else at0 > at1)
+    gueltig = [x for x in tests if x is not None]
+    if len(gueltig) < 7:
+        return None, len(gueltig)
+    return sum(gueltig), len(gueltig)
+
+
 def dividende_anteil(dy, trailing):
     """Dividendenrendite als Anteil (0,025 = 2,5 %). Yahoo liefert "dividendYield" inzwischen meist in Prozent
     (0,41 = 0,41 %), früher als Anteil; "trailingAnnualDividendYield" ist immer ein Anteil. Darum: die
@@ -73,7 +131,7 @@ def dividende_anteil(dy, trailing):
     return dy / 100 if dy > 0.2 else dy
 
 
-def grunddaten(sym):
+def grunddaten(sym, alt_r=None):
     t = yf.Ticker(sym)
     out = {"ticker": sym}
     info = {}
@@ -146,6 +204,9 @@ def grunddaten(sym):
             out["eps_naechstes_jahr_jetzt"], out["eps_naechstes_jahr_vor30"] = cur, ago
             if cur and ago:
                 out["revision_30t"] = cur / ago - 1
+            ago90 = num(r.get("90daysAgo"))
+            if cur and ago90:
+                out["revision_90t"] = cur / ago90 - 1
     except Exception as e:
         out["fehler_trend"] = str(e)[:120]
     try:
@@ -155,12 +216,27 @@ def grunddaten(sym):
             out["zahlen_am"] = str(d[0] if isinstance(d, (list, tuple)) else d)[:10]
     except Exception:
         pass
+    # Piotroski-Wert nur einmal pro Woche neu rechnen (spart Abrufe); sonst den alten übernehmen
+    alt_r = alt_r or {}
+    alt_pio = str(alt_r.get("piotroski_stand") or "")
+    frisch = alt_pio and (dt.datetime.now(dt.timezone.utc) - dt.datetime.fromisoformat(alt_pio)).days < PIO_TAGE
+    if frisch or _pio_zaehler[0] >= PIO_MAX:
+        for k in ("piotroski", "piotroski_von", "piotroski_stand"):
+            if k in alt_r:
+                out[k] = alt_r[k]
+    else:
+        _pio_zaehler[0] += 1
+        try:
+            w, von = piotroski(t)
+            out["piotroski"], out["piotroski_von"], out["piotroski_stand"] = w, von, jetzt()
+        except Exception as e:
+            out["fehler_piotroski"] = str(e)[:120]
     out["grunddaten_stand"] = jetzt()
     return out
 
 
 KURS_FELDER = ("kurs", "hoch_52w", "tief_52w", "kurs_stand", "sma200", "veraenderung_6m", "schwankung", "trend",
-               "sma50", "veraenderung_1m", "kurztrend")
+               "sma50", "veraenderung_1m", "kurztrend", "momentum_12m")
 
 
 def kurse_und_trends(rows, alt_by=None):
@@ -205,8 +281,11 @@ def kurse_und_trends(rows, alt_by=None):
             j = h.iloc[-252:]
             r.update(kurs=c, hoch_52w=float(j.max()), tief_52w=float(j.min()), kurs_stand=str(h.index[-1])[:10])
             frisch.add(s)
-            for k in ("sma200", "veraenderung_6m", "schwankung", "trend", "sma50", "veraenderung_1m", "kurztrend"):
+            for k in ("sma200", "veraenderung_6m", "schwankung", "trend", "sma50", "veraenderung_1m", "kurztrend", "momentum_12m"):
                 r.pop(k, None)
+            if len(h) >= 253:
+                # Momentum 12 Monate ohne den letzten Monat (übliche Forschungs-Definition, „12-1“); nur Info
+                r["momentum_12m"] = float(h.iloc[-22]) / float(h.iloc[-253]) - 1
             if len(h) >= 200:
                 sma = float(h.iloc[-200:].mean()); r6 = c / float(h.iloc[-127]) - 1
                 rets = h.pct_change().dropna().iloc[-252:]
@@ -245,7 +324,7 @@ def main():
                 rows.append(alt_by.get(s) or {"ticker": s}); continue
             for versuch in range(3):
                 try:
-                    rows.append(grunddaten(s)); break
+                    rows.append(grunddaten(s, alt_by.get(s))); break
                 except Exception as e:
                     if versuch == 2:
                         rows.append(alt_by.get(s) or {"ticker": s, "fehler": str(e)[:200]})

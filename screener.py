@@ -13,6 +13,48 @@ GRENZE_EUR = 1e9
 MIN_HANDEL_EUR = 1e6   # mindestens 1 Mio. € Handel pro Tag (sortiert Zweitlistings und Datenfehler aus)
 MAX_NEU = 150          # höchstens so viele neue pro Lauf, die größten zuerst (Abruf bleibt kurz)
 AUSLANDS_BOERSEN = {"de", "at", "ch", "gb"}  # dort sind viele ausländische Firmen gelistet
+# Heimatland der Firma aus FinanceDatabase (Open Source, MIT, kein Schlüssel; Levin, 17.11.2026)
+LAND = {"us": {"United States"}, "de": {"Germany"}, "gb": {"United Kingdom", "Jersey", "Guernsey", "Isle of Man"},
+        "fr": {"France"}, "nl": {"Netherlands"}, "es": {"Spain"}, "it": {"Italy"}, "ch": {"Switzerland"},
+        "se": {"Sweden"}, "dk": {"Denmark"}, "no": {"Norway"}, "fi": {"Finland"}, "be": {"Belgium"},
+        "at": {"Austria"}, "jp": {"Japan"}, "ca": {"Canada"}, "au": {"Australia", "New Zealand"},
+        "hk": {"Hong Kong", "China", "Macau"}}
+EURO_MAERKTE = {"de", "fr", "nl", "es", "it", "be", "at", "fi"}
+EURO_LAENDER = {"Germany", "France", "Netherlands", "Spain", "Italy", "Belgium", "Austria", "Finland", "Ireland",
+                "Luxembourg", "Portugal"}
+UNTERSTUETZT = set().union(*LAND.values()) | EURO_LAENDER
+
+
+def laender():
+    """Kürzel -> Land der Firma (FinanceDatabase). Leer, wenn die Datenbank nicht geladen werden kann."""
+    try:
+        import financedatabase as fd
+        e = fd.Equities().select()
+        return e["country"].dropna().to_dict()
+    except Exception as ex:
+        print("FinanceDatabase nicht geladen:", ex)
+        return {}
+
+
+def heimat(region, land):
+    """True, wenn die Börse zum Land der Firma passt (Euro-Firmen an jeder Euro-Börse)."""
+    return bool(land) and (land in LAND.get(region, set()) or (region in EURO_MAERKTE and land in EURO_LAENDER))
+
+
+def zweitlisting(region, land):
+    """True für ausländische Firmen an Frankfurt/Xetra, Wien und Zürich, deren Heimatbörse wir selbst abfragen
+    (z. B. Apple in Frankfurt). Achtung: „country“ ist der Firmensitz, nicht die Hauptbörse – viele US-Firmen haben
+    ihren Sitz in Irland oder der Schweiz (Medtronic, Accenture, Chubb), London-Firmen in der Schweiz (Glencore).
+    Darum nur an diesen drei Börsen anwenden, wo fast nur Zweitlistings ausländischer Firmen liegen."""
+    if region not in ("de", "at", "ch"):
+        return False
+    if not land or land not in UNTERSTUETZT:
+        return False  # unbekannt oder Land ohne eigene Börse bei uns (z. B. Taiwan, Indien): Notierung behalten
+    if land in LAND.get(region, set()):
+        return False
+    if region in EURO_MAERKTE and land in EURO_LAENDER:
+        return False  # z. B. Airbus (Niederlande) in Paris
+    return True
 # Region (Yahoo), Haupt-Börsen (Yahoo-Code), Endung des Kürzels
 BOERSEN = [
     ("us", ["NMS", "NYQ", "NGM", "NCM"], ""), ("de", ["GER"], ".DE"), ("gb", ["LSE"], ".L"),
@@ -76,6 +118,9 @@ def main():
         bekannt = set()
     bekannt.discard("")
     erste_worte = {f.split()[0] for f in bekannt if f}
+    land_von = laender()
+    bericht["financedatabase"] = len(land_von)
+    zweit = 0
     kandidaten = {}  # Firma -> (Handelswert in EUR pro Tag, Kürzel, Name, Börsenwert Mrd. €, Region)
     for region, boersen, endung in BOERSEN:
         quotes = abfragen(region, boersen)
@@ -99,16 +144,22 @@ def main():
             wert = (z.get("averageDailyVolume3Month") or 0) * (z.get("regularMarketPrice") or 0) / fx[cur]
             if wert < MIN_HANDEL_EUR:
                 continue
+            if zweitlisting(region, land_von.get(s)):
+                zweit += 1
+                continue
             if region in AUSLANDS_BOERSEN and f.split()[0] in erste_worte:
                 continue  # z. B. „HERMES INTERNATIONAL“ in Zürich, wenn Hermès schon da ist
-            if f not in kandidaten or wert > kandidaten[f][0]:
-                kandidaten[f] = (wert, s, name, round(eur / 1e9, 1), region)
+            # gleiche Firma mehrfach: zuerst die Börse im Heimatland, dann der höchste Handelswert
+            rang = (heimat(region, land_von.get(s)), wert)
+            if f not in kandidaten or rang > kandidaten[f][5]:
+                kandidaten[f] = (wert, s, name, round(eur / 1e9, 1), region, rang)
         bericht["boersen"][region] = {"gefunden": len(quotes), "ueber_grenze": gross, "ohne_wechselkurs": ohne_fx}
         print(region, len(quotes), "gefunden,", gross, "über Grenze")
+    bericht["zweitlistings_aussortiert"] = zweit
     alle_neu = [k[1] for k in sorted(kandidaten.values(), key=lambda k: -k[3])]
     neu = alle_neu[:MAX_NEU]
     bericht["kandidaten_gesamt"] = len(alle_neu)
-    for f, (w, s, name, mrd, region) in kandidaten.items():
+    for f, (w, s, name, mrd, region, _) in kandidaten.items():
         bericht["boersen"][region].setdefault("neu", 0)
         bericht["boersen"][region]["neu"] += 1
     bericht["beispiele"] = [[k[1], k[2], k[3]] for k in sorted(kandidaten.values(), key=lambda k: -k[3])[:60]]
