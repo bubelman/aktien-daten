@@ -102,6 +102,11 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 18.11.2026 (Chat): **Datenfehler behoben.** Der Morgenabruf 18.11. 5:29 bekam von Yahoo für ~1.500 Aktien leere Grunddaten
+  (wohl gedrosselt, mit den neuen Piotroski-Abrufen) und überschrieb die guten Werte → nur 1.241 statt 2.437 bewertet; „Meine
+  Aktien aktualisieren“ hat alle.json um 7:33/13:33 nicht hochgeladen. Repariert: Grunddaten vom Vortag für 1.343 Aktien zurück
+  (Commit 9c24892), fetch.py behält bei leeren Antworten die Vortagswerte (Feld grunddaten_vom_vortag), Piotroski nur 300 je Lauf.
+  Dashboard von Hand neu hochgeladen (alle 2.437, 649 mit Piotroski). Nachtschicht: prüfen, ob der Morgenabruf 19.11. vollständig ist.
 - 18.11.2026 (Nachtschicht 3:41, strenger Sparmodus, 0 Agenten): **Zahlen-Check NVIDIA (Q3 GJ 2027, 17.11.)**: Umsatz 115,8 Mrd. $
   (+103 %, Erwartung 108,8), Gewinn je Aktie bereinigt 2,68 $ (Erwartung 2,47), Ausblick Q4 130 Mrd. $ ±3 % (Erwartung 125,3), Rückkauf
   +150 Mrd. $; nachbörslich +1,3 % bis über +4 % (nvidianews.nvidia.com, coindesk.com, fool.com). Programm: NVDA 3 Punkte, Feinwert 61,6,
