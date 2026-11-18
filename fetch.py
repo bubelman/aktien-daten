@@ -59,7 +59,7 @@ def fcf_aus_cashflow(t):
     return None, None
 
 
-PIO_MAX = 700        # so viele Piotroski-Werte höchstens je Lauf neu rechnen (3 Abrufe je Aktie); Rest rollt nach
+PIO_MAX = 300        # so viele Piotroski-Werte höchstens je Lauf neu rechnen (3 Abrufe je Aktie); Rest rollt nach
 PIO_TAGE = 7         # Piotroski-Wert hält eine Woche (Jahresabschlüsse ändern sich selten)
 _pio_zaehler = [0]
 
@@ -229,10 +229,35 @@ def grunddaten(sym, alt_r=None):
         try:
             w, von = piotroski(t)
             out["piotroski"], out["piotroski_von"], out["piotroski_stand"] = w, von, jetzt()
+            time.sleep(1.0)  # drei Abrufe mehr: Yahoo nicht überlasten
         except Exception as e:
             out["fehler_piotroski"] = str(e)[:120]
     out["grunddaten_stand"] = jetzt()
     return out
+
+
+def _leer(r):
+    return r.get("kursziel_median") is None and r.get("eps_forward") is None and not r.get("analysten")
+
+
+def grunddaten_sicher(sym, alt_r):
+    """Schutz (18.11.2026): Am Morgen des 18.11. kamen bei ~1.500 Aktien leere Yahoo-Daten zurück (wohl gedrosselt),
+    und die guten Werte vom Vortag wurden überschrieben – das Dashboard hatte dann nur noch 1.241 statt 2.437 bewertete
+    Aktien. Jetzt: leer zurück → nach 20 s noch einmal versuchen; immer noch leer → Grunddaten vom Vortag behalten."""
+    r = grunddaten(sym, alt_r)
+    alt_r = alt_r or {}
+    if _leer(r) and not _leer(alt_r):
+        time.sleep(20)
+        r = grunddaten(sym, alt_r)
+        if _leer(r):
+            neu = dict(alt_r)
+            for k in KURS_FELDER + ("piotroski", "piotroski_von", "piotroski_stand"):
+                if k in r:
+                    neu[k] = r[k]
+            neu["grunddaten_vom_vortag"] = True
+            return neu
+    r.pop("grunddaten_vom_vortag", None)
+    return r
 
 
 KURS_FELDER = ("kurs", "hoch_52w", "tief_52w", "kurs_stand", "sma200", "veraenderung_6m", "schwankung", "trend",
@@ -324,7 +349,7 @@ def main():
                 rows.append(alt_by.get(s) or {"ticker": s}); continue
             for versuch in range(3):
                 try:
-                    rows.append(grunddaten(s, alt_by.get(s))); break
+                    rows.append(grunddaten_sicher(s, alt_by.get(s))); break
                 except Exception as e:
                     if versuch == 2:
                         rows.append(alt_by.get(s) or {"ticker": s, "fehler": str(e)[:200]})
