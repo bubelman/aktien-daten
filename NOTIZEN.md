@@ -37,7 +37,8 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 - Deutsch, kurze einfache Sätze, nicht nach KI klingend. Ein nächster Schritt nach dem anderen.
 - Aufgaben komplett in einem Durchgang erledigen, nicht nach jedem Schritt nachfragen.
 - Beträge in Euro. Keine Kauf- oder Verkaufsempfehlung, nie sagen, eine Aktie sei sicher.
-  Immer mit „Das ist keine Anlageberatung.“ enden.
+  Den Satz „Das ist keine Anlageberatung.“ NICHT mehr schreiben – weder im Chat noch in automatischen Berichten
+  (Levin, 18.11.2026: „du musst das nicht immer schreiben“, für Berichte: „ja kannst du machen“).
 - **Nicht halluzinieren** („ist wichtig“): nur Zahlen aus dem Programm oder aus Quellen mit Link.
   Wichtige Zahlen mit einer zweiten Quelle gegenprüfen; Abweichungen offen sagen.
 - Ehrlich über Grenzen sein (inoffizielle Daten, Schätzungen sind Meinungen, Regeln nicht über Jahre getestet).
@@ -102,6 +103,7 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 18.11.2026 18:20 (Chat): Satz „Das ist keine Anlageberatung.“ aus allen 6 geplanten Aufgaben gestrichen (Levin: „ja kannst du machen“). Gilt auch für neue Skills.
 - 18.11.2026 (Chat): **Datenfehler behoben.** Der Morgenabruf 18.11. 5:29 bekam von Yahoo für ~1.500 Aktien leere Grunddaten
   (wohl gedrosselt, mit den neuen Piotroski-Abrufen) und überschrieb die guten Werte → nur 1.241 statt 2.437 bewertet; „Meine
   Aktien aktualisieren“ hat alle.json um 7:33/13:33 nicht hochgeladen. Repariert: Grunddaten vom Vortag für 1.343 Aktien zurück
