@@ -102,6 +102,12 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 18.11.2026 (Nachtschicht 3:41, strenger Sparmodus, 0 Agenten): **Zahlen-Check NVIDIA (Q3 GJ 2027, 17.11.)**: Umsatz 115,8 Mrd. $
+  (+103 %, Erwartung 108,8), Gewinn je Aktie bereinigt 2,68 $ (Erwartung 2,47), Ausblick Q4 130 Mrd. $ ±3 % (Erwartung 125,3), Rückkauf
+  +150 Mrd. $; nachbörslich +1,3 % bis über +4 % (nvidianews.nvidia.com, coindesk.com, fool.com). Programm: NVDA 3 Punkte, Feinwert 61,6,
+  Abstand 64 % (Schätzungen noch vor den Zahlen). Prüfung: Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer, 315 ausgefallen
+  (124 ohne Gewinn, 83 ohne Kursziel). Daten: Kurse Di 17.11. 21:19 UTC (US-Schluss da), 2748 von 2754 mit Stand 17.11.; BBBY, TCBI, NWE,
+  ACT.DE, ITGR, PCRX nur Stand 16.11. (beobachten). Keine Code-Änderung.
 - 17.11.2026 (Nachtschicht 21:41, strenger Sparmodus): **A8 erledigt** (Commit 6917ccf): data/verlauf/2026-11-17.json → 2026-11-16.json
   (Feld datum), schnappschuss.py nimmt den US-Handelstag aus "stand" in aktien.json statt der Uhr; Trefferquote neu (Stand 16.11.).
   **A9 erledigt, kein Datenfehler:** 0881.HK (Zhongsheng) fällt seit Monaten (4,67 HKD am 20.08. → 2,35 am 12.10., ohne Split laut
@@ -225,7 +231,9 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 - IFX.DE: 15.11.2026 – Kurs 49,875 € passt. Kursziel 80,79 € / marketscreener 86,08 € (−6 %, Quelle wohl vor den Zahlen).
   Gewinn GJ 2028 Yahoo 3,88 € / marketscreener 3,31 € (+17 %): Yahoo bereinigt, marketscreener nahe IFRS (Infineon GJ 2026:
   bereinigt 1,73 € gegen IFRS 1,15 €) und veraltet (02.10.). Bekannte Grenze „bereinigt“.
-- Als Nächstes: NVDA (nach den Zahlen 17.11.), dann AVGO.
+- NVDA: 18.11.2026 – Kurs 155,46 $ (Schluss 17.11.) passt zu fool.com. Kursziel-Median Yahoo jetzt 255 $ (Mittel 268 $, 54 Analysten),
+  Gewinn FY2028 15,84 $ (noch vor den Zahlen). Nach den Zahlen neu prüfen.
+- Als Nächstes: AVGO, dann NVDA (Schätzungen nach den Zahlen).
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
