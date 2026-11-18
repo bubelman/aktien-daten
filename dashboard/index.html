@@ -154,6 +154,12 @@
   .al-zahlen dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
   /* Trefferquote */
+  .al-vk-titel { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin-top: var(--cds-gap-lg); }
+  .al-vk-wrap { overflow-x: auto; max-width: 100%; }
+  .al-vk { border-collapse: collapse; font-size: var(--cds-font-size-caption); margin-top: var(--cds-gap-sm); max-width: 48rem; width: 100%; }
+  .al-vk th, .al-vk td { text-align: left; padding: 4px 8px 4px 0; border-bottom: 1px solid var(--color-border-line); }
+  .al-vk th { color: var(--color-fg-muted); font-weight: 400; }
+  .al-vk td.num, .al-vk th.num { text-align: right; }
   .al-tq { display: grid; gap: var(--cds-gap-lg); margin-top: var(--cds-gap-md); max-width: 48rem; }
   .al-tq-block h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin-bottom: var(--cds-gap-sm); }
   .al-tq-block h3 span { font-weight: 400; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
@@ -301,6 +307,23 @@
           <input type="search" class="al-search" id="alle-suche" placeholder="Name oder Kürzel suchen" aria-label="Aktie suchen">
           <select class="al-select" id="alle-region" aria-label="Land">
             <option value="">Alle Länder</option>
+            <option value="USA">USA</option>
+            <option value="Deutschland">Deutschland</option>
+            <option value="Großbritannien">Großbritannien</option>
+            <option value="Frankreich">Frankreich</option>
+            <option value="Niederlande">Niederlande</option>
+            <option value="Spanien">Spanien</option>
+            <option value="Italien">Italien</option>
+            <option value="Schweiz">Schweiz</option>
+            <option value="Schweden">Schweden</option>
+            <option value="Dänemark">Dänemark</option>
+            <option value="Norwegen">Norwegen</option>
+            <option value="Finnland">Finnland</option>
+            <option value="Belgien">Belgien</option>
+            <option value="Kanada">Kanada</option>
+            <option value="Japan">Japan</option>
+            <option value="Australien">Australien</option>
+            <option value="Hongkong">Hongkong</option>
           </select>
           <select class="al-select" id="alle-sektor" aria-label="Branche">
             <option value="">Alle Branchen</option>
@@ -386,6 +409,9 @@
       <h2>Trefferquote</h2>
       <p class="al-note">Wie haben sich Aktien seit einem früheren Schnappschuss entwickelt – je nach Punkten? Kursänderung im Schnitt, in Euro. Wenige Wochen sagen wenig. Rückblick mit heutigen Regeln, kein echter Test aus der Vergangenheit.</p>
       <div data-draw="trefferquote" data-source="trefferquote"></div>
+      <h3 class="al-vk-titel">Vorhersagekraft</h3>
+      <p class="al-note">Sagen Punkte und Feinwert von heute voraus, wie sich die Kurse in den nächsten 1 bzw. 5 Börsentagen entwickeln? Gemessen als Rangkorrelation (IC): nahe 0 = kein Zusammenhang, über 0,05 wäre gut, unter 0 = eher umgekehrt. Mit 2–3 Wochen Daten sagt das fast nichts.</p>
+      <div data-draw="vorhersagekraft" data-source="trefferquote"></div>
     </section>
 
     <section class="al-card al-method">
@@ -845,10 +871,7 @@
   // ---------- Alle Aktien ----------
   const alleF = {suche: '', region: '', sektor: '', punkte: '', top: false, neu: false, hype: false, limit: 100};
   let aSortKey = 'punkte', aSortDir = -1, alleAuswahl = null;
-  {
-    const sel = document.getElementById('alle-region');
-    for (const [, n] of LAENDER) { const o = el('option', '', n); o.value = n; sel.appendChild(o); }
-  }
+  // Länder-Auswahl steht fest im HTML (Füllen per Skript außerhalb von dash.draw gab die Warnung stray_write)
   // Tabelle und „Mehr zeigen“ werden jeweils von ihrer eigenen draw-Funktion gezeichnet (kein Zeichnen ineinander)
   const alleNeu = () => { dash.draw('alle_tabelle'); dash.draw('alle_mehr'); };
   const neuZeichnen = () => { alleF.limit = 100; alleNeu(); };
@@ -991,7 +1014,7 @@
       }
       rows = out;
     }
-    return rows.filter((r) => r.zeitraum && r.gruppe != null);
+    return rows.filter((r) => r.zeitraum && r.gruppe != null && r.art !== 'vorhersagekraft');
   };
   dash.draw('trefferquote', (box) => {
     box.replaceChildren();
@@ -1030,5 +1053,35 @@
       wrap.appendChild(blk);
     }
     box.appendChild(wrap);
+  });
+
+  // ---------- Vorhersagekraft (IC, aus data/trefferquote.json "vorhersagekraft") ----------
+  dash.draw('vorhersagekraft', (box) => {
+    box.replaceChildren();
+    const g = daten('trefferquote');
+    if (g.status !== 'ok' || !Array.isArray(g.data)) return;
+    const rows = g.data.filter((r) => r && r.art === 'vorhersagekraft');
+    if (!rows.length) { box.appendChild(el('p', 'al-note', 'Noch keine Auswertung.')); return; }
+    const tab = el('table', 'al-vk');
+    const kopf = el('tr');
+    for (const [txt, c] of [['Daten', ''], ['Wert', ''], ['Zeitraum', ''], ['IC im Schnitt', 'num'], ['Tage', 'num'], ['Tage mit IC über 0', 'num']]) kopf.appendChild(el('th', c, txt));
+    const thead = el('thead'); thead.appendChild(kopf); tab.appendChild(thead);
+    const tb = el('tbody');
+    for (const r of rows) {
+      const tr = el('tr');
+      const ic = num(r.ic_mittel);
+      const ap = num(r.anteil_positiv);
+      tr.append(
+        el('td', '', r.teil === 'echt' ? 'echt (ab 15.11.)' : 'rückwirkend'),
+        el('td', '', r.faktor === 'feinwert' ? 'Feinwert' : 'Punkte'),
+        el('td', '', r.tage_vorne === 1 ? '1 Börsentag' : (r.tage_vorne + ' Börsentage')),
+        el('td', 'num ' + (isNaN(ic) ? 'muted' : cls(ic)), isNaN(ic) ? 'zu wenige Tage' : nf(3).format(ic)),
+        el('td', 'num', isNaN(num(r.tage)) ? '–' : nf(0).format(num(r.tage))),
+        el('td', 'num', isNaN(ap) ? '–' : nf(0).format(ap * 100) + ' %'));
+      tb.appendChild(tr);
+    }
+    tab.appendChild(tb);
+    const hulle = el('div', 'al-vk-wrap'); hulle.appendChild(tab);
+    box.appendChild(hulle);
   });
 </script>

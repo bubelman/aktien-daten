@@ -110,5 +110,101 @@
   "anzahl": 153,
   "schnitt_pct": -1.2,
   "rueckwirkend": true
+ },
+ {
+  "art": "vorhersagekraft",
+  "zeitraum": "Vorhersagekraft",
+  "gruppe": "punkte 1 T rueckwirkend",
+  "teil": "rueckwirkend",
+  "faktor": "punkte",
+  "tage_vorne": 1,
+  "ic_mittel": -0.033,
+  "tage": 11,
+  "anteil_positiv": 0.55,
+  "rueckwirkend": true
+ },
+ {
+  "art": "vorhersagekraft",
+  "zeitraum": "Vorhersagekraft",
+  "gruppe": "punkte 5 T rueckwirkend",
+  "teil": "rueckwirkend",
+  "faktor": "punkte",
+  "tage_vorne": 5,
+  "ic_mittel": -0.061,
+  "tage": 8,
+  "anteil_positiv": 0.38,
+  "rueckwirkend": true
+ },
+ {
+  "art": "vorhersagekraft",
+  "zeitraum": "Vorhersagekraft",
+  "gruppe": "feinwert 1 T rueckwirkend",
+  "teil": "rueckwirkend",
+  "faktor": "feinwert",
+  "tage_vorne": 1,
+  "ic_mittel": -0.023,
+  "tage": 11,
+  "anteil_positiv": 0.55,
+  "rueckwirkend": true
+ },
+ {
+  "art": "vorhersagekraft",
+  "zeitraum": "Vorhersagekraft",
+  "gruppe": "feinwert 5 T rueckwirkend",
+  "teil": "rueckwirkend",
+  "faktor": "feinwert",
+  "tage_vorne": 5,
+  "ic_mittel": -0.02,
+  "tage": 8,
+  "anteil_positiv": 0.38,
+  "rueckwirkend": true
+ },
+ {
+  "art": "vorhersagekraft",
+  "zeitraum": "Vorhersagekraft",
+  "gruppe": "punkte 1 T echt",
+  "teil": "echt",
+  "faktor": "punkte",
+  "tage_vorne": 1,
+  "ic_mittel": null,
+  "tage": 2,
+  "anteil_positiv": null,
+  "rueckwirkend": false
+ },
+ {
+  "art": "vorhersagekraft",
+  "zeitraum": "Vorhersagekraft",
+  "gruppe": "punkte 5 T echt",
+  "teil": "echt",
+  "faktor": "punkte",
+  "tage_vorne": 5,
+  "ic_mittel": null,
+  "tage": 0,
+  "anteil_positiv": null,
+  "rueckwirkend": false
+ },
+ {
+  "art": "vorhersagekraft",
+  "zeitraum": "Vorhersagekraft",
+  "gruppe": "feinwert 1 T echt",
+  "teil": "echt",
+  "faktor": "feinwert",
+  "tage_vorne": 1,
+  "ic_mittel": null,
+  "tage": 2,
+  "anteil_positiv": null,
+  "rueckwirkend": false
+ },
+ {
+  "art": "vorhersagekraft",
+  "zeitraum": "Vorhersagekraft",
+  "gruppe": "feinwert 5 T echt",
+  "teil": "echt",
+  "faktor": "feinwert",
+  "tage_vorne": 5,
+  "ic_mittel": null,
+  "tage": 0,
+  "anteil_positiv": null,
+  "rueckwirkend": false
  }
 ]

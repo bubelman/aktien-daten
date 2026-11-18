@@ -103,6 +103,11 @@ def trefferquote(ende):
     except Exception as e:
         print("Vorhersagekraft fehlgeschlagen:", repr(e)[:200], file=sys.stderr)
         ergebnis["vorhersagekraft"] = {"fehler": repr(e)[:200]}
+    # Zeilen für die Tabelle „Vorhersagekraft“ im Dashboard (Feld art; die Trefferquote-Ansicht überspringt sie)
+    for v in (ergebnis["vorhersagekraft"].get("zeilen") or []):
+        zeilen.append(dict(art="vorhersagekraft", zeitraum="Vorhersagekraft", gruppe=f'{v["faktor"]} {v["tage_vorne"]} T {v["teil"]}',
+                           teil=v["teil"], faktor=v["faktor"], tage_vorne=v["tage_vorne"], ic_mittel=v["ic_mittel"] if isinstance(v["ic_mittel"], (int, float)) else None,
+                           tage=v["tage"], anteil_positiv=v["anteil_positiv"], rueckwirkend=v["teil"] == "rueckwirkend"))
     if not zeilen:  # das Dashboard kann keine leere Datei lesen
         zeilen = [dict(zeitraum="", seit=None, gruppe="noch keine Daten", anzahl=0, schnitt_pct=None, rueckwirkend=False)]
     json.dump(ergebnis, open("data/trefferquote.json", "w"), ensure_ascii=False, indent=1)
