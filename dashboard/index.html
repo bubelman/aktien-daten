@@ -329,6 +329,8 @@
             <option value="fcf_rendite_pct">Freier Cashflow zum Börsenwert</option>
             <option value="veraenderung_1m_pct">Letzter Monat</option>
             <option value="unter_hoch_pct">Abstand zum Jahreshoch</option>
+            <option value="piotroski">Piotroski-Wert</option>
+            <option value="momentum_12m_pct">Momentum 12 Monate</option>
             <option value="schwankung_pct">Schwankung</option>
             <option value="analysten">Zahl der Analysten</option>
             <option value="zahlen_am">Nächste Zahlen</option>
@@ -359,6 +361,7 @@
                 <th data-field="wachstum_pct" class="num x"><button type="button" data-sort="wachstum_pct">Wachstum</button></th>
                 <th data-field="unter_hoch_pct" class="num x"><button type="button" data-sort="unter_hoch_pct">vom Jahreshoch</button></th>
                 <th data-field="schwankung_pct" class="num x"><button type="button" data-sort="schwankung_pct">Schwankung</button></th>
+                <th data-field="piotroski" class="num x"><button type="button" data-sort="piotroski" title="Finanzielle Stärke 0–9, nur Info">Piotroski</button></th>
                 <th data-field="zahlen_am" class="x"><button type="button" data-sort="zahlen_am">Nächste Zahlen</button></th>
                 <th><button type="button" data-sort="region">Land</button></th>
                 <th data-field="sektor"><button type="button" data-sort="sektor">Branche</button></th>
@@ -415,6 +418,8 @@
       <p>Erfüllt, wenn der Abstand über 15 % liegt (faire Mitte mehr als 15 % über dem Kurs), der lange Trend nicht fällt und es keine Speicherchip-Firma ist. Das ist nur eine Regel des Programms, keine Empfehlung.</p>
       <h3>Wann eine Aktie nicht bewertet wird</h3>
       <p>Zum Beispiel, wenn der erwartete Gewinn nicht positiv ist, kein Kursziel da ist, das KGV unplausibel ist (über 200) oder es für die Währung keinen Wechselkurs gibt. Firmen, die an zwei Börsen notiert sind, zählen nur einmal. Der Grund steht dann auf der Karte.</p>
+      <h3>Zusatz-Werte (nur Info, keine Punkte)</h3>
+      <p><b>Piotroski-Wert</b> (0–9): neun einfache Prüfungen der Jahresabschlüsse, z. B. Gewinn positiv, Schulden sinken, Marge steigt. Hoch (7–9) = finanziell kräftiger, niedrig (0–3) = schwächer. <b>Schätzungen 30 / 90 Tage</b>: wie stark die Analysten ihre Gewinnschätzung fürs nächste Jahr geändert haben (30 Tage zählt schon in den Punkten). <b>Momentum 12 Monate</b>: Kursveränderung der letzten 12 Monate ohne den letzten Monat. Ob diese Werte gute Aktien vorhersagen, misst die Trefferquote erst; Punkte gibt es dafür nur nach Levins Ja.</p>
       <h3>Daten</h3>
       <p>Yahoo Finance (inoffiziell), über GitHub abgerufen (bubelman/aktien-daten): Kennzahlen jeden Morgen, Kurse 5-mal am Börsentag. Gerechnet wird immer mit dem festen Programm bewertung.py, damit jeder Lauf gleich rechnet. Schwankung = wie stark der Kurs im Jahr typischerweise schwankt, über 60 % ist sehr wild.</p>
       <h3>Grenzen – bitte lesen</h3>
@@ -602,6 +607,9 @@
     paar('Letzter Monat', fmtPct1(num(r.veraenderung_1m_pct)), 'veraenderung_1m_pct', cls(num(r.veraenderung_1m_pct)));
     paar('Vom Jahreshoch', fmtPct(num(r.unter_hoch_pct)), 'unter_hoch_pct');
     paar('Schwankung im Jahr', isNaN(num(r.schwankung_pct)) ? '–' : fmtNum(num(r.schwankung_pct), 0) + ' %', 'schwankung_pct');
+    paar('Piotroski-Wert (Info)', isNaN(num(r.piotroski)) ? '–' : num(r.piotroski) + ' von ' + (r.piotroski_von || 9), 'piotroski', num(r.piotroski) >= 7 ? 'pos' : num(r.piotroski) <= 3 ? 'neg' : '');
+    paar('Schätzungen 30 / 90 Tage', (isNaN(num(r.revision_30t_pct)) ? '–' : fmtPct1(num(r.revision_30t_pct))) + ' / ' + (isNaN(num(r.revision_90t_pct)) ? '–' : fmtPct1(num(r.revision_90t_pct))), 'revision_90t_pct', cls(num(r.revision_90t_pct)));
+    paar('Momentum 12 Monate (Info)', isNaN(num(r.momentum_12m_pct)) ? '–' : fmtPct(num(r.momentum_12m_pct)), 'momentum_12m_pct', cls(num(r.momentum_12m_pct)));
     paar('Nächste Zahlen', r.zahlen_am ? fmtDatumLang(r.zahlen_am) : '–', 'zahlen_am');
     zs.appendChild(dl);
     d.appendChild(zs);
@@ -921,7 +929,7 @@
     if (!alleR) return;
     const rows = alleR.slice(0, alleF.limit);
     if (!rows.length) {
-      const tr = el('tr'); const t = el('td', 'muted', 'Keine Aktie passt zu diesen Filtern.'); t.colSpan = 16; tr.appendChild(t); tbody.appendChild(tr);
+      const tr = el('tr'); const t = el('td', 'muted', 'Keine Aktie passt zu diesen Filtern.'); t.colSpan = 17; tr.appendChild(t); tbody.appendChild(tr);
     }
     const aktiv = alleAktiv();
     for (const r of rows) {
@@ -953,6 +961,8 @@
       td(fmtPct(uh), 'num x ' + (uh < -40 ? 'neg' : ''));
       const sw = num(r.schwankung_pct);
       td(isNaN(sw) ? '–' : fmtNum(sw, 0) + ' %', 'num x ' + (sw > 60 ? 'neg' : ''));
+      const pio = num(r.piotroski);
+      td(isNaN(pio) ? '–' : String(pio), 'num x ' + (pio >= 7 ? 'pos' : pio <= 3 ? 'neg' : ''));
       td(r.zahlen_am ? fmtDatum(r.zahlen_am) : '–', 'x');
       td(region(r.ticker), '');
       td(r.sektor || '–', 'lang');
