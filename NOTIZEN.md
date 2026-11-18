@@ -229,6 +229,7 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 - 16.11.2026 19:15 Aufpasser: alles läuft (Kurse, Grunddaten, News, Dashboard 18:35, Programm ok). stray_write noch da → A5.4 offen.
 - 17.11.2026 09:13 Aufpasser: Kurse, Grunddaten, Dashboard (07:34) ok. Schnappschuss-Datum falsch → A8; Prüfung 0881.HK → A9. News ohne neuen Stand (Sparmodus, nichts fällig).
 - 17.11.2026 13:16 Aufpasser: Kurse-Schleife lief Di nicht (letzter Kurse-Commit Mo 21:18 UTC, alle Starthilfen ab 4:43 UTC fehlten). Von Hand gestartet (Lauf 44081738530). Dashboard 10:36, Grunddaten ok. A9 und stray_write (A5.4) weiter offen.
+- 18.11.2026 23:14 Aufpasser: alles läuft (Kurse 22:19, Grunddaten, News, Dashboard 21:34, Programm ok). Abgelaufenen STRENGEN SPARMODUS (bis Mi 18.11. 21:00) gelöscht; es gilt das BUDGET Nachtschicht. stray_write in runs stammt von 17:55 (vor A5.4), Seite seitdem nicht geöffnet.
 - 16.11.2026 (Scout 11:48): 2 neue Aktien: NU (Nu Holdings, Rekordquartal, +11,75 % am 13.11., bigmoves.substack.com), EWBC
   (East West Bancorp, neue Kaufempfehlung Hovde 10.11., behindthemarkets.com). Hype-Liste: 8 Aktien in data/hype.json.
 - 16.11.2026 (Aufpasser 9:18): Kurse-Schleife lief Montag früh nicht (geplante Starts 5:11 und 7:11 UTC fehlten, letzter Lauf Fr 13.11.). Von Hand gestartet (Lauf 43830295701). Keine Code-Änderung.
@@ -354,6 +355,7 @@ Rückblick-Test, (b) Londoner Fonds ohne Kursziel sperren.
   Den Zähler sieht nur Levin (Einstellungen → Nutzung). Er schreibt die Zahl in den Chat, sie wird hier eingetragen.
   Ab 60 %: Sparmodus wie unten. Ab 75 %: Nachtschicht nur noch Schritt 1 (Prüfen), keine Agenten, bis Mittwoch.
   Letzte Zahl: 42 % am So 15.11. 19:22; die Nacht 15./16.11. hat laut Levin etwa 20 % verbraucht → etwa 62 % (Mo 16.11.).
+  Diese Zahl gilt für die Woche bis Mi 18.11.; seit Mi 18.11. neue Woche, noch keine neue Zahl von Levin.
 - **BUDGET NACHTSCHICHT (Levin, 18.11.2026: „mach es zu 7 % runter“; vorher 10 %): etwa 7 % von Levins Wochenlimit pro Nacht** (beide Läufe zusammen).
   Gilt vor der Aufgabe und ersetzt dort „Hälfte der Wochen-Tokens“, „noch mehr Agenten“ und „keine feste Obergrenze“.
   Zum Vergleich: die Nacht 15./16.11. (5 Agenten, Aufträge A2, A3, A4, neue Aktien und ETFs) kostete etwa 20 %. Darum:
@@ -364,17 +366,6 @@ Rückblick-Test, (b) Londoner Fonds ohne Kursziel sperren.
   • Ein Prüf-Agent am Schluss statt zwei. Neue Aktien sucht seit 16.11. screener.py automatisch (ohne KI): keine
     Recherche-Agenten mehr, nur prüfen, ob die neuen Kürzel Daten bekommen (sonst in tickers_gesperrt.txt).
   • Levin schickt ab und zu seine Zahl; liegt eine Nacht klar über 7 %, weiter kürzen.
-- **STRENGER SPARMODUS bis Mittwoch 18.11.2026, 21:00** (Levin am 16.11.: die Nacht hat etwa 20 % verbraucht, Stand etwa
-  62 %, Grenze 75 %). Gilt vor allen anderen Regeln, für ALLE Aufgaben:
-  • Nachtschicht (21:41 und 3:41): nur Schritt 1 (Prüfen) und echte Fehler beheben. Keine neuen Aktien, keine
-    Seite, keine Verbesserungen, höchstens 1 Agent. Ausnahme: Mi 18.11. 3:41 Zahlen-Check NVIDIA (bis 3 Agenten).
-  • News-Agenten: nur Levins Aktien, 1 Agent, kein Prüf-Agent (selbst eine Quelle öffnen). Keine weiteren Aktien.
-  • Aktien-Scout: nur Teil (A) aus den Daten, keine Websuche für Hype, keine neuen Aktien.
-  • Chef: bis Mittwoch pausiert (am 16.11. abgeschaltet, wird am Mi 18.11. wieder eingeschaltet).
-  • Aufpasser und „Meine Aktien aktualisieren“: normal, aber ohne Agenten.
-  • Ab Mi 18.11. 21:00 wieder normal. Diesen Punkt dann löschen (Aufpasser oder Nachtschicht).
-  • Chef 18.11. 20:27: Der Sparmodus ist ab 21:00 vorbei. Die Nachtschicht 21:41 arbeitet nach dem BUDGET (7 %, höchstens 2 Agenten).
-    Erinnerung „Chef wieder einschalten“ lief nicht (Sitzung weg); Chef läuft trotzdem (Mi/So). Aufpasser 23:13 löscht diesen Block.
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
 
 ## Skills
