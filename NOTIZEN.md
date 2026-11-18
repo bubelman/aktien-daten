@@ -245,7 +245,18 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
 ### A10 (17.11.2026, Levin: „dann füge die hinzu“): Drei Open-Source-Werkzeuge einbauen – ab Mi 18.11. 21:41, Schritt für Schritt
-Alles läuft bei GitHub ohne KI (keine Tokens). Je Nacht höchstens ein Teil, im 10-%-Budget. Jeder Teil einzeln testen und committen.
+**Stand 18.11. (Chef):** Teil 1 und 2 sind schon im Chat gebaut (Commit e5105ee, 17.11.; Piotroski 300 Aktien je Morgenlauf seit 9c24892,
+heute 690 von 2904 mit Wert). Offen nur **Teil 3 (alphalens) = Auftrag für heute Nacht 21:41**, dazu:
+- Zuerst Probelauf lokal mit data/verlauf (14 Tage, 30.10.–17.11.). Achtung: Tage bis 13.11. sind "rueckwirkend" (nur ~600 Aktien), ab 15.11.
+  echte Schnappschüsse (2100–2400). Ergebnis getrennt zeigen („rückwirkend“ / „echt“). Datei 2026-11-15.json (Sonntag) prüfen: Freitagskurse?
+  Dann nicht als eigenen Handelstag zählen. Piotroski erst auswerten, wenn er im Verlauf steht (sonst nur Punkte und Feinwert).
+- Läuft alphalens nicht sauber (Abhängigkeiten, zu wenige Tage): Information Coefficient (Spearman Punkte/Feinwert ↔ Rendite 1 und 5 Tage)
+  und Rendite je Fünftel selbst mit pandas rechnen – gleiches Ergebnisformat.
+- Ergebnis in data/trefferquote.json (neuer Schlüssel "vorhersagekraft") und kurz im Reiter „So wird gerechnet“ zeigen.
+- Dashboard-Datensatz "trefferquote" steht noch auf dem 15.11. (version 2): data/trefferquote_zeilen.json hochladen (nie leer), solange A6 offen ist.
+- Test: bewertung.py Fehlercode 0, "pruefung" leer, Punkte unverändert; Seite lokal 1440/390 px. Bericht an Levin in 3 Sätzen (siehe unten),
+  ehrlich: 2–3 Wochen sagen fast nichts.
+Alles läuft bei GitHub ohne KI (keine Tokens). Je Nacht höchstens ein Teil, im 7-%-Budget. Jeder Teil einzeln testen und committen.
 1. **FinanceDatabase** (pip `financedatabase`, MIT, kein Schlüssel; https://pypi.org/project/financedatabase/):
    in screener.py nutzen – Heimatland je Firma, damit Zweitlistings sicher wegfallen (nur Notierung im Heimatland bzw. an
    der Hauptbörse nehmen; ADRs nur, wenn das Heimatland nicht unterstützt wird, z. B. Taiwan, Indien, Brasilien). Optional:
@@ -285,6 +296,11 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 - A5.2/A5.3 siehe A6. A5.4 (stray_write) behoben – nach dem nächsten Öffnen der Seite in data/users/me "runs" bestätigen.
 - A5.4 noch offen (vom Aufpasser, 16.11.2026 19:15): Seite wurde am 16.11. um 17:45 Uhr geöffnet, data/users/me "runs" zeigt weiter
   drawings: stray_write (count 1). Ursache weiter suchen und beheben; Test: runs ohne Warnung nach dem nächsten Öffnen.
+- **Chef 18.11. – heute Nacht mit erledigen (klein, nach A10.3):** runs vom 18.11. 16:55 zeigt jetzt den Ort: stray_write where ["alle-region"].
+  Verdacht: die Seite füllt das Auswahlfeld #alle-region (Länder-Optionen) außerhalb von dash.draw (Block nach „// ---------- Alle Aktien“,
+  appendChild auf sel). Lösung prüfen: Optionen fest ins HTML schreiben oder im passenden draw-Aufruf füllen. Gleichzeitig: dashboard/index.html
+  im Repository ist veraltet (ohne Piotroski-Spalte) – vorher die Live-Seite (files/index.html, version 28) als Kopie committen.
+  Test: lokal keine Warnung; nach dem nächsten Öffnen runs ohne drawings.
 
 ### A7 (vom Aufpasser, 16.11.2026): Kurse-Schleife startet montags nicht
 - Stand 16.11. 21:41: zusätzliche Starthilfen eingebaut (siehe Protokoll). Offen nur noch der Test: Mo 23.11. Kurse-Commit vor 9 Uhr Berlin?
@@ -294,20 +310,20 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 - Stand 17.11. 21:41: Wecker (kurse-wecker.yml) eingebaut, siehe Protokoll. Test: Mi 18.11. und Mo 23.11. Kurse vor 6:30 UTC? Dann löschen.
 
 ## Chef – Plan
-### 15.11.2026 (So, erster Chef-Lauf) – Plan für die nächsten 1–2 Wochen
-Lage: 2438 Aktien im Programm, 2141 bewertet (Prüfung leer). Japan (.T) noch 0 Aktien. 63 Aktien mit Abstand über 150 %.
-Trefferquote: erst ein Schnappschuss (15.11.), noch keine Werte. Sparmodus bis Mi 18.11. (42 % vom Wochenlimit).
-Reihenfolge für die Nachtschicht (Sparmodus beachten: 21:41 höchstens 5 Agenten, 3:41 nur Prüfen):
-1. Heute 21:41 zuerst die kleinen Hebel: Aufgabe „Meine Aktien aktualisieren“ einmal ergänzen (A3.3 + A4.2 + A5.3), A5.1.
-   Grund: ohne das kommen ETFs und Trefferquote nie automatisch ins Dashboard. Erfolg: Text in list_triggers geändert.
-2. A2 + A4.1 zusammen (Seite am PC, Reiter ETFs, "stray_write" weg). Erfolg: Bildschirmfotos 1440/390 px, runs ohne Warnung.
-3. A3.1 (Verlauf rückwirkend) – damit die Trefferquote überhaupt Zahlen hat. Erfolg: data/verlauf mit mehreren Tagen,
-   trefferquote.json "zeitraeume" nicht leer. A3.2 (langer Rückblick-Test) und A4.3/A4.4 erst ab Do 19.11. (nach Sparmodus).
-4. Neue Aktien: Lücke Japan (Nikkei 225, 0 von 225) zuerst – ab Do 19.11. im vollen Betrieb.
-5. NVIDIA-Zahlen Di 17.11. abends → Zahlen-Check Mi 18.11. 3:41 (steht schon in „Abläufe“).
-Vorgeschlagen an Levin (nur nach Ja): (a) Sondereffekt-Regel mit Rückblick-Test auf Zweig vorschlag/sondereffekt;
-(b) Londoner Fonds ohne Kursziel (86 Aktien „kein Kursziel“) sperren.
-Stand Chef-Aufträge: A5.1 und A5.4 erledigt (15.11. Nachtschicht), A5.2/A5.3 hängen an A6 (Freigabe nötig).
+### 18.11.2026 (Mi) – Aufträge für heute Nacht (Budget 7 %, höchstens 2 Agenten)
+Lage: 2904 Aktien im Programm (alle mit Kurs), Dashboard 2437 bewertet (nach der Reparatur heute). Wecker (A7) wirkt: Mi erster Kurse-Commit
+4:35 UTC. Trefferquote (Stand 17.11., rückwirkend, 2,5 Wochen): Aktien mit mehr Punkten lagen bisher eher schlechter (7–10 Punkte −9,5 %,
+n=3; unter 3 Punkte +0,3 %) – sagt bei so wenigen Tagen fast nichts. "Chef wieder einschalten" lief nicht (Sitzung weg) → Sparmodus-Ende hier vermerkt.
+1. A10 Teil 3 (alphalens / Vorhersagekraft) – geplanter Start heute; Teile 1–2 waren schon fertig. Erfolg: "vorhersagekraft" in trefferquote.json, im Reiter sichtbar.
+2. A5.4 stray_write (Ort jetzt bekannt: #alle-region) + Kopie dashboard/index.html aktualisieren. Erfolg: runs ohne drawings.
+3. Lauf 3:41: prüfen, ob der Morgenabruf 19.11. vollständig ist (Grunddaten nicht leer, ~2400+ bewertet) – steht schon im Protokoll.
+An Levin gefragt: A6 (Aufgaben-Texte Nachtschicht + Meine Aktien) freigeben – Nachtschicht-Text sagt noch „drei Läufe“, „Hälfte der Tokens“,
+„noch mehr Agenten“ und widerspricht dem 7-%-Budget.
+Später (ab Do, je eine Nacht): A3.2 langer Rückblick-Test; Japan/Nikkei 225 (bitte prüfen, ob der Screener .T schon füllt, bevor recherchiert wird).
+### 15.11.2026 (So, erster Chef-Lauf) – kurz
+Plan: A6-Textänderungen, A2/A4.1 Seite, A3.1 Verlauf rückwirkend, Japan, NVIDIA-Zahlen-Check. Erledigt: A2, A4.1, A3.1, A5.1, NVIDIA-Check (18.11.),
+ETFs (später auf Levins Wunsch wieder entfernt). Offen: A6 (Freigabe), A5.4. Vorschläge an Levin noch ohne Antwort: (a) Sondereffekt-Regel mit
+Rückblick-Test, (b) Londoner Fonds ohne Kursziel sperren.
 
 ## Bekannte Grenzen und offene Ideen
 - Yahoo-Schätzungen sind oft „bereinigt“ (ohne Sonderkosten); andere Quellen nennen niedrigere Gewinne
@@ -378,6 +394,8 @@ Stand Chef-Aufträge: A5.1 und A5.4 erledigt (15.11. Nachtschicht), A5.2/A5.3 h�
   • Chef: bis Mittwoch pausiert (am 16.11. abgeschaltet, wird am Mi 18.11. wieder eingeschaltet).
   • Aufpasser und „Meine Aktien aktualisieren“: normal, aber ohne Agenten.
   • Ab Mi 18.11. 21:00 wieder normal. Diesen Punkt dann löschen (Aufpasser oder Nachtschicht).
+  • Chef 18.11. 20:27: Der Sparmodus ist ab 21:00 vorbei. Die Nachtschicht 21:41 arbeitet nach dem BUDGET (7 %, höchstens 2 Agenten).
+    Erinnerung „Chef wieder einschalten“ lief nicht (Sitzung weg); Chef läuft trotzdem (Mi/So). Aufpasser 23:13 löscht diesen Block.
 - Höchstens ein Skill pro Nacht (propose_skills, sonst skills/<name>/SKILL.md), nur wenn er wirklich hilft.
 
 ## Skills
