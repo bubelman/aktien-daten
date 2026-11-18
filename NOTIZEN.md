@@ -103,6 +103,17 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 18.11.2026 (Nachtschicht 21:41, Budget 7 %, 2 Agenten): **A10 Teil 3 erledigt** (Commit 2db5d80): vorhersagekraft.py misst den
+  Information Coefficient (Rangkorrelation Punkte/Feinwert ↔ Kursänderung nach 1 und 5 Börsentagen) und die Rendite je Fünftel, getrennt
+  „rückwirkend“ (bis 13.11.) und „echt“ (ab 15.11.); nur Standardbibliothek (schnappschuss.yml installiert keine Pakete), gegen alphalens
+  0.5.1/scipy gegengeprüft. Läuft täglich in schnappschuss.py (Fehler brechen nicht ab). Sonntagsdatei 15.11. = Handelstag 13.11.
+  Ergebnis Stand 17.11.: rückwirkend Punkte IC −0,033 (1 Tag, 11 Tage) / −0,061 (5 Tage, 8 Tage), Feinwert −0,023 / −0,020; echt: zu wenige
+  Tage. Piotroski und Schätzungs-Trend stehen nicht im Verlauf → noch nicht messbar (Idee: in schnappschuss.py mit speichern).
+  **A5.4** (Commit c7ac787): stray_write bei #alle-region – Länder-Optionen jetzt fest im HTML. Reiter „So wird gerechnet“: Tabelle
+  „Vorhersagekraft“; trefferquote_zeilen.json hat dafür Zeilen mit art=vorhersagekraft. Datensatz „trefferquote“ neu hochgeladen (Version 3,
+  Stand 17.11.). Seite Version 30, Kopie in dashboard/index.html. Prüf-Agent: Satz „Das ist keine Anlageberatung.“ stand noch in der Fußzeile
+  der Seite → entfernt. Prüfung: Fehlercode 0, "pruefung" leer, 2437 bewertet, liste/alle unverändert. 164 Aktien ohne Grunddaten (v. a. die
+  150 neuen vom Screener 18.11., Yahoo-Drosselung) → kuerzel_verdacht zeigt 166 Fälle; kein Kürzelfehler. Lauf 3:41: Morgenabruf 19.11. prüfen.
 - 18.11.2026 18:20 (Chat): Satz „Das ist keine Anlageberatung.“ aus allen 6 geplanten Aufgaben gestrichen (Levin: „ja kannst du machen“). Gilt auch für neue Skills.
 - 18.11.2026 (Chat): **Datenfehler behoben.** Der Morgenabruf 18.11. 5:29 bekam von Yahoo für ~1.500 Aktien leere Grunddaten
   (wohl gedrosselt, mit den neuen Piotroski-Abrufen) und überschrieb die guten Werte → nur 1.241 statt 2.437 bewertet; „Meine
@@ -244,36 +255,6 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
-### A10 (17.11.2026, Levin: „dann füge die hinzu“): Drei Open-Source-Werkzeuge einbauen – ab Mi 18.11. 21:41, Schritt für Schritt
-**Stand 18.11. (Chef):** Teil 1 und 2 sind schon im Chat gebaut (Commit e5105ee, 17.11.; Piotroski 300 Aktien je Morgenlauf seit 9c24892,
-heute 690 von 2904 mit Wert). Offen nur **Teil 3 (alphalens) = Auftrag für heute Nacht 21:41**, dazu:
-- Zuerst Probelauf lokal mit data/verlauf (14 Tage, 30.10.–17.11.). Achtung: Tage bis 13.11. sind "rueckwirkend" (nur ~600 Aktien), ab 15.11.
-  echte Schnappschüsse (2100–2400). Ergebnis getrennt zeigen („rückwirkend“ / „echt“). Datei 2026-11-15.json (Sonntag) prüfen: Freitagskurse?
-  Dann nicht als eigenen Handelstag zählen. Piotroski erst auswerten, wenn er im Verlauf steht (sonst nur Punkte und Feinwert).
-- Läuft alphalens nicht sauber (Abhängigkeiten, zu wenige Tage): Information Coefficient (Spearman Punkte/Feinwert ↔ Rendite 1 und 5 Tage)
-  und Rendite je Fünftel selbst mit pandas rechnen – gleiches Ergebnisformat.
-- Ergebnis in data/trefferquote.json (neuer Schlüssel "vorhersagekraft") und kurz im Reiter „So wird gerechnet“ zeigen.
-- Dashboard-Datensatz "trefferquote" steht noch auf dem 15.11. (version 2): data/trefferquote_zeilen.json hochladen (nie leer), solange A6 offen ist.
-- Test: bewertung.py Fehlercode 0, "pruefung" leer, Punkte unverändert; Seite lokal 1440/390 px. Bericht an Levin in 3 Sätzen (siehe unten),
-  ehrlich: 2–3 Wochen sagen fast nichts.
-Alles läuft bei GitHub ohne KI (keine Tokens). Je Nacht höchstens ein Teil, im 7-%-Budget. Jeder Teil einzeln testen und committen.
-1. **FinanceDatabase** (pip `financedatabase`, MIT, kein Schlüssel; https://pypi.org/project/financedatabase/):
-   in screener.py nutzen – Heimatland je Firma, damit Zweitlistings sicher wegfallen (nur Notierung im Heimatland bzw. an
-   der Hauptbörse nehmen; ADRs nur, wenn das Heimatland nicht unterstützt wird, z. B. Taiwan, Indien, Brasilien). Optional:
-   Land/Branche ins Feld der Aktie schreiben. Test: Probelauf --trocken, Beispiele prüfen (Apple nur AAPL, Toyota nur 7203.T).
-2. **Piotroski-Wert 0–9 als Info** (selbst aus den Yahoo-Jahresabschlüssen in fetch.py rechnen, Formel nach Piotroski:
-   Gewinn > 0, operativer Cashflow > 0, Gesamtkapitalrendite steigt, Cashflow > Gewinn, Verschuldung sinkt, Liquidität steigt,
-   keine neuen Aktien, Bruttomarge steigt, Kapitalumschlag steigt). Neues Feld "piotroski" in aktien.json und alle.json,
-   im Dashboard als Spalte und in der Detailansicht mit kurzer Erklärung. **Keine Punkte** dafür (nur nach Levins Ja).
-   FinanceToolkit (https://pypi.org/project/financetoolkit/) nur zum Gegenprüfen einzelner Werte nutzen (braucht sonst FMP-Schlüssel).
-   Dazu Schätzungs-Trend (Yahoo eps trend 30/90 Tage) und Momentum 12 Monate als Info-Felder, ebenfalls ohne Punkte.
-3. **alphalens-reloaded** (pip `alphalens-reloaded`, Apache; https://pypi.org/project/alphalens-reloaded/): in schnappschuss.py
-   bzw. eigenem Skript aus data/verlauf die Vorhersagekraft von Punkten, Feinwert, Piotroski und Schätzungs-Trend messen
-   (Information Coefficient, Rendite je Fünftel). Ergebnis in data/trefferquote.json ergänzen, im Reiter „So wird gerechnet“
-   kurz zeigen, mit ehrlichem Hinweis, dass wenige Wochen wenig aussagen.
-Nach allen drei Teilen: Levin in 3 Sätzen berichten und fragen, ob Piotroski oder Schätzungs-Trend Punkte geben sollen
-(erst wenn die Trefferquote nach einigen Wochen etwas zeigt).
-
 ### A6 (15.11.2026, Nachtschicht): Aufgaben-Texte ändern – braucht Levins Freigabe im Chat
 Die geplante Nachtschicht darf update_trigger nicht ausführen („Permission denied … Scheduled Task Write“). Darum offen:
 1. „Meine Aktien aktualisieren“ (trig_01CkcqBfDNXG1orD3A9WFXB8), ein Aufruf, ganzer Text:
@@ -296,11 +277,9 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 - A5.2/A5.3 siehe A6. A5.4 (stray_write) behoben – nach dem nächsten Öffnen der Seite in data/users/me "runs" bestätigen.
 - A5.4 noch offen (vom Aufpasser, 16.11.2026 19:15): Seite wurde am 16.11. um 17:45 Uhr geöffnet, data/users/me "runs" zeigt weiter
   drawings: stray_write (count 1). Ursache weiter suchen und beheben; Test: runs ohne Warnung nach dem nächsten Öffnen.
-- **Chef 18.11. – heute Nacht mit erledigen (klein, nach A10.3):** runs vom 18.11. 16:55 zeigt jetzt den Ort: stray_write where ["alle-region"].
-  Verdacht: die Seite füllt das Auswahlfeld #alle-region (Länder-Optionen) außerhalb von dash.draw (Block nach „// ---------- Alle Aktien“,
-  appendChild auf sel). Lösung prüfen: Optionen fest ins HTML schreiben oder im passenden draw-Aufruf füllen. Gleichzeitig: dashboard/index.html
-  im Repository ist veraltet (ohne Piotroski-Spalte) – vorher die Live-Seite (files/index.html, version 28) als Kopie committen.
-  Test: lokal keine Warnung; nach dem nächsten Öffnen runs ohne drawings.
+- Stand 18.11. 21:41: behoben (Länder-Auswahl fest im HTML, Seite Version 30). Offen nur der Test: nach dem nächsten Öffnen
+  data/users/me "runs"/"check" ohne stray_write? Dann A5 löschen. (Falls weiter gemeldet: Branchen-Auswahl #alle-sektor wird in
+  dash.onData gefüllt – dann ebenfalls in eine draw-Funktion verschieben.)
 
 ### A7 (vom Aufpasser, 16.11.2026): Kurse-Schleife startet montags nicht
 - Stand 16.11. 21:41: zusätzliche Starthilfen eingebaut (siehe Protokoll). Offen nur noch der Test: Mo 23.11. Kurse-Commit vor 9 Uhr Berlin?
