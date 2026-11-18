@@ -5,6 +5,7 @@ Levin, 15.11.2026: „geht noch besser“ → erst messen, ob die Bewertung funk
   python schnappschuss.py       (läuft per GitHub Actions, schnappschuss.yml)
 
 Schreibt data/verlauf/<heute>.json, data/trefferquote.json und data/trefferquote_zeilen.json (Zeilen fürs Dashboard).
+trefferquote.json enthält unter "vorhersagekraft" den IC/Fünftel-Test aus vorhersagekraft.py.
 rueckwirkend.py nutzt bewerten(), schnappschuss() und trefferquote() für Tage vor dem 15.11.2026.
 """
 import datetime as dt, glob, json, os, subprocess, sys, tempfile
@@ -96,6 +97,12 @@ def trefferquote(ende):
         ergebnis["hinweis"] = HINWEIS_RUECK
     elif ergebnis["zeitraeume"]:
         ergebnis["hinweis"] = "Wenige Wochen sagen wenig."
+    try:  # Vorhersagekraft (IC, Fünftel; A10 Teil 3) – ein Fehler darf den Schnappschuss nicht abbrechen
+        import vorhersagekraft
+        ergebnis["vorhersagekraft"] = vorhersagekraft.berechnen(ORDNER)
+    except Exception as e:
+        print("Vorhersagekraft fehlgeschlagen:", repr(e)[:200], file=sys.stderr)
+        ergebnis["vorhersagekraft"] = {"fehler": repr(e)[:200]}
     if not zeilen:  # das Dashboard kann keine leere Datei lesen
         zeilen = [dict(zeitraum="", seit=None, gruppe="noch keine Daten", anzahl=0, schnitt_pct=None, rueckwirkend=False)]
     json.dump(ergebnis, open("data/trefferquote.json", "w"), ensure_ascii=False, indent=1)
