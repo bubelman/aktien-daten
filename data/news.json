@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-18T07:05:00+01:00",
+ "stand": "2026-11-18T20:54:51+01:00",
  "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
  "aktien": {
   "NVDA": {
@@ -15,14 +15,14 @@
    "von": "News-Agenten"
   },
   "UCG.MI": {
-   "urteil": "positiv",
-   "kurz": "Rekordquartal und Gewinnziel angehoben",
-   "grund": "Am 09.11.2026 meldete UniCredit für Q3 3,3 Mrd. Euro Nettogewinn (+24 %), über den Erwartungen. Das Gewinnziel 2026 stieg auf deutlich über 11,5 Mrd. Euro.",
+   "urteil": "neutral",
+   "kurz": "Rekordquartal vor Stichtag gemeldet",
+   "grund": "UniCredit hat am 09.11.2026 Q3-Zahlen über den Erwartungen gemeldet und das Gewinnziel 2026 angehoben. Das ist älter als 7 Tage, für den 11.–18.11.2026 gibt es keine neue wichtige Nachricht.",
    "quellen": [
-    "https://forbes.it/2026/11/09/unicredit-trimestrale-record-terzo-trimestre-utili-orcel-commerzbank",
-    "https://en.ilsole24ore.com/art/unicredit-7-per-cent-94-billion-in-nine-month-profit-and-24-per-cent-in-q3-above-expectations-AJg2bw9B"
+    "https://www.newsquawk.com/headlines/unicredit-ucg-im-q3-2026-eur-revenue-690bln-exp-647bln-net-profit-326bln-exp-278bln-raises-fy26-net-profit-guidance-to-well-above-1150bln-prev-guided-well-above-11bln",
+    "https://forbes.it/2026/11/09/unicredit-trimestrale-record-terzo-trimestre-utili-orcel-commerzbank"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "SAP": {
@@ -82,62 +82,62 @@
   },
   "SEZL": {
    "urteil": "neutral",
-   "kurz": "Starke Q3-Zahlen vor dem Zeitraum",
-   "grund": "Die starken Q3-Zahlen mit angehobenem Ausblick kamen am 04.11.2026, also vor dem 7-Tage-Fenster. Seitdem nichts Wichtiges.",
+   "kurz": "Q3-Beat am 4. November",
+   "grund": "Sezzle hat am 04.11.2026 Q3-Zahlen deutlich über den Erwartungen gemeldet und die Prognose angehoben. Das war vor dem Zeitraum, für den 11.–18.11.2026 gibt es nichts Neues.",
    "quellen": [
-    "https://stocktwits.com/news-articles/markets/equity/why-is-sezl-stock-surging-28-overnight/cNG1b40R9EP"
+    "https://finviz.com/news/415777/sezzle-reports-third-quarter-2026-results"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "QNST": {
    "urteil": "neutral",
-   "kurz": "Q1-Zahlen vor dem Zeitraum",
-   "grund": "Zahlen über Erwartung und angehobener Ausblick kamen am 04.11.2026, vor dem 7-Tage-Fenster. Seitdem nichts Wichtiges.",
+   "kurz": "Nur Konferenzteilnahme angekündigt",
+   "grund": "Die starken Q1-Zahlen kamen am 04.11.2026, also vor dem Zeitraum. Im Zeitraum gab es nur die Ankündigung der Teilnahme an der Stephens-Konferenz.",
    "quellen": [
-    "https://finviz.com/news/416480/quinstreet-crushes-q1-expectations-as-auto-insurance-accelerates-again-but-a-measured-raise-and-seasonal-q2-guide-temper-the-upside"
+    "https://finviz.com/news/423193/quinstreet-to-participate-at-stephens-annual-investment-conference"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "PRGS": {
    "urteil": "neutral",
-   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
-   "grund": "Vom 09. bis 16.11.2026 keine wichtigen Meldungen. Die Domo-Übernahme wurde am 22.09.2026 abgeschlossen.",
+   "kurz": "Keine wichtigen Nachrichten gefunden",
+   "grund": "Für den 11.–18.11.2026 gibt es keine wesentlichen Meldungen. Die Domo-Übernahme wurde schon früher abgeschlossen.",
    "quellen": [
-    "https://www.domo.com/news/press/progress-software-completes-acquisition-of-domos-ai-and-data-platform-business"
+    "https://finviz.com/news/394447/progress-software-completes-acquisition-of-domos-ai-and-data-platform-business"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "JAZZ": {
    "urteil": "neutral",
-   "kurz": "Q3 und Prognoseanhebung vor dem Zeitraum",
-   "grund": "Q3-Zahlen mit angehobener Prognose kamen am 02.11.2026. Seitdem nur Konferenz-Ankündigungen.",
+   "kurz": "Q3 und Prognose vor Zeitraum",
+   "grund": "Jazz hat am 02.11.2026 Q3-Zahlen gemeldet und die Umsatzprognose angehoben. Für den 11.–18.11.2026 gibt es keine wichtige neue Nachricht.",
    "quellen": [
     "https://finviz.com/news/414811/jazz-pharmaceuticals-to-participate-in-upcoming-investor-conferences"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "NBIX": {
    "urteil": "neutral",
-   "kurz": "Nur Konferenz- und Kongressauftritte",
-   "grund": "Vom 09. bis 16.11.2026 nur Ankündigungen von Kongress- und Konferenzauftritten. Q3-Zahlen kamen vorher.",
+   "kurz": "Nur Konferenzauftritte angekündigt",
+   "grund": "Die Q3-Zahlen kamen am 02.11.2026, vor dem Zeitraum. Im Zeitraum gab es nur Ankündigungen von Konferenzauftritten, etwa bei Jefferies.",
    "quellen": [
     "https://finviz.com/news/420450/neurocrine-biosciences-to-present-at-the-2026-jefferies-global-healthcare-conference"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "CNX": {
    "urteil": "neutral",
-   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
-   "grund": "Letzte Mitteilung waren die Q3-Zahlen vom 29.10.2026. Vom 09. bis 16.11.2026 nichts Wichtiges.",
+   "kurz": "Keine wichtigen Nachrichten gefunden",
+   "grund": "Die Q3-Zahlen kamen am 30.10.2026. Für den 11.–18.11.2026 gibt es nichts Wesentliches.",
    "quellen": [
-    "https://investors.cnx.com"
+    "https://www.webull.com/news/15639705115362304"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "HTWS.L": {
@@ -152,32 +152,32 @@
   },
   "XYZ": {
    "urteil": "neutral",
-   "kurz": "Q3-Beat vor dem Zeitraum",
-   "grund": "Bessere Q3-Zahlen und höherer Ausblick kamen am 03.11.2026, vor dem 7-Tage-Fenster. Seitdem nichts Wichtiges.",
+   "kurz": "Q3 und DOJ-Vergleich vor Zeitraum",
+   "grund": "Block hat am 04.11.2026 den Gewinnausblick angehoben und einen vorläufigen Vergleich mit dem US-Justizministerium erreicht. Im Zeitraum 11.–18.11.2026 gibt es nichts Wesentliches.",
    "quellen": [
-    "https://siliconangle.com/2026/11/03/block-shares-rise-after-third-quarter-beat-and-a-third-straight-guidance-raise/"
+    "https://www.thestar.com.my/tech/tech-news/2026/11/04/block-lifts-profit-outlook-on-cash-app-strength-reaches-preliminary-doj-settlement"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "YOU": {
    "urteil": "neutral",
-   "kurz": "Q3-Zahlen vor dem Zeitraum",
-   "grund": "Q3-Zahlen kamen am 04.11.2026, vor dem 7-Tage-Fenster. Seitdem nichts Wichtiges.",
+   "kurz": "Q3-Beat vor dem Zeitraum",
+   "grund": "Clear hat am 04.11.2026 starke Q3-Zahlen gemeldet. Im Zeitraum 11.–18.11.2026 gibt es nichts Neues.",
    "quellen": [
     "https://finviz.com/news/415116/clear-announces-third-quarter-2026-financial-results"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "EPAC": {
    "urteil": "neutral",
-   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
-   "grund": "Der Investor Day war am 04.11.2026, vor dem 7-Tage-Fenster. Vom 09. bis 16.11.2026 nichts Wichtiges.",
+   "kurz": "Investor Day vor dem Zeitraum",
+   "grund": "Den Investor Day mit Zielen bis 2030 gab es am 04.11.2026. Im Zeitraum kam nur die Ankündigung eines Auftritts bei der Baird-Konferenz.",
    "quellen": [
-    "https://finviz.com/news/415141/enerpac-tool-group-hosts-2026-investor-day-introduces-propel-strategy-and-fiscal-2030-targets"
+    "https://finviz.com/news/419007/enerpac-tool-group-to-present-at-the-baird-global-industrial-conference"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "EQH": {
@@ -243,12 +243,11 @@
   "SONO": {
    "urteil": "neutral",
    "kurz": "Umsatz stark aber Margendruck",
-   "grund": "Am 10.11.2026 lagen Umsatz und Gewinn leicht über den Erwartungen. Dagegen steht eine deutlich niedrigere Margenprognose wegen teurer Speicherchips.",
+   "grund": "Sonos hat am 10.11.2026 leicht bessere Q4-Zahlen gemeldet, warnt für Q1 aber wegen hoher Speicherkosten vor einem starken Rückgang der Bruttomarge. Gute Zahlen und schwacher Ausblick gleichen sich aus.",
    "quellen": [
-    "https://finviz.com/news/420706/sonos-beats-on-accelerating-sales-but-memory-costs-push-gross-margin-toward-a-steep-first-quarter-drop",
-    "https://finviz.com/news/420481/sonos-reports-fourth-quarter-and-fiscal-2026-results"
+    "https://finviz.com/news/420706/sonos-beats-on-accelerating-sales-but-memory-costs-push-gross-margin-toward-a-steep-first-quarter-drop"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "STJ.L": {
@@ -404,12 +403,12 @@
   },
   "CUBI": {
    "urteil": "neutral",
-   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
-   "grund": "Vom 09. bis 16.11.2026 keine wesentliche Meldung. Die Q3-Zahlen kamen Ende Oktober 2026.",
+   "kurz": "Nur Auszeichnung als Arbeitgeber",
+   "grund": "Im Zeitraum gab es nur die Meldung, dass die Customers Bank zu den 2026 Best Banks to Work For gehört.",
    "quellen": [
-    "https://www.mychesco.com/a/news/regional/customers-bancorp-posts-78-4-million-profit-as-lending-grows/"
+    "https://finviz.com/news/422305/customers-bank-named-one-of-the-2026-best-banks-to-work-for"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "2359.HK": {
@@ -547,12 +546,12 @@
   },
   "CSU.TO": {
    "urteil": "neutral",
-   "kurz": "Keine neuen Nachrichten im Zeitraum",
-   "grund": "Die Q3-Zahlen kamen um den 06.11.2026, vor dem Zeitraum (Gewinn unter Erwartung, Umsatz im Rahmen). Danach keine wesentliche Meldung.",
+   "kurz": "Keine wichtigen Nachrichten gefunden",
+   "grund": "Die Q3-Zahlen kamen am 06.11.2026, vor dem Zeitraum. Für den 11.–18.11.2026 gibt es keine wesentliche Meldung.",
    "quellen": [
-    "https://www.zacks.com/stock/news/3025948/constellation-software-inc-cnswf-lags-q3-earnings-estimates"
+    "https://www.morningstar.com/news/dow-jones/2026110612836/constellation-software-reports-higher-3q-profit-boosted-by-acquisitions"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "EGBN": {
@@ -932,12 +931,12 @@
   },
   "4568.T": {
    "urteil": "neutral",
-   "kurz": "Forschungskooperation mit iDEL Therapeutics",
-   "grund": "Am 09.11.2026 meldete iDEL Therapeutics eine Forschungskooperation mit Daiichi Sankyo. Nicht kursrelevant.",
+   "kurz": "EU-Zulassung Enhertu vor Zeitraum",
+   "grund": "Die EU-Zulassung von Enhertu und eine Meilensteinzahlung von AstraZeneca wurden um den 10.11.2026 gemeldet. Die Jahresprognose bleibt bestätigt.",
    "quellen": [
-    "https://globenewswire.com/news-release/2026/11/09/3398086/0/en/idel-therapeutics-enters-global-research-collaboration-with-daiichi-sankyo-to-develop-multi-drug-conjugate-with-targeted-cytosolic-delivery-into-solid-tumor-cells.html"
+    "https://www.webull.com/news/15897324524269568"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   },
   "VIK": {
@@ -1500,6 +1499,16 @@
     "https://cruiseindustrynews.com/cruise-news/2026/11/carnival-unveils-2028-29-port-canaveral-lineup/"
    ],
    "datum": "2026-11-16",
+   "von": "News-Agenten"
+  },
+  "U": {
+   "urteil": "neutral",
+   "kurz": "Kursplus ohne neue Firmennachricht",
+   "grund": "Die starken Q3-Zahlen kamen am 05.11.2026, vor dem Zeitraum. Das Kursplus von 5,2 % am 13.11.2026 kam ohne neue Firmenmeldung.",
+   "quellen": [
+    "https://www.trefis.com/stock/u/articles/625296/why-is-unity-stock-going-up/2026-11-16"
+   ],
+   "datum": "2026-11-18",
    "von": "News-Agenten"
   }
  }
