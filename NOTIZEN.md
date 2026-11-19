@@ -103,6 +103,15 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 19.11.2026 (Nachtschicht 21:41, 2 kleine Hilfs-Agenten zum Lesen von Webseiten): **Fehler behoben: JBS mit KGV 1,6 statt ~9** (Commit 4b75afe).
+  Yahoo nennt Dollar als Berichtswährung, die Jahresschätzungen stehen aber in Real (7,23 statt 1,27 $ für 2027 laut
+  stockanalysis.com/stocks/jbs/forecast/, Stand 22.10.). schaetz_faktor prüft jetzt auch bei gleicher Währung gegen forwardEps
+  (3- bis 20-fach höher, KGV < 3, mit forwardEps 3–60 → „Währung unklar“). Test: nur JBS fällt raus (2692 → 2691), keine Punkte
+  geändert, Feinwert höchstens ±0,1. **PHYS.TO, PSLV.TO gesperrt** (Gold-/Silber-Fonds vom Screener, Commit 71b0f7b). Londoner Fonds
+  (TMPL.L, TRY.L, VEIL.L, WWH.L, TFIF.L) bleiben, bis Levin zu Vorschlag (b) antwortet. Prüfung: Fehlercode 0, "pruefung" leer,
+  kuerzel_verdacht leer, **Morgenabruf 19.11. vollständig** (3056 Aktien, 3050 mit Kurs vom 19.11., nur 2 ohne Grunddaten),
+  2692 bewertet. Alte Kurse: NWE, ITGR (16.11.), BBBY, TCBI, ACT.DE, PCRX (18.11.) – beobachten. ANT: „Gewinn nicht positiv“
+  (Schätzung 2027 −0,12 $), wie erwartet. runs zeigt noch stray_write vom 18.11. 16:55 (vor dem Fix, Seite seitdem nicht geöffnet).
 - 19.11.2026 17:40 (Chat): Anthropic (ANT, Nasdaq, Börsengang 19.11.2026, Ausgabepreis 83 $) auf Levins Wunsch in tickers.txt und config/meine aufgenommen. Neu an der Börse: wenig Kursverlauf und evtl. noch keine Analystenschätzungen – kann anfangs „nicht bewertet“ sein.
 - 18.11.2026 (Nachtschicht 21:41, Budget 7 %, 2 Agenten): **A10 Teil 3 erledigt** (Commit 2db5d80): vorhersagekraft.py misst den
   Information Coefficient (Rangkorrelation Punkte/Feinwert ↔ Kursänderung nach 1 und 5 Börsentagen) und die Rendite je Fünftel, getrennt
@@ -263,7 +272,9 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 - NVDA: 18.11.2026 – Kurs 155,46 $ (Schluss 17.11.) passt zu fool.com. Kursziel-Median Yahoo jetzt 255 $ (Mittel 268 $, 54 Analysten),
   Gewinn FY2028 15,84 $ (noch vor den Zahlen). Nach den Zahlen neu prüfen.
 - AVGO: 19.11.2026 – Kursziel-Durchschnitt Yahoo 528 $ (47 Analysten) / tikr.com 533 $ (https://www.tikr.com/blog/is-rothschild-co-redburn-wrong-to-give-up-on-broadcom-wall-street-still-sees-533) → passt (−1 %).
-- Als Nächstes: NVDA (Schätzungen nach den Zahlen; Yahoo FY2028 noch 15,86 $), dann SAP.
+- NVDA: 19.11.2026 – Yahoo nach den Zahlen: Gewinn FY2028 16,54 $ (vorher 15,84), Kursziel-Median 245 $ (55 Analysten), Kurs 147,51 $.
+  Zweite Quelle nicht erreichbar (chartmill gesperrt, Twelve Data nur im teuren Tarif) → noch offen.
+- Als Nächstes: NVDA zweite Quelle (z. B. stockanalysis.com/stocks/nvda/forecast/), dann SAP.
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
