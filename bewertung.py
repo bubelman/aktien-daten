@@ -190,9 +190,17 @@ def schaetz_faktor(y, e1, f):
     Berichtswährung (z. B. SAP-ADR in Dollar, ASML-ADR in Euro, PDD in Yuan). Yahoos forwardEps ist immer
     in der Kurswährung. Darum: Passt die Schätzung schon zu forwardEps, wird nicht umgerechnet (Faktor 1);
     passt sie erst nach Umrechnung, wird umgerechnet; passt keins von beiden auf 25 % genau: unklar (None)."""
-    if f == 1.0:
-        return 1.0
     fe = y.get("eps_forward")
+    if f == 1.0:
+        # Gegenprobe (Fehler gefunden 19.11.2026): JBS meldet bei Yahoo Dollar als Berichtswährung, die
+        # Jahresschätzungen stehen aber in Real (7,23 statt 1,27 $ laut stockanalysis.com) → KGV 1,6 statt ~9.
+        # Ist die Jahresschätzung 3- bis 20-mal so hoch wie forwardEps, das KGV damit unter 3, mit forwardEps aber
+        # normal (3–60): Währung unklar, Aktie fällt raus statt mit falschen Zahlen bewertet zu werden.
+        kurs = y.get("kurs")
+        if fe and e1 and kurs and fe > 0 and e1 > 0 and 3 <= e1 / fe <= 20 \
+                and kurs / e1 < 3 and 3 <= kurs / fe <= 60:
+            return None
+        return 1.0
     if not fe or not e1 or fe <= 0 or e1 <= 0:
         return f  # kein Vergleich möglich: wie bisher umrechnen
     if y.get("waehrung") in ("GBp", "GBX") and f > 20 and fe * 100 / e1 > 0:
