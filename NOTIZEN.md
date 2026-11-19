@@ -103,6 +103,7 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 19.11.2026 17:40 (Chat): Anthropic (ANT, Nasdaq, Börsengang 19.11.2026, Ausgabepreis 83 $) auf Levins Wunsch in tickers.txt und config/meine aufgenommen. Neu an der Börse: wenig Kursverlauf und evtl. noch keine Analystenschätzungen – kann anfangs „nicht bewertet“ sein.
 - 18.11.2026 (Nachtschicht 21:41, Budget 7 %, 2 Agenten): **A10 Teil 3 erledigt** (Commit 2db5d80): vorhersagekraft.py misst den
   Information Coefficient (Rangkorrelation Punkte/Feinwert ↔ Kursänderung nach 1 und 5 Börsentagen) und die Rendite je Fünftel, getrennt
   „rückwirkend“ (bis 13.11.) und „echt“ (ab 15.11.); nur Standardbibliothek (schnappschuss.yml installiert keine Pakete), gegen alphalens
