@@ -226,6 +226,13 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   Nach dem Grunddaten-Abruf (21:10 UTC): alle 23 neuen Aktien mit Daten, 22 bewertet (2141 → 2163; ALO.PA „Wachstum 664 %
   unplausibel“), kuerzel_verdacht leer; alle 46 ETFs gültig, Datensatz etfs von Hand neu hochgeladen. "runs" zeigt noch den alten
   Stand (Seite seit dem Upload nicht geöffnet) → Aufpasser/nächster Lauf prüft, ob stray_write weg ist.
+- 19.11.2026 (Nachtschicht 3:41, ohne Agenten): **Kioxia (285A.T) Datenfehler behoben**: Aktiensplit 3:1 (newsquawk), Yahoo-Kurs schon
+  nach dem Split (8.025 ¥), Kursziel (35.850 ¥) und Gewinnschätzungen noch davor → KGV 1,6, Abstand +541 %, 6 Punkte (falsch).
+  bewertung.py: Liste SPLIT_NOCH_ALT – Aktie fällt raus, solange Kursziel > 75 % des Split-Faktors über dem Kurs (kommt von selbst
+  zurück, wenn Yahoo anpasst). Test: nur 285A.T fehlt (2437 → 2436), keine Punkte geändert, pruefung leer.
+  Offen: 160 Kürzel ohne Grunddaten (150 vom Screener 18.11., 10 vom 17.11.) – Ursache: Morgenabruf 18.11. leer. Lauf 21:41: prüfen, ob
+  der Morgenabruf 19.11. sie gefüllt hat; Fonds (PHYS.TO, TMPL.L, TRY.L, VEIL.L, WWH.L, TFIF.L) dann sperren. Idee: Split automatisch
+  erkennen (yfinance-Splits im Grunddaten-Abruf, Kursziel/Kurs ≈ Faktor).
 - 16.11.2026 19:15 Aufpasser: alles läuft (Kurse, Grunddaten, News, Dashboard 18:35, Programm ok). stray_write noch da → A5.4 offen.
 - 17.11.2026 09:13 Aufpasser: Kurse, Grunddaten, Dashboard (07:34) ok. Schnappschuss-Datum falsch → A8; Prüfung 0881.HK → A9. News ohne neuen Stand (Sparmodus, nichts fällig).
 - 17.11.2026 13:16 Aufpasser: Kurse-Schleife lief Di nicht (letzter Kurse-Commit Mo 21:18 UTC, alle Starthilfen ab 4:43 UTC fehlten). Von Hand gestartet (Lauf 44081738530). Dashboard 10:36, Grunddaten ok. A9 und stray_write (A5.4) weiter offen.
@@ -252,7 +259,8 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   bereinigt 1,73 € gegen IFRS 1,15 €) und veraltet (02.10.). Bekannte Grenze „bereinigt“.
 - NVDA: 18.11.2026 – Kurs 155,46 $ (Schluss 17.11.) passt zu fool.com. Kursziel-Median Yahoo jetzt 255 $ (Mittel 268 $, 54 Analysten),
   Gewinn FY2028 15,84 $ (noch vor den Zahlen). Nach den Zahlen neu prüfen.
-- Als Nächstes: AVGO, dann NVDA (Schätzungen nach den Zahlen).
+- AVGO: 19.11.2026 – Kursziel-Durchschnitt Yahoo 528 $ (47 Analysten) / tikr.com 533 $ (https://www.tikr.com/blog/is-rothschild-co-redburn-wrong-to-give-up-on-broadcom-wall-street-still-sees-533) → passt (−1 %).
+- Als Nächstes: NVDA (Schätzungen nach den Zahlen; Yahoo FY2028 noch 15,86 $), dann SAP.
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 

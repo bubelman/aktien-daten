@@ -27,6 +27,12 @@ TOP_MAX = 5
 BEOBACHTEN_MAX = 10
 PRO_BRANCHE = 2
 ZYKLIKER = {"MU", "SNDK", "WDC", "STX", "SKHY"}
+# Aktiensplits, bei denen Yahoo Kursziel und Gewinnschätzungen noch nicht angepasst hat (Kurs schon nach dem Split).
+# Die Aktie fällt raus, solange das Kursziel mehr als 75 % des Split-Faktors über dem Kurs liegt; passt Yahoo die
+# Daten an, wird sie automatisch wieder bewertet. Kürzel: (Faktor, Quelle)
+SPLIT_NOCH_ALT = {
+    "285A.T": (3, "https://www.newsquawk.com/headlines/kioxia-285a-jt-q1-jpy-net-profit-84217bln-exp-9736bln-revenue-177tln-prev-3428bln-yy-announces-a-3-for-1-stock-split-and-announces-a-share-buyback"),
+}
 SPY_STUECK = 14.7752  # Vergleichsdepot, gekauft am 30.10.2026 zu 755,25 $ bei 1 € = 1,11601 $
 SPY_START = round(SPY_STUECK * 755.25 / 1.11601, 2)  # tatsächlicher Startwert (9.998,99 €, Stück gerundet)
 NAMEN = {'MC.PA': 'LVMH', 'ITX.MC': 'Inditex', 'BMW.DE': 'BMW', 'BBVA.MC': 'BBVA', 'SAN.MC': 'Banco Santander', 'BNP.PA': 'BNP Paribas', 'OR.PA': "L'Oréal", 'RMS.PA': 'Hermès', 'DG.PA': 'Vinci', 'SU.PA': 'Schneider Electric', 'AI.PA': 'Air Liquide', 'EL.PA': 'EssilorLuxottica', 'CS.PA': 'AXA', 'RI.PA': 'Pernod Ricard', 'BN.PA': 'Danone', 'SAF.PA': 'Safran', 'SGO.PA': 'Saint-Gobain', 'ACA.PA': 'Crédit Agricole', 'HO.PA': 'Thales', 'AM.PA': 'Dassault Aviation', 'DSY.PA': 'Dassault Systèmes', 'STMPA.PA': 'STMicroelectronics', 'IBE.MC': 'Iberdrola', 'MUV2.DE': 'Munich Re', 'DB1.DE': 'Deutsche Börse', 'DTE.DE': 'Deutsche Telekom', 'DBK.DE': 'Deutsche Bank', 'HNR1.DE': 'Hannover Rück', 'SRT3.DE': 'Sartorius', 'FME.DE': 'Fresenius Medical Care', 'SHL.DE': 'Siemens Healthineers', 'ENR.DE': 'Siemens Energy', 'P911.DE': 'Porsche', 'VOW3.DE': 'Volkswagen', 'G1A.DE': 'GEA', 'MTX.DE': 'MTU Aero Engines', 'HEI.DE': 'Heidelberg Materials', 'AD.AS': 'Ahold Delhaize', 'PRX.AS': 'Prosus', 'INGA.AS': 'ING', 'WKL.AS': 'Wolters Kluwer', 'ASM.AS': 'ASM International', 'BESI.AS': 'BE Semiconductor', 'KNEBV.HE': 'Kone', 'ENEL.MI': 'Enel', 'ISP.MI': 'Intesa Sanpaolo', 'ENI.MI': 'Eni', 'TTE.PA': 'TotalEnergies', 'ORA.PA': 'Orange', 'VIE.PA': 'Veolia', 'ENGI.PA': 'Engie', 'KER.PA': 'Kering', 'CAP.PA': 'Capgemini', 'AIR.PA': 'Airbus', 'ADS.DE': 'Adidas', 'BAS.DE': 'BASF', 'BAYN.DE': 'Bayer', 'BEI.DE': 'Beiersdorf', 'BNR.DE': 'Brenntag', 'CBK.DE': 'Commerzbank', 'CON.DE': 'Continental', 'DTG.DE': 'Daimler Truck', 'DHL.DE': 'DHL Group', 'EOAN.DE': 'E.ON', 'FRE.DE': 'Fresenius', 'HEN3.DE': 'Henkel', 'IFX.DE': 'Infineon', 'MBG.DE': 'Mercedes-Benz', 'MRK.DE': 'Merck KGaA', 'QIA.DE': 'Qiagen', 'RHM.DE': 'Rheinmetall', 'RWE.DE': 'RWE', 'SIE.DE': 'Siemens', 'SY1.DE': 'Symrise', 'VNA.DE': 'Vonovia', 'ZAL.DE': 'Zalando', 'HAG.DE': 'Hensoldt', 'ALV.DE': 'Allianz', 'UCG.MI': 'UniCredit', 'STLAM.MI': 'Stellantis', 'ADYEN.AS': 'Adyen', 'HEIA.AS': 'Heineken', 'NOKIA.HE': 'Nokia', 'UCB.BR': 'UCB', 'BRK-B': 'Berkshire Hathaway', 'PBR': 'Petrobras', 'LLY': 'Eli Lilly', 'TRV': 'Travelers', 'FWONK': 'Liberty Formula One', 'SLR.MC': 'Solaria', 'STMN.SW': 'Straumann', 'G24.DE': 'Scout24', 'CCH.L': 'Coca-Cola HBC', 'NSIS-B.CO': 'Novonesis', 'ENT.L': 'Entain', 'LONN.SW': 'Lonza', 'TKA.DE': 'Thyssenkrupp', 'MRL.MC': 'Merlin Properties', 'TPRO.MI': 'Technoprobe', 'NG.L': 'National Grid', 'ICG.L': 'ICG', 'SYENS.BR': 'Syensqo', 'ADP.PA': 'Groupe ADP', 'IMCD.AS': 'IMCD', 'SPIE.PA': 'SPIE', 'DT': 'Dynatrace', 'LPLA': 'LPL Financial', 'TRU': 'TransUnion', 'BF-B': 'Brown-Forman', 'GOOGL': 'Alphabet'}  # feste Kurznamen, vor allem für Euro-Aktien
@@ -418,6 +424,8 @@ def bewerte(y, fx, alt_by, heute=None):
         return None, "kein Kurs"
     if not ziel:
         return None, "kein Kursziel"
+    if t in SPLIT_NOCH_ALT and ziel / kurs > SPLIT_NOCH_ALT[t][0] * 0.75:
+        return None, f"Aktiensplit {SPLIT_NOCH_ALT[t][0]}:1 – Kursziel und Schätzungen bei Yahoo noch vor dem Split"
     if not e0 or not e1 or f is None:
         return None, "keine Gewinnschätzung"
     q = fx_von(y, fx)
