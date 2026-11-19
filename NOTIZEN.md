@@ -110,7 +110,7 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   geändert, Feinwert höchstens ±0,1. **PHYS.TO, PSLV.TO gesperrt** (Gold-/Silber-Fonds vom Screener, Commit 71b0f7b). Londoner Fonds
   (TMPL.L, TRY.L, VEIL.L, WWH.L, TFIF.L) bleiben, bis Levin zu Vorschlag (b) antwortet. Prüfung: Fehlercode 0, "pruefung" leer,
   kuerzel_verdacht leer, **Morgenabruf 19.11. vollständig** (3056 Aktien, 3050 mit Kurs vom 19.11., nur 2 ohne Grunddaten),
-  2692 bewertet. Alte Kurse: NWE, ITGR (16.11.), BBBY, TCBI, ACT.DE, PCRX (18.11.) – beobachten. ANT: „Gewinn nicht positiv“
+  2691 bewertet (mit Fix). Alte Kurse: NWE, ITGR (16.11.), BBBY, TCBI, ACT.DE, PCRX (18.11.) – beobachten. ANT: „Gewinn nicht positiv“
   (Schätzung 2027 −0,12 $), wie erwartet. runs zeigt noch stray_write vom 18.11. 16:55 (vor dem Fix, Seite seitdem nicht geöffnet).
 - 19.11.2026 17:40 (Chat): Anthropic (ANT, Nasdaq, Börsengang 19.11.2026, Ausgabepreis 83 $) auf Levins Wunsch in tickers.txt und config/meine aufgenommen. Neu an der Börse: wenig Kursverlauf und evtl. noch keine Analystenschätzungen – kann anfangs „nicht bewertet“ sein.
 - 18.11.2026 (Nachtschicht 21:41, Budget 7 %, 2 Agenten): **A10 Teil 3 erledigt** (Commit 2db5d80): vorhersagekraft.py misst den
