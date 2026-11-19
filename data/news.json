@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-18T20:54:51+01:00",
+ "stand": "2026-11-19T06:52:19+01:00",
  "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
  "aktien": {
   "NVDA": {
@@ -193,11 +193,11 @@
   "KTB": {
    "urteil": "neutral",
    "kurz": "Q3-Zahlen vor dem Zeitraum",
-   "grund": "Q3-Zahlen mit höherer Gewinnprognose kamen am 05.11.2026, vor dem 7-Tage-Fenster. Seitdem nichts Wichtiges.",
+   "grund": "Q3-Zahlen mit höherem Ausblick und 450 Mio. Dollar Rückkauf kamen am 05.11.2026, also vor dem 7-Tage-Zeitraum. Seitdem keine wichtige neue Meldung.",
    "quellen": [
-    "https://finviz.com/news/417349/kontoor-brands-beats-and-raises-eps-but-wrangler-slowdown-cash-flow-cut-and-a-softer-2027-floor-complicate-the-post-lee-story"
+    "https://finviz.com/news/416667/kontoor-brands-reports-2026-third-quarter-results-and-strengthens-earnings-outlook-expects-to-repurchase-450-million-of-shares-following-the-successful-completion-of-the-divestiture-of-lee-provides-initial-2027-outlook"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-19",
    "von": "News-Agenten"
   },
   "CORT": {
@@ -1509,6 +1509,17 @@
     "https://www.trefis.com/stock/u/articles/625296/why-is-unity-stock-going-up/2026-11-16"
    ],
    "datum": "2026-11-18",
+   "von": "News-Agenten"
+  },
+  "3808.HK": {
+   "urteil": "neutral",
+   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
+   "grund": "In den letzten 7 Tagen (12.–19.11.2026) keine wesentliche Firmenmeldung gefunden. Die Schließung der Tochter Sinotruk Finance ab 10.11. ist älter und klein.",
+   "quellen": [
+    "https://hk.marketscreener.com/quote/stock/SINOTRUK-HONG-KONG-LIMITE-6171041/",
+    "https://www.etnet.com.hk/mobile/tc/stocks/quote_news.php?code=03808"
+   ],
+   "datum": "2026-11-19",
    "von": "News-Agenten"
   }
  }
