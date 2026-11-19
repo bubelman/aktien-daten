@@ -15,3 +15,5 @@ VAS.AX 15.11.2026 ETF (Vanguard Australian Shares), keine Aktie
 NYR.BR 15.11.2026 Nyrstar: bei Yahoo weder Börsenwert noch Schätzungen
 INDV 15.11.2026 Indivior mit Supernus fusioniert (02.11.2026), Firma läuft als SUPN (schon in der Liste) – finviz.com/news/413321
 LXP 15.11.2026 Übernahme durch Brookfield/CPP abgeschlossen (02.11.2026), nicht mehr gehandelt – finviz.com/news/412967
+PHYS.TO 19.11.2026 Sprott Physical Gold Trust – Gold-Fonds, keine Aktie (vom Screener)
+PSLV.TO 19.11.2026 Sprott Physical Silver Trust – Silber-Fonds, keine Aktie (vom Screener)
