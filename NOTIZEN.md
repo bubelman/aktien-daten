@@ -103,6 +103,13 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 20.11.2026 (Nachtschicht 3:41, ohne Agenten): **NWE und ITGR entfernt** (seit 16.11. ohne Kurs): NorthWestern ist mit Black Hills zu
+  Bright Horizon Energy verschmolzen (16.11., wowt.com), Integer von KKR übernommen (biopharmawatch.com). Nachfolger **HZN** (Bright Horizon
+  Energy, laut upstox.com/us-stocks/hzn-share-price/ und panabee.com) aufgenommen – nach dem Grunddaten-Abruf prüfen, ob Yahoo Daten liefert.
+  Prüfung: Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer, 2691 bewertet, 362 ausgefallen (147 ohne Gewinn, 88 ohne Kursziel).
+  Daten: US-Schluss 19.11. da (3048 von 3054 mit Stand 19.11.; BBBY, TCBI, ACT.DE, PCRX Stand 18.11. – beobachten). Commit „Daten (Morgenlauf)
+  22:19 UTC“ war nur der Grunddaten-Lauf nach dem Push von tickers.txt (Grunddaten schon da → nur Kurse), kein Fehler. Levins Aktien: keine Zahlen
+  am Vorabend, nächste: AVGO 09.12. ANT (Börsengang 19.11., Schluss 97,17 $) noch nicht bewertet (Gewinnschätzung 2027 −0,12 $).
 - 19.11.2026 (Nachtschicht 21:41, 2 kleine Hilfs-Agenten zum Lesen von Webseiten): **Fehler behoben: JBS mit KGV 1,6 statt ~9** (Commit 4b75afe).
   Yahoo nennt Dollar als Berichtswährung, die Jahresschätzungen stehen aber in Real (7,23 statt 1,27 $ für 2027 laut
   stockanalysis.com/stocks/jbs/forecast/, Stand 22.10.). schaetz_faktor prüft jetzt auch bei gleicher Währung gegen forwardEps

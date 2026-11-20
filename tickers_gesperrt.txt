@@ -17,3 +17,5 @@ INDV 15.11.2026 Indivior mit Supernus fusioniert (02.11.2026), Firma läuft als 
 LXP 15.11.2026 Übernahme durch Brookfield/CPP abgeschlossen (02.11.2026), nicht mehr gehandelt – finviz.com/news/412967
 PHYS.TO 19.11.2026 Sprott Physical Gold Trust – Gold-Fonds, keine Aktie (vom Screener)
 PSLV.TO 19.11.2026 Sprott Physical Silver Trust – Silber-Fonds, keine Aktie (vom Screener)
+NWE 20.11.2026 Fusion mit Black Hills zu Bright Horizon Energy (HZN) abgeschlossen (16.11.2026), nicht mehr gehandelt – wowt.com/2026/11/16/black-hills-northwestern-energy-complete-merger-bright-horizon-energy/
+ITGR 20.11.2026 Übernahme durch KKR abgeschlossen, nicht mehr gehandelt – biopharmawatch.com/news/ITGR/integer-completes-acquisition-kkr
