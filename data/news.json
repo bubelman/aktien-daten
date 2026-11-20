@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-20T07:00:00+01:00",
+ "stand": "2026-11-20T21:00:00+01:00",
  "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
  "aktien": {
   "NVDA": {
@@ -485,14 +485,13 @@
    "von": "News-Agenten"
   },
   "REZI": {
-   "urteil": "positiv",
-   "kurz": "Q3 klar besser Prognose angehoben",
-   "grund": "Am 10.11.2026 meldete Resideo für Q3 bereinigt 0,52 $ je Aktie, deutlich über dem Konsens von 0,45 $, und hob die Jahresprognose leicht an. Die Aktie stieg am 11.11. um rund 18 %.",
+   "urteil": "neutral",
+   "kurz": "Q3-Zahlen vor dem Zeitraum",
+   "grund": "Die Q3-Zahlen samt neuem Ausblick kamen am 10.11.2026, also vor mehr als 7 Tagen. Seitdem keine wichtige neue Meldung gefunden.",
    "quellen": [
-    "https://finviz.com/news/420761/resideo-tops-estimates-in-first-post-spin-quarter-but-inflation-and-a-soft-q4-guide-temper-the-clean-beat",
     "https://finviz.com/news/420488/resideo-announces-third-quarter-2026-financial-results-and-updates-2026-outlook"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-20",
    "von": "News-Agenten"
   },
   "LNC": {
@@ -1531,6 +1530,16 @@
     "https://www.advantest.com/en/news/2026/20261112.html"
    ],
    "datum": "2026-11-19",
+   "von": "News-Agenten"
+  },
+  "YMM": {
+   "urteil": "neutral",
+   "kurz": "Q3 Gewinn stark Ausblick flach",
+   "grund": "Am 19.11.2026 meldete Full Truck Alliance für Q3 6,8 % mehr Umsatz und 49 % mehr Nettogewinn. Für Q4 erwartet die Firma nur 0 bis 3,1 % Umsatzwachstum.",
+   "quellen": [
+    "https://www.stocktitan.net/news/YMM/full-truck-alliance-co-ltd-announces-third-quarter-2026-unaudited-ddkm3frwq3x5.html"
+   ],
+   "datum": "2026-11-20",
    "von": "News-Agenten"
   }
  }
