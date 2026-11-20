@@ -1,73 +1,24 @@
 {
- "stand": "2026-11-19T12:10:00+01:00",
+ "stand": "2026-11-20T12:20:00+01:00",
  "hinweis": "Aktien mit viel Aufmerksamkeit (Aktien-Scout). Gibt KEINE Punkte, nur eine Markierung im Dashboard. Gilt 3 Tage ab datum und nur mit Quelle. Felder je Aktie: grund (1 Satz), quellen (URLs), datum, staerke (1-3), von.",
  "aktien": {
-  "APP": {
-   "grund": "+46 % in einem Monat nach Rekord-Quartal (Umsatz +55 %), Kurs sprang nach den Zahlen um rund 25 %.",
-   "quellen": [
-    "https://stockstory.org/us/stocks/nasdaq/app/news/earnings/applovin-nasdaqapp-delivers-strong-q3-2026-numbers-stock-jumps-249percent",
-    "https://stocktwits.com/news-articles/markets/equity/why-app-stock-soaring-today-q3-earnings-ai-advertising/cNG1cUMR9EJ"
-   ],
-   "datum": "2026-11-16",
-   "staerke": 3,
-   "von": "Aktien-Scout"
-  },
-  "LQDA": {
-   "grund": "+65 % in einem Monat, Rekordumsatz mit dem Mittel Yutrepia.",
-   "quellen": [
-    "https://kalkine.ca/news/healthcare/what-drove-liquidia-nasdaqlqda-up-6479-in-a-month-after-a-court-setback",
-    "https://simplywall.st/stocks/us/pharmaceuticals-biotech/nasdaq-lqda/liquidia/news/liquidia-lqda-is-up-177-after-yutrepia-drives-record-revenue"
-   ],
-   "datum": "2026-11-16",
-   "staerke": 2,
-   "von": "Aktien-Scout"
-  },
-  "GMAB.CO": {
-   "grund": "+41 % in einem Monat; am 03.11. rund +48 % nach starker Studie zum Krebsmittel Petosemtamab.",
-   "quellen": [
-    "https://www.newsbytesapp.com/news/business/genmab-rises-48-after-petosemtamab-halves-death-risk-with-keytruda/tldr",
-    "https://stocktwits.com/news-articles/markets/equity/gmab-stock-hits-all-time-high-after-genmab-cancer-drug-trial-meets-primary-goals/cZU9Nu2R9Gh"
-   ],
-   "datum": "2026-11-16",
-   "staerke": 2,
-   "von": "Aktien-Scout"
-  },
   "AMD": {
-   "grund": "+5,3 % am 18.11.2026 nach Nvidias Ausblick und abgeschlossenem Kauf von Taalas (2,9 Mrd. $), unter den meistgehandelten US-Aktien.",
+   "grund": "−8,5 % am 19.11. nach einer Leerverkaufs-Wette von Hunterbrook; bei AltIndex unter den meistbeachteten Aktien.",
    "quellen": [
-    "https://cappnotes.substack.com/p/closing-look-wednesday-november-18",
-    "https://stockmarketwatch.com/movers/today"
+    "https://www.stocktitan.net/articles/stock-market-today-live-november-19-2026",
+    "https://altindex.com/trending-stocks"
    ],
-   "datum": "2026-11-19",
-   "staerke": 2,
-   "von": "Aktien-Scout"
-  },
-  "CRWV": {
-   "grund": "Rund +14,5 % in der Woche bis 13.11. nach starken Zahlen, Auftragsbestand fast 133 Mrd. $.",
-   "quellen": [
-    "https://www.alainguillot.com/weekly-stock-market-recap-november-9-13-2026/"
-   ],
-   "datum": "2026-11-16",
-   "staerke": 2,
-   "von": "Aktien-Scout"
-  },
-  "GKOS": {
-   "grund": "+48 % in einem Monat; am 29.10. rund +26 % nach Rekordquartal (Umsatz +58 %) und Umsatzziel 1 Mrd. $ für 2027.",
-   "quellen": [
-    "https://www.tikr.com/blog/glaukos-soars-26-on-exceptional-quarter-and-1-billion-2027-sales-outlook",
-    "https://www.itiger.com/news/1194264940"
-   ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-20",
    "staerke": 2,
    "von": "Aktien-Scout"
   },
   "ANT": {
-   "grund": "Börsengang von Anthropic an der Nasdaq, Handel ab 19.11.2026, Preisspanne 70–78 $, Ziel-Börsenwert rund 1,2 Billionen $.",
+   "grund": "Börsenstart am 19.11.: Ausgabepreis 83 $, Schluss 97,17 $ (+17 %), Thema in allen Börsenberichten.",
    "quellen": [
-    "https://www.renaissancecapital.com/IPO-Center/News/122657/anthropic-sets-terms-for-61-billion-ipo-targeting-a-1-2-trillion-market-cap",
-    "https://cappnotes.substack.com/p/closing-look-wednesday-november-18"
+    "https://www.stocktitan.net/articles/stock-market-today-live-november-19-2026",
+    "https://www.cnbc.com/2026/11/19/stocks-moving-the-most-today-live-updates.html"
    ],
-   "datum": "2026-11-19",
+   "datum": "2026-11-20",
    "staerke": 3,
    "von": "Aktien-Scout"
   },
@@ -98,6 +49,37 @@
     "https://www.stocktitan.net/articles/stock-market-today-live-november-18-2026"
    ],
    "datum": "2026-11-19",
+   "staerke": 1,
+   "von": "Aktien-Scout"
+  },
+  "APP": {
+   "grund": "+41 % in einem Monat nach Rekordquartal (Umsatz +55 %), auf Stocktwits viel beachtet.",
+   "quellen": [
+    "https://www.tikr.com/blog/applovin-is-up-71-in-a-week-take-profits-or-buy-more",
+    "https://stocktwits.com/news-articles/markets/equity/why-app-stock-soaring-today-q3-earnings-ai-advertising/cNG1cUMR9EJ",
+    "https://stockanalysis.com/news/applovin-q3-2026-earnings/"
+   ],
+   "datum": "2026-11-20",
+   "staerke": 3,
+   "von": "Aktien-Scout"
+  },
+  "INTU": {
+   "grund": "Nachbörslich −10 bis −14 % am 19.11.: Verkauf von Mailchimp an Bending Spoons, Ausblick gesenkt.",
+   "quellen": [
+    "https://www.marketscreener.com/news/stocks-to-watch-intuit-bending-spoons-gap-ross-stores-ce785ed2df80f524",
+    "https://www.stocktitan.net/articles/stock-market-today-live-november-19-2026"
+   ],
+   "datum": "2026-11-20",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "ROST": {
+   "grund": "Rund −8 % nach Zahlen am 19.11., schwächeres Weihnachtsgeschäft erwartet.",
+   "quellen": [
+    "https://www.gurufocus.com/news/9211082/ross-stores-rost-shares-drop-81-after-q3-earnings-despite-strong-comparable-sales",
+    "https://www.marketscreener.com/news/ross-stores-sees-holiday-sales-growth-slowing-on-lower-discretionary-spending-shares-down-ce785ed2df81f623"
+   ],
+   "datum": "2026-11-20",
    "staerke": 1,
    "von": "Aktien-Scout"
   }
