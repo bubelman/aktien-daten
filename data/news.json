@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-19T21:05:00+01:00",
+ "stand": "2026-11-20T07:00:00+01:00",
  "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
  "aktien": {
   "NVDA": {
@@ -64,12 +64,12 @@
   },
   "FSG.L": {
    "urteil": "neutral",
-   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
-   "grund": "Vom 09. bis 16.11.2026 nur Mitteilungen zu Aktienrückkäufen. Letztes inhaltliches Update am 08.10.2026.",
+   "kurz": "Nur Aktienrückkäufe gemeldet",
+   "grund": "In den letzten 7 Tagen nur Meldungen zu Aktienrückkäufen. Das Halbjahres-Update kam schon am 08.10.2026.",
    "quellen": [
     "https://www.rttnews.com/3697460/foresight-group-h1-fum-up-aum-flat-sequentially-sees-core-ebitda-growth-shares-down.aspx"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-20",
    "von": "News-Agenten"
   },
   "SEZL": {
@@ -345,12 +345,12 @@
   },
   "SAGA.L": {
    "urteil": "neutral",
-   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
-   "grund": "Vom 09. bis 16.11.2026 keine wesentliche Meldung. Die Prognoseanhebung kam schon am 30.09.2026.",
+   "kurz": "Anleihe angekündigt",
+   "grund": "Saga kündigte am 16.11.2026 eine neue Anleihe an. Sonst keine wichtigen Nachrichten in den letzten 7 Tagen.",
    "quellen": [
-    "https://www.hl.co.uk/shares/stock-market-news/company--news/saga-boosts-outlook-after-bumper-first-half,-shares-soar"
+    "https://www.londonstockexchange.com/en/news/article/SAGA/saga-announces-proposed-bond-offering/30d6-16-ba-0e-ee-4de6bd"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-20",
    "von": "News-Agenten"
   },
   "WAWI.OL": {
@@ -455,14 +455,13 @@
    "von": "News-Agenten"
   },
   "SBH": {
-   "urteil": "positiv",
-   "kurz": "Q4 besser Prognose 2027 stark",
-   "grund": "Am 10.11.2026 lag Sally Beauty im vierten Quartal über den Erwartungen (0,62 $ statt 0,60 $ je Aktie). Die Gewinnprognose 2027 von 2,20–2,30 $ liegt klar über dem Konsens von 2,07 $; der Ausblick für Q1 ist etwas schwächer.",
+   "urteil": "neutral",
+   "kurz": "Q4 und Ausblick vor dem Zeitraum",
+   "grund": "Die guten Q4-Zahlen und der angehobene Ausblick 2027 kamen am 10.11.2026, also vor den letzten 7 Tagen. Seitdem keine wichtigen Nachrichten.",
    "quellen": [
-    "https://finviz.com/news/420232/sally-beauty-reports-q4-earnings-above-estimates-and-raises-fy2027-outlook-above-consensus",
-    "https://www.sec.gov/Archives/edgar/data/0001368458/000136845826000018/exhibit991.htm"
+    "https://finviz.com/news/420232/sally-beauty-reports-q4-earnings-above-estimates-and-raises-fy2027-outlook-above-consensus"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-20",
    "von": "News-Agenten"
   },
   "CARG": {
