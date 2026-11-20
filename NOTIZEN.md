@@ -254,6 +254,8 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 - 17.11.2026 09:13 Aufpasser: Kurse, Grunddaten, Dashboard (07:34) ok. Schnappschuss-Datum falsch → A8; Prüfung 0881.HK → A9. News ohne neuen Stand (Sparmodus, nichts fällig).
 - 17.11.2026 13:16 Aufpasser: Kurse-Schleife lief Di nicht (letzter Kurse-Commit Mo 21:18 UTC, alle Starthilfen ab 4:43 UTC fehlten). Von Hand gestartet (Lauf 44081738530). Dashboard 10:36, Grunddaten ok. A9 und stray_write (A5.4) weiter offen.
 - 18.11.2026 23:14 Aufpasser: alles läuft (Kurse 22:19, Grunddaten, News, Dashboard 21:34, Programm ok). Abgelaufenen STRENGEN SPARMODUS (bis Mi 18.11. 21:00) gelöscht; es gilt das BUDGET Nachtschicht. stray_write in runs stammt von 17:55 (vor A5.4), Seite seitdem nicht geöffnet.
+- 20.11.2026 (Scout 11:48): 1 neue Aktie: UMI.BR (Umicore, Hochstufung auf Kaufen durch Kepler Cheuvreux 19.11., Börsenwert ca. 4,9 Mrd. €,
+  mit Gewinn; dailytradealert.com, investing.com). Hype-Liste: 8 Aktien (neu INTU, ROST; erneuert ANT, APP, AMD). KTB ausgelassen (Lee-Verkauf, Zahlen im Umbruch).
 - 19.11.2026 (Scout 11:48): 1 neue Aktie: PTRN (Pattern Group, Hochstufung auf Kaufen durch Jefferies 12.11., Börsenwert ca. 3,6 Mrd. $,
   mit Gewinn; insidermonkey.com, stockanalysis.com). BABA ausgelassen (9988.HK schon drin). Hype-Liste: 10 Aktien (neu ANT, PANW, TJX, BRBR).
 - 16.11.2026 (Scout 11:48): 2 neue Aktien: NU (Nu Holdings, Rekordquartal, +11,75 % am 13.11., bigmoves.substack.com), EWBC
