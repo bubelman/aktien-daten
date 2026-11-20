@@ -103,6 +103,14 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 20.11.2026 (Nachtschicht 21:41, 2 kleine Hilfs-Agenten zum Lesen von Webseiten): **A5.4 Rest behoben**: runs meldete nach dem Öffnen
+  (20.11. 18:15 UTC) stray_write jetzt bei #alle-sektor (Region ist weg). Branchen-Auswahl steht fest im HTML (17 Branchen aus bewertung.py),
+  Füllen in dash.onData gestrichen. Lokal getestet (1440/390 px, 18 Optionen, Filter Halbleiter 75 Zeilen = alle.json, keine Konsolenfehler).
+  Seite Version 31, Kopie in dashboard/index.html. **CDI.PA gesperrt** (Christian Dior SE, Holding von LVMH; Yahoo ohne Börsenwert/Schätzungen).
+  Prüfung: Fehlercode 0, "pruefung" leer, 2803 bewertet, 400 ausgefallen (167 ohne Gewinn, 93 ohne Kursziel), liste/alle bis auf "stand" gleich.
+  Daten: 3204 Aktien, alle mit Grunddaten, 3198 mit Kurs vom 20.11.; HZN, UMI.BR, PTRN mit Daten. **Ausverkauf Chips 20.11.** (Stand 20:19 UTC):
+  NVDA −12,8 %, AVGO −12,3 %, ANT −9,7 % (zum Vortag; Ursache laut finance.yahoo.com: Chip-Sektor nach dem Anthropic-Börsengang, Sorge um
+  KI-Finanzierung, Abgang Jensen Huang). GILD „Gewinn nicht positiv“: Yahoo-Schätzung 2026 −0,99 $ (2027 +10,15 $) – nicht weiter geprüft.
 - 20.11.2026 (Nachtschicht 3:41, ohne Agenten): **NWE und ITGR entfernt** (seit 16.11. ohne Kurs): NorthWestern ist mit Black Hills zu
   Bright Horizon Energy verschmolzen (16.11., wowt.com), Integer von KKR übernommen (biopharmawatch.com). Nachfolger **HZN** (Bright Horizon
   Energy, laut upstox.com/us-stocks/hzn-share-price/ und panabee.com) aufgenommen – nach dem Grunddaten-Abruf prüfen, ob Yahoo Daten liefert.
@@ -283,7 +291,9 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 - AVGO: 19.11.2026 – Kursziel-Durchschnitt Yahoo 528 $ (47 Analysten) / tikr.com 533 $ (https://www.tikr.com/blog/is-rothschild-co-redburn-wrong-to-give-up-on-broadcom-wall-street-still-sees-533) → passt (−1 %).
 - NVDA: 19.11.2026 – Yahoo nach den Zahlen: Gewinn FY2028 16,54 $ (vorher 15,84), Kursziel-Median 245 $ (55 Analysten), Kurs 147,51 $.
   Zweite Quelle nicht erreichbar (chartmill gesperrt, Twelve Data nur im teuren Tarif) → noch offen.
-- Als Nächstes: NVDA zweite Quelle (z. B. stockanalysis.com/stocks/nvda/forecast/), dann SAP.
+- NVDA: 20.11.2026 – zweite Quelle FMP (Financial Modeling Prep): Gewinn FY2028 16,59 $ / Yahoo 16,61 $ (passt). Kursziel-Median FMP 255 $ /
+  Yahoo 240 $ (−6 %), Mittel FMP 275,86 $ / Yahoo 246,67 $ (−11 %): Yahoo hat wohl schon gesenkte Ziele nach dem Kursrutsch, FMP ältere.
+- Als Nächstes: SAP (FMP-Kursziele nur im teureren Tarif; stockanalysis.com war gesperrt), dann IFX.DE.
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
@@ -309,6 +319,7 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 - A5.2/A5.3 siehe A6. A5.4 (stray_write) behoben – nach dem nächsten Öffnen der Seite in data/users/me "runs" bestätigen.
 - A5.4 noch offen (vom Aufpasser, 16.11.2026 19:15): Seite wurde am 16.11. um 17:45 Uhr geöffnet, data/users/me "runs" zeigt weiter
   drawings: stray_write (count 1). Ursache weiter suchen und beheben; Test: runs ohne Warnung nach dem nächsten Öffnen.
+- Stand 20.11. 21:41: auch #alle-sektor fest im HTML (Seite Version 31). Offen nur noch der Test nach dem nächsten Öffnen.
 - Stand 18.11. 21:41: behoben (Länder-Auswahl fest im HTML, Seite Version 30). Offen nur der Test: nach dem nächsten Öffnen
   data/users/me "runs"/"check" ohne stray_write? Dann A5 löschen. (Falls weiter gemeldet: Branchen-Auswahl #alle-sektor wird in
   dash.onData gefüllt – dann ebenfalls in eine draw-Funktion verschieben.)

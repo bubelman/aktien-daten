@@ -327,6 +327,23 @@
           </select>
           <select class="al-select" id="alle-sektor" aria-label="Branche">
             <option value="">Alle Branchen</option>
+            <option value="Energie">Energie</option>
+            <option value="Finanzen">Finanzen</option>
+            <option value="Gesundheit">Gesundheit</option>
+            <option value="Gold">Gold</option>
+            <option value="Halbleiter &amp; Speicher">Halbleiter &amp; Speicher</option>
+            <option value="Handel &amp; Reisen">Handel &amp; Reisen</option>
+            <option value="Hardware &amp; Netzwerk">Hardware &amp; Netzwerk</option>
+            <option value="Immobilien">Immobilien</option>
+            <option value="Industrie &amp; Energie">Industrie &amp; Energie</option>
+            <option value="Internet &amp; Medien">Internet &amp; Medien</option>
+            <option value="Konsumgüter">Konsumgüter</option>
+            <option value="Luftfahrt &amp; Rüstung">Luftfahrt &amp; Rüstung</option>
+            <option value="Rohstoffe">Rohstoffe</option>
+            <option value="Software">Software</option>
+            <option value="Sonstige">Sonstige</option>
+            <option value="Telekom">Telekom</option>
+            <option value="Versorger">Versorger</option>
           </select>
           <select class="al-select" id="alle-punkte" aria-label="Mindestpunkte">
             <option value="">Alle Punkte</option>
@@ -871,7 +888,7 @@
   // ---------- Alle Aktien ----------
   const alleF = {suche: '', region: '', sektor: '', punkte: '', top: false, neu: false, hype: false, limit: 100};
   let aSortKey = 'punkte', aSortDir = -1, alleAuswahl = null;
-  // Länder-Auswahl steht fest im HTML (Füllen per Skript außerhalb von dash.draw gab die Warnung stray_write)
+  // Länder- und Branchen-Auswahl stehen fest im HTML (Füllen per Skript außerhalb von dash.draw gab die Warnung stray_write)
   // Tabelle und „Mehr zeigen“ werden jeweils von ihrer eigenen draw-Funktion gezeichnet (kein Zeichnen ineinander)
   const alleNeu = () => { dash.draw('alle_tabelle'); dash.draw('alle_mehr'); };
   const neuZeichnen = () => { alleF.limit = 100; alleNeu(); };
@@ -899,14 +916,8 @@
   document.getElementById('alle-richtung').addEventListener('click', () => { aSortDir = -aSortDir; alleSortSync(); neuZeichnen(); });
   const alleZeilen = () => { const g = daten('alle'); return g.status === 'ok' ? g.data.filter((r) => r.ticker) : null; };
   const standard = (a, b) => (num(b.punkte) - num(a.punkte)) || (num(b.feinwert) - num(a.feinwert));
-  let sektorenGefuellt = false;
-  dash.onData(() => {
-    const rows = alleZeilen();
-    if (!rows || sektorenGefuellt) return;
-    const sel = document.getElementById('alle-sektor');
-    for (const s of [...new Set(rows.map((r) => r.sektor).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'de'))) { const o = el('option', '', s); o.value = s; sel.appendChild(o); }
-    sektorenGefuellt = true;
-  });
+  // Branchen-Auswahl steht fest im HTML (die 17 Branchen aus bewertung.py, BRANCHEN/SEKTOR_FALLBACK);
+  // Füllen in dash.onData gab die Warnung stray_write (#alle-sektor)
   dash.draw('alle_info', (e) => {
     const rows = alleZeilen();
     if (!rows) { e.textContent = '—'; return; }
