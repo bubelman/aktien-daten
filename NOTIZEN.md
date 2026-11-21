@@ -103,6 +103,14 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 21.11.2026 (Nachtschicht 3:41, ohne Agenten, 1 Hilfs-Agent zum Lesen einer Webseite): **BKH entfernt und gesperrt** (Black Hills, seit der Fusion
+  16.11. Bright Horizon Energy = HZN; BKH-Kurs nur bis 19.11.; stockanalysis.com/stocks/hzn/ führt Black Hills unter HZN). HZN fiel bisher als
+  „doppelt (gleiche Firma wie BKH)“ raus und wurde mit veralteten BKH-Zahlen gezeigt. Test: nur BKH → HZN getauscht (1 Punkt, Feinwert 39,1),
+  sonst keine Punkte/fairen Mitten geändert, Fehlercode 0, "pruefung" leer, 2803 bewertet, 398 ausgefallen (167 ohne Gewinn, 92 ohne Kursziel).
+  **SNDK kein Datenfehler**: Aktiensplit 8:1 am 20.11. (stock3.com/news/sandisk-aktiensplit-81-das-aendert-sich-am-20-november-im-depot-17399975);
+  Yahoo hat Kurs, Kursziel (2050 → 256,25 $) und Schätzung +1y schon angepasst, nur eps_forward/Börsenwert noch alt → KGV 2,2 war auch vorher ~2,6.
+  Daten: Kurse Fr 20.11. 21:19 UTC (US-Schluss da), 3197 von 3203 mit Stand 20.11.; BBBY, TCBI, REC.MI, ACT.DE, BKH 19.11., PCRX 18.11. (beobachten).
+  Levins Aktien (zum 19.11.): AVGO 7 → 5 Punkte (Kurs −12 %), ENR.DE 6, NVDA 5, SAP 5, IFX.DE 4, ANT nicht bewertet. Keine Zahlen am Vorabend; nächste: AVGO 09.12.
 - 20.11.2026 (Nachtschicht 21:41, 2 kleine Hilfs-Agenten zum Lesen von Webseiten): **A5.4 Rest behoben**: runs meldete nach dem Öffnen
   (20.11. 18:15 UTC) stray_write jetzt bei #alle-sektor (Region ist weg). Branchen-Auswahl steht fest im HTML (17 Branchen aus bewertung.py),
   Füllen in dash.onData gestrichen. Lokal getestet (1440/390 px, 18 Optionen, Filter Halbleiter 75 Zeilen = alle.json, keine Konsolenfehler).
@@ -293,7 +301,9 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   Zweite Quelle nicht erreichbar (chartmill gesperrt, Twelve Data nur im teuren Tarif) → noch offen.
 - NVDA: 20.11.2026 – zweite Quelle FMP (Financial Modeling Prep): Gewinn FY2028 16,59 $ / Yahoo 16,61 $ (passt). Kursziel-Median FMP 255 $ /
   Yahoo 240 $ (−6 %), Mittel FMP 275,86 $ / Yahoo 246,67 $ (−11 %): Yahoo hat wohl schon gesenkte Ziele nach dem Kursrutsch, FMP ältere.
-- Als Nächstes: SAP (FMP-Kursziele nur im teureren Tarif; stockanalysis.com war gesperrt), dann IFX.DE.
+- SAP: 21.11.2026 – Kurs 198,93 $ (Schluss 20.11.) passt genau zu marketscreener.com (ae.marketscreener.com/quote/stock/SAP-SE-14320/consensus/).
+  Kursziel-Durchschnitt Yahoo 284,50 $ (12 Analysten, ADR) = 259 € / marketscreener 243,54 € (29 Analysten) → +6 %, unter 10 %. Gewinnschätzung dort nicht lesbar (Login).
+- Als Nächstes: IFX.DE, dann ENR.DE.
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
