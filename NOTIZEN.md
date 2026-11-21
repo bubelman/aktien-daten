@@ -103,6 +103,15 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 21.11.2026 (Nachtschicht 21:41, 1 Prüf-Agent, 1 Hilfs-Agent zum Lesen von Webseiten): **Fehler behoben: falsche „doppelt“-Treffer** (Commit ab0feed).
+  DOM.L (Domino's Pizza Group, UK) fiel als „gleiche Firma wie DPZ“ raus, FBNC (First Bancorp, North Carolina) als „wie FBP“ (First BanCorp.,
+  Puerto Rico). firma() streicht „group“ nicht mehr; zwei US-Kürzel gelten nur bei ähnlichem Kürzel als gleiche Firma (GOOG/GOOGL, FOX/FOXA,
+  LLYVA/LLYVK). Test: 2930 → 2932 bewertet, keine Punkte/fairen Mitten geändert, Feinwert max ±0,1, "pruefung" leer; Prüf-Agent: keine Funde.
+  Daten: Grunddaten Sa 21.11. 5:29 UTC, 3352 Aktien, 3333 mit Kurs vom 20.11. (Rest 19.11., PCRX 18.11.); 150 Screener-Aktien vom 21.11. alle mit
+  Daten, 127 bewertet. kuerzel_verdacht leer, 421 ausgefallen (175 ohne Gewinn, 99 ohne Kursziel). **SKHY KGV 2,5 kein Umrechnungsfehler**: 1 ADR = 1/10
+  Aktie (morningstar.com/en-gb/stocks/sk-hynix-adrs-begin-trading-under-new-ticker), Börsenwert und Gewinn je ADR passen zusammen; niedriges KGV wie
+  MU/SNDK (Speicher-Boom, Schätzung 2027). Levins Aktien: ENR.DE 6, NVDA 5, AVGO 5, SAP 5, IFX.DE 4 Punkte, ANT nicht bewertet (KGV 2453).
+  runs unverändert seit 20.11. 18:15 (Seite seitdem nicht geöffnet) → A5.4-Test weiter offen. FMP gibt für Nicht-US-Aktien nichts (Tarif).
 - 21.11.2026 (Nachtschicht 3:41, ohne Agenten, 1 Hilfs-Agent zum Lesen einer Webseite): **BKH entfernt und gesperrt** (Black Hills, seit der Fusion
   16.11. Bright Horizon Energy = HZN; BKH-Kurs nur bis 19.11.; stockanalysis.com/stocks/hzn/ führt Black Hills unter HZN). HZN fiel bisher als
   „doppelt (gleiche Firma wie BKH)“ raus und wurde mit veralteten BKH-Zahlen gezeigt. Test: nur BKH → HZN getauscht (1 Punkt, Feinwert 39,1),
@@ -303,7 +312,9 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   Yahoo 240 $ (−6 %), Mittel FMP 275,86 $ / Yahoo 246,67 $ (−11 %): Yahoo hat wohl schon gesenkte Ziele nach dem Kursrutsch, FMP ältere.
 - SAP: 21.11.2026 – Kurs 198,93 $ (Schluss 20.11.) passt genau zu marketscreener.com (ae.marketscreener.com/quote/stock/SAP-SE-14320/consensus/).
   Kursziel-Durchschnitt Yahoo 284,50 $ (12 Analysten, ADR) = 259 € / marketscreener 243,54 € (29 Analysten) → +6 %, unter 10 %. Gewinnschätzung dort nicht lesbar (Login).
-- Als Nächstes: IFX.DE, dann ENR.DE.
+- IFX.DE: 21.11.2026 – Yahoo Kurs 45,44 € (20.11.), Kursziel-Mittel 80,79 € (24 Analysten), Gewinn +1y 3,88 €. Zweite Quelle für den
+  Durchschnitt nicht gefunden (FMP nur US; Suche brachte nur Einzelziele, z. B. Jefferies 74 €). → noch offen.
+- Als Nächstes: IFX.DE (zweite Quelle), dann ENR.DE.
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
