@@ -1,40 +1,40 @@
 {
- "stand": "2026-11-19",
+ "stand": "2026-11-20",
  "zeitraeume": {
   "1 Woche": {
-   "seit": "2026-11-12",
+   "seit": "2026-11-13",
    "rueckwirkend": true,
    "nach_punkten": {
     "7–10": {
      "anzahl": 7,
-     "mittel_pct": -7.9
+     "mittel_pct": -13.9
     },
     "5–6": {
-     "anzahl": 140,
-     "mittel_pct": -4.3
+     "anzahl": 146,
+     "mittel_pct": -7.1
     },
     "3–4": {
-     "anzahl": 247,
-     "mittel_pct": -3.8
+     "anzahl": 255,
+     "mittel_pct": -6.1
     },
     "unter 3": {
-     "anzahl": 186,
-     "mittel_pct": -2.6
+     "anzahl": 190,
+     "mittel_pct": -4.9
     }
    },
    "top_bedingungen": {
     "ja": {
-     "anzahl": 77,
-     "mittel_pct": -5.5
+     "anzahl": 82,
+     "mittel_pct": -7.9
     },
     "nein": {
-     "anzahl": 503,
-     "mittel_pct": -3.3
+     "anzahl": 516,
+     "mittel_pct": -5.8
     }
    },
    "alle": {
-    "anzahl": 580,
-    "mittel_pct": -3.6
+    "anzahl": 598,
+    "mittel_pct": -6.1
    }
   },
   "seit Beginn": {
@@ -43,38 +43,55 @@
    "nach_punkten": {
     "7–10": {
      "anzahl": 3,
-     "mittel_pct": -12.3
+     "mittel_pct": -20.0
     },
     "5–6": {
      "anzahl": 50,
-     "mittel_pct": -5.8
+     "mittel_pct": -9.6
     },
     "3–4": {
-     "anzahl": 79,
-     "mittel_pct": -3.8
+     "anzahl": 78,
+     "mittel_pct": -6.3
     },
     "unter 3": {
-     "anzahl": 38,
-     "mittel_pct": -0.7
+     "anzahl": 37,
+     "mittel_pct": -3.3
     }
    },
    "top_bedingungen": {
     "ja": {
      "anzahl": 17,
-     "mittel_pct": -12.9
+     "mittel_pct": -15.9
     },
     "nein": {
-     "anzahl": 153,
-     "mittel_pct": -2.9
+     "anzahl": 151,
+     "mittel_pct": -5.8
     }
    },
    "alle": {
-    "anzahl": 170,
-    "mittel_pct": -3.9
+    "anzahl": 168,
+    "mittel_pct": -6.9
    }
   }
  },
- "ausreisser": [],
+ "ausreisser": [
+  {
+   "zeitraum": "1 Woche",
+   "seit": "2026-11-13",
+   "ticker": "SNDK",
+   "kurs_eur_vorher": 802.53,
+   "kurs_eur_jetzt": 72.26,
+   "aenderung_pct": -91
+  },
+  {
+   "zeitraum": "seit Beginn",
+   "seit": "2026-10-30",
+   "ticker": "SNDK",
+   "kurs_eur_vorher": 1030.74,
+   "kurs_eur_jetzt": 72.26,
+   "aenderung_pct": -93
+  }
+ ],
  "hinweis": "Rückblick mit heutigen Regeln auf alte Yahoo-Daten (rueckwirkend), kein echter Test aus der Vergangenheit; wenige Wochen sagen wenig.",
  "vorhersagekraft": {
   "hinweis": "Erst 2–3 Wochen Daten: das sagt fast nichts, Zufall überwiegt. IC nahe 0 = kein Zusammenhang, über 0,05 wäre gut (Rangkorrelation Faktor heute ↔ Rendite danach). Rendite in Euro inkl. Wechselkurs; „rueckwirkend“ = heutige Regeln auf alte Daten, kein echter Test.",
@@ -93,7 +110,8 @@
    "2026-11-16",
    "2026-11-17",
    "2026-11-18",
-   "2026-11-19"
+   "2026-11-19",
+   "2026-11-20"
   ],
   "regeln": {
    "min_aktien_je_tag": 30,
@@ -181,9 +199,9 @@
       }
      },
      "5 Tage": {
-      "tage": 10,
-      "ic_mittel": -0.073,
-      "anteil_positiv": 0.3,
+      "tage": 11,
+      "ic_mittel": -0.078,
+      "anteil_positiv": 0.27,
       "ic_je_tag": [
        {
         "tag": "2026-10-30",
@@ -234,14 +252,19 @@
         "tag": "2026-11-12",
         "ic": -0.145,
         "aktien": 580
+       },
+       {
+        "tag": "2026-11-13",
+        "ic": -0.129,
+        "aktien": 598
        }
       ],
       "fuenftel_rendite_pct": {
-       "1": 0.65,
-       "2": -0.13,
-       "3": -0.31,
-       "4": 0.35,
-       "5": -0.66
+       "1": 0.03,
+       "2": -0.56,
+       "3": -0.86,
+       "4": -0.21,
+       "5": -1.26
       }
      }
     },
@@ -316,9 +339,9 @@
       }
      },
      "5 Tage": {
-      "tage": 10,
-      "ic_mittel": -0.086,
-      "anteil_positiv": 0.3,
+      "tage": 11,
+      "ic_mittel": -0.113,
+      "anteil_positiv": 0.27,
       "ic_je_tag": [
        {
         "tag": "2026-10-30",
@@ -369,14 +392,19 @@
         "tag": "2026-11-12",
         "ic": -0.358,
         "aktien": 580
+       },
+       {
+        "tag": "2026-11-13",
+        "ic": -0.384,
+        "aktien": 598
        }
       ],
       "fuenftel_rendite_pct": {
-       "1": 0.22,
-       "2": 0.54,
-       "3": 0.14,
-       "4": -0.23,
-       "5": -0.77
+       "1": -0.14,
+       "2": 0.1,
+       "3": -0.43,
+       "4": -0.82,
+       "5": -1.56
       }
      }
     }
@@ -384,9 +412,9 @@
    "echt": {
     "punkte": {
      "1 Tag": {
-      "tage": 4,
-      "ic_mittel": 0.032,
-      "anteil_positiv": 1.0,
+      "tage": 5,
+      "ic_mittel": 0.022,
+      "anteil_positiv": 0.8,
       "ic_je_tag": [
        {
         "tag": "2026-11-13",
@@ -407,28 +435,39 @@
         "tag": "2026-11-18",
         "ic": 0.016,
         "aktien": 2434
+       },
+       {
+        "tag": "2026-11-19",
+        "ic": -0.021,
+        "aktien": 2684
        }
       ],
       "fuenftel_rendite_pct": {
-       "1": -1.0,
-       "2": -0.89,
-       "3": -0.87,
-       "4": -0.8,
-       "5": -0.79
+       "1": -1.22,
+       "2": -1.21,
+       "3": -1.16,
+       "4": -1.08,
+       "5": -1.17
       }
      },
      "5 Tage": {
-      "tage": 0,
+      "tage": 1,
       "ic_mittel": "zu wenige Tage",
       "anteil_positiv": null,
-      "ic_je_tag": [],
+      "ic_je_tag": [
+       {
+        "tag": "2026-11-13",
+        "ic": -0.003,
+        "aktien": 2134
+       }
+      ],
       "fuenftel_rendite_pct": "zu wenige Tage"
      }
     },
     "feinwert": {
      "1 Tag": {
-      "tage": 4,
-      "ic_mittel": -0.045,
+      "tage": 5,
+      "ic_mittel": -0.072,
       "anteil_positiv": 0.0,
       "ic_je_tag": [
        {
@@ -450,21 +489,32 @@
         "tag": "2026-11-18",
         "ic": -0.022,
         "aktien": 2434
+       },
+       {
+        "tag": "2026-11-19",
+        "ic": -0.177,
+        "aktien": 2684
        }
       ],
       "fuenftel_rendite_pct": {
-       "1": -0.75,
-       "2": -0.74,
-       "3": -0.91,
-       "4": -0.98,
-       "5": -0.97
+       "1": -0.95,
+       "2": -0.99,
+       "3": -1.13,
+       "4": -1.34,
+       "5": -1.44
       }
      },
      "5 Tage": {
-      "tage": 0,
+      "tage": 1,
       "ic_mittel": "zu wenige Tage",
       "anteil_positiv": null,
-      "ic_je_tag": [],
+      "ic_je_tag": [
+       {
+        "tag": "2026-11-13",
+        "ic": -0.191,
+        "aktien": 2134
+       }
+      ],
       "fuenftel_rendite_pct": "zu wenige Tage"
      }
     }
@@ -483,9 +533,9 @@
     "teil": "rueckwirkend",
     "faktor": "punkte",
     "tage_vorne": 5,
-    "ic_mittel": -0.073,
-    "tage": 10,
-    "anteil_positiv": 0.3
+    "ic_mittel": -0.078,
+    "tage": 11,
+    "anteil_positiv": 0.27
    },
    {
     "teil": "rueckwirkend",
@@ -499,32 +549,32 @@
     "teil": "rueckwirkend",
     "faktor": "feinwert",
     "tage_vorne": 5,
-    "ic_mittel": -0.086,
-    "tage": 10,
-    "anteil_positiv": 0.3
+    "ic_mittel": -0.113,
+    "tage": 11,
+    "anteil_positiv": 0.27
    },
    {
     "teil": "echt",
     "faktor": "punkte",
     "tage_vorne": 1,
-    "ic_mittel": 0.032,
-    "tage": 4,
-    "anteil_positiv": 1.0
+    "ic_mittel": 0.022,
+    "tage": 5,
+    "anteil_positiv": 0.8
    },
    {
     "teil": "echt",
     "faktor": "punkte",
     "tage_vorne": 5,
     "ic_mittel": "zu wenige Tage",
-    "tage": 0,
+    "tage": 1,
     "anteil_positiv": null
    },
    {
     "teil": "echt",
     "faktor": "feinwert",
     "tage_vorne": 1,
-    "ic_mittel": -0.045,
-    "tage": 4,
+    "ic_mittel": -0.072,
+    "tage": 5,
     "anteil_positiv": 0.0
    },
    {
@@ -532,7 +582,7 @@
     "faktor": "feinwert",
     "tage_vorne": 5,
     "ic_mittel": "zu wenige Tage",
-    "tage": 0,
+    "tage": 1,
     "anteil_positiv": null
    }
   ],
@@ -551,11 +601,11 @@
     "teil": "rueckwirkend",
     "faktor": "punkte",
     "tage_vorne": 5,
-    "q1_pct": 0.65,
-    "q2_pct": -0.13,
-    "q3_pct": -0.31,
-    "q4_pct": 0.35,
-    "q5_pct": -0.66
+    "q1_pct": 0.03,
+    "q2_pct": -0.56,
+    "q3_pct": -0.86,
+    "q4_pct": -0.21,
+    "q5_pct": -1.26
    },
    {
     "teil": "rueckwirkend",
@@ -571,31 +621,31 @@
     "teil": "rueckwirkend",
     "faktor": "feinwert",
     "tage_vorne": 5,
-    "q1_pct": 0.22,
-    "q2_pct": 0.54,
-    "q3_pct": 0.14,
-    "q4_pct": -0.23,
-    "q5_pct": -0.77
+    "q1_pct": -0.14,
+    "q2_pct": 0.1,
+    "q3_pct": -0.43,
+    "q4_pct": -0.82,
+    "q5_pct": -1.56
    },
    {
     "teil": "echt",
     "faktor": "punkte",
     "tage_vorne": 1,
-    "q1_pct": -1.0,
-    "q2_pct": -0.89,
-    "q3_pct": -0.87,
-    "q4_pct": -0.8,
-    "q5_pct": -0.79
+    "q1_pct": -1.22,
+    "q2_pct": -1.21,
+    "q3_pct": -1.16,
+    "q4_pct": -1.08,
+    "q5_pct": -1.17
    },
    {
     "teil": "echt",
     "faktor": "feinwert",
     "tage_vorne": 1,
-    "q1_pct": -0.75,
-    "q2_pct": -0.74,
-    "q3_pct": -0.91,
-    "q4_pct": -0.98,
-    "q5_pct": -0.97
+    "q1_pct": -0.95,
+    "q2_pct": -0.99,
+    "q3_pct": -1.13,
+    "q4_pct": -1.34,
+    "q5_pct": -1.44
    }
   ]
  }
