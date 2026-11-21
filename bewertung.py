@@ -732,13 +732,30 @@ def main():
     def firma(t):
         n = (ydata.get(t, {}).get("name_lang") or "").lower()
         n = re.sub(r"[^a-z0-9 ]", " ", n)
-        n = re.sub(r"\b(the|plc|ag|se|sa|nv|n v|inc|corp|corporation|ltd|limited|holding|holdings|group|asa|ab|a s|s a|s p a|spa)\b", " ", n)
+        # "group" bleibt stehen: sonst waren Domino's Pizza Group (DOM.L, UK) und Domino's Pizza Inc. (DPZ, USA) „gleich“.
+        n = re.sub(r"\b(the|plc|ag|se|sa|nv|n v|inc|corp|corporation|ltd|limited|holding|holdings|asa|ab|a s|s a|s p a|spa)\b", " ", n)
         return " ".join(n.split())
+    def gleiche_firma_moeglich(t1, t2):
+        # Zwei US-Kürzel (ohne Börsen-Endung) mit gleichem Namen sind nur Aktiengattungen derselben Firma, wenn die
+        # Kürzel ähnlich sind (GOOG/GOOGL, FOX/FOXA, UHAL/UHAL-B, LLYVA/LLYVK). Sonst zwei Firmen mit gleichem Namen,
+        # z. B. First Bancorp (FBNC, North Carolina) und First BanCorp. (FBP, Puerto Rico).
+        if "." in t1 or "." in t2:
+            return True
+        a, b = t1.split("-")[0], t2.split("-")[0]
+        if a.startswith(b) or b.startswith(a):
+            return True
+        p = 0
+        while p < min(len(a), len(b)) and a[p] == b[p]:
+            p += 1
+        return p >= 3
     gruppen = {}
     for z in zeilen:
         f = firma(z["ticker"])
         if f:
-            gruppen.setdefault(f, []).append(z)
+            nr = 0
+            while (f, nr) in gruppen and not gleiche_firma_moeglich(gruppen[(f, nr)][0]["ticker"], z["ticker"]):
+                nr += 1
+            gruppen.setdefault((f, nr), []).append(z)
     weg = set()
     for f, zs in gruppen.items():
         if len(zs) < 2:
