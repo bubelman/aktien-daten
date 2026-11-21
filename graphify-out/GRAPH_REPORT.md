@@ -1,17 +1,17 @@
-# Graph Report - aktien-daten  (2026-11-19)
+# Graph Report - aktien-daten  (2026-11-21)
 
 ## Corpus Check
-- 8 files · ~13,039 words
+- 8 files · ~13,160 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 2 file(s) not represented in the graph (top: (none) 2)
 
 ## Summary
-- 134 nodes · 286 edges · 10 communities (8 shown, 2 thin omitted)
+- 135 nodes · 287 edges · 10 communities (8 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4b75afe5`
+- Built from commit: `ab0feed6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -28,7 +28,7 @@
 - vorhersagekraft.py
 
 ## God Nodes (most connected - your core abstractions)
-1. `main()` - 18 edges
+1. `main()` - 19 edges
 2. `bewerte()` - 16 edges
 3. `grunddaten()` - 10 edges
 4. `texte()` - 9 edges
@@ -69,7 +69,7 @@ Cohesion: 0.17
 Nodes (13): basis(), dividende_anteil(), fcf_aus_cashflow(), fcf_zeile(), grunddaten(), grunddaten_sicher(), jetzt(), kurse_und_trends() (+5 more)
 
 ### Community 3 - "main"
-Cohesion: 0.22
+Cohesion: 0.20
 Nodes (7): feinwertung(), kuerzel_verdacht(), kurzname(), lade(), main(), lade_daten(), pruefe_zeile()
 
 ### Community 4 - "bewertung.py"
@@ -95,8 +95,8 @@ Nodes (7): boersentage_bis(), berechnen(), fuenftel(), handelstag(), raenge(), s
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `main()` connect `main` to `json`, `fetch.py`, `bewertung.py`, `texte`, `fx_von`, `vorhersagekraft.py`?**
-  _High betweenness centrality (0.103) - this node is a cross-community bridge._
+  _High betweenness centrality (0.116) - this node is a cross-community bridge._
 - **Why does `bewerte()` connect `bewertung.py` to `name_wahl`, `main`, `texte`, `fx_von`?**
-  _High betweenness centrality (0.046) - this node is a cross-community bridge._
+  _High betweenness centrality (0.047) - this node is a cross-community bridge._
 - **Why does `name_wahl()` connect `name_wahl` to `universum.py`, `bewertung.py`?**
   _High betweenness centrality (0.031) - this node is a cross-community bridge._
