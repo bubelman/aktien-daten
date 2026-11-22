@@ -106,7 +106,7 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 ## Entscheidungen (Protokoll)
 - 22.11.2026 (Nachtschicht 21:41, 1 Prüf-Agent): **A11 erledigt** – NOTIZEN.md entschlackt: Protokoll vor 20.11., alte Gegenprüfungen,
   alte Chef-Pläne, ältere Teile von A5/A7, A11-Text und überholte Zeilen (Team-/Token-Regeln 15.11., Wochenlimit-Zahl, SDAX offen) wörtlich nach
-  NOTIZEN_ARCHIV.md. 503 → 291 Zeilen, 55 → 30 KB (−46 %). Ziel „unter 230“ nicht erreicht: allein die Teile, die laut A11 bleiben
+  NOTIZEN_ARCHIV.md. 503 → 294 Zeilen, 55 → 30 KB (−46 %). Ziel „unter 230“ nicht erreicht: allein die Teile, die laut A11 bleiben
   (Regeln, Aufträge, Protokoll ab 20.11.), sind ~280 Zeilen. Zusammengefasst: A5 (3 Absätze → 1), Team-/Token-Regeln 15.11. (→ 1 Hinweis). Prüfung: Fehlercode 0, "pruefung" leer,
   3057 bewertet, 444 ausgefallen, kuerzel_verdacht leer. Kurse: 3501 mit Stand 20.11. **PCRX entfernt und gesperrt** (Übernahme durch Viatris abgeschlossen, pulse2.com; Kurs nur bis 18.11.). Levins Aktien: ENR.DE 6,
   NVDA 5, AVGO 5, SAP 5, IFX.DE 4 Punkte, ANT nicht bewertet.
@@ -271,7 +271,8 @@ Stand Chef-Aufträge 18.11.: A10 Teil 3 erledigt (18.11.), A5.4 behoben (Test of
   „zurück“ von Levin = vorherige Version von files/index.html wiederherstellen (vorher Kopie im Repository unter
   dashboard/index.html ablegen und mit committen).
 - Seit 15.11.2026 (Levin: „noch mehr Agenten, das soll richtig gut sein“, „die Hälfte meiner wöchentlichen Tokens“): Team mit vielen
-  Agenten und tiefes Arbeiten – heute durch das BUDGET NACHTSCHICHT unten begrenzt. Voller Wortlaut in NOTIZEN_ARCHIV.md.
+  Agenten und tiefes Arbeiten – heute durch das BUDGET NACHTSCHICHT unten begrenzt. Weiter gilt: Code- und Seiten-Agenten
+  mit eigener Arbeitskopie, nur die Leitung pusht. Voller Wortlaut in NOTIZEN_ARCHIV.md.
 - Grenze (Levin, 15.11.2026): alle Aufgaben zusammen höchstens **75 % von Levins Wochenlimit** (neu jeden Mittwoch).
   Den Zähler sieht nur Levin (Einstellungen → Nutzung). Er schreibt die Zahl in den Chat, sie wird hier eingetragen.
   Ab 60 %: Sparmodus wie unten. Ab 75 %: Nachtschicht nur noch Schritt 1 (Prüfen), keine Agenten, bis Mittwoch.
