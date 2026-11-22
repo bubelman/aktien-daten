@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-15T17:48:18+00:00",
+ "stand": "2026-11-22T02:42:40+00:00",
  "indizes": {
   "S&P 500": {
    "gefunden": 503,
@@ -13,14 +13,14 @@
    ]
   },
   "S&P MidCap 400": {
-   "gefunden": 599,
+   "gefunden": 600,
    "neu": 148,
    "beispiele": [
+    "CHYM",
     "JHX",
     "GKOS",
     "FORM",
-    "CTVA",
-    "HUBS"
+    "CTVA"
    ]
   },
   "Nasdaq-100": {
@@ -345,7 +345,7 @@
   },
   "S&P SmallCap 600": {
    "gefunden": 603,
-   "neu": 527,
+   "neu": 6,
    "beispiele": [
     "AAMI",
     "AAP",
@@ -356,7 +356,7 @@
   },
   "S&P/TSX 60": {
    "gefunden": 59,
-   "neu": 59,
+   "neu": 0,
    "beispiele": [
     "AEM.TO",
     "ATD.TO",
@@ -416,7 +416,7 @@
   },
   "S&P/ASX 50": {
    "gefunden": 49,
-   "neu": 49,
+   "neu": 0,
    "beispiele": [
     "ALL.AX",
     "AMC.AX",
@@ -427,7 +427,7 @@
   },
   "Hang Seng": {
    "gefunden": 85,
-   "neu": 85,
+   "neu": 0,
    "beispiele": [
     "0005.HK",
     "0388.HK",
@@ -437,7 +437,7 @@
    ]
   }
  },
- "neu_gueltig": 714,
+ "neu_gueltig": 0,
  "ungueltig": [
   "CMA",
   "ALTR",
@@ -619,6 +619,6 @@
   "QRVO",
   "RAMP"
  ],
- "vorher": 1724,
- "nachher": 2438
+ "vorher": 3502,
+ "nachher": 3502
 }
