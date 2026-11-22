@@ -103,6 +103,11 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 22.11.2026 (Nachtschicht 3:41, So, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
+  2932 bewertet (wie Sa). Daten: 3352 Aktien mit Grunddaten (Sa 21.11. 5:29 UTC), 3333 mit Kurs vom 20.11., 19 mit 19.11./18.11. (u. a. TCBI, ACT.DE, PCRX,
+  REC.MI; Wochenende, unter 3 Börsentagen). Screener So 1:43 UTC +150 Kürzel (3502 in tickers.txt); Grunddaten-Lauf dafür läuft noch (seit 1:43 UTC).
+  universum.yml gestartet (Sonntag). Levins Aktien wie Sa (ENR.DE 6, NVDA 5, AVGO 5, SAP 5, IFX.DE 4, ANT nicht bewertet). Keine Zahlen am Vorabend.
+  runs unverändert (20.11. 18:15, stray_write #alle-sektor vor dem Fix) → A5.4-Test weiter offen. IFX.DE: zweite Quelle für Kursziel-Durchschnitt wieder nicht gefunden.
 - 21.11.2026 (Nachtschicht 21:41, 1 Prüf-Agent, 1 Hilfs-Agent zum Lesen von Webseiten): **Fehler behoben: falsche „doppelt“-Treffer** (Commit ab0feed).
   DOM.L (Domino's Pizza Group, UK) fiel als „gleiche Firma wie DPZ“ raus, FBNC (First Bancorp, North Carolina) als „wie FBP“ (First BanCorp.,
   Puerto Rico). firma() streicht „group“ nicht mehr; zwei US-Kürzel gelten nur bei ähnlichem Kürzel als gleiche Firma (GOOG/GOOGL, FOX/FOXA,
