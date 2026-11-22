@@ -338,7 +338,7 @@ Bis dahin: Trefferquote im Dashboard nur so aktuell wie der letzte Upload von Ha
 Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 
 ### A3 (Rest): Trefferquote
-- A3.2 langer Rückblick-Test mit Kursdaten (yfinance im GitHub-Workflow) – ab Do 19.11. (nach Sparmodus).
+- A3.2 langer Rückblick-Test mit Kursdaten (yfinance im GitHub-Workflow) – jetzt genau beschrieben als A13 (Chef, 22.11.).
 - Hinweis: Yahoo ist aus der Cloud-Umgebung der Aufgaben gesperrt (403); yfinance geht nur im GitHub-Workflow.
 
 ### A5 (Rest)
@@ -357,8 +357,70 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
   (evtl. concurrency "daten" mit Grunddaten-Lauf 4:16–5:26 UTC verwirft wartende Läufe; nach Grunddaten Kurse-Schleife anstoßen?).
 - Stand 17.11. 21:41: Wecker (kurse-wecker.yml) eingebaut, siehe Protokoll. Test: Mi 18.11. und Mo 23.11. Kurse vor 6:30 UTC? Dann löschen.
 
+### A11 (22.11.2026, vom Chef): NOTIZEN.md entschlacken – für So 22.11. 21:41
+Ziel: weniger Tokens bei jedem Lauf. NOTIZEN.md hat 442 Zeilen (~27.000 Tokens) und wird von Nachtschicht (2×), Aufpasser (2×),
+Scout und Chef komplett gelesen.
+1. Neue Datei NOTIZEN_ARCHIV.md: das Protokoll vor dem 20.11.2026, die alten Gegenprüfungen (vor dem 19.11.), erledigte Teile von
+   A5/A7 und den Chef-Plan 15.11. wörtlich dorthin verschieben (nichts löschen, nichts umschreiben).
+2. In NOTIZEN.md bleiben: alle Regeln (TOKEN SPAREN, Levins Regeln, Wie gerechnet wird, Abläufe, Scout, Regeln für die Nachtschicht,
+   BUDGET), offene Aufträge, Chef-Plan (nur der neueste), Bekannte Grenzen, Protokoll ab 20.11., je Aktie nur die letzte Gegenprüfung.
+   Oben ein Satz: „Ältere Einträge: NOTIZEN_ARCHIV.md (nur bei Bedarf lesen)“.
+3. Doppelte Sätze zusammenfassen (z. B. A5.4 steht dreimal, Wochenlimit-Absatz alt). Keine Regel abschwächen oder weglassen.
+Test: wc -l NOTIZEN.md unter 230; `diff` zeigt nur verschobene Zeilen (Zeilen aus NOTIZEN.md alt = NOTIZEN.md neu + Archiv, bis auf
+die zusammengefassten Doppelungen, im Commit genannt). Danach diesen Auftrag ins Protokoll.
+
+### A12 (22.11.2026, vom Chef): Aktiensplits automatisch erkennen – ab Mo 23.11. 21:41
+Grund: in einer Woche zwei Splits von Hand gefunden (Kioxia 285A.T 3:1, SanDisk SNDK 8:1); Kioxia hatte bis dahin falsche 6 Punkte.
+Die Liste SPLIT_NOCH_ALT in bewertung.py muss bisher von Hand gepflegt werden.
+1. fetch.py (Grunddaten-Lauf): je Aktie den letzten Split der letzten 60 Tage aus yfinance (Ticker.splits) speichern
+   (Felder split_datum, split_faktor; nur Werte ≠ 1). Abrufzahl beachten (Yahoo-Drosselung, vgl. 18.11.): nur wenn ohnehin
+   Grunddaten geholt werden, Fehler brechen nicht ab.
+2. bewertung.py: wie SPLIT_NOCH_ALT, aber aus den Feldern: Aktie fällt raus, solange Kursziel/Kurs > 0,75 × Faktor („Aktiensplit X:1 –
+   Kursziel und Schätzungen bei Yahoo noch vor dem Split“). Zusätzlich in bericht.json "split_verdacht": Kursziel/Kurs über 3 ohne
+   bekannten Split (Liste, keine Wirkung auf Punkte). Ist das eine Bewertungsregel? Nein – gleiche Prüfung wie SPLIT_NOCH_ALT, nur automatisch.
+3. Test: mit Ersatzdaten (285A.T Faktor 3, SNDK Faktor 8) fällt die Aktie raus bzw. kommt zurück, sobald Kursziel angepasst ist;
+   mit echten Daten Fehlercode 0, "pruefung" leer, keine Punkte anderer Aktien geändert. Ein Prüf-Agent.
+
+### A13 (22.11.2026, vom Chef): langer Rückblick-Test der Trend-Punkte (= A3.2, seit 19.11. offen) – ab Di 24.11., 2 Nächte
+Grund: Trefferquote bisher gegen die Punkte (Stand 20.11.: 7–10 Punkte −13,9 % in 1 Woche, n=7; unter 3 Punkte −4,9 %; IC Punkte
+5 Tage −0,078). 3 Wochen sagen fast nichts. Nur die Kurs-Regeln lassen sich ehrlich über Jahre testen (alte Analystenschätzungen gibt es nicht).
+1. Neues Skript rueckblick_trend.py + Workflow rueckblick.yml (nur von Hand starten, workflow_dispatch): yfinance-Kurse 3 Jahre für eine
+   feste Stichprobe (z. B. alle US- und .DE-Aktien aus tickers.txt, höchstens 800, Abrufe gebündelt mit yf.download).
+2. Je Monatsende: Trend lang (SMA200 + 6 Monate) und Trend kurz (SMA50 + 1 Monat) genau wie bewertung.py (Funktion dort lesen,
+   nicht neu erfinden) → Rendite der nächsten 1 und 3 Monate je Gruppe; IC; Vergleich mit allen. Ergebnis data/rueckblick_trend.json.
+3. Ehrliche Grenzen ins Ergebnis schreiben (Überlebende-Verzerrung: nur heutige Aktien; keine Kosten; Zeitraum).
+4. Reiter „So wird gerechnet“: nur wenn einfach, eine kleine Tabelle; sonst nur NOTIZEN.md und Bericht.
+Keine Regeländerung. Ergebnis an den Chef (Abschnitt Chef-Plan), der Levin ggf. einen Vorschlag macht.
+Nebenbei (klein): schnappschuss.py speichert zusätzlich Piotroski und Schätzungs-Trend je Aktie in data/verlauf (Idee vom 18.11.),
+damit vorhersagekraft.py sie später messen kann.
+
+### A14 (22.11.2026, vom Chef): Vorschlag „Wachstum unplausibel“ vorbereiten – ab Do 26.11., nur Zweig
+Grund: 444 Aktien fallen heute raus, davon rund 76 wegen „Wachstum … unplausibel“ (z. B. MRK +222 %, PANW −54 %) – oft Sonderkosten
+im Vorjahr. Das ist eine Bewertungsregel → nur auf Zweig vorschlag/wachstum vorbereiten, nicht auf main.
+1. Liste aller Fälle mit Gewinn letztes Jahr, Schätzung +1y, +2y; wie viele hätten mit Wachstum aus +1y→+2y (statt Ist→+1y) ein plausibles
+   Wachstum? 2. Variante auf dem Zweig, Vergleich: wie viele mehr bewertet, welche Punkte, Levins Aktien unverändert?
+3. Ergebnis in 3 Sätzen im Chef-Plan; Levin entscheidet über den Chef.
+
 ## Chef – Plan
-### 18.11.2026 (Mi) – Aufträge für heute Nacht (Budget 7 %, höchstens 2 Agenten)
+### 22.11.2026 (So) – Plan für die nächsten 2 Wochen (Budget Nachtschicht 7 % je Nacht, 21:41 je 1 Auftrag)
+Lage: 3502 Aktien im Programm (alle mit Kurs), 3057 bewertet (Testlauf 22.11. 20:35 mit den 150 neuen von So), Fehlercode 0, pruefung leer,
+kuerzel_verdacht leer. Woche: +~1050 Kürzel (2454 am 16.11. → 3502), Screener hat noch 1685 Kandidaten (~11 Abende). Japan schon 286 .T
+(Nikkei-Lücke durch Screener weitgehend gefüllt → keine eigene Recherche mehr nötig). Fehler gefunden und behoben: JBS, Kioxia, Nordea-Art,
+DOM.L/FBNC „doppelt“, BKH/NWE/ITGR (Fusionen). Dashboard: Daten Fr 20.11. 21:36 (Wochenende ok); Datensatz trefferquote seit 18.11. nicht neu
+(A6 fehlt). data/users/me "runs" für den Chef nicht vorhanden → A5.4-Test nur möglich, wenn Levins Sitzung es schreibt.
+Aufgaben: alle letzten Läufe SUCCEEDED. Thanksgiving Do 26.11.: US-Börse zu, Fr 27.11. kurz → fehlende US-Kurse dann kein Fehler.
+1. A11 Notizen entschlacken (So) – Erfolg: < 230 Zeilen, weniger Tokens je Lauf.
+2. A12 Splits automatisch (Mo) – Erfolg: kein falscher Split-Treffer mehr von Hand.
+3. A13 Rückblick-Test Trend (Di–Mi) – Erfolg: data/rueckblick_trend.json mit 3 Jahren.
+4. A14 Vorschlag Wachstum (Do–Fr, Zweig) – Erfolg: Zahl zusätzlich bewerteter Aktien, Entscheidung für Levin.
+5. Tests: A7 (Mo 23.11. Kurse vor 6:30 UTC?) – Lauf 3:41 Di prüft.
+An Levin gefragt: (1) A6 freigeben (Aufgaben-Texte), (2) ~65 Londoner Fonds ohne Kursziel sperren.
+Stand Chef-Aufträge 18.11.: A10 Teil 3 erledigt (18.11.), A5.4 behoben (Test offen), Morgenabruf 19.11. geprüft (ok). A3.2 nicht begonnen → jetzt A13.
+
+### 18.11.2026 (Mi) – kurz
+Aufträge: A10 Teil 3 (erledigt), A5.4 (behoben, Test offen), Morgenabruf 19.11. prüfen (ok). Frage A6 an Levin – keine Antwort.
+
+### 18.11.2026 (Mi) – alt, ausführlich (kann ins Archiv)
 Lage: 2904 Aktien im Programm (alle mit Kurs), Dashboard 2437 bewertet (nach der Reparatur heute). Wecker (A7) wirkt: Mi erster Kurse-Commit
 4:35 UTC. Trefferquote (Stand 17.11., rückwirkend, 2,5 Wochen): Aktien mit mehr Punkten lagen bisher eher schlechter (7–10 Punkte −9,5 %,
 n=3; unter 3 Punkte +0,3 %) – sagt bei so wenigen Tagen fast nichts. "Chef wieder einschalten" lief nicht (Sitzung weg) → Sparmodus-Ende hier vermerkt.
