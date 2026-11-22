@@ -1,70 +1,70 @@
 {
- "stand": "2026-11-21T02:51:49+00:00",
+ "stand": "2026-11-22T01:39:12+00:00",
  "grenze_eur": 1000000000.0,
  "boersen": {
   "us": {
    "gefunden": 3000,
-   "ueber_grenze": 2389,
+   "ueber_grenze": 2407,
    "ohne_wechselkurs": 0,
-   "neu": 549
+   "neu": 518
   },
   "de": {
-   "gefunden": 2389,
-   "ueber_grenze": 768,
+   "gefunden": 2387,
+   "ueber_grenze": 778,
    "ohne_wechselkurs": 0,
-   "neu": 10
+   "neu": 9
   },
   "gb": {
    "gefunden": 3000,
    "ueber_grenze": 33,
    "ohne_wechselkurs": 0,
-   "neu": 2
+   "neu": 1
   },
   "fr": {
-   "gefunden": 1000,
-   "ueber_grenze": 132,
+   "gefunden": 994,
+   "ueber_grenze": 134,
    "ohne_wechselkurs": 0,
-   "neu": 44
+   "neu": 42
   },
   "nl": {
-   "gefunden": 372,
+   "gefunden": 368,
    "ueber_grenze": 55,
    "ohne_wechselkurs": 0,
    "neu": 7
   },
   "es": {
-   "gefunden": 192,
-   "ueber_grenze": 73,
+   "gefunden": 189,
+   "ueber_grenze": 75,
    "ohne_wechselkurs": 0,
    "neu": 15
   },
   "it": {
    "gefunden": 3000,
-   "ueber_grenze": 83,
+   "ueber_grenze": 85,
    "ohne_wechselkurs": 0,
-   "neu": 27
+   "neu": 26
   },
   "ch": {
-   "gefunden": 673,
-   "ueber_grenze": 177,
+   "gefunden": 643,
+   "ueber_grenze": 174,
    "ohne_wechselkurs": 0,
-   "neu": 42
+   "neu": 41
   },
   "se": {
-   "gefunden": 1003,
-   "ueber_grenze": 163,
+   "gefunden": 940,
+   "ueber_grenze": 166,
    "ohne_wechselkurs": 1,
-   "neu": 75
+   "neu": 72
   },
   "dk": {
-   "gefunden": 571,
-   "ueber_grenze": 43,
+   "gefunden": 567,
+   "ueber_grenze": 46,
    "ohne_wechselkurs": 0,
-   "neu": 10
+   "neu": 11
   },
   "no": {
-   "gefunden": 590,
-   "ueber_grenze": 62,
+   "gefunden": 573,
+   "ueber_grenze": 65,
    "ohne_wechselkurs": 0,
    "neu": 28
   },
@@ -75,499 +75,499 @@
    "neu": 7
   },
   "be": {
-   "gefunden": 193,
-   "ueber_grenze": 40,
+   "gefunden": 191,
+   "ueber_grenze": 42,
    "ohne_wechselkurs": 0,
-   "neu": 14
+   "neu": 11
   },
   "at": {
    "gefunden": 3000,
-   "ueber_grenze": 867,
+   "ueber_grenze": 870,
    "ohne_wechselkurs": 0,
    "neu": 4
   },
   "jp": {
    "gefunden": 3000,
-   "ueber_grenze": 684,
+   "ueber_grenze": 683,
    "ohne_wechselkurs": 0,
-   "neu": 473
+   "neu": 431
   },
   "ca": {
-   "gefunden": 1047,
-   "ueber_grenze": 259,
+   "gefunden": 1035,
+   "ueber_grenze": 262,
    "ohne_wechselkurs": 0,
-   "neu": 110
+   "neu": 105
   },
   "au": {
-   "gefunden": 1913,
-   "ueber_grenze": 187,
+   "gefunden": 1904,
+   "ueber_grenze": 194,
    "ohne_wechselkurs": 0,
-   "neu": 107
+   "neu": 100
   },
   "hk": {
    "gefunden": 3000,
-   "ueber_grenze": 545,
+   "ueber_grenze": 546,
    "ohne_wechselkurs": 1,
-   "neu": 287
+   "neu": 257
   }
  },
  "neu": [
-  "7201.T",
-  "6656.HK",
-  "1944.T",
-  "642A.T",
-  "SCR.TO",
-  "6181.HK",
-  "6969.HK",
-  "3311.HK",
-  "2076.HK",
-  "INGR",
-  "HGTY",
-  "3626.T",
-  "9962.T",
-  "7752.T",
-  "9024.T",
-  "PLS.AX",
-  "3939.HK",
-  "0991.HK",
-  "1157.HK",
-  "ENIC",
-  "VIST",
-  "UGP",
-  "9005.T",
-  "4021.T",
-  "8334.T",
-  "PSK.TO",
-  "ALD.AX",
-  "AFI.AX",
-  "9863.HK",
-  "0020.HK",
-  "ASB",
-  "AG.TO",
-  "BXSL",
-  "TAL",
-  "LB",
-  "GLB.L",
-  "CAST.ST",
-  "WDP.BR",
-  "6645.T",
-  "2501.T",
-  "2212.T",
-  "9023.T",
-  "BTO.TO",
-  "1828.HK",
-  "2799.HK",
-  "1772.HK",
-  "3958.HK",
-  "BIPC",
-  "ATAT",
-  "BRZE",
-  "SBSW",
-  "WTM",
-  "3289.T",
-  "3197.T",
-  "1942.T",
-  "5332.T",
-  "EFN.TO",
-  "CGF.AX",
-  "SGHC",
-  "VEON",
-  "IFS",
-  "MAIN",
-  "OZK",
-  "LPX",
-  "COV.PA",
-  "REY.MI",
-  "6506.T",
-  "6976.T",
-  "4732.T",
-  "5929.T",
-  "8060.T",
-  "6724.T",
-  "4506.T",
-  "5830.T",
-  "2670.T",
-  "2897.T",
-  "TPG.AX",
-  "0148.HK",
-  "2607.HK",
-  "6810.HK",
-  "SR",
-  "MANE",
-  "CAI",
-  "CIG",
-  "MWH",
-  "LIVN",
-  "LGN",
-  "SHA0.DE",
-  "AUTO.OL",
-  "8377.T",
-  "2267.T",
-  "8952.T",
-  "MIN.AX",
-  "PRU.AX",
-  "SFR.AX",
-  "0008.HK",
-  "2282.HK",
-  "0392.HK",
-  "6963.HK",
-  "BVN",
-  "OGC.TO",
-  "LSTR",
-  "WFG.TO",
-  "OMAB",
-  "NICE",
-  "BEKN.SW",
-  "COLR.BR",
-  "3288.T",
-  "8953.T",
-  "6880.HK",
-  "3996.HK",
-  "2196.HK",
-  "AUGO",
-  "ERAS",
-  "SWEC-B.ST",
-  "4186.T",
-  "3231.T",
-  "4005.T",
-  "4733.T",
-  "CSH-UN.TO",
-  "MGR.AX",
-  "2039.HK",
-  "1377.HK",
-  "1070.HK",
-  "6821.HK",
-  "ALH",
-  "DNTH",
-  "MX.TO",
-  "NIQ",
-  "HWC",
-  "CMBT.BR",
-  "TNL",
-  "ODET.PA",
-  "MAIRE.MI",
-  "NOBA.ST",
-  "3086.T",
-  "8227.T",
-  "5406.T",
-  "0576.HK",
-  "1258.HK",
-  "1193.HK",
-  "COGT",
-  "SITE",
-  "SYNA",
-  "DPC",
-  "COLD",
-  "CIGI.TO",
-  "KLAR",
-  "HHH",
-  "2371.T"
+  "1440.HK",
+  "ICL",
+  "1256.HK",
+  "543A.T",
+  "9009.T",
+  "9064.T",
+  "2327.T",
+  "6856.T",
+  "6845.T",
+  "DSV.TO",
+  "EIF.TO",
+  "YAL.AX",
+  "ARG.AX",
+  "0220.HK",
+  "1735.HK",
+  "0598.HK",
+  "0100.HK",
+  "BB.TO",
+  "BWIN",
+  "SON",
+  "CCC",
+  "ADPT",
+  "PRM",
+  "MMYT",
+  "TVTX",
+  "MMED",
+  "HRI",
+  "GRAL",
+  "VK.PA",
+  "ACE.MI",
+  "DESN.SW",
+  "4042.T",
+  "6465.T",
+  "GMD.AX",
+  "NXT.AX",
+  "CWY.AX",
+  "1688.HK",
+  "2723.HK",
+  "2018.HK",
+  "0659.HK",
+  "3898.HK",
+  "9696.HK",
+  "3223.HK",
+  "0656.HK",
+  "IONS",
+  "SIMO",
+  "DOO.TO",
+  "NXE.TO",
+  "TENB",
+  "EWTX",
+  "9626.HK",
+  "LAGR-B.ST",
+  "AAK.ST",
+  "HOLM-B.ST",
+  "9404.T",
+  "4816.T",
+  "3774.T",
+  "2579.T",
+  "2726.HK",
+  "0522.HK",
+  "7618.HK",
+  "ARX",
+  "SSRM.TO",
+  "AQN.TO",
+  "DOX",
+  "BLLN",
+  "GGAL",
+  "TFSL",
+  "FHI",
+  "STVN",
+  "MRX",
+  "NNI",
+  "FDJU.PA",
+  "TEP.PA",
+  "IFCN.SW",
+  "CAMX.ST",
+  "VEND.OL",
+  "DEME.BR",
+  "4088.T",
+  "8341.T",
+  "3861.T",
+  "3283.T",
+  "9041.T",
+  "6460.T",
+  "8572.T",
+  "9513.T",
+  "3038.T",
+  "8804.T",
+  "REI-UN.TO",
+  "NPI.TO",
+  "CS.TO",
+  "AZJ.AX",
+  "ANN.AX",
+  "SDF.AX",
+  "2681.HK",
+  "6655.HK",
+  "SLGN",
+  "CAMT",
+  "MDA.TO",
+  "TEO",
+  "AF.PA",
+  "DIA.MI",
+  "IP.MI",
+  "LLBN.SW",
+  "1911.T",
+  "8253.T",
+  "7261.T",
+  "4751.T",
+  "1808.T",
+  "2002.T",
+  "9501.T",
+  "6806.T",
+  "7459.T",
+  "3635.T",
+  "KXS.TO",
+  "DXS.AX",
+  "0151.HK",
+  "2380.HK",
+  "0257.HK",
+  "2442.HK",
+  "1385.HK",
+  "1359.HK",
+  "HTFL",
+  "MAAS",
+  "BETA",
+  "OTF",
+  "RUI.PA",
+  "2331.T",
+  "2809.T",
+  "5076.T",
+  "3281.T",
+  "5901.T",
+  "4536.T",
+  "5706.T",
+  "3436.T",
+  "EDV.AX",
+  "AGL.AX",
+  "3774.HK",
+  "9995.HK",
+  "1530.HK",
+  "2727.HK",
+  "2883.HK",
+  "GLNG",
+  "STNG",
+  "FLG",
+  "KBR",
+  "PAY",
+  "AVNT",
+  "LION",
+  "SOP.PA"
  ],
  "financedatabase": 92900,
  "zweitlistings_aussortiert": 1,
- "kandidaten_gesamt": 1811,
+ "kandidaten_gesamt": 1685,
  "beispiele": [
   [
-   "7201.T",
-   "Nissan Motor Co., Ltd.",
-   5.4
+   "1440.HK",
+   "Star Shine Holdings Group Limited",
+   9.6
   ],
   [
-   "6656.HK",
-   "Sigenergy Technology Co., Ltd",
-   5.4
-  ],
-  [
-   "1944.T",
-   "Kinden Corporation",
-   5.3
-  ],
-  [
-   "642A.T",
-   "KYUDEN Holdings Inc.",
-   5.2
-  ],
-  [
-   "SCR.TO",
-   "Strathcona Resources Ltd.",
-   5.2
-  ],
-  [
-   "6181.HK",
-   "Laopu Gold Co., Ltd.",
-   5.2
-  ],
-  [
-   "6969.HK",
-   "Smoore International Holdings Limited",
-   5.2
-  ],
-  [
-   "3311.HK",
-   "China State Construction International Holdings Limited",
-   5.2
-  ],
-  [
-   "2076.HK",
-   "Kanzhun Limited",
-   5.1
-  ],
-  [
-   "INGR",
-   "Ingredion Incorporated",
-   5.1
-  ],
-  [
-   "HGTY",
-   "Hagerty, Inc.",
-   5.1
-  ],
-  [
-   "3626.T",
-   "TISI Inc.",
-   5.1
-  ],
-  [
-   "9962.T",
-   "MISUMI Group Inc.",
-   5.1
-  ],
-  [
-   "7752.T",
-   "Ricoh Company, Ltd.",
-   5.1
-  ],
-  [
-   "9024.T",
-   "Seibu Holdings Inc.",
-   5.1
-  ],
-  [
-   "PLS.AX",
-   "PLS Group Limited",
-   5.1
-  ],
-  [
-   "3939.HK",
-   "Wanguo Gold Group Limited",
-   5.1
-  ],
-  [
-   "0991.HK",
-   "Datang International Power Generation Co., Ltd.",
-   5.1
-  ],
-  [
-   "1157.HK",
-   "Zoomlion Heavy Industry Science and Technology Co., Ltd.",
-   5.1
-  ],
-  [
-   "ENIC",
-   "Enel Chile S.A.",
-   5.0
-  ],
-  [
-   "VIST",
-   "Vista Energy, S.A.B. de C.V.",
-   5.0
-  ],
-  [
-   "UGP",
-   "Ultrapar Participações S.A.",
-   5.0
-  ],
-  [
-   "9005.T",
-   "Tokyu Corporation",
-   5.0
-  ],
-  [
-   "4021.T",
-   "Nissan Chemical Corporation",
-   5.0
-  ],
-  [
-   "8334.T",
-   "The Gunma Bank, Ltd.",
-   5.0
-  ],
-  [
-   "PSK.TO",
-   "PrairieSky Royalty Ltd.",
-   5.0
-  ],
-  [
-   "ALD.AX",
-   "Ampol Limited",
-   5.0
-  ],
-  [
-   "AFI.AX",
-   "Australian Foundation Investment Company Limited",
-   5.0
-  ],
-  [
-   "9863.HK",
-   "Zhejiang Leapmotor Technology Co., Ltd.",
-   5.0
-  ],
-  [
-   "0020.HK",
-   "SenseTime Group Inc.",
-   5.0
-  ],
-  [
-   "ASB",
-   "Associated Banc-Corp",
-   4.9
-  ],
-  [
-   "AG.TO",
-   "First Majestic Silver Corp.",
-   4.9
-  ],
-  [
-   "BXSL",
-   "Blackstone Secured Lending Fund",
-   4.9
-  ],
-  [
-   "TAL",
-   "TAL Education Group",
-   4.9
-  ],
-  [
-   "LB",
-   "LandBridge Corporation",
-   4.9
-  ],
-  [
-   "GLB.L",
-   "Glanbia plc",
-   4.9
-  ],
-  [
-   "CAST.ST",
-   "Castellum AB (publ)",
-   4.9
-  ],
-  [
-   "WDP.BR",
-   "Warehouses De Pauw SA",
-   4.9
-  ],
-  [
-   "6645.T",
-   "OMRON Corporation",
-   4.9
-  ],
-  [
-   "2501.T",
-   "Sapporo Breweries Limited",
-   4.9
-  ],
-  [
-   "2212.T",
-   "Yamazaki Baking Co., Ltd.",
-   4.9
-  ],
-  [
-   "9023.T",
-   "Tokyo Metro Co., Ltd.",
-   4.9
-  ],
-  [
-   "BTO.TO",
-   "B2Gold Corp.",
-   4.9
-  ],
-  [
-   "1828.HK",
-   "FWD Group Holdings Limited",
-   4.9
-  ],
-  [
-   "2799.HK",
-   "China CITIC Financial Asset Management Co., Ltd.",
-   4.9
-  ],
-  [
-   "1772.HK",
-   "Ganfeng Lithium Group Co., Ltd.",
-   4.9
-  ],
-  [
-   "3958.HK",
-   "Orient Securities Company Limited",
-   4.9
-  ],
-  [
-   "BIPC",
-   "Brookfield Infrastructure Corporation",
+   "ICL",
+   "ICL Group Ltd",
    4.8
   ],
   [
-   "ATAT",
-   "Atour Lifestyle Holdings Limited",
-   4.8
+   "1256.HK",
+   "Beijing ESWIN Computing Technology Co., Ltd.",
+   4.4
   ],
   [
-   "BRZE",
-   "Braze, Inc.",
-   4.8
+   "543A.T",
+   "ARCHION Corporation",
+   4.2
   ],
   [
-   "SBSW",
-   "Sibanye Stillwater Limited",
-   4.8
+   "9009.T",
+   "Keisei Electric Railway Co., Ltd.",
+   4.2
   ],
   [
-   "WTM",
-   "White Mountains Insurance Group, Ltd.",
-   4.8
+   "9064.T",
+   "Yamato Holdings Co., Ltd.",
+   4.2
   ],
   [
-   "3289.T",
-   "Tokyu Fudosan Holdings Corporation",
-   4.8
+   "2327.T",
+   "NS Solutions Corporation",
+   4.2
   ],
   [
-   "3197.T",
-   "Skylark Holdings Co., Ltd.",
-   4.8
+   "6856.T",
+   "HORIBA, Ltd.",
+   4.2
   ],
   [
-   "1942.T",
-   "Kandenko Co.,Ltd.",
-   4.8
+   "6845.T",
+   "Azbil Corporation",
+   4.2
   ],
   [
-   "5332.T",
-   "TOTO LTD.",
-   4.8
+   "DSV.TO",
+   "Discovery Mining Ltd.",
+   4.2
   ],
   [
-   "EFN.TO",
-   "Element Fleet Management Corp.",
-   4.8
+   "EIF.TO",
+   "Exchange Income Corporation",
+   4.2
   ],
   [
-   "CGF.AX",
-   "Challenger Limited",
-   4.8
+   "YAL.AX",
+   "Yancoal Australia Ltd",
+   4.2
   ],
   [
-   "SGHC",
-   "Super Group (SGHC) Limited",
-   4.7
+   "ARG.AX",
+   "Argo Investments Limited",
+   4.2
   ],
   [
-   "VEON",
-   "VEON Ltd.",
-   4.7
+   "0220.HK",
+   "Uni-President China Holdings Ltd",
+   4.2
+  ],
+  [
+   "1735.HK",
+   "Central New Energy Holding Group Limited",
+   4.2
+  ],
+  [
+   "0598.HK",
+   "Sinotrans Limited",
+   4.2
+  ],
+  [
+   "0100.HK",
+   "MiniMax Group Inc.",
+   4.2
+  ],
+  [
+   "BB.TO",
+   "BlackBerry Limited",
+   4.1
+  ],
+  [
+   "BWIN",
+   "The Baldwin Insurance Group, Inc.",
+   4.1
+  ],
+  [
+   "SON",
+   "Sonoco Products Company",
+   4.1
+  ],
+  [
+   "CCC",
+   "CCC Intelligent Solutions Holdings Inc.",
+   4.1
+  ],
+  [
+   "ADPT",
+   "Adaptive Biotechnologies Corporation",
+   4.1
+  ],
+  [
+   "PRM",
+   "Perimeter Group Inc.",
+   4.1
+  ],
+  [
+   "MMYT",
+   "MakeMyTrip Limited",
+   4.1
+  ],
+  [
+   "TVTX",
+   "Travere Therapeutics, Inc.",
+   4.1
+  ],
+  [
+   "MMED",
+   "MiniMed Group, Inc.",
+   4.1
+  ],
+  [
+   "HRI",
+   "Herc Holdings Inc.",
+   4.1
+  ],
+  [
+   "GRAL",
+   "GRAIL, Inc.",
+   4.1
+  ],
+  [
+   "VK.PA",
+   "Vallourec S.A.",
+   4.1
+  ],
+  [
+   "ACE.MI",
+   "ACEA S.p.A.",
+   4.1
+  ],
+  [
+   "DESN.SW",
+   "Dottikon ES Holding AG",
+   4.1
+  ],
+  [
+   "4042.T",
+   "Tosoh Corporation",
+   4.1
+  ],
+  [
+   "6465.T",
+   "Hoshizaki Corporation",
+   4.1
+  ],
+  [
+   "GMD.AX",
+   "Genesis Minerals Limited",
+   4.1
+  ],
+  [
+   "NXT.AX",
+   "NEXTDC Limited",
+   4.1
+  ],
+  [
+   "CWY.AX",
+   "Cleanaway Waste Management Limited",
+   4.1
+  ],
+  [
+   "1688.HK",
+   "Lingyi iTech (Guangdong) Company",
+   4.1
+  ],
+  [
+   "2723.HK",
+   "Beijing DeepZero Technology Co., Ltd.",
+   4.1
+  ],
+  [
+   "2018.HK",
+   "AAC Technologies Holdings Inc.",
+   4.1
+  ],
+  [
+   "0659.HK",
+   "CTF Services Limited",
+   4.1
+  ],
+  [
+   "3898.HK",
+   "Zhuzhou CRRC Times Electric Co., Ltd.",
+   4.1
+  ],
+  [
+   "9696.HK",
+   "Tianqi Lithium Corporation",
+   4.1
+  ],
+  [
+   "3223.HK",
+   "Ingenic Semiconductor Co., Ltd.",
+   4.1
+  ],
+  [
+   "0656.HK",
+   "Fosun International Limited",
+   4.1
+  ],
+  [
+   "IONS",
+   "Ionis Pharmaceuticals, Inc.",
+   4.0
+  ],
+  [
+   "SIMO",
+   "Silicon Motion Technology Corporation",
+   4.0
+  ],
+  [
+   "DOO.TO",
+   "BRP Inc.",
+   4.0
+  ],
+  [
+   "NXE.TO",
+   "NexGen Energy Ltd.",
+   4.0
+  ],
+  [
+   "TENB",
+   "Tenable Holdings, Inc.",
+   4.0
+  ],
+  [
+   "EWTX",
+   "Edgewise Therapeutics, Inc.",
+   4.0
+  ],
+  [
+   "9626.HK",
+   "Bilibili Inc.",
+   4.0
+  ],
+  [
+   "LAGR-B.ST",
+   "Lagercrantz Group AB (publ)",
+   4.0
+  ],
+  [
+   "AAK.ST",
+   "AAK AB (publ.)",
+   4.0
+  ],
+  [
+   "HOLM-B.ST",
+   "Holmen AB (publ)",
+   4.0
+  ],
+  [
+   "9404.T",
+   "Nippon Television Holdings, Inc.",
+   4.0
+  ],
+  [
+   "4816.T",
+   "Toei Animation Co.,Ltd.",
+   4.0
+  ],
+  [
+   "3774.T",
+   "Internet Initiative Japan Inc.",
+   4.0
+  ],
+  [
+   "2579.T",
+   "Coca-Cola Bottlers Japan Holdings Inc.",
+   4.0
+  ],
+  [
+   "2726.HK",
+   "Epiworld International Co., Ltd.",
+   4.0
+  ],
+  [
+   "0522.HK",
+   "ASMPT Limited",
+   4.0
   ]
  ],
- "vorher": 3202,
- "nachher": 3352
+ "vorher": 3352,
+ "nachher": 3502
 }
