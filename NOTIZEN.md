@@ -110,7 +110,7 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   bekannten Split, nur Hinweis): heute 22, davon 8 bewertet. Recherche-Agent: keine nicht angepassten Splits, meist echte Kurseinbrüche mit veralteten
   Kurszielen (0881.HK, NUS, 6809.HK, 0148.HK, 1377.HK); unklar 3986.HK, 2476.HK, 5706.T (Split 1:10 im Sept., Kurs bei Yahoo 1120 vs. 2602 JPY am 14.10.
   bei marketscreener, forwardEps 601 passt nicht zu +1y 176 → beobachten). Test: mit echten Daten alle/liste/meine gleich, "pruefung" leer, 3192 bewertet;
-  Ersatzdaten (285A.T Faktor 3, SNDK Faktor 8) siehe Commit. Felder kommen mit dem nächsten Grunddaten-Lauf (Di früh). **A7 erledigt**: Mi 18.11. 4:35 UTC und
+  Ersatzdaten: SNDK Faktor 8 mit altem Ziel fällt aus, AAPL Faktor 4 mit angepasstem Ziel bleibt. Fund Prüf-Agent behoben: automatisch nur Faktor ≥ 2 bzw. ≤ 0,5 (bei 3:2, 5:4 wären sonst fast alle 60 Tage ausgefallen); Datum in Millisekunden wird erkannt. Felder kommen mit dem nächsten Grunddaten-Lauf (Di früh). **A7 erledigt**: Mi 18.11. 4:35 UTC und
   Mo 23.11. 4:33 UTC Kurse vor 6:30. **TCBI → TXCP** (Wechsel an die Texas Stock Exchange; finviz.com/news/419237). Levins Aktien: ENR.DE 7, NVDA 6, AVGO 5,
   SAP 4, IFX.DE 4 Punkte, ANT nicht bewertet (KGV 2352).
 - 23.11.2026 (Nachtschicht 3:41, Mo, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,

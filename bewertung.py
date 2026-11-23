@@ -431,6 +431,8 @@ def split_faktor(y, heute=None):
     f, d = y.get("split_faktor"), y.get("split_datum")
     if not f or not d or f <= 0 or abs(f - 1) < 1e-9:
         return None
+    if 0.5 < f < 2:  # kleine Splits/Gratisaktien (z. B. 3:2, 5:4): angepasstes und altes Kursziel nicht sicher trennbar
+        return None
     if heute:
         try:
             if not 0 <= (heute - dt.date.fromisoformat(str(d)[:10])).days <= 60:

@@ -143,7 +143,10 @@ def split_aus_info(info, heute=None, tage=60):
         neu, alt = float(teile[0]), float(teile[1])
         if neu <= 0 or alt <= 0 or abs(neu / alt - 1) < 1e-9:
             return None, None
-        datum = dt.datetime.fromtimestamp(float(sek), dt.timezone.utc).date()
+        sek = float(sek)
+        if sek > 1e11:  # Millisekunden statt Sekunden
+            sek /= 1000
+        datum = dt.datetime.fromtimestamp(sek, dt.timezone.utc).date()
         heute = heute or dt.datetime.now(dt.timezone.utc).date()
         if not (0 <= (heute - datum).days <= tage):
             return None, None
