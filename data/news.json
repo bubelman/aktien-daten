@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-23T07:05:00+01:00",
+ "stand": "2026-11-23T20:52:12+01:00",
  "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
  "aktien": {
   "NVDA": {
@@ -136,12 +136,12 @@
   },
   "HTWS.L": {
    "urteil": "neutral",
-   "kurz": "Q3-Update vor dem Zeitraum",
-   "grund": "Q3-Update mit Prognose am oberen Ende kam am 05.11.2026, vor dem 7-Tage-Fenster. Seitdem nichts Wichtiges.",
+   "kurz": "Keine neuen wichtigen Meldungen",
+   "grund": "Stand 23.11.2026 keine wichtigen neuen Meldungen gefunden. Die Q3-Zahlen mit angehobener Prognose lagen vor dem Zeitraum.",
    "quellen": [
-    "https://www.rttnews.com/3710296/helios-towers-9-month-operating-profit-climbs-updates-fy26-guidance.aspx"
+    "https://www.hl.co.uk/shares/stock-market-news/company--news/helios-towers-hails-record-tenancy-additions,-tightens-fy-guidance-upwards"
    ],
-   "datum": "2026-11-16",
+   "datum": "2026-11-23",
    "von": "News-Agenten"
   },
   "XYZ": {
@@ -167,11 +167,12 @@
   "EPAC": {
    "urteil": "neutral",
    "kurz": "Nur Konferenzteilnahme angekündigt",
-   "grund": "Im Zeitraum nur die Teilnahme an einer Industriekonferenz angekündigt. Der Investorentag war am 04.11.2026.",
+   "grund": "Keine wichtigen neuen Meldungen in den letzten 7 Tagen. Der Investor Day mit Zielen bis 2030 war am 4.11.2026, also vor dem Zeitraum.",
    "quellen": [
-    "https://finviz.com/news/419007/enerpac-tool-group-to-present-at-the-baird-global-industrial-conference"
+    "https://www.morningstar.com/news/globe-newswire/9872649/enerpac-tool-group-to-present-at-the-baird-global-industrial-conference",
+    "https://finviz.com/news/415141/enerpac-tool-group-hosts-2026-investor-day-introduces-propel-strategy-and-fiscal-2030-targets"
    ],
-   "datum": "2026-11-19",
+   "datum": "2026-11-23",
    "von": "News-Agenten"
   },
   "EQH": {
