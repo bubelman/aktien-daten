@@ -131,6 +131,27 @@ def dividende_anteil(dy, trailing):
     return dy / 100 if dy > 0.2 else dy
 
 
+def split_aus_info(info, heute=None, tage=60):
+    """Letzter Aktiensplit aus Yahoos info (lastSplitFactor "3:1", lastSplitDate in Sekunden) – kostet keinen
+    zusätzlichen Abruf (Auftrag A12, 23.11.2026). Nur Splits der letzten `tage` Tage mit Faktor ≠ 1.
+    Rückgabe (datum ISO, faktor) oder (None, None). Faktor 3 = 3:1-Split, 0,1 = Zusammenlegung 1:10."""
+    try:
+        teile = str(info.get("lastSplitFactor") or "").split(":")
+        sek = info.get("lastSplitDate")
+        if len(teile) != 2 or not sek:
+            return None, None
+        neu, alt = float(teile[0]), float(teile[1])
+        if neu <= 0 or alt <= 0 or abs(neu / alt - 1) < 1e-9:
+            return None, None
+        datum = dt.datetime.fromtimestamp(float(sek), dt.timezone.utc).date()
+        heute = heute or dt.datetime.now(dt.timezone.utc).date()
+        if not (0 <= (heute - datum).days <= tage):
+            return None, None
+        return datum.isoformat(), round(neu / alt, 6)
+    except Exception:
+        return None, None
+
+
 def grunddaten(sym, alt_r=None):
     t = yf.Ticker(sym)
     out = {"ticker": sym}
@@ -156,6 +177,8 @@ def grunddaten(sym, alt_r=None):
         bruttomarge=num(g("grossMargins")), kgv_trailing=num(g("trailingPE")),
         dividende=dividende_anteil(g("dividendYield"), g("trailingAnnualDividendYield")),
     )
+    # Aktiensplit der letzten 60 Tage (bewertung.py lässt die Aktie aus, bis Yahoo Kursziel/Schätzungen anpasst)
+    out["split_datum"], out["split_faktor"] = split_aus_info(info)
     # Gewinnschätzungen sind in der Berichtswährung (z. B. PDD in Yuan); Faktor in die Kurswährung
     out["eps_faktor"] = 1.0
     out["anzahl_aktien"] = num(g("sharesOutstanding"))

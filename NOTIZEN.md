@@ -104,6 +104,15 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 23.11.2026 (Nachtschicht 21:41, 1 Recherche-Agent, 1 Prüf-Agent): **A12 erledigt** – Splits automatisch: fetch.py speichert split_datum/split_faktor
+  aus Yahoos info (lastSplitFactor/lastSplitDate, kein Zusatz-Abruf, nur letzte 60 Tage); bewertung.py lässt die Aktie aus, solange Kursziel/Kurs
+  > 0,75 × Faktor (Zusammenlegung: < Wurzel(Faktor)), SPLIT_NOCH_ALT bleibt als Handliste. Neu in bericht.json "split_verdacht" (Kursziel > 3 × Kurs ohne
+  bekannten Split, nur Hinweis): heute 22, davon 8 bewertet. Recherche-Agent: keine nicht angepassten Splits, meist echte Kurseinbrüche mit veralteten
+  Kurszielen (0881.HK, NUS, 6809.HK, 0148.HK, 1377.HK); unklar 3986.HK, 2476.HK, 5706.T (Split 1:10 im Sept., Kurs bei Yahoo 1120 vs. 2602 JPY am 14.10.
+  bei marketscreener, forwardEps 601 passt nicht zu +1y 176 → beobachten). Test: mit echten Daten alle/liste/meine gleich, "pruefung" leer, 3192 bewertet;
+  Ersatzdaten (285A.T Faktor 3, SNDK Faktor 8) siehe Commit. Felder kommen mit dem nächsten Grunddaten-Lauf (Di früh). **A7 erledigt**: Mi 18.11. 4:35 UTC und
+  Mo 23.11. 4:33 UTC Kurse vor 6:30. **TCBI → TXCP** (Wechsel an die Texas Stock Exchange; finviz.com/news/419237). Levins Aktien: ENR.DE 7, NVDA 6, AVGO 5,
+  SAP 4, IFX.DE 4 Punkte, ANT nicht bewertet (KGV 2352).
 - 23.11.2026 (Nachtschicht 3:41, Mo, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
   3056 bewertet, 444 ausgefallen (186 ohne Gewinn, 110 ohne Kursziel, 37 doppelt). Daten: 3501 Aktien mit Grunddaten (So 22.11. 4:34 UTC), alle mit Kurs vom 20.11.
   (Wochenende). Screener Mo 2:05 UTC +150 Kürzel (3651 in tickers.txt); Grunddaten-Lauf dafür läuft seit 2:05 UTC. Levins Aktien: ENR.DE 6, NVDA 5, AVGO 5, SAP 5,
@@ -191,21 +200,6 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 ### A5 (Rest): stray_write-Test
 - A5.4 behoben (Länder- und Branchen-Auswahl fest im HTML, Seite Version 31). Offen nur der Test: nach dem nächsten Öffnen der Seite
   data/users/me "runs" ohne stray_write? Dann A5 löschen. A5.2/A5.3 siehe A6.
-
-### A7 (vom Aufpasser, 16.11.2026): Kurse-Schleife startet montags nicht
-- Stand 17.11. 21:41: Wecker (kurse-wecker.yml) eingebaut, siehe Protokoll. Test: Mi 18.11. und Mo 23.11. Kurse vor 6:30 UTC? Dann löschen.
-
-### A12 (22.11.2026, vom Chef): Aktiensplits automatisch erkennen – ab Mo 23.11. 21:41
-Grund: in einer Woche zwei Splits von Hand gefunden (Kioxia 285A.T 3:1, SanDisk SNDK 8:1); Kioxia hatte bis dahin falsche 6 Punkte.
-Die Liste SPLIT_NOCH_ALT in bewertung.py muss bisher von Hand gepflegt werden.
-1. fetch.py (Grunddaten-Lauf): je Aktie den letzten Split der letzten 60 Tage aus yfinance (Ticker.splits) speichern
-   (Felder split_datum, split_faktor; nur Werte ≠ 1). Abrufzahl beachten (Yahoo-Drosselung, vgl. 18.11.): nur wenn ohnehin
-   Grunddaten geholt werden, Fehler brechen nicht ab.
-2. bewertung.py: wie SPLIT_NOCH_ALT, aber aus den Feldern: Aktie fällt raus, solange Kursziel/Kurs > 0,75 × Faktor („Aktiensplit X:1 –
-   Kursziel und Schätzungen bei Yahoo noch vor dem Split“). Zusätzlich in bericht.json "split_verdacht": Kursziel/Kurs über 3 ohne
-   bekannten Split (Liste, keine Wirkung auf Punkte). Ist das eine Bewertungsregel? Nein – gleiche Prüfung wie SPLIT_NOCH_ALT, nur automatisch.
-3. Test: mit Ersatzdaten (285A.T Faktor 3, SNDK Faktor 8) fällt die Aktie raus bzw. kommt zurück, sobald Kursziel angepasst ist;
-   mit echten Daten Fehlercode 0, "pruefung" leer, keine Punkte anderer Aktien geändert. Ein Prüf-Agent.
 
 ### A13 (22.11.2026, vom Chef): langer Rückblick-Test der Trend-Punkte (= A3.2, seit 19.11. offen) – ab Di 24.11., 2 Nächte
 Grund: Trefferquote bisher gegen die Punkte (Stand 20.11.: 7–10 Punkte −13,9 % in 1 Woche, n=7; unter 3 Punkte −4,9 %; IC Punkte

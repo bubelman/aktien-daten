@@ -19,6 +19,7 @@ wenn die Yahoo-Datei älter ist. --keine-trades verbietet Depot-Käufe/-Verkäuf
 Nur Spielgeld-Simulation, keine Anlageberatung.
 """
 import argparse, datetime as dt, json, math, os, re, sys
+from fractions import Fraction
 
 START_GELD = 10000.0
 GEBUEHR = 1.0
@@ -422,6 +423,41 @@ def texte(z, x):
     return warum, " ".join(f)
 
 
+def split_faktor(y, heute=None):
+    """Faktor des letzten Aktiensplits: von Hand (SPLIT_NOCH_ALT) oder automatisch aus den Grunddaten
+    (split_faktor/split_datum aus Yahoos info, nur die letzten 60 Tage; Auftrag A12, 23.11.2026). Sonst None."""
+    if y["ticker"] in SPLIT_NOCH_ALT:
+        return SPLIT_NOCH_ALT[y["ticker"]][0]
+    f, d = y.get("split_faktor"), y.get("split_datum")
+    if not f or not d or f <= 0 or abs(f - 1) < 1e-9:
+        return None
+    if heute:
+        try:
+            if not 0 <= (heute - dt.date.fromisoformat(str(d)[:10])).days <= 60:
+                return None
+        except ValueError:
+            return None
+    return f
+
+
+def split_noch_alt(ziel_zu_kurs, f):
+    """True, solange Yahoo das Kursziel noch nicht an den Split angepasst hat (Kurs schon nach dem Split).
+    Split (f > 1): Kursziel mehr als 0,75 × Faktor über dem Kurs. Zusammenlegung (f < 1): Kursziel unter
+    Wurzel(f) × Kurs (also deutlich unter dem Kurs, z. B. bei 1:10 unter 32 %)."""
+    return ziel_zu_kurs > f * 0.75 if f > 1 else ziel_zu_kurs < math.sqrt(f)
+
+
+def split_verdacht(ydata):
+    """Hinweis für die Nachtschicht: Kursziel mehr als 3-mal so hoch wie der Kurs, ohne bekannten Split
+    (vielleicht ein Split, den Yahoo noch nicht meldet). Ändert keine Punkte. Rückgabe {Kürzel: Text}."""
+    v = {}
+    for t, y in ydata.items():
+        kurs, ziel = y.get("kurs"), y.get("kursziel_median") or y.get("kursziel_mittel")
+        if kurs and ziel and kurs > 0 and ziel / kurs > 3 and t not in SPLIT_NOCH_ALT and not y.get("split_faktor"):
+            v[t] = f"Kursziel {de(ziel / kurs, 1)}-mal so hoch wie der Kurs"
+    return v
+
+
 def bewerte(y, fx, alt_by, heute=None):
     """Rechnet eine Aktie aus den Yahoo-Daten. Gibt (zeile, fehlergrund) zurück."""
     t = y["ticker"]
@@ -432,8 +468,11 @@ def bewerte(y, fx, alt_by, heute=None):
         return None, "kein Kurs"
     if not ziel:
         return None, "kein Kursziel"
-    if t in SPLIT_NOCH_ALT and ziel / kurs > SPLIT_NOCH_ALT[t][0] * 0.75:
-        return None, f"Aktiensplit {SPLIT_NOCH_ALT[t][0]}:1 – Kursziel und Schätzungen bei Yahoo noch vor dem Split"
+    sf = split_faktor(y, heute)
+    if sf and split_noch_alt(ziel / kurs, sf):
+        q = Fraction(sf).limit_denominator(100)
+        art = f"Aktiensplit {q.numerator}:{q.denominator}"
+        return None, f"{art} – Kursziel und Schätzungen bei Yahoo noch vor dem Split"
     if not e0 or not e1 or f is None:
         return None, "keine Gewinnschätzung"
     q = fx_von(y, fx)
@@ -702,6 +741,7 @@ def main():
     # 0. Kürzel-Verdacht: Aktien ohne frischen Kurs (Übernahme, Börsenrückzug, neues Kürzel) und Kürzel ohne
     #    Firmendaten (ETF, Vorzugspapier oder falsches Kürzel). Nur Hinweis für die Nachtschicht, ändert keine Punkte.
     verdacht = kuerzel_verdacht(ydata, Y.get("stand"))
+    split_v = split_verdacht(ydata)
 
     # 1. Alle Aktien bewerten
     zeilen, ausfall = [], {}
@@ -1066,7 +1106,7 @@ def main():
         json.dump(d, open(os.path.join(a.neu, n), "w"), ensure_ascii=False, separators=(",", ":") if n == "alle.json" else None)
     statuswechsel = sum(1 for r in liste if alt_by.get(r["ticker"], {}).get("status") not in (None, r["status"]))
     bericht = dict(
-        stand_yahoo=Y.get("stand"), eurusd=fx, bewertet=len(zeilen), ausgefallen=ausfall, pruefung=pruef, kuerzel_verdacht=verdacht,
+        stand_yahoo=Y.get("stand"), eurusd=fx, bewertet=len(zeilen), ausgefallen=ausfall, pruefung=pruef, kuerzel_verdacht=verdacht, split_verdacht=split_v,
         top=[dict(ticker=t, aktie=by_now[t]["aktie"], kurs_eur=by_now[t]["kurs_eur"], fair=f"{de(by_now[t]['fair_lo_eur'], 0)}–{de(by_now[t]['fair_hi_eur'], 0)} €",
                   punkte=by_now[t]["punkte"], trend=by_now[t]["trend"], zahlen_am=by_now[t]["zahlen_am"]) for t in top],
         depot=None if a.ohne_depots else dict(wert_eur=wert, rendite_pct=verlauf[-1]["rendite_pct"], vergleich_pct=verlauf[-1]["vergleich_pct"],

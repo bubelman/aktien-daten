@@ -22,3 +22,4 @@ ITGR 20.11.2026 Übernahme durch KKR abgeschlossen, nicht mehr gehandelt – bio
 CDI.PA 20.11.2026 Christian Dior SE (Holding, hält LVMH = MC.PA); Yahoo ohne Börsenwert und Schätzungen, nicht bewertbar
 BKH 21.11.2026 Fusion mit NorthWestern zu Bright Horizon Energy abgeschlossen (16.11.2026), Kürzel jetzt HZN (seit 20.11. kein BKH-Kurs mehr) – stockanalysis.com/stocks/hzn/, panabee.com/news/northwestern-black-hills-merger-closes-shares-convert-at-0-98-ratio
 PCRX 22.11.2026 Übernahme durch Viatris abgeschlossen (36,50 $ je Aktie), seit 19.11. kein Kurs – pulse2.com/viatris-completes-acquisition-of-pacira-biosciences-for-36-50-per-share/
+TCBI 23.11.2026 Texas Capital wechselte von Nasdaq an die Texas Stock Exchange, neues Kürzel TXCP (seit 19.11. kein TCBI-Kurs) – finviz.com/news/419237/texas-capital-bancshares-inc-begins-trading-on-txse-under-new-txcp-ticker, stockanalysis.com/stocks/txcp/
