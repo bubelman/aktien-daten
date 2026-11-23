@@ -153,6 +153,8 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   am Vorabend, nächste: AVGO 09.12. ANT (Börsengang 19.11., Schluss 97,17 $) noch nicht bewertet (Gewinnschätzung 2027 −0,12 $).
 - 20.11.2026 (Scout 11:48): 1 neue Aktie: UMI.BR (Umicore, Hochstufung auf Kaufen durch Kepler Cheuvreux 19.11., Börsenwert ca. 4,9 Mrd. €,
   mit Gewinn; dailytradealert.com, investing.com). Hype-Liste: 8 Aktien (neu INTU, ROST; erneuert ANT, APP, AMD). KTB ausgelassen (Lee-Verkauf, Zahlen im Umbruch).
+- 23.11.2026 (Scout 11:48): 1 neue Aktie: AVAH (Aveanna Healthcare, Truist stuft am 23.11. auf Kaufen hoch, Ziel 15 $; Börsenwert ca. 2,2 Mrd. €;
+  investing.com, stockanalysis.com; Gewinn nicht mit Quelle bestätigt, Programm prüft). Hype-Liste: 9 Aktien (neu NVDA, GPN, INSM, GAP; erneuert ANT).
 
 ## Gegenprüfung mit dem Internet (Nachtschicht, reihum)
 - ENR.DE: 15.11.2026 – Kurs 131,28 €, Kursziel-Durchschnitt 192,21 € (28 Analysten), Gewinn GJ 2028 8,48 € – alles gleich wie
