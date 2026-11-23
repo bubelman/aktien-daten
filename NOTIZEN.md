@@ -104,6 +104,10 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 23.11.2026 (Nachtschicht 3:41, Mo, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
+  3056 bewertet, 444 ausgefallen (186 ohne Gewinn, 110 ohne Kursziel, 37 doppelt). Daten: 3501 Aktien mit Grunddaten (So 22.11. 4:34 UTC), alle mit Kurs vom 20.11.
+  (Wochenende). Screener Mo 2:05 UTC +150 Kürzel (3651 in tickers.txt); Grunddaten-Lauf dafür läuft seit 2:05 UTC. Levins Aktien: ENR.DE 6, NVDA 5, AVGO 5, SAP 5,
+  IFX.DE 4 Punkte, ANT nicht bewertet (KGV 2453). Keine Zahlen am Vorabend. runs fehlt weiter → A5.4-Test offen. A7-Test (Kurse vor 6:30 UTC) prüft Lauf Di 3:41.
 - 22.11.2026 (Nachtschicht 21:41, 1 Prüf-Agent): **A11 erledigt** – NOTIZEN.md entschlackt: Protokoll vor 20.11., alte Gegenprüfungen,
   alte Chef-Pläne, ältere Teile von A5/A7, A11-Text und überholte Zeilen (Team-/Token-Regeln 15.11., Wochenlimit-Zahl, SDAX offen) wörtlich nach
   NOTIZEN_ARCHIV.md. 503 → 294 Zeilen, 55 → 30 KB (−46 %). Ziel „unter 230“ nicht erreicht: allein die Teile, die laut A11 bleiben
