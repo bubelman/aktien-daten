@@ -1,0 +1,33 @@
+name: Rückblick-Test Trend
+# Nur von Hand (Auftrag A13): 4 Jahre Tageskurse für bis zu 800 Aktien (USA, .DE) laden und messen, ob die
+# Trend-Punkte in den letzten 3 Jahren zu besseren Renditen passten. Ergebnis: data/rueckblick_trend.json
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  rueckblick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install yfinance
+      - run: python rueckblick_trend.py
+      - name: Speichern
+        run: |
+          git config user.name "aktien-bot"
+          git config user.email "aktien-bot@users.noreply.github.com"
+          cp data/rueckblick_trend.json "$RUNNER_TEMP/rt.json"
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp "$RUNNER_TEMP/rt.json" data/rueckblick_trend.json
+            git add data/rueckblick_trend.json
+            git diff --cached --quiet && exit 0
+            git commit -q -m "Rückblick-Test Trend (A13)"
+            git push -q && exit 0
+            sleep 15
+          done
+          exit 1
