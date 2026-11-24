@@ -1,413 +1,434 @@
 {
- "stand": "2026-11-24T06:55:00+01:00",
- "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
- "aktien": {
-  "NVDA": {
-   "urteil": "neutral",
-   "kurz": "Starke Zahlen aber Chefsuche läuft",
-   "grund": "Am 17.11.2026 meldete Nvidia 115,8 Mrd. Dollar Umsatz, klar über der Erwartung von 109 Mrd., und sagte rund 130 Mrd. für Q4 voraus. Dagegen laufen nach dem Rücktritt des Chefs am 12.11. die Chefsuche und eine interne Untersuchung weiter.",
-   "quellen": [
-    "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027",
-    "https://www.newsquawk.com/headlines/nvidia-corporation-nvda-q3-fy27-usd-adj-eps-268-exp-248-revenue-1158bln-exp-109bln",
-    "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "UCG.MI": {
-   "urteil": "neutral",
-   "kurz": "Keine wichtigen neuen Nachrichten",
-   "grund": "Vom 16. bis 23.11.2026 nichts Wichtiges gefunden. Das Rekordquartal mit höherem Gewinnziel kam am 09.11., vor dem Zeitraum.",
-   "quellen": [
-    "https://en.ilsole24ore.com/art/unicredit-revises-its-forecasts-and-raises-its-target-for-commerzbank-AJrHn59B"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "SAP": {
-   "urteil": "neutral",
-   "kurz": "Nur Routinemeldungen im Zeitraum",
-   "grund": "Vom 16. bis 23.11.2026 nur Routinemeldungen, etwa der Abschluss der TechWolf-Übernahme am 16.11. Die JPMorgan-Hochstufung vom 09.11. liegt vor dem Zeitraum.",
-   "quellen": [
-    "https://live.deutsche-boerse.com/nachrichten/ANALYSE-FLASH-JPMorgan-hebt-SAP-auf-Overweight---Ziel-auf-275-Euro-384024a4-ccb6-4ca9-b420-d23aca8f15fc"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "AVGO": {
-   "urteil": "neutral",
-   "kurz": "Keine wichtigen Nachrichten",
-   "grund": "Vom 16. bis 23.11.2026 keine wichtige Meldung gefunden. Die Zahlen zum 4. Quartal kommen am 09.12.2026.",
-   "quellen": [
-    "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announce-fourth-quarter-and-fiscal-year-2026"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "IFX.DE": {
-   "urteil": "neutral",
-   "kurz": "Keine neuen Meldungen nach Jahreszahlen",
-   "grund": "Die Jahreszahlen kamen am 10./11.11.2026 und sind älter als 7 Tage. Vom 16. bis 23.11. keine wichtige neue Meldung gefunden.",
-   "quellen": [
-    "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "ENR.DE": {
-   "urteil": "neutral",
-   "kurz": "Nur einzelne höhere Kursziele",
-   "grund": "Die Rekordzahlen kamen am 11.11.2026, vor dem Zeitraum. Danach gab es nur einzelne höhere Kursziele, etwa JPMorgan 250 Euro am 12.11.",
-   "quellen": [
-    "https://live.deutsche-boerse.com/nachrichten/ANALYSE-FLASH-JPMorgan-hebt-Ziel-fuer-Siemens-Energy-auf-250-Euro---Overweight-b827b61d-f683-4131-a3e3-48fff5bfe1c5"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "FSG.L": {
-   "urteil": "neutral",
-   "kurz": "Nur Aktienrückkäufe gemeldet",
-   "grund": "In den letzten 7 Tagen nur Meldungen zu Aktienrückkäufen. Das Halbjahres-Update kam schon am 08.10.2026.",
-   "quellen": [
-    "https://www.rttnews.com/3697460/foresight-group-h1-fum-up-aum-flat-sequentially-sees-core-ebitda-growth-shares-down.aspx"
-   ],
-   "datum": "2026-11-20",
-   "von": "News-Agenten"
-  },
-  "SEZL": {
-   "urteil": "neutral",
-   "kurz": "Keine wichtigen neuen Nachrichten",
-   "grund": "Vom 16. bis 23.11.2026 nichts Wichtiges gefunden. Q3-Zahlen und höhere Prognose kamen Anfang November, vor dem Zeitraum.",
-   "quellen": [
-    "https://finviz.com/news/415777/sezzle-reports-third-quarter-2026-results"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "QNST": {
-   "urteil": "neutral",
-   "kurz": "Nur Konferenzteilnahme angekündigt",
-   "grund": "Im Zeitraum nur die Ankündigung einer Investorenkonferenz. Die Rekordzahlen kamen am 04.11.2026, vor dem Zeitraum.",
-   "quellen": [
-    "https://finviz.com/news/423193/quinstreet-to-participate-at-stephens-annual-investment-conference"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "PRGS": {
-   "urteil": "neutral",
-   "kurz": "Keine wichtigen Nachrichten gefunden",
-   "grund": "Für den 11.–18.11.2026 gibt es keine wesentlichen Meldungen. Die Domo-Übernahme wurde schon früher abgeschlossen.",
-   "quellen": [
-    "https://finviz.com/news/394447/progress-software-completes-acquisition-of-domos-ai-and-data-platform-business"
-   ],
-   "datum": "2026-11-18",
-   "von": "News-Agenten"
-  },
-  "JAZZ": {
-   "urteil": "neutral",
-   "kurz": "Keine neuen Meldungen im Zeitraum",
-   "grund": "Vom 12. bis 19.11.2026 keine wesentliche Nachricht. Die Umsatzprognose wurde am 03.11.2026 angehoben.",
-   "quellen": [
-    "https://finviz.com/news/414811/jazz-pharmaceuticals-to-participate-in-upcoming-investor-conferences"
-   ],
-   "datum": "2026-11-19",
-   "von": "News-Agenten"
-  },
-  "NBIX": {
-   "urteil": "neutral",
-   "kurz": "Nur Konferenzauftritte angekündigt",
-   "grund": "Im Zeitraum nur Ankündigungen von Konferenzauftritten. Die Q3-Zahlen kamen Ende Oktober/Anfang November.",
-   "quellen": [
-    "https://finviz.com/news/420450/neurocrine-biosciences-to-present-at-the-2026-jefferies-global-healthcare-conference"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "CNX": {
-   "urteil": "neutral",
-   "kurz": "Keine wichtigen Nachrichten gefunden",
-   "grund": "Die Q3-Zahlen kamen am 30.10.2026. Für den 11.–18.11.2026 gibt es nichts Wesentliches.",
-   "quellen": [
-    "https://www.webull.com/news/15639705115362304"
-   ],
-   "datum": "2026-11-18",
-   "von": "News-Agenten"
-  },
-  "HTWS.L": {
-   "urteil": "neutral",
-   "kurz": "Keine neuen wichtigen Meldungen",
-   "grund": "Stand 23.11.2026 keine wichtigen neuen Meldungen gefunden. Die Q3-Zahlen mit angehobener Prognose lagen vor dem Zeitraum.",
-   "quellen": [
-    "https://www.hl.co.uk/shares/stock-market-news/company--news/helios-towers-hails-record-tenancy-additions,-tightens-fy-guidance-upwards"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "XYZ": {
-   "urteil": "neutral",
-   "kurz": "Q3 und DOJ-Vergleich vor Zeitraum",
-   "grund": "Block hat am 04.11.2026 den Gewinnausblick angehoben und einen vorläufigen Vergleich mit dem US-Justizministerium erreicht. Im Zeitraum 11.–18.11.2026 gibt es nichts Wesentliches.",
-   "quellen": [
-    "https://www.thestar.com.my/tech/tech-news/2026/11/04/block-lifts-profit-outlook-on-cash-app-strength-reaches-preliminary-doj-settlement"
-   ],
-   "datum": "2026-11-18",
-   "von": "News-Agenten"
-  },
-  "YOU": {
-   "urteil": "neutral",
-   "kurz": "Keine wichtigen neuen Nachrichten",
-   "grund": "Vom 16. bis 23.11.2026 nichts Wichtiges gefunden. Q3-Zahlen und höhere Prognose kamen Anfang November.",
-   "quellen": [
-    "https://finviz.com/news/415116/clear-announces-third-quarter-2026-financial-results"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "EPAC": {
-   "urteil": "neutral",
-   "kurz": "Nur Konferenzteilnahme angekündigt",
-   "grund": "Keine wichtigen neuen Meldungen in den letzten 7 Tagen. Der Investor Day mit Zielen bis 2030 war am 4.11.2026, also vor dem Zeitraum.",
-   "quellen": [
-    "https://www.morningstar.com/news/globe-newswire/9872649/enerpac-tool-group-to-present-at-the-baird-global-industrial-conference",
-    "https://finviz.com/news/415141/enerpac-tool-group-hosts-2026-investor-day-introduces-propel-strategy-and-fiscal-2030-targets"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "KTB": {
-   "urteil": "neutral",
-   "kurz": "Q3-Zahlen vor dem Zeitraum",
-   "grund": "Q3-Zahlen mit höherem Ausblick und 450 Mio. Dollar Rückkauf kamen am 05.11.2026, also vor dem 7-Tage-Zeitraum. Seitdem keine wichtige neue Meldung.",
-   "quellen": [
-    "https://finviz.com/news/416667/kontoor-brands-reports-2026-third-quarter-results-and-strengthens-earnings-outlook-expects-to-repurchase-450-million-of-shares-following-the-successful-completion-of-the-divestiture-of-lee-provides-initial-2027-outlook"
-   ],
-   "datum": "2026-11-19",
-   "von": "News-Agenten"
-  },
-  "CORT": {
-   "urteil": "neutral",
-   "kurz": "Keine neuen Meldungen im Zeitraum",
-   "grund": "Vom 12. bis 19.11.2026 keine wesentliche Nachricht. Die Q3-Zahlen kamen Anfang November.",
-   "quellen": [
-    "https://finviz.com/news/414782/corcept-therapeutics-announces-third-quarter-financial-results-and-provides-corporate-update"
-   ],
-   "datum": "2026-11-19",
-   "von": "News-Agenten"
-  },
-  "PRG": {
-   "urteil": "neutral",
-   "kurz": "Keine neuen Meldungen im Zeitraum",
-   "grund": "Vom 12. bis 19.11.2026 keine wesentliche Nachricht. Die Q3-Zahlen kamen vor dem Zeitraum.",
-   "quellen": [
-    "https://finimize.com/content/prog-holdings-slipped-after-missing-q3-estimates"
-   ],
-   "datum": "2026-11-19",
-   "von": "News-Agenten"
-  },
-  "SONO": {
-   "urteil": "neutral",
-   "kurz": "Umsatz stark aber Margendruck",
-   "grund": "Sonos hat am 10.11.2026 leicht bessere Q4-Zahlen gemeldet, warnt für Q1 aber wegen hoher Speicherkosten vor einem starken Rückgang der Bruttomarge. Gute Zahlen und schwacher Ausblick gleichen sich aus.",
-   "quellen": [
-    "https://finviz.com/news/420706/sonos-beats-on-accelerating-sales-but-memory-costs-push-gross-margin-toward-a-steep-first-quarter-drop"
-   ],
-   "datum": "2026-11-18",
-   "von": "News-Agenten"
-  },
-  "SAGA.L": {
-   "urteil": "neutral",
-   "kurz": "Anleihe zur Refinanzierung",
-   "grund": "Am 16.11.2026 kündigte Saga eine Anleihe an. Das ist eine Refinanzierung ohne Folgen für den Ausblick.",
-   "quellen": [
-    "https://www.londonstockexchange.com/en/news/article/SAGA/saga-announces-proposed-bond-offering/30d6-16-ba-0e-ee-4de6bd"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "CUBI": {
-   "urteil": "neutral",
-   "kurz": "Auszeichnung und Konferenzauftritt",
-   "grund": "Im November 2026 als guter Arbeitgeber ausgezeichnet und Konferenzauftritt des Chefs angekündigt. Nichts Kursrelevantes.",
-   "quellen": [
-    "https://finviz.com/news/423602/customers-bank-ceo-sam-sidhu-to-present-at-td-cowen-2026-financials-fintech-conference"
-   ],
-   "datum": "2026-11-19",
-   "von": "News-Agenten"
-  },
-  "SBH": {
-   "urteil": "neutral",
-   "kurz": "Q4 und Ausblick vor dem Zeitraum",
-   "grund": "Die guten Q4-Zahlen und der angehobene Ausblick 2027 kamen am 10.11.2026, also vor den letzten 7 Tagen. Seitdem keine wichtigen Nachrichten.",
-   "quellen": [
-    "https://finviz.com/news/420232/sally-beauty-reports-q4-earnings-above-estimates-and-raises-fy2027-outlook-above-consensus"
-   ],
-   "datum": "2026-11-20",
-   "von": "News-Agenten"
-  },
-  "REZI": {
-   "urteil": "neutral",
-   "kurz": "Q3-Zahlen vor dem Zeitraum",
-   "grund": "Die Q3-Zahlen samt neuem Ausblick kamen am 10.11.2026, also vor mehr als 7 Tagen. Seitdem keine wichtige neue Meldung gefunden.",
-   "quellen": [
-    "https://finviz.com/news/420488/resideo-announces-third-quarter-2026-financial-results-and-updates-2026-outlook"
-   ],
-   "datum": "2026-11-20",
-   "von": "News-Agenten"
-  },
-  "CSU.TO": {
-   "urteil": "neutral",
-   "kurz": "Keine wichtigen Nachrichten gefunden",
-   "grund": "Die Q3-Zahlen kamen am 06.11.2026, vor dem Zeitraum. Für den 11.–18.11.2026 gibt es keine wesentliche Meldung.",
-   "quellen": [
-    "https://www.morningstar.com/news/dow-jones/2026110612836/constellation-software-reports-higher-3q-profit-boosted-by-acquisitions"
-   ],
-   "datum": "2026-11-18",
-   "von": "News-Agenten"
-  },
-  "4568.T": {
-   "urteil": "neutral",
-   "kurz": "EU-Zulassung Enhertu vor Zeitraum",
-   "grund": "Die EU-Zulassung von Enhertu und eine Meilensteinzahlung von AstraZeneca wurden um den 10.11.2026 gemeldet. Die Jahresprognose bleibt bestätigt.",
-   "quellen": [
-    "https://www.webull.com/news/15897324524269568"
-   ],
-   "datum": "2026-11-18",
-   "von": "News-Agenten"
-  },
-  "HAUTO.OL": {
-   "urteil": "neutral",
-   "kurz": "Langfristige Transportverträge verlängert",
-   "grund": "Höegh Autoliners hat Mitte November mehrjährige Transportverträge verlängert und am 17.11.2026 ein bisher geleastes Autotransportschiff gekauft. Das sind Routinemeldungen ohne klaren Einfluss auf die Bewertung.",
-   "quellen": [
-    "https://indiaseatradenews.com/hoegh-autoliners-renews-long-term-transport-deals/",
-    "https://indiaseatradenews.com/hoegh-autoliners-snaps-up-leased-car-carrier/"
-   ],
-   "datum": "2026-11-24",
-   "von": "News-Agenten"
-  },
-  "U": {
-   "urteil": "neutral",
-   "kurz": "Keine wichtigen neuen Nachrichten",
-   "grund": "Vom 16. bis 23.11.2026 keine wichtige neue Meldung gefunden. Der Kursanstieg folgt den Q3-Zahlen von Anfang November.",
-   "quellen": [
-    "https://www.trefis.com/stock/u/articles/625296/why-is-unity-stock-going-up/2026-11-16"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "3808.HK": {
-   "urteil": "neutral",
-   "kurz": "Keine wichtigen Nachrichten im Zeitraum",
-   "grund": "In den letzten 7 Tagen (12.–19.11.2026) keine wesentliche Firmenmeldung gefunden. Die Schließung der Tochter Sinotruk Finance ab 10.11. ist älter und klein.",
-   "quellen": [
-    "https://hk.marketscreener.com/quote/stock/SINOTRUK-HONG-KONG-LIMITE-6171041/",
-    "https://www.etnet.com.hk/mobile/tc/stocks/quote_news.php?code=03808"
-   ],
-   "datum": "2026-11-19",
-   "von": "News-Agenten"
-  },
-  "ANT": {
-   "urteil": "neutral",
-   "kurz": "Börsengang mit schwankendem Kurs",
-   "grund": "Anthropic gab am 19.11.2026 Aktien zu 83 Dollar aus, über der Spanne. Erster Kurs 111,50 Dollar, danach Rückgang auf etwa 93 Dollar.",
-   "quellen": [
-    "https://www.nasdaq.com/articles/why-anthropic-stock-and-down-today",
-    "https://www.aljazeera.com/economy/2026/11/19/anthropic-starts-trading-in-the-us-after-blockbuster-ipo"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "6857.T": {
-   "urteil": "neutral",
-   "kurz": "Kursrutsch ohne Firmennachricht",
-   "grund": "Am 16.11.2026 fiel die Aktie mit anderen Tokioter Chipwerten vor den Nvidia-Zahlen. Eine Firmennachricht steckte nicht dahinter.",
-   "quellen": [
-    "https://www.advantest.com/en/news/2026/20261112.html"
-   ],
-   "datum": "2026-11-19",
-   "von": "News-Agenten"
-  },
-  "YMM": {
-   "urteil": "positiv",
-   "kurz": "Q3 klar über den Erwartungen",
-   "grund": "Am 19.11.2026 meldete Full Truck Alliance 3,59 Mrd. Yuan Umsatz (erwartet 3,31 Mrd.) und 1,38 Yuan Gewinn je ADS (erwartet 1,32). Der Umsatzausblick für Q4 liegt unter dem Q3-Wert.",
-   "quellen": [
-    "https://finviz.com/news/425051/full-truck-alliance-shares-rise-38-as-third-quarter-earnings-and-revenue-beat-expectations",
-    "https://finviz.com/news/425009/full-truck-alliance-co-ltd-announces-third-quarter-2026-unaudited-financial-results"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "6655.HK": {
-   "urteil": "neutral",
-   "kurz": "Keine neuen Meldungen im Zeitraum",
-   "grund": "Vom 16. bis 23.11.2026 nichts Wichtiges gefunden. Der Kauf von CSN Cimentos für rund 1,64 Mrd. Dollar wurde am 08./09.11. angekündigt, vor dem Zeitraum.",
-   "quellen": [
-    "https://www.yicaiglobal.com/news/chinas-huaxin-building-materials-tumbles-on-usd16-billion-deal-to-take-over-brazilian-cement-giant"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "ATAT": {
-   "urteil": "neutral",
-   "kurz": "Keine neuen Nachrichten im Zeitraum",
-   "grund": "Die Q3-Zahlen kamen am 10.11.2026, vor dem Zeitraum. Vom 16. bis 23.11. nichts Wichtiges gefunden.",
-   "quellen": [
-    "https://finviz.com/news/420230/atour-lifestyle-shares-fall-nearly-4-as-same-hotel-revenue-declines-despite-305-sales-growth"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "PRU.AX": {
-   "urteil": "neutral",
-   "kurz": "Aktienrückkauf und Hauptversammlung",
-   "grund": "Am 18.11.2026 kaufte Perseus eigene Aktien zurück, dazu Hauptversammlung. Die Jahresprognose vom 27.10. bleibt bestätigt.",
-   "quellen": [
-    "https://kalkine.com.au/news/announcements/perseus-mining-buys-back-485783-shares-on-18-november-2026"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "NOBA.ST": {
-   "urteil": "neutral",
-   "kurz": "Anleihe erfolgreich platziert",
-   "grund": "Am 18.11.2026 platzierte NOBA eine Anleihe. Das ist Routine, sonst keine wichtigen Nachrichten.",
-   "quellen": [
-    "https://mfn.se/a/noba/noba-bank-group-ab-publ-has-successfully-issued-senior-preferred-bonds-7"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "CPA": {
-   "urteil": "negativ",
-   "kurz": "Margenprognose 2026 gesenkt",
-   "grund": "Copa legte am 18.11.2026 die Q3-Zahlen vor und nannte für 2026 nur noch 16–17 % operative Marge. Gründe: höhere Treibstoffpreise als angenommen, dazu 12–14 Mio. Dollar Belastung durch ein Erdbeben im Q4.",
-   "quellen": [
-    "https://www.sec.gov/Archives/edgar/data/0001345105/000162828026075125/cpa3q26ex-991.htm"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "AF.PA": {
-   "urteil": "neutral",
-   "kurz": "Santander stuft auf Outperform hoch",
-   "grund": "Santander stufte am 18.11.2026 von Underperform auf Outperform hoch, Kursziel 17 statt 9,30 Euro. Nur eine große Bank bestätigt, darum neutral.",
-   "quellen": [
-    "https://www.ideal-investisseur.fr/en/stock-news/air-france-klm-shares-among-the-top-three-in-the-sbf-120-following-santander-s-rating-change/29604.html"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
-  },
-  "6963.HK": {
-   "urteil": "neutral",
-   "kurz": "Keine wichtigen neuen Nachrichten",
-   "grund": "Vom 16. bis 23.11.2026 keine wichtige Meldung gefunden.",
-   "quellen": [
-    "https://www.lixinger.com/equity/company/detail/hk/06963/6963/announcement"
-   ],
-   "datum": "2026-11-23",
-   "von": "News-Agenten"
+  "stand": "2026-11-24T20:52:45+01:00",
+  "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
+  "aktien": {
+    "NVDA": {
+      "urteil": "neutral",
+      "kurz": "Starke Zahlen aber Chefsuche läuft",
+      "grund": "Am 17.11.2026 meldete Nvidia 115,8 Mrd. Dollar Umsatz, klar über der Erwartung von 109 Mrd., und sagte rund 130 Mrd. für Q4 voraus. Dagegen laufen nach dem Rücktritt des Chefs am 12.11. die Chefsuche und eine interne Untersuchung weiter.",
+      "quellen": [
+        "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027",
+        "https://www.newsquawk.com/headlines/nvidia-corporation-nvda-q3-fy27-usd-adj-eps-268-exp-248-revenue-1158bln-exp-109bln",
+        "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "UCG.MI": {
+      "urteil": "neutral",
+      "kurz": "Keine wichtigen neuen Nachrichten",
+      "grund": "Vom 16. bis 23.11.2026 nichts Wichtiges gefunden. Das Rekordquartal mit höherem Gewinnziel kam am 09.11., vor dem Zeitraum.",
+      "quellen": [
+        "https://en.ilsole24ore.com/art/unicredit-revises-its-forecasts-and-raises-its-target-for-commerzbank-AJrHn59B"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "SAP": {
+      "urteil": "neutral",
+      "kurz": "Nur Routinemeldungen im Zeitraum",
+      "grund": "Vom 16. bis 23.11.2026 nur Routinemeldungen, etwa der Abschluss der TechWolf-Übernahme am 16.11. Die JPMorgan-Hochstufung vom 09.11. liegt vor dem Zeitraum.",
+      "quellen": [
+        "https://live.deutsche-boerse.com/nachrichten/ANALYSE-FLASH-JPMorgan-hebt-SAP-auf-Overweight---Ziel-auf-275-Euro-384024a4-ccb6-4ca9-b420-d23aca8f15fc"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "AVGO": {
+      "urteil": "neutral",
+      "kurz": "Keine wichtigen Nachrichten",
+      "grund": "Vom 16. bis 23.11.2026 keine wichtige Meldung gefunden. Die Zahlen zum 4. Quartal kommen am 09.12.2026.",
+      "quellen": [
+        "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announce-fourth-quarter-and-fiscal-year-2026"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "IFX.DE": {
+      "urteil": "neutral",
+      "kurz": "Keine neuen Meldungen nach Jahreszahlen",
+      "grund": "Die Jahreszahlen kamen am 10./11.11.2026 und sind älter als 7 Tage. Vom 16. bis 23.11. keine wichtige neue Meldung gefunden.",
+      "quellen": [
+        "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "ENR.DE": {
+      "urteil": "neutral",
+      "kurz": "Nur einzelne höhere Kursziele",
+      "grund": "Die Rekordzahlen kamen am 11.11.2026, vor dem Zeitraum. Danach gab es nur einzelne höhere Kursziele, etwa JPMorgan 250 Euro am 12.11.",
+      "quellen": [
+        "https://live.deutsche-boerse.com/nachrichten/ANALYSE-FLASH-JPMorgan-hebt-Ziel-fuer-Siemens-Energy-auf-250-Euro---Overweight-b827b61d-f683-4131-a3e3-48fff5bfe1c5"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "FSG.L": {
+      "urteil": "neutral",
+      "kurz": "Nur Aktienrückkäufe gemeldet",
+      "grund": "In den letzten 7 Tagen nur Meldungen zu Aktienrückkäufen. Das Halbjahres-Update kam schon am 08.10.2026.",
+      "quellen": [
+        "https://www.rttnews.com/3697460/foresight-group-h1-fum-up-aum-flat-sequentially-sees-core-ebitda-growth-shares-down.aspx"
+      ],
+      "datum": "2026-11-20",
+      "von": "News-Agenten"
+    },
+    "SEZL": {
+      "urteil": "neutral",
+      "kurz": "Keine wichtigen neuen Nachrichten",
+      "grund": "Vom 16. bis 23.11.2026 nichts Wichtiges gefunden. Q3-Zahlen und höhere Prognose kamen Anfang November, vor dem Zeitraum.",
+      "quellen": [
+        "https://finviz.com/news/415777/sezzle-reports-third-quarter-2026-results"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "QNST": {
+      "urteil": "neutral",
+      "kurz": "Nur Konferenzteilnahme angekündigt",
+      "grund": "Im Zeitraum nur die Ankündigung einer Investorenkonferenz. Die Rekordzahlen kamen am 04.11.2026, vor dem Zeitraum.",
+      "quellen": [
+        "https://finviz.com/news/423193/quinstreet-to-participate-at-stephens-annual-investment-conference"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "PRGS": {
+      "urteil": "neutral",
+      "kurz": "Keine wichtigen Nachrichten gefunden",
+      "grund": "Für den 11.–18.11.2026 gibt es keine wesentlichen Meldungen. Die Domo-Übernahme wurde schon früher abgeschlossen.",
+      "quellen": [
+        "https://finviz.com/news/394447/progress-software-completes-acquisition-of-domos-ai-and-data-platform-business"
+      ],
+      "datum": "2026-11-18",
+      "von": "News-Agenten"
+    },
+    "JAZZ": {
+      "urteil": "neutral",
+      "kurz": "Nur Konferenzauftritte im Zeitraum",
+      "grund": "Jazz trat am 17.11.2026 auf der Jefferies-Konferenz in London auf. Weitere Auftritte folgen am 02.12.2026. Keine neuen Zahlen oder Prognosen.",
+      "quellen": [
+        "https://finviz.com/news/414811/jazz-pharmaceuticals-to-participate-in-upcoming-investor-conferences"
+      ],
+      "datum": "2026-11-24",
+      "von": "News-Agenten"
+    },
+    "NBIX": {
+      "urteil": "neutral",
+      "kurz": "Nur Konferenzauftritte angekündigt",
+      "grund": "Im Zeitraum nur Ankündigungen von Konferenzauftritten. Die Q3-Zahlen kamen Ende Oktober/Anfang November.",
+      "quellen": [
+        "https://finviz.com/news/420450/neurocrine-biosciences-to-present-at-the-2026-jefferies-global-healthcare-conference"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "CNX": {
+      "urteil": "neutral",
+      "kurz": "Keine wichtigen Nachrichten gefunden",
+      "grund": "Die Q3-Zahlen kamen am 30.10.2026. Für den 11.–18.11.2026 gibt es nichts Wesentliches.",
+      "quellen": [
+        "https://www.webull.com/news/15639705115362304"
+      ],
+      "datum": "2026-11-18",
+      "von": "News-Agenten"
+    },
+    "HTWS.L": {
+      "urteil": "neutral",
+      "kurz": "Keine neuen wichtigen Meldungen",
+      "grund": "Stand 23.11.2026 keine wichtigen neuen Meldungen gefunden. Die Q3-Zahlen mit angehobener Prognose lagen vor dem Zeitraum.",
+      "quellen": [
+        "https://www.hl.co.uk/shares/stock-market-news/company--news/helios-towers-hails-record-tenancy-additions,-tightens-fy-guidance-upwards"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "XYZ": {
+      "urteil": "neutral",
+      "kurz": "Q3 und DOJ-Vergleich vor Zeitraum",
+      "grund": "Block hat am 04.11.2026 den Gewinnausblick angehoben und einen vorläufigen Vergleich mit dem US-Justizministerium erreicht. Im Zeitraum 11.–18.11.2026 gibt es nichts Wesentliches.",
+      "quellen": [
+        "https://www.thestar.com.my/tech/tech-news/2026/11/04/block-lifts-profit-outlook-on-cash-app-strength-reaches-preliminary-doj-settlement"
+      ],
+      "datum": "2026-11-18",
+      "von": "News-Agenten"
+    },
+    "YOU": {
+      "urteil": "neutral",
+      "kurz": "Keine wichtigen neuen Nachrichten",
+      "grund": "Vom 16. bis 23.11.2026 nichts Wichtiges gefunden. Q3-Zahlen und höhere Prognose kamen Anfang November.",
+      "quellen": [
+        "https://finviz.com/news/415116/clear-announces-third-quarter-2026-financial-results"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "EPAC": {
+      "urteil": "neutral",
+      "kurz": "Nur Konferenzteilnahme angekündigt",
+      "grund": "Keine wichtigen neuen Meldungen in den letzten 7 Tagen. Der Investor Day mit Zielen bis 2030 war am 4.11.2026, also vor dem Zeitraum.",
+      "quellen": [
+        "https://www.morningstar.com/news/globe-newswire/9872649/enerpac-tool-group-to-present-at-the-baird-global-industrial-conference",
+        "https://finviz.com/news/415141/enerpac-tool-group-hosts-2026-investor-day-introduces-propel-strategy-and-fiscal-2030-targets"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "KTB": {
+      "urteil": "neutral",
+      "kurz": "Q3-Zahlen vor dem Zeitraum",
+      "grund": "Q3-Zahlen mit höherem Ausblick und 450 Mio. Dollar Rückkauf kamen am 05.11.2026, also vor dem 7-Tage-Zeitraum. Seitdem keine wichtige neue Meldung.",
+      "quellen": [
+        "https://finviz.com/news/416667/kontoor-brands-reports-2026-third-quarter-results-and-strengthens-earnings-outlook-expects-to-repurchase-450-million-of-shares-following-the-successful-completion-of-the-divestiture-of-lee-provides-initial-2027-outlook"
+      ],
+      "datum": "2026-11-19",
+      "von": "News-Agenten"
+    },
+    "CORT": {
+      "urteil": "neutral",
+      "kurz": "Keine neuen Meldungen im Zeitraum",
+      "grund": "Vom 12. bis 19.11.2026 keine wesentliche Nachricht. Die Q3-Zahlen kamen Anfang November.",
+      "quellen": [
+        "https://finviz.com/news/414782/corcept-therapeutics-announces-third-quarter-financial-results-and-provides-corporate-update"
+      ],
+      "datum": "2026-11-19",
+      "von": "News-Agenten"
+    },
+    "PRG": {
+      "urteil": "neutral",
+      "kurz": "Keine neuen Meldungen im Zeitraum",
+      "grund": "Vom 12. bis 19.11.2026 keine wesentliche Nachricht. Die Q3-Zahlen kamen vor dem Zeitraum.",
+      "quellen": [
+        "https://finimize.com/content/prog-holdings-slipped-after-missing-q3-estimates"
+      ],
+      "datum": "2026-11-19",
+      "von": "News-Agenten"
+    },
+    "SONO": {
+      "urteil": "neutral",
+      "kurz": "Umsatz stark aber Margendruck",
+      "grund": "Sonos hat am 10.11.2026 leicht bessere Q4-Zahlen gemeldet, warnt für Q1 aber wegen hoher Speicherkosten vor einem starken Rückgang der Bruttomarge. Gute Zahlen und schwacher Ausblick gleichen sich aus.",
+      "quellen": [
+        "https://finviz.com/news/420706/sonos-beats-on-accelerating-sales-but-memory-costs-push-gross-margin-toward-a-steep-first-quarter-drop"
+      ],
+      "datum": "2026-11-18",
+      "von": "News-Agenten"
+    },
+    "SAGA.L": {
+      "urteil": "neutral",
+      "kurz": "Anleihe zur Refinanzierung",
+      "grund": "Am 16.11.2026 kündigte Saga eine Anleihe an. Das ist eine Refinanzierung ohne Folgen für den Ausblick.",
+      "quellen": [
+        "https://www.londonstockexchange.com/en/news/article/SAGA/saga-announces-proposed-bond-offering/30d6-16-ba-0e-ee-4de6bd"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "CUBI": {
+      "urteil": "neutral",
+      "kurz": "Auszeichnung und Konferenzauftritt",
+      "grund": "Im November 2026 als guter Arbeitgeber ausgezeichnet und Konferenzauftritt des Chefs angekündigt. Nichts Kursrelevantes.",
+      "quellen": [
+        "https://finviz.com/news/423602/customers-bank-ceo-sam-sidhu-to-present-at-td-cowen-2026-financials-fintech-conference"
+      ],
+      "datum": "2026-11-19",
+      "von": "News-Agenten"
+    },
+    "SBH": {
+      "urteil": "neutral",
+      "kurz": "Q4 und Ausblick vor dem Zeitraum",
+      "grund": "Die guten Q4-Zahlen und der angehobene Ausblick 2027 kamen am 10.11.2026, also vor den letzten 7 Tagen. Seitdem keine wichtigen Nachrichten.",
+      "quellen": [
+        "https://finviz.com/news/420232/sally-beauty-reports-q4-earnings-above-estimates-and-raises-fy2027-outlook-above-consensus"
+      ],
+      "datum": "2026-11-20",
+      "von": "News-Agenten"
+    },
+    "REZI": {
+      "urteil": "neutral",
+      "kurz": "Q3-Zahlen vor dem Zeitraum",
+      "grund": "Die Q3-Zahlen samt neuem Ausblick kamen am 10.11.2026, also vor mehr als 7 Tagen. Seitdem keine wichtige neue Meldung gefunden.",
+      "quellen": [
+        "https://finviz.com/news/420488/resideo-announces-third-quarter-2026-financial-results-and-updates-2026-outlook"
+      ],
+      "datum": "2026-11-20",
+      "von": "News-Agenten"
+    },
+    "CSU.TO": {
+      "urteil": "neutral",
+      "kurz": "Keine wichtigen Nachrichten gefunden",
+      "grund": "Die Q3-Zahlen kamen am 06.11.2026, vor dem Zeitraum. Für den 11.–18.11.2026 gibt es keine wesentliche Meldung.",
+      "quellen": [
+        "https://www.morningstar.com/news/dow-jones/2026110612836/constellation-software-reports-higher-3q-profit-boosted-by-acquisitions"
+      ],
+      "datum": "2026-11-18",
+      "von": "News-Agenten"
+    },
+    "4568.T": {
+      "urteil": "neutral",
+      "kurz": "EU-Zulassung Enhertu vor Zeitraum",
+      "grund": "Die EU-Zulassung von Enhertu und eine Meilensteinzahlung von AstraZeneca wurden um den 10.11.2026 gemeldet. Die Jahresprognose bleibt bestätigt.",
+      "quellen": [
+        "https://www.webull.com/news/15897324524269568"
+      ],
+      "datum": "2026-11-18",
+      "von": "News-Agenten"
+    },
+    "HAUTO.OL": {
+      "urteil": "neutral",
+      "kurz": "Langfristige Transportverträge verlängert",
+      "grund": "Höegh Autoliners hat Mitte November mehrjährige Transportverträge verlängert und am 17.11.2026 ein bisher geleastes Autotransportschiff gekauft. Das sind Routinemeldungen ohne klaren Einfluss auf die Bewertung.",
+      "quellen": [
+        "https://indiaseatradenews.com/hoegh-autoliners-renews-long-term-transport-deals/",
+        "https://indiaseatradenews.com/hoegh-autoliners-snaps-up-leased-car-carrier/"
+      ],
+      "datum": "2026-11-24",
+      "von": "News-Agenten"
+    },
+    "U": {
+      "urteil": "neutral",
+      "kurz": "Keine wichtigen neuen Nachrichten",
+      "grund": "Vom 16. bis 23.11.2026 keine wichtige neue Meldung gefunden. Der Kursanstieg folgt den Q3-Zahlen von Anfang November.",
+      "quellen": [
+        "https://www.trefis.com/stock/u/articles/625296/why-is-unity-stock-going-up/2026-11-16"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "3808.HK": {
+      "urteil": "neutral",
+      "kurz": "Keine wichtigen Nachrichten im Zeitraum",
+      "grund": "In den letzten 7 Tagen (12.–19.11.2026) keine wesentliche Firmenmeldung gefunden. Die Schließung der Tochter Sinotruk Finance ab 10.11. ist älter und klein.",
+      "quellen": [
+        "https://hk.marketscreener.com/quote/stock/SINOTRUK-HONG-KONG-LIMITE-6171041/",
+        "https://www.etnet.com.hk/mobile/tc/stocks/quote_news.php?code=03808"
+      ],
+      "datum": "2026-11-19",
+      "von": "News-Agenten"
+    },
+    "ANT": {
+      "urteil": "neutral",
+      "kurz": "Börsengang mit schwankendem Kurs",
+      "grund": "Anthropic gab am 19.11.2026 Aktien zu 83 Dollar aus, über der Spanne. Erster Kurs 111,50 Dollar, danach Rückgang auf etwa 93 Dollar.",
+      "quellen": [
+        "https://www.nasdaq.com/articles/why-anthropic-stock-and-down-today",
+        "https://www.aljazeera.com/economy/2026/11/19/anthropic-starts-trading-in-the-us-after-blockbuster-ipo"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "6857.T": {
+      "urteil": "neutral",
+      "kurz": "Kursrutsch ohne Firmennachricht",
+      "grund": "Am 16.11.2026 fiel die Aktie mit anderen Tokioter Chipwerten vor den Nvidia-Zahlen. Eine Firmennachricht steckte nicht dahinter.",
+      "quellen": [
+        "https://www.advantest.com/en/news/2026/20261112.html"
+      ],
+      "datum": "2026-11-19",
+      "von": "News-Agenten"
+    },
+    "YMM": {
+      "urteil": "positiv",
+      "kurz": "Q3 klar über den Erwartungen",
+      "grund": "Am 19.11.2026 meldete Full Truck Alliance 3,59 Mrd. Yuan Umsatz (erwartet 3,31 Mrd.) und 1,38 Yuan Gewinn je ADS (erwartet 1,32). Der Umsatzausblick für Q4 liegt unter dem Q3-Wert.",
+      "quellen": [
+        "https://finviz.com/news/425051/full-truck-alliance-shares-rise-38-as-third-quarter-earnings-and-revenue-beat-expectations",
+        "https://finviz.com/news/425009/full-truck-alliance-co-ltd-announces-third-quarter-2026-unaudited-financial-results"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "6655.HK": {
+      "urteil": "neutral",
+      "kurz": "Keine neuen Meldungen im Zeitraum",
+      "grund": "Vom 16. bis 23.11.2026 nichts Wichtiges gefunden. Der Kauf von CSN Cimentos für rund 1,64 Mrd. Dollar wurde am 08./09.11. angekündigt, vor dem Zeitraum.",
+      "quellen": [
+        "https://www.yicaiglobal.com/news/chinas-huaxin-building-materials-tumbles-on-usd16-billion-deal-to-take-over-brazilian-cement-giant"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "ATAT": {
+      "urteil": "neutral",
+      "kurz": "Keine neuen Nachrichten im Zeitraum",
+      "grund": "Die Q3-Zahlen kamen am 10.11.2026, vor dem Zeitraum. Vom 16. bis 23.11. nichts Wichtiges gefunden.",
+      "quellen": [
+        "https://finviz.com/news/420230/atour-lifestyle-shares-fall-nearly-4-as-same-hotel-revenue-declines-despite-305-sales-growth"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "PRU.AX": {
+      "urteil": "neutral",
+      "kurz": "Aktienrückkauf und Hauptversammlung",
+      "grund": "Am 18.11.2026 kaufte Perseus eigene Aktien zurück, dazu Hauptversammlung. Die Jahresprognose vom 27.10. bleibt bestätigt.",
+      "quellen": [
+        "https://kalkine.com.au/news/announcements/perseus-mining-buys-back-485783-shares-on-18-november-2026"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "NOBA.ST": {
+      "urteil": "neutral",
+      "kurz": "Anleihe erfolgreich platziert",
+      "grund": "Am 18.11.2026 platzierte NOBA eine Anleihe. Das ist Routine, sonst keine wichtigen Nachrichten.",
+      "quellen": [
+        "https://mfn.se/a/noba/noba-bank-group-ab-publ-has-successfully-issued-senior-preferred-bonds-7"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "CPA": {
+      "urteil": "negativ",
+      "kurz": "Margenprognose 2026 gesenkt",
+      "grund": "Copa legte am 18.11.2026 die Q3-Zahlen vor und nannte für 2026 nur noch 16–17 % operative Marge. Gründe: höhere Treibstoffpreise als angenommen, dazu 12–14 Mio. Dollar Belastung durch ein Erdbeben im Q4.",
+      "quellen": [
+        "https://www.sec.gov/Archives/edgar/data/0001345105/000162828026075125/cpa3q26ex-991.htm"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "AF.PA": {
+      "urteil": "neutral",
+      "kurz": "Santander stuft auf Outperform hoch",
+      "grund": "Santander stufte am 18.11.2026 von Underperform auf Outperform hoch, Kursziel 17 statt 9,30 Euro. Nur eine große Bank bestätigt, darum neutral.",
+      "quellen": [
+        "https://www.ideal-investisseur.fr/en/stock-news/air-france-klm-shares-among-the-top-three-in-the-sbf-120-following-santander-s-rating-change/29604.html"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "6963.HK": {
+      "urteil": "neutral",
+      "kurz": "Keine wichtigen neuen Nachrichten",
+      "grund": "Vom 16. bis 23.11.2026 keine wichtige Meldung gefunden.",
+      "quellen": [
+        "https://www.lixinger.com/equity/company/detail/hk/06963/6963/announcement"
+      ],
+      "datum": "2026-11-23",
+      "von": "News-Agenten"
+    },
+    "PDD": {
+      "urteil": "neutral",
+      "kurz": "Umsatz flach aber Betriebsgewinn höher",
+      "grund": "PDD meldete am 19.11.2026 Zahlen zum 3. Quartal: Umsatz kaum verändert bei 108,3 Mrd. Yuan, Betriebsgewinn +25 %. Das Geschäft mit Transaktionsgebühren schrumpfte um 12 %, einen Ausblick gab es nicht.",
+      "quellen": [
+        "https://www.panabee.com/news/pdd-earnings-q3-2026",
+        "https://www.rttnews.com/3596196/pdd-holdings-inc-q3-profit-increases-beats-estimates.aspx"
+      ],
+      "datum": "2026-11-24",
+      "von": "News-Agenten"
+    },
+    "WGX.AX": {
+      "urteil": "neutral",
+      "kurz": "Nur Hauptversammlung am 26. November",
+      "grund": "In den letzten 7 Tagen keine wichtigen Meldungen gefunden. Die Hauptversammlung ist am 26.11.2026 in Perth.",
+      "quellen": [
+        "https://scanx.trade/stock-market-news/companies/westgold-resources-sets-2026-agm-november-26-perth/49429738"
+      ],
+      "datum": "2026-11-24",
+      "von": "News-Agenten"
+    }
   }
- }
 }
