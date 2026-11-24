@@ -171,6 +171,10 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   mit Gewinn; dailytradealert.com, investing.com). Hype-Liste: 8 Aktien (neu INTU, ROST; erneuert ANT, APP, AMD). KTB ausgelassen (Lee-Verkauf, Zahlen im Umbruch).
 - 23.11.2026 (Scout 11:48): 1 neue Aktie: AVAH (Aveanna Healthcare, Truist stuft am 23.11. auf Kaufen hoch, Ziel 15 $; Börsenwert ca. 2,2 Mrd. €;
   investing.com, stockanalysis.com; Gewinn nicht mit Quelle bestätigt, Programm prüft). Hype-Liste: 9 Aktien (neu NVDA, GPN, INSM, GAP; erneuert ANT).
+- 24.11.2026 (Scout 11:48): 1 neue Aktie: FRVIA.PA (Forvia, Kepler Cheuvreux stuft am 23.11. auf Kaufen hoch; Gewinn je Aktie 2026e 0,88 €;
+  dailytradealert.com, stockanalysis.com; Börsenwert nicht mit Quelle bestätigt, Programm prüft). FRO nicht aufgenommen (schon als FRO.OL da).
+  Gemeldet: WGX.AX, 6963.HK, MRX, MGNI, 1070.HK. Ausgelassen: KTB (Lee-Verkauf, Zahlen im Umbruch), **AF.PA unplausibel** (faire Mitte 117 € bei
+  Kurs 14,78 € und Kursziel 13,1 € → DCF prüfen, Auftrag für Nachtschicht). Hype-Liste: 9 Aktien (neu KYMR, ALAB, CRWV, CMG; erneuert NVDA).
 
 ## Gegenprüfung mit dem Internet (Nachtschicht, reihum)
 - ENR.DE: 15.11.2026 – Kurs 131,28 €, Kursziel-Durchschnitt 192,21 € (28 Analysten), Gewinn GJ 2028 8,48 € – alles gleich wie
