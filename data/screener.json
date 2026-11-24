@@ -1,65 +1,72 @@
 {
- "stand": "2026-11-23T02:00:00+00:00",
+ "stand": "2026-11-24T05:35:47+00:00",
  "grenze_eur": 1000000000.0,
  "boersen": {
   "us": {
-   "gefunden": 0,
-   "ueber_grenze": 0,
-   "ohne_wechselkurs": 0
+   "gefunden": 3000,
+   "ueber_grenze": 2411,
+   "ohne_wechselkurs": 0,
+   "neu": 483
   },
   "de": {
-   "gefunden": 0,
-   "ueber_grenze": 0,
-   "ohne_wechselkurs": 0
+   "gefunden": 2387,
+   "ueber_grenze": 769,
+   "ohne_wechselkurs": 0,
+   "neu": 10
   },
   "gb": {
-   "gefunden": 0,
-   "ueber_grenze": 0,
-   "ohne_wechselkurs": 0
+   "gefunden": 3000,
+   "ueber_grenze": 33,
+   "ohne_wechselkurs": 0,
+   "neu": 1
   },
   "fr": {
-   "gefunden": 0,
-   "ueber_grenze": 0,
-   "ohne_wechselkurs": 0
+   "gefunden": 1003,
+   "ueber_grenze": 132,
+   "ohne_wechselkurs": 0,
+   "neu": 36
   },
   "nl": {
-   "gefunden": 0,
-   "ueber_grenze": 0,
-   "ohne_wechselkurs": 0
+   "gefunden": 373,
+   "ueber_grenze": 56,
+   "ohne_wechselkurs": 0,
+   "neu": 7
   },
   "es": {
-   "gefunden": 0,
-   "ueber_grenze": 0,
-   "ohne_wechselkurs": 0
+   "gefunden": 190,
+   "ueber_grenze": 75,
+   "ohne_wechselkurs": 0,
+   "neu": 16
   },
   "it": {
-   "gefunden": 0,
-   "ueber_grenze": 0,
-   "ohne_wechselkurs": 0
+   "gefunden": 3000,
+   "ueber_grenze": 83,
+   "ohne_wechselkurs": 0,
+   "neu": 22
   },
   "ch": {
-   "gefunden": 652,
-   "ueber_grenze": 174,
+   "gefunden": 697,
+   "ueber_grenze": 180,
    "ohne_wechselkurs": 0,
-   "neu": 38
+   "neu": 29
   },
   "se": {
-   "gefunden": 935,
-   "ueber_grenze": 163,
+   "gefunden": 1014,
+   "ueber_grenze": 167,
    "ohne_wechselkurs": 1,
-   "neu": 68
+   "neu": 65
   },
   "dk": {
-   "gefunden": 567,
+   "gefunden": 573,
    "ueber_grenze": 43,
    "ohne_wechselkurs": 0,
-   "neu": 11
+   "neu": 9
   },
   "no": {
-   "gefunden": 573,
-   "ueber_grenze": 62,
+   "gefunden": 617,
+   "ueber_grenze": 64,
    "ohne_wechselkurs": 0,
-   "neu": 27
+   "neu": 21
   },
   "fi": {
    "gefunden": 202,
@@ -68,499 +75,499 @@
    "neu": 7
   },
   "be": {
-   "gefunden": 191,
+   "gefunden": 194,
    "ueber_grenze": 40,
    "ohne_wechselkurs": 0,
-   "neu": 10
+   "neu": 9
   },
   "at": {
    "gefunden": 3000,
-   "ueber_grenze": 867,
+   "ueber_grenze": 866,
    "ohne_wechselkurs": 0,
-   "neu": 4
+   "neu": 5
   },
   "jp": {
    "gefunden": 3000,
-   "ueber_grenze": 685,
+   "ueber_grenze": 689,
    "ohne_wechselkurs": 0,
-   "neu": 393
+   "neu": 331
   },
   "ca": {
-   "gefunden": 1035,
-   "ueber_grenze": 257,
+   "gefunden": 1041,
+   "ueber_grenze": 259,
    "ohne_wechselkurs": 0,
-   "neu": 91
+   "neu": 74
   },
   "au": {
-   "gefunden": 1914,
-   "ueber_grenze": 187,
+   "gefunden": 1917,
+   "ueber_grenze": 188,
    "ohne_wechselkurs": 0,
-   "neu": 88
+   "neu": 76
   },
   "hk": {
    "gefunden": 3000,
-   "ueber_grenze": 543,
-   "ohne_wechselkurs": 1,
-   "neu": 224
+   "ueber_grenze": 549,
+   "ohne_wechselkurs": 2,
+   "neu": 199
   }
  },
  "neu": [
-  "RMS.AX",
-  "GGP.AX",
-  "ASMDEE-B.ST",
-  "PROT.OL",
-  "WWI.OL",
-  "2181.T",
-  "5444.T",
-  "8050.T",
-  "4912.T",
-  "6113.T",
-  "9706.T",
-  "BEN.AX",
-  "HUB.AX",
-  "9880.HK",
-  "MCOV-B.ST",
-  "7276.T",
-  "8233.T",
-  "9506.T",
-  "7951.T",
-  "9007.T",
-  "3769.T",
-  "TA.TO",
-  "ATH.TO",
-  "GRT-UN.TO",
-  "AC.TO",
-  "TVE.TO",
-  "VAU.AX",
-  "3969.HK",
-  "3888.HK",
-  "ALLN.SW",
-  "BUCN.SW",
-  "7337.T",
-  "4527.T",
-  "6473.T",
-  "1721.T",
-  "GEI.TO",
-  "TXR.TO",
-  "SRU-UN.TO",
-  "WHC.AX",
-  "3866.HK",
-  "0470.HK",
-  "1963.HK",
-  "SRAIL.SW",
-  "SBNOR.OL",
-  "2871.T",
-  "3462.T",
-  "7189.T",
-  "9142.T",
-  "4182.T",
-  "4183.T",
-  "7282.T",
-  "KNT.TO",
-  "GRGD.TO",
-  "L1G.AX",
-  "ALX.AX",
-  "DNL.AX",
-  "1797.HK",
-  "TECN.SW",
-  "LOOMIS.ST",
-  "4676.T",
-  "5832.T",
-  "4812.T",
-  "9001.T",
-  "8418.T",
-  "4403.T",
-  "PEY.TO",
-  "EQB.TO",
-  "MAU.TO",
-  "FCR-UN.TO",
-  "HVN.AX",
-  "CMM.AX",
-  "1788.HK",
-  "3396.HK",
-  "0921.HK",
-  "3320.HK",
-  "2208.HK",
-  "3347.HK",
-  "BION.SW",
-  "HUBN.SW",
-  "SFZN.SW",
-  "DOKA.SW",
-  "CLAS-B.ST",
-  "ALMB.CO",
-  "7180.T",
-  "6370.T",
-  "4203.T",
-  "2282.T",
-  "6965.T",
-  "8972.T",
-  "5393.T",
-  "3291.T",
-  "9831.T",
-  "7327.T",
-  "6302.T",
-  "1882.HK",
-  "1908.HK",
-  "1199.HK",
-  "0696.HK",
-  "0268.HK",
-  "TRMD-A.CO",
-  "MING.OL",
-  "3405.T",
-  "7649.T",
-  "1969.T",
-  "6269.T",
-  "5991.T",
-  "4385.T",
-  "LNR.TO",
-  "TWE.AX",
-  "1618.HK",
-  "2096.HK",
-  "0552.HK",
-  "0425.HK",
-  "0683.HK",
-  "0384.HK",
-  "SMG.SW",
-  "PNDX-B.ST",
-  "VEI.OL",
-  "DOFG.OL",
-  "5021.T",
-  "1959.T",
-  "4967.T",
-  "4626.T",
-  "4613.T",
-  "8984.T",
-  "9072.T",
-  "641A.T",
-  "8252.T",
-  "9468.T",
-  "5110.T",
-  "3349.T",
-  "8985.T",
-  "2433.T",
-  "3132.T",
-  "CG.TO",
-  "CAR-UN.TO",
-  "POU.TO",
-  "AMP.AX",
-  "1318.HK",
-  "2788.HK",
-  "6979.HK",
-  "6186.HK",
-  "1585.HK",
-  "OET.OL",
-  "AZE.BR",
-  "2531.T",
-  "8954.T",
-  "5947.T",
-  "7731.T",
-  "9989.T"
+  "CRSP",
+  "GPGI",
+  "APLD",
+  "MBLY",
+  "PL",
+  "OKLO",
+  "TNGX",
+  "GTX",
+  "THO",
+  "XE",
+  "DFTX",
+  "GNTX",
+  "CORZ",
+  "CDNA",
+  "TKC",
+  "MSGE",
+  "JOBY",
+  "APPN",
+  "EE",
+  "SOI.PA",
+  "LFTO",
+  "PII",
+  "DNP",
+  "NP",
+  "RLAY",
+  "HG",
+  "XENE",
+  "MGNI",
+  "VIA",
+  "ZGN",
+  "TARS",
+  "PBLS",
+  "MIAX",
+  "CAAP",
+  "GEF",
+  "JOYY",
+  "EQPT",
+  "CDP",
+  "BAMNB.AS",
+  "WK",
+  "DLO",
+  "CBT",
+  "VRDN",
+  "ZIM",
+  "SMG",
+  "AMLX",
+  "ELVN",
+  "AG1.DE",
+  "VID.MC",
+  "3757.HK",
+  "AVPT",
+  "VKTX",
+  "AAOI",
+  "DK",
+  "SRAD",
+  "AXGN",
+  "ARQT",
+  "IRON",
+  "PLSE",
+  "PSUS",
+  "SGRY",
+  "FIGS",
+  "ABCL",
+  "MF.PA",
+  "ERG.MI",
+  "BATRK",
+  "MANU",
+  "DHT",
+  "INTA",
+  "PAM",
+  "RF.PA",
+  "CIRSA.MC",
+  "CIE.MC",
+  "6323.T",
+  "IRE.MI",
+  "BMA",
+  "LBTYA",
+  "FRSH",
+  "FLY",
+  "IRTC",
+  "TOWN",
+  "SKE.TO",
+  "MMS",
+  "GBDC",
+  "AMV0.DE",
+  "CRL.MI",
+  "TGYM.MI",
+  "ENAV.MI",
+  "WGX.AX",
+  "VTMX",
+  "XERS",
+  "ASH",
+  "BLSH",
+  "DNLI",
+  "FRVO",
+  "MCHB",
+  "BELFB",
+  "IOVA",
+  "SBLK",
+  "MNDY",
+  "BHC.TO",
+  "FII.PA",
+  "VIRP.PA",
+  "SK.PA",
+  "6481.T",
+  "5344.T",
+  "1626.HK",
+  "PFSI",
+  "DYN",
+  "LEGN",
+  "TNK",
+  "CXT",
+  "GRDN",
+  "FSK",
+  "WBI",
+  "VCT.PA",
+  "ATE.PA",
+  "MOBN.SW",
+  "7729.T",
+  "8960.T",
+  "8963.T",
+  "1963.T",
+  "1951.T",
+  "5938.T",
+  "3397.T",
+  "CRT-UN.TO",
+  "WOR.AX",
+  "BRG.AX",
+  "DOW.AX",
+  "SEK.AX",
+  "BOQ.AX",
+  "A2M.AX",
+  "2386.HK",
+  "3360.HK",
+  "2696.HK",
+  "9607.HK",
+  "SLDE",
+  "NEA",
+  "TGS",
+  "TLX.AX",
+  "ADX",
+  "ARLP",
+  "CSQ",
+  "PLBL",
+  "CLBK",
+  "MGRC",
+  "VERX",
+  "HTGC",
+  "LMND",
+  "LCLN"
  ],
  "financedatabase": 92888,
- "zweitlistings_aussortiert": 1,
- "kandidaten_gesamt": 961,
+ "zweitlistings_aussortiert": 3,
+ "kandidaten_gesamt": 1400,
  "beispiele": [
   [
-   "RMS.AX",
-   "Ramelius Resources Limited",
+   "CRSP",
+   "CRISPR Therapeutics AG",
+   3.8
+  ],
+  [
+   "GPGI",
+   "GPGI, Inc.",
+   3.8
+  ],
+  [
+   "APLD",
+   "Applied Digital Corporation",
+   3.8
+  ],
+  [
+   "MBLY",
+   "Mobileye Global Inc.",
    3.7
   ],
   [
-   "GGP.AX",
-   "Greatland Resources Limited",
+   "PL",
+   "Planet Labs PBC",
    3.7
   ],
   [
-   "ASMDEE-B.ST",
-   "Asmodee Group AB (publ)",
+   "OKLO",
+   "Oklo Inc.",
+   3.7
+  ],
+  [
+   "TNGX",
+   "Tango Therapeutics, Inc.",
+   3.7
+  ],
+  [
+   "GTX",
+   "Garrett Motion Inc.",
+   3.7
+  ],
+  [
+   "THO",
+   "THOR Industries, Inc.",
+   3.7
+  ],
+  [
+   "XE",
+   "X-Energy, Inc.",
+   3.7
+  ],
+  [
+   "DFTX",
+   "Definium Therapeutics, Inc.",
+   3.7
+  ],
+  [
+   "GNTX",
+   "Gentex Corporation",
+   3.7
+  ],
+  [
+   "CORZ",
+   "Core Scientific, Inc.",
+   3.7
+  ],
+  [
+   "CDNA",
+   "CareDx, Inc.",
    3.6
   ],
   [
-   "PROT.OL",
-   "Protector Forsikring ASA",
+   "TKC",
+   "Turkcell Iletisim Hizmetleri A.S.",
    3.6
   ],
   [
-   "WWI.OL",
-   "Wilh. Wilhelmsen Holding ASA",
+   "MSGE",
+   "Madison Square Garden Entertainment Corp.",
    3.6
   ],
   [
-   "2181.T",
-   "Persol Holdings Co.,Ltd.",
+   "JOBY",
+   "Joby Aviation, Inc.",
    3.6
   ],
   [
-   "5444.T",
-   "Yamato Kogyo Co., Ltd.",
+   "APPN",
+   "Appian Corporation",
    3.6
   ],
   [
-   "8050.T",
-   "Seiko Group Corporation",
+   "EE",
+   "Excelerate Energy, Inc.",
    3.6
   ],
   [
-   "4912.T",
-   "Lion Corporation",
+   "SOI.PA",
+   "Soitec SA",
    3.6
   ],
   [
-   "6113.T",
-   "Amada Co., Ltd.",
-   3.6
-  ],
-  [
-   "9706.T",
-   "Japan Airport Terminal Co., Ltd.",
-   3.6
-  ],
-  [
-   "BEN.AX",
-   "Bendigo and Adelaide Bank Limited",
-   3.6
-  ],
-  [
-   "HUB.AX",
-   "HUB24 Limited",
-   3.6
-  ],
-  [
-   "9880.HK",
-   "Ubtech Robotics Corp Ltd",
-   3.6
-  ],
-  [
-   "MCOV-B.ST",
-   "Medicover AB (publ)",
+   "LFTO",
+   "Liftoff Mobile, Inc.",
    3.5
   ],
   [
-   "7276.T",
-   "Koito Manufacturing Co., Ltd.",
+   "PII",
+   "Polaris Inc.",
    3.5
   ],
   [
-   "8233.T",
-   "Takashimaya Company, Limited",
+   "DNP",
+   "DNP Select Income Fund Inc.",
    3.5
   ],
   [
-   "9506.T",
-   "Tohoku Electric Power Company, Incorporated",
+   "NP",
+   "Neptune Insurance Holdings Inc.",
    3.5
   ],
   [
-   "7951.T",
-   "Yamaha Corporation",
+   "RLAY",
+   "Relay Therapeutics, Inc.",
    3.5
   ],
   [
-   "9007.T",
-   "Odakyu Electric Railway Co., Ltd.",
+   "HG",
+   "Hamilton Insurance Group, Ltd.",
    3.5
   ],
   [
-   "3769.T",
-   "GMO Payment Gateway, Inc.",
+   "XENE",
+   "Xenon Pharmaceuticals Inc.",
    3.5
   ],
   [
-   "TA.TO",
-   "TransAlta Corporation",
+   "MGNI",
+   "Magnite, Inc.",
    3.5
   ],
   [
-   "ATH.TO",
-   "Athabasca Oil Corporation",
+   "VIA",
+   "Via Transportation, Inc.",
    3.5
   ],
   [
-   "GRT-UN.TO",
-   "Granite Real Estate Investment Trust",
-   3.5
-  ],
-  [
-   "AC.TO",
-   "Air Canada",
-   3.5
-  ],
-  [
-   "TVE.TO",
-   "Tamarack Valley Energy Ltd.",
-   3.5
-  ],
-  [
-   "VAU.AX",
-   "Vault Minerals Limited",
-   3.5
-  ],
-  [
-   "3969.HK",
-   "China Railway Signal & Communication Corporation Limited",
-   3.5
-  ],
-  [
-   "3888.HK",
-   "Kingsoft Corporation Limited",
-   3.5
-  ],
-  [
-   "ALLN.SW",
-   "Allreal Holding AG",
+   "ZGN",
+   "Ermenegildo Zegna N.V.",
    3.4
   ],
   [
-   "BUCN.SW",
-   "Bucher Industries AG",
+   "TARS",
+   "Tarsus Pharmaceuticals, Inc.",
    3.4
   ],
   [
-   "7337.T",
-   "Hirogin Holdings, Inc.",
+   "PBLS",
+   "Parabilis Medicines, Inc.",
    3.4
   ],
   [
-   "4527.T",
-   "Rohto Pharmaceutical Co.,Ltd.",
+   "MIAX",
+   "Miami International Holdings, Inc.",
    3.4
   ],
   [
-   "6473.T",
-   "JTEKT Corporation",
+   "CAAP",
+   "Corporación América Airports S.A.",
    3.4
   ],
   [
-   "1721.T",
-   "COMSYS Holdings Corporation",
+   "GEF",
+   "Greif, Inc.",
    3.4
   ],
   [
-   "GEI.TO",
-   "Gibson Energy Inc.",
+   "JOYY",
+   "JOYY Inc.",
    3.4
   ],
   [
-   "TXR.TO",
-   "Torex Resources Inc.",
+   "EQPT",
+   "EquipmentShare.com Inc.",
    3.4
   ],
   [
-   "SRU-UN.TO",
-   "SmartCentres Real Estate Investment Trust",
+   "CDP",
+   "COPT Defense Properties",
    3.4
   ],
   [
-   "WHC.AX",
-   "Whitehaven Coal Limited",
+   "BAMNB.AS",
+   "Koninklijke BAM Groep nv",
    3.4
   ],
   [
-   "3866.HK",
-   "Bank of Qingdao Co., Ltd.",
-   3.4
-  ],
-  [
-   "0470.HK",
-   "Wuxi Lead Intelligent Equipment CO.,LTD.",
-   3.4
-  ],
-  [
-   "1963.HK",
-   "Bank of Chongqing Co., Ltd.",
-   3.4
-  ],
-  [
-   "SRAIL.SW",
-   "Stadler Rail AG",
+   "WK",
+   "Workiva Inc.",
    3.3
   ],
   [
-   "SBNOR.OL",
-   "Sparebanken Norge",
+   "DLO",
+   "DLocal Limited",
    3.3
   ],
   [
-   "2871.T",
-   "Nichirei Corporation",
+   "CBT",
+   "Cabot Corporation",
    3.3
   ],
   [
-   "3462.T",
-   "Nomura Real Estate Master Fund, Inc.",
+   "VRDN",
+   "Viridian Therapeutics, Inc.",
    3.3
   ],
   [
-   "7189.T",
-   "Nishi-Nippon Financial Holdings, Inc.",
+   "ZIM",
+   "ZIM Integrated Shipping Services Ltd.",
    3.3
   ],
   [
-   "9142.T",
-   "Kyushu Railway Company",
+   "SMG",
+   "The Scotts Miracle-Gro Company",
    3.3
   ],
   [
-   "4182.T",
-   "Mitsubishi Gas Chemical Company, Inc.",
+   "AMLX",
+   "Amylyx Pharmaceuticals, Inc.",
    3.3
   ],
   [
-   "4183.T",
-   "Mitsui Chemicals, Inc.",
+   "ELVN",
+   "Enliven Therapeutics, Inc.",
    3.3
   ],
   [
-   "7282.T",
-   "Toyoda Gosei Co., Ltd.",
+   "AG1.DE",
+   "AUTO1 Group SE",
    3.3
   ],
   [
-   "KNT.TO",
-   "K92 Mining Inc.",
+   "VID.MC",
+   "Vidrala, S.A.",
    3.3
   ],
   [
-   "GRGD.TO",
-   "Groupe Dynamite Inc.",
+   "3757.HK",
+   "RoboTechnik Intelligent Technology Co., Ltd.",
    3.3
   ],
   [
-   "L1G.AX",
-   "L1 Group Limited",
-   3.3
-  ],
-  [
-   "ALX.AX",
-   "Atlas Arteria Limited",
-   3.3
-  ],
-  [
-   "DNL.AX",
-   "Dyno Nobel Limited",
-   3.3
-  ],
-  [
-   "1797.HK",
-   "East Buy Holding Limited",
-   3.3
-  ],
-  [
-   "TECN.SW",
-   "Tecan Group AG",
+   "AVPT",
+   "AvePoint, Inc.",
    3.2
   ],
   [
-   "LOOMIS.ST",
-   "Loomis AB (publ)",
+   "VKTX",
+   "Viking Therapeutics, Inc.",
    3.2
   ],
   [
-   "4676.T",
-   "Fuji Media Holdings, Inc.",
+   "AAOI",
+   "Applied Optoelectronics, Inc.",
+   3.2
+  ],
+  [
+   "DK",
+   "Delek US Holdings, Inc.",
+   3.2
+  ],
+  [
+   "SRAD",
+   "Sportradar Group AG",
+   3.2
+  ],
+  [
+   "AXGN",
+   "Axogen, Inc.",
+   3.2
+  ],
+  [
+   "ARQT",
+   "Arcutis Biotherapeutics, Inc.",
+   3.2
+  ],
+  [
+   "IRON",
+   "Disc Medicine, Inc.",
+   3.2
+  ],
+  [
+   "PLSE",
+   "Pulse Biosciences, Inc.",
+   3.2
+  ],
+  [
+   "PSUS",
+   "Pershing Square USA, Ltd.",
    3.2
   ]
  ],
- "vorher": 3501,
- "nachher": 3651
+ "vorher": 3652,
+ "nachher": 3802
 }
