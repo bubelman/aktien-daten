@@ -1,17 +1,17 @@
-# Graph Report - aktien-daten  (2026-11-23)
+# Graph Report - aktien-daten  (2026-11-24)
 
 ## Corpus Check
-- 8 files · ~13,579 words
+- 9 files · ~14,893 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 2 file(s) not represented in the graph (top: (none) 2)
 
 ## Summary
-- 144 nodes · 302 edges · 9 communities (8 shown, 1 thin omitted)
+- 161 nodes · 341 edges · 10 communities (8 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1518138c`
+- Built from commit: `90de5eb0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -24,7 +24,8 @@
 - texte
 - screener.py
 - fx_von
-- vorhersagekraft.py
+- rueckblick_trend.py
+- boersentage_bis
 
 ## God Nodes (most connected - your core abstractions)
 1. `main()` - 20 edges
@@ -32,11 +33,11 @@
 3. `grunddaten()` - 11 edges
 4. `texte()` - 9 edges
 5. `main()` - 9 edges
-6. `de()` - 8 edges
-7. `main()` - 8 edges
-8. `main()` - 7 edges
-9. `bewerten()` - 7 edges
-10. `main()` - 7 edges
+6. `main()` - 9 edges
+7. `de()` - 8 edges
+8. `main()` - 8 edges
+9. `main()` - 7 edges
+10. `bewerten()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `main()` --calls--> `de()`  [EXTRACTED]
@@ -53,11 +54,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (9 total, 1 thin omitted)
+## Communities (10 total, 2 thin omitted)
 
 ### Community 0 - "json"
-Cohesion: 0.18
-Nodes (9): git(), letzte_je_tag(), main(), bewerten(), datenstand_datum(), gruppe(), main(), schnappschuss() (+1 more)
+Cohesion: 0.12
+Nodes (15): git(), letzte_je_tag(), main(), bewerten(), datenstand_datum(), gruppe(), main(), schnappschuss() (+7 more)
 
 ### Community 1 - "universum.py"
 Cohesion: 0.20
@@ -68,8 +69,8 @@ Cohesion: 0.15
 Nodes (14): basis(), dividende_anteil(), fcf_aus_cashflow(), fcf_zeile(), grunddaten(), grunddaten_sicher(), jetzt(), kurse_und_trends() (+6 more)
 
 ### Community 3 - "main"
-Cohesion: 0.17
-Nodes (8): feinwertung(), kuerzel_verdacht(), kurzname(), lade(), main(), lade_daten(), pruefe_zeile(), split_verdacht()
+Cohesion: 0.20
+Nodes (7): feinwertung(), kurzname(), lade(), main(), lade_daten(), pruefe_zeile(), split_verdacht()
 
 ### Community 4 - "bewertung.py"
 Cohesion: 0.13
@@ -83,21 +84,23 @@ Nodes (7): datum_de(), de(), geld(), kurs_text(), liste_text(), pz(), texte()
 Cohesion: 0.23
 Nodes (7): abfragen(), firma(), fx_tabelle(), heimat(), laender(), main(), zweitlisting()
 
-### Community 9 - "vorhersagekraft.py"
-Cohesion: 0.21
-Nodes (7): boersentage_bis(), berechnen(), fuenftel(), handelstag(), raenge(), spearman(), tage_laden()
+### Community 8 - "rueckblick_trend.py"
+Cohesion: 0.18
+Nodes (8): auswerten(), laden_test(), laden_yahoo(), main(), signale(), spearman(), stichprobe(), trend()
 
 ## Knowledge Gaps
-- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `main()` connect `main` to `json`, `fetch.py`, `bewertung.py`, `texte`, `fx_von`, `vorhersagekraft.py`?**
-  _High betweenness centrality (0.114) - this node is a cross-community bridge._
+- **Why does `main()` connect `main` to `json`, `fetch.py`, `bewertung.py`, `texte`, `fx_von`, `rueckblick_trend.py`, `boersentage_bis`?**
+  _High betweenness centrality (0.105) - this node is a cross-community bridge._
+- **Should `json` be split into smaller, more focused modules?**
+  _Cohesion score 0.12436974789915967 - nodes in this community are weakly interconnected._
+- **Why does `bewerte()` connect `bewertung.py` to `universum.py`, `main`, `texte`, `fx_von`?**
+  _High betweenness centrality (0.041) - this node is a cross-community bridge._
 - **Should `bewertung.py` be split into smaller, more focused modules?**
   _Cohesion score 0.12648221343873517 - nodes in this community are weakly interconnected._
-- **Why does `bewerte()` connect `bewertung.py` to `universum.py`, `main`, `texte`, `fx_von`?**
-  _High betweenness centrality (0.048) - this node is a cross-community bridge._
-- **Why does `name_wahl()` connect `universum.py` to `bewertung.py`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+- **Why does `main()` connect `rueckblick_trend.py` to `json`?**
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
