@@ -104,6 +104,16 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 24.11.2026 (Nachtschicht 21:41, 1 Prüf-Agent): **A13 Hauptteil erledigt** (Commits 90de5eb, c33aaa5) – rueckblick_trend.py + rueckblick.yml (nur von Hand),
+  Lauf auf GitHub ok (1 Min.): 792 von 800 Aktien (120 .DE + 680 US), Monate 2023-12 bis 2026-10, 27 396 Signale → data/rueckblick_trend.json.
+  Ergebnis: Trend-Summe +2 hatte 1 Monat danach +0,29 % Mehrrendite zum Monatsmittel, −2 hatte −0,54 % (3 Monate: +0,18 % / −1,16 %).
+  IC 1 Monat +0,031 (t 1,32, 56 % der Monate positiv), 3 Monate +0,028 (t 1,17). → Richtung stimmt, aber schwach und statistisch nicht sicher.
+  Prüf-Agent: Trend-Formeln Index für Index wie fetch.py, keine Vorausschau, keine Funde. Prüfung: bewertung.py Fehlercode 0, "pruefung" leer,
+  kuerzel_verdacht leer, 3286 bewertet, 516 ausgefallen (222 ohne Gewinn, 122 ohne Kursziel, 37 doppelt). Daten: 3803 Aktien, 3797 mit Kurs 24.11.
+  **AF.PA (Auftrag Scout) geprüft:** Rechnung stimmt (Gewinn +1y 4,68 € × faires KGV 25 = 117 €, DCF zufällig auch ~117 €; Kursziel 13,10 €).
+  Kein Datenfehler, sondern Methode: Fluglinien zählen nicht als Zykliker (ZYKLIKER nur 5 Speicher-Aktien) und Cashflow enthält Kundenanzahlungen.
+  17 Fluglinien bewertet, 4 mit 7 Punkten (AF.PA, 9201.T, CPA, DAL). Regelfrage → nur Idee (siehe Bekannte Grenzen). Levins Aktien: ENR.DE 6, NVDA 6,
+  AVGO 5, IFX.DE 4, SAP 4 Punkte, ANT nicht bewertet (KGV 277). Keine Zahlen in den nächsten 7 Tagen (AVGO 09.12.). runs fehlt weiter.
 - 24.11.2026 (Nachtschicht 3:41, Di, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
   3192 bewertet, 459 ausgefallen (189 ohne Gewinn, 113 ohne Kursziel, 37 doppelt), split_verdacht 23. Daten: 3652 Aktien, US-Schluss 23.11. da; 352 .T mit
   Stand 20.11. = Feiertag Japan 23.11. (kein Fehler); BBBY, REC.MI, ACT.DE, BIP-UN.TO, BIPC Stand 20.11. (beobachten). Split-Felder noch nicht da (Grunddaten
@@ -212,18 +222,10 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 - A5.4 behoben (Länder- und Branchen-Auswahl fest im HTML, Seite Version 31). Offen nur der Test: nach dem nächsten Öffnen der Seite
   data/users/me "runs" ohne stray_write? Dann A5 löschen. A5.2/A5.3 siehe A6.
 
-### A13 (22.11.2026, vom Chef): langer Rückblick-Test der Trend-Punkte (= A3.2, seit 19.11. offen) – ab Di 24.11., 2 Nächte
-Grund: Trefferquote bisher gegen die Punkte (Stand 20.11.: 7–10 Punkte −13,9 % in 1 Woche, n=7; unter 3 Punkte −4,9 %; IC Punkte
-5 Tage −0,078). 3 Wochen sagen fast nichts. Nur die Kurs-Regeln lassen sich ehrlich über Jahre testen (alte Analystenschätzungen gibt es nicht).
-1. Neues Skript rueckblick_trend.py + Workflow rueckblick.yml (nur von Hand starten, workflow_dispatch): yfinance-Kurse 3 Jahre für eine
-   feste Stichprobe (z. B. alle US- und .DE-Aktien aus tickers.txt, höchstens 800, Abrufe gebündelt mit yf.download).
-2. Je Monatsende: Trend lang (SMA200 + 6 Monate) und Trend kurz (SMA50 + 1 Monat) genau wie bewertung.py (Funktion dort lesen,
-   nicht neu erfinden) → Rendite der nächsten 1 und 3 Monate je Gruppe; IC; Vergleich mit allen. Ergebnis data/rueckblick_trend.json.
-3. Ehrliche Grenzen ins Ergebnis schreiben (Überlebende-Verzerrung: nur heutige Aktien; keine Kosten; Zeitraum).
-4. Reiter „So wird gerechnet“: nur wenn einfach, eine kleine Tabelle; sonst nur NOTIZEN.md und Bericht.
-Keine Regeländerung. Ergebnis an den Chef (Abschnitt Chef-Plan), der Levin ggf. einen Vorschlag macht.
-Nebenbei (klein): schnappschuss.py speichert zusätzlich Piotroski und Schätzungs-Trend je Aktie in data/verlauf (Idee vom 18.11.),
-damit vorhersagekraft.py sie später messen kann.
+### A13 (Rest, 22.11.2026, vom Chef) – Hauptteil am 24.11. erledigt (siehe Protokoll)
+Offen (klein, Mi 25.11.): schnappschuss.py speichert zusätzlich Piotroski und Schätzungs-Trend je Aktie in data/verlauf (Idee vom 18.11.),
+damit vorhersagekraft.py sie später messen kann. Reiter „So wird gerechnet“: Tabelle zum Rückblick bewusst weggelassen (Ergebnis zu
+unsicher für eine eigene Tabelle; nur NOTIZEN.md und Bericht).
 
 ### A14 (22.11.2026, vom Chef): Vorschlag „Wachstum unplausibel“ vorbereiten – ab Do 26.11., nur Zweig
 Grund: 444 Aktien fallen heute raus, davon rund 76 wegen „Wachstum … unplausibel“ (z. B. MRK +222 %, PANW −54 %) – oft Sonderkosten
@@ -246,6 +248,9 @@ Aufgaben: alle letzten Läufe SUCCEEDED. Thanksgiving Do 26.11.: US-Börse zu, F
 4. A14 Vorschlag Wachstum (Do–Fr, Zweig) – Erfolg: Zahl zusätzlich bewerteter Aktien, Entscheidung für Levin.
 5. Tests: A7 (Mo 23.11. Kurse vor 6:30 UTC?) – Lauf 3:41 Di prüft.
 An Levin gefragt: (1) A6 freigeben (Aufgaben-Texte), (2) ~65 Londoner Fonds ohne Kursziel sperren.
+Ergebnis A13 (24.11., für den Chef): Trend-Punkte über 3 Jahre (792 Aktien USA/.DE) mit richtiger Richtung, aber schwach: IC 1 Monat +0,031
+(t 1,32), 3 Monate +0,028 (t 1,17); Trend +2 vs. −2: +0,29 % vs. −0,54 % Mehrrendite pro Monat. Kein Grund, die Trend-Punkte zu streichen
+oder zu verstärken. Details data/rueckblick_trend.json (Grenzen dort).
 Stand Chef-Aufträge 18.11.: A10 Teil 3 erledigt (18.11.), A5.4 behoben (Test offen), Morgenabruf 19.11. geprüft (ok). A3.2 nicht begonnen → jetzt A13.
 
 
@@ -260,6 +265,8 @@ Stand Chef-Aufträge 18.11.: A10 Teil 3 erledigt (18.11.), A5.4 behoben (Test of
   hoch wie das Kursziel oder Cashflow-Rendite über 15 % als Sondereffekt behandeln).
 - Rund 70 Londoner Investmentfonds (Investment Trusts aus dem FTSE 250, z. B. SMT.L, FCIT.L) haben kein Kursziel und
   werden nie bewertet. Idee: in tickers_gesperrt.txt verschieben (mit Levin klären, ob er sie sehen will).
+- Fluglinien (24.11., AF.PA): nicht in ZYKLIKER, KGV oft 3–5, Cashflow mit Kundenanzahlungen → faire Mitte sehr hoch (AF.PA +705 %).
+  Idee für den Chef: Fluglinien (Branche „Airlines“, 17 bewertet) als Zykliker zählen – Regeländerung, nur mit Levins Ja und Zweig.
 - ML.PA (Michelin): Yahoo liefert seit dem 14.11. keine Gewinnschätzung und Börsenwert 0 → fällt raus (beobachten).
 - Noch „Währung unklar“: SHC.L, ABB.ST, EQT.ST, HEXA-B.ST (forwardEps passt zu keiner Umrechnung, Abweichung 25–60 %).
 - Ideen: Rückblick-Test der Trend-Regeln mit Kursdaten; Kurs-Gegenprüfung mit Twelve Data; Hinweis, wenn
