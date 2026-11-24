@@ -1,0 +1,229 @@
+{
+ "monate_von": "2023-12",
+ "monate_bis": "2026-10",
+ "signale": 27396,
+ "aktien": 792,
+ "ergebnis": {
+  "1_monat": {
+   "alle": {
+    "n": 26604,
+    "rendite_mittel_pct": 1.58
+   },
+   "gruppen": {
+    "lang": {
+     "-1": {
+      "n": 8190,
+      "rendite_mittel_pct": 1.58,
+      "rendite_median_pct": 0.97,
+      "mehrrendite_mittel_pct": -0.32,
+      "besser_als_mittel_pct": 46.1
+     },
+     "0": {
+      "n": 2880,
+      "rendite_mittel_pct": 1.35,
+      "rendite_median_pct": 0.93,
+      "mehrrendite_mittel_pct": -0.29,
+      "besser_als_mittel_pct": 45.4
+     },
+     "1": {
+      "n": 15534,
+      "rendite_mittel_pct": 1.62,
+      "rendite_median_pct": 0.96,
+      "mehrrendite_mittel_pct": 0.22,
+      "besser_als_mittel_pct": 47.1
+     }
+    },
+    "kurz": {
+     "-1": {
+      "n": 9538,
+      "rendite_mittel_pct": 1.87,
+      "rendite_median_pct": 1.19,
+      "mehrrendite_mittel_pct": -0.29,
+      "besser_als_mittel_pct": 45.2
+     },
+     "0": {
+      "n": 3913,
+      "rendite_mittel_pct": 1.57,
+      "rendite_median_pct": 0.97,
+      "mehrrendite_mittel_pct": -0.2,
+      "besser_als_mittel_pct": 45.7
+     },
+     "1": {
+      "n": 13153,
+      "rendite_mittel_pct": 1.37,
+      "rendite_median_pct": 0.8,
+      "mehrrendite_mittel_pct": 0.27,
+      "besser_als_mittel_pct": 47.9
+     }
+    },
+    "summe": {
+     "-2": {
+      "n": 5126,
+      "rendite_mittel_pct": 1.55,
+      "rendite_median_pct": 0.87,
+      "mehrrendite_mittel_pct": -0.54,
+      "besser_als_mittel_pct": 44.9
+     },
+     "-1": {
+      "n": 2476,
+      "rendite_mittel_pct": 1.63,
+      "rendite_median_pct": 1.11,
+      "mehrrendite_mittel_pct": -0.32,
+      "besser_als_mittel_pct": 45.5
+     },
+     "0": {
+      "n": 5414,
+      "rendite_mittel_pct": 2.04,
+      "rendite_median_pct": 1.44,
+      "mehrrendite_mittel_pct": 0.08,
+      "besser_als_mittel_pct": 46.9
+     },
+     "1": {
+      "n": 3489,
+      "rendite_mittel_pct": 1.63,
+      "rendite_median_pct": 1.09,
+      "mehrrendite_mittel_pct": 0.05,
+      "besser_als_mittel_pct": 46.2
+     },
+     "2": {
+      "n": 10099,
+      "rendite_mittel_pct": 1.31,
+      "rendite_median_pct": 0.69,
+      "mehrrendite_mittel_pct": 0.29,
+      "besser_als_mittel_pct": 47.8
+     }
+    }
+   },
+   "ic_trend_summe": {
+    "monate": 34,
+    "mittel": 0.0309,
+    "t_wert": 1.32,
+    "anteil_positiv_pct": 55.9
+   }
+  },
+  "3_monate": {
+   "alle": {
+    "n": 25020,
+    "rendite_mittel_pct": 5.1
+   },
+   "gruppen": {
+    "lang": {
+     "-1": {
+      "n": 7646,
+      "rendite_mittel_pct": 5.21,
+      "rendite_median_pct": 2.35,
+      "mehrrendite_mittel_pct": -0.31,
+      "besser_als_mittel_pct": 42.6
+     },
+     "0": {
+      "n": 2607,
+      "rendite_mittel_pct": 4.66,
+      "rendite_median_pct": 3.09,
+      "mehrrendite_mittel_pct": -0.63,
+      "besser_als_mittel_pct": 43.8
+     },
+     "1": {
+      "n": 14767,
+      "rendite_mittel_pct": 5.11,
+      "rendite_median_pct": 2.75,
+      "mehrrendite_mittel_pct": 0.27,
+      "besser_als_mittel_pct": 44.4
+     }
+    },
+    "kurz": {
+     "-1": {
+      "n": 8676,
+      "rendite_mittel_pct": 5.0,
+      "rendite_median_pct": 2.77,
+      "mehrrendite_mittel_pct": -0.52,
+      "besser_als_mittel_pct": 43.0
+     },
+     "0": {
+      "n": 3700,
+      "rendite_mittel_pct": 5.84,
+      "rendite_median_pct": 2.69,
+      "mehrrendite_mittel_pct": 0.82,
+      "besser_als_mittel_pct": 43.8
+     },
+     "1": {
+      "n": 12644,
+      "rendite_mittel_pct": 4.95,
+      "rendite_median_pct": 2.61,
+      "mehrrendite_mittel_pct": 0.12,
+      "besser_als_mittel_pct": 44.3
+     }
+    },
+    "summe": {
+     "-2": {
+      "n": 4687,
+      "rendite_mittel_pct": 4.66,
+      "rendite_median_pct": 2.26,
+      "mehrrendite_mittel_pct": -1.16,
+      "besser_als_mittel_pct": 41.3
+     },
+     "-1": {
+      "n": 2252,
+      "rendite_mittel_pct": 6.08,
+      "rendite_median_pct": 2.82,
+      "mehrrendite_mittel_pct": 0.96,
+      "besser_als_mittel_pct": 45.0
+     },
+     "0": {
+      "n": 5076,
+      "rendite_mittel_pct": 5.35,
+      "rendite_median_pct": 3.06,
+      "mehrrendite_mittel_pct": 0.27,
+      "besser_als_mittel_pct": 44.4
+     },
+     "1": {
+      "n": 3295,
+      "rendite_mittel_pct": 5.29,
+      "rendite_median_pct": 2.87,
+      "mehrrendite_mittel_pct": 0.04,
+      "besser_als_mittel_pct": 43.6
+     },
+     "2": {
+      "n": 9710,
+      "rendite_mittel_pct": 4.88,
+      "rendite_median_pct": 2.56,
+      "mehrrendite_mittel_pct": 0.18,
+      "besser_als_mittel_pct": 44.4
+     }
+    }
+   },
+   "ic_trend_summe": {
+    "monate": 32,
+    "mittel": 0.0279,
+    "t_wert": 1.17,
+    "anteil_positiv_pct": 59.4
+   }
+  }
+ },
+ "stand": "2026-11-24T20:45:30+00:00",
+ "test_mit_zufallskursen": false,
+ "stichprobe": {
+  "gewollt": 800,
+  "mit_kursen": 792,
+  "ohne_kurse": 8,
+  "ohne_kurse_liste": [
+   "KRN.DE",
+   "OBCK.DE",
+   "ACT.DE",
+   "SKHY",
+   "FDXF",
+   "HONA",
+   "VYLR",
+   "QNT"
+  ],
+  "auswahl": "alle .DE-Aktien und US-Aktien aus tickers.txt (Reihenfolge der Datei), höchstens 800"
+ },
+ "regeln": "Trend lang: Kurs vs. SMA200 und 6 Monate; Trend kurz: Kurs vs. SMA50 und 1 Monat (wie fetch.py/bewertung.py). Gruppen: +1 steigend, 0 seitwärts, -1 fallend; 'summe' = lang + kurz (-2 bis +2), so wie sie in die Punkte eingehen.",
+ "grenzen": [
+  "Überlebende-Verzerrung: nur Aktien, die es heute noch gibt (Pleiten und Übernahmen fehlen). Das schönt alle Gruppen, fallende Trends vermutlich am meisten.",
+  "Keine Handelskosten, keine Steuern, keine Dividenden außer über bereinigte Kurse (auto_adjust).",
+  "Nur 3 Jahre und nur USA/Deutschland – ein einziger Marktverlauf, kein Beweis für die Zukunft.",
+  "Renditen überlappen beim 3-Monats-Test (jeden Monat neu gemessen) – der t-Wert wirkt dadurch zu hoch.",
+  "Getestet sind nur die Trend-Punkte, nicht die übrigen Punkte (dafür fehlen alte Analystendaten).",
+  "Keine Regeländerung: das Ergebnis ist nur eine Messung."
+ ]
+}
