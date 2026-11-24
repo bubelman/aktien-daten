@@ -1,15 +1,15 @@
 {
- "stand": "2026-11-23T11:50:00+01:00",
+ "stand": "2026-11-24T12:05:00+01:00",
  "hinweis": "Aktien mit viel Aufmerksamkeit (Aktien-Scout). Gibt KEINE Punkte, nur eine Markierung im Dashboard. Gilt 3 Tage ab datum und nur mit Quelle. Felder je Aktie: grund (1 Satz), quellen (URLs), datum, staerke (1-3), von.",
  "aktien": {
-  "AMD": {
-   "grund": "−8,5 % am 19.11. nach einer Leerverkaufs-Wette von Hunterbrook; bei AltIndex unter den meistbeachteten Aktien.",
+  "ALAB": {
+   "grund": "+23 % am 23.11. mit der Erholung der Chip-Aktien.",
    "quellen": [
-    "https://www.stocktitan.net/articles/stock-market-today-live-november-19-2026",
-    "https://altindex.com/trending-stocks"
+    "https://www.trefis.com/stock/spy/articles/628237/market-movers-winners-nvda-kymr-axti-losers-swrd-tron-agl/2026-11-24",
+    "https://www.tikr.com/blog/astera-labs-soars-16-in-a-week-as-chips-rebound-scorpio-x-eyes-a-1-billion-run-rate"
    ],
-   "datum": "2026-11-20",
-   "staerke": 2,
+   "datum": "2026-11-24",
+   "staerke": 1,
    "von": "Aktien-Scout"
   },
   "ANT": {
@@ -22,45 +22,33 @@
    "staerke": 3,
    "von": "Aktien-Scout"
   },
-  "APP": {
-   "grund": "+41 % in einem Monat nach Rekordquartal (Umsatz +55 %), auf Stocktwits viel beachtet.",
+  "CMG": {
+   "grund": "+32 % in einem Monat nach Zahlen mit wieder mehr Gästen.",
    "quellen": [
-    "https://www.tikr.com/blog/applovin-is-up-71-in-a-week-take-profits-or-buy-more",
-    "https://stocktwits.com/news-articles/markets/equity/why-app-stock-soaring-today-q3-earnings-ai-advertising/cNG1cUMR9EJ",
-    "https://stockanalysis.com/news/applovin-q3-2026-earnings/"
+    "https://www.tikr.com/blog/chipotle-soars-16-in-a-week-as-traffic-grows-again-lower-income-cohort-outperformed",
+    "https://www.trefis.com/stock/cmg/articles/623205/a-7-day-winning-streak-has-chipotle-mexican-grill-stock-up-27/2026-11-06"
    ],
-   "datum": "2026-11-20",
-   "staerke": 3,
-   "von": "Aktien-Scout"
-  },
-  "INTU": {
-   "grund": "Nachbörslich −10 bis −14 % am 19.11.: Verkauf von Mailchimp an Bending Spoons, Ausblick gesenkt.",
-   "quellen": [
-    "https://www.marketscreener.com/news/stocks-to-watch-intuit-bending-spoons-gap-ross-stores-ce785ed2df80f524",
-    "https://www.stocktitan.net/articles/stock-market-today-live-november-19-2026"
-   ],
-   "datum": "2026-11-20",
-   "staerke": 2,
-   "von": "Aktien-Scout"
-  },
-  "ROST": {
-   "grund": "Rund −8 % nach Zahlen am 19.11., schwächeres Weihnachtsgeschäft erwartet.",
-   "quellen": [
-    "https://www.gurufocus.com/news/9211082/ross-stores-rost-shares-drop-81-after-q3-earnings-despite-strong-comparable-sales",
-    "https://www.marketscreener.com/news/ross-stores-sees-holiday-sales-growth-slowing-on-lower-discretionary-spending-shares-down-ce785ed2df81f623"
-   ],
-   "datum": "2026-11-20",
+   "datum": "2026-11-24",
    "staerke": 1,
    "von": "Aktien-Scout"
   },
-  "NVDA": {
-   "grund": "Vorbörslich rund +8 % am 23.11., nachdem Trump erneut fordert, Jensen Huang als Chef zurückzuholen; auf Reddit mit Abstand am meisten erwähnt (1.660 in 24 h).",
+  "CRWV": {
+   "grund": "+22 % am 23.11. mit der KI-Erholung nach Huangs Rückkehr.",
    "quellen": [
-    "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-23-dow-sp-500-nasdaq-091118583.html",
-    "https://altindex.com/reddit-stocks"
+    "https://www.trefis.com/stock/spy/articles/628237/market-movers-winners-nvda-kymr-axti-losers-swrd-tron-agl/2026-11-24"
+   ],
+   "datum": "2026-11-24",
+   "staerke": 1,
+   "von": "Aktien-Scout"
+  },
+  "GAP": {
+   "grund": "+11,4 % am 20.11. nach Quartalsgewinn über Erwartung (0,82 $ statt 0,78 $), obwohl die Jahresprognose gesenkt wurde.",
+   "quellen": [
+    "https://raspberrytrades.com/stock-market-today",
+    "https://www.newsquawk.com/headlines/gap-gap-q3-2026-usd-adj-eps-082-exp-078-revenue-4bln-exp-402bln"
    ],
    "datum": "2026-11-23",
-   "staerke": 3,
+   "staerke": 2,
    "von": "Aktien-Scout"
   },
   "GPN": {
@@ -82,14 +70,24 @@
    "staerke": 2,
    "von": "Aktien-Scout"
   },
-  "GAP": {
-   "grund": "+11,4 % am 20.11. nach Quartalsgewinn über Erwartung (0,82 $ statt 0,78 $), obwohl die Jahresprognose gesenkt wurde.",
+  "KYMR": {
+   "grund": "+30 % am 23.11., +36 % in einem Monat; Daten der Ekzem-Studie sollen früher kommen.",
    "quellen": [
-    "https://raspberrytrades.com/stock-market-today",
-    "https://www.newsquawk.com/headlines/gap-gap-q3-2026-usd-adj-eps-082-exp-078-revenue-4bln-exp-402bln"
+    "https://www.trefis.com/stock/spy/articles/628237/market-movers-winners-nvda-kymr-axti-losers-swrd-tron-agl/2026-11-24",
+    "https://www.ibtimes.com.au/kymera-therapeutics-stock-soars-early-trial-enrollment-1871320"
    ],
-   "datum": "2026-11-23",
+   "datum": "2026-11-24",
    "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "NVDA": {
+   "grund": "+31,5 % am 23.11. auf 165,05 $, weil Jensen Huang wieder Chef ist; heute vorbörslich rund −3 %.",
+   "quellen": [
+    "https://thebullsheet00.substack.com/p/nvidia-ripped-31-on-jensens-return",
+    "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-24-dow-sp-500-nasdaq-rebound-090614276.html"
+   ],
+   "datum": "2026-11-24",
+   "staerke": 3,
    "von": "Aktien-Scout"
   }
  }
