@@ -104,6 +104,13 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 24.11.2026 (Nachtschicht 3:41, Di, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
+  3192 bewertet, 459 ausgefallen (189 ohne Gewinn, 113 ohne Kursziel, 37 doppelt), split_verdacht 23. Daten: 3652 Aktien, US-Schluss 23.11. da; 352 .T mit
+  Stand 20.11. = Feiertag Japan 23.11. (kein Fehler); BBBY, REC.MI, ACT.DE, BIP-UN.TO, BIPC Stand 20.11. (beobachten). Split-Felder noch nicht da (Grunddaten
+  vom 23.11. 3:32 UTC, nächster Lauf Di früh). Schnappschuss 23.11. und Screener noch nicht gelaufen (GitHub spät, wie sonst). **NVDA +31,5 % am 23.11.**
+  (125,53 → 165,05 $, Twelve Data bestätigt): Jensen Huang wieder Chef (cnn.com/2026/11/23/markets/us-stocks-rebound-intl). Levins Aktien: ENR.DE 7, NVDA 6,
+  AVGO 5, IFX.DE 4, SAP 4 Punkte, ANT nicht bewertet (KGV 2418). Keine Zahlen am Vorabend, heute keine Termine. IFX.DE: wieder nur Einzelziele 70–96 € gefunden
+  (Yahoo-Mittel 80,79 € liegt darin), kein Durchschnitt. runs fehlt weiter → A5.4-Test offen.
 - 23.11.2026 (Nachtschicht 21:41, 1 Recherche-Agent, 1 Prüf-Agent): **A12 erledigt** – Splits automatisch: fetch.py speichert split_datum/split_faktor
   aus Yahoos info (lastSplitFactor/lastSplitDate, kein Zusatz-Abruf, nur letzte 60 Tage); bewertung.py lässt die Aktie aus, solange Kursziel/Kurs
   > 0,75 × Faktor (Zusammenlegung: < Wurzel(Faktor)), SPLIT_NOCH_ALT bleibt als Handliste. Neu in bericht.json "split_verdacht" (Kursziel > 3 × Kurs ohne
