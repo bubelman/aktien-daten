@@ -104,6 +104,12 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 25.11.2026 (Nachtschicht 3:41, Mi, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
+  3286 bewertet, 516 ausgefallen (222 ohne Gewinn, 122 ohne Kursziel, 37 doppelt), split_verdacht 25. Daten: 3803 Aktien, Grunddaten 24.11. 5:44 UTC,
+  3797 mit Kurs 24.11. (US-Schluss da); BBBY, REC.MI, ACT.DE, BIP-UN.TO, 1440.HK Stand 23.11., BIPC 20.11. (beobachten, Ursache nicht gefunden).
+  **GRT-UN.TO −66 % = Aktiensplit 3:1** (finanznachrichten.de/nachrichten-2026-11/70040382-granite-reit-announces-three-for-one-unit-split-004.htm);
+  Kursziel und Schätzung +1y bei Yahoo schon angepasst, nur eps_forward alt → kein Fehler (0 Punkte, KGV 13,9). Levins Aktien: ENR.DE 6, NVDA 6, AVGO 5,
+  IFX.DE 4, SAP 4 Punkte, ANT nicht bewertet (KGV 283). Keine Zahlen am Vorabend, heute keine Termine. IFX.DE: wieder nur Einzelziele, kein Durchschnitt. runs fehlt weiter.
 - 24.11.2026 (Nachtschicht 21:41, 1 Prüf-Agent): **A13 Hauptteil erledigt** (Commits 90de5eb, c33aaa5) – rueckblick_trend.py + rueckblick.yml (nur von Hand),
   Lauf auf GitHub ok (1 Min.): 792 von 800 Aktien (120 .DE + 680 US), Monate 2023-12 bis 2026-10, 27 396 Signale → data/rueckblick_trend.json.
   Ergebnis: Trend-Summe +2 hatte 1 Monat danach +0,29 % Mehrrendite zum Monatsmittel, −2 hatte −0,54 % (3 Monate: +0,18 % / −1,16 %).
