@@ -1,58 +1,58 @@
 [
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-16",
+  "seit": "2026-11-17",
   "gruppe": "7–10 Punkte",
-  "anzahl": 45,
-  "schnitt_pct": -3.1,
+  "anzahl": 51,
+  "schnitt_pct": -1.7,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-16",
+  "seit": "2026-11-17",
   "gruppe": "5–6 Punkte",
-  "anzahl": 495,
-  "schnitt_pct": -2.3,
+  "anzahl": 477,
+  "schnitt_pct": -1.8,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-16",
+  "seit": "2026-11-17",
   "gruppe": "3–4 Punkte",
-  "anzahl": 949,
-  "schnitt_pct": -2.5,
+  "anzahl": 956,
+  "schnitt_pct": -1.5,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-16",
+  "seit": "2026-11-17",
   "gruppe": "unter 3 Punkte",
-  "anzahl": 799,
-  "schnitt_pct": -2.5,
+  "anzahl": 939,
+  "schnitt_pct": -1.5,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-16",
+  "seit": "2026-11-17",
   "gruppe": "alle Aktien",
-  "anzahl": 2288,
-  "schnitt_pct": -2.5,
+  "anzahl": 2423,
+  "schnitt_pct": -1.6,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-16",
+  "seit": "2026-11-17",
   "gruppe": "Top-Bedingungen erfüllt",
-  "anzahl": 494,
-  "schnitt_pct": -2.9,
+  "anzahl": 541,
+  "schnitt_pct": -1.6,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-16",
+  "seit": "2026-11-17",
   "gruppe": "Top-Bedingungen nicht erfüllt",
-  "anzahl": 1794,
-  "schnitt_pct": -2.3,
+  "anzahl": 1882,
+  "schnitt_pct": -1.6,
   "rueckwirkend": false
  },
  {
@@ -60,7 +60,7 @@
   "seit": "2026-10-30",
   "gruppe": "7–10 Punkte",
   "anzahl": 3,
-  "schnitt_pct": -10.2,
+  "schnitt_pct": -17.3,
   "rueckwirkend": true
  },
  {
@@ -68,7 +68,7 @@
   "seit": "2026-10-30",
   "gruppe": "5–6 Punkte",
   "anzahl": 50,
-  "schnitt_pct": -5.2,
+  "schnitt_pct": -7.0,
   "rueckwirkend": true
  },
  {
@@ -76,7 +76,7 @@
   "seit": "2026-10-30",
   "gruppe": "3–4 Punkte",
   "anzahl": 78,
-  "schnitt_pct": -2.5,
+  "schnitt_pct": -2.8,
   "rueckwirkend": true
  },
  {
@@ -84,7 +84,7 @@
   "seit": "2026-10-30",
   "gruppe": "unter 3 Punkte",
   "anzahl": 37,
-  "schnitt_pct": 0.2,
+  "schnitt_pct": 0.3,
   "rueckwirkend": true
  },
  {
@@ -92,7 +92,7 @@
   "seit": "2026-10-30",
   "gruppe": "alle Aktien",
   "anzahl": 168,
-  "schnitt_pct": -2.9,
+  "schnitt_pct": -3.6,
   "rueckwirkend": true
  },
  {
@@ -100,7 +100,7 @@
   "seit": "2026-10-30",
   "gruppe": "Top-Bedingungen erfüllt",
   "anzahl": 17,
-  "schnitt_pct": -11.5,
+  "schnitt_pct": -13.1,
   "rueckwirkend": true
  },
  {
@@ -108,7 +108,7 @@
   "seit": "2026-10-30",
   "gruppe": "Top-Bedingungen nicht erfüllt",
   "anzahl": 151,
-  "schnitt_pct": -1.9,
+  "schnitt_pct": -2.5,
   "rueckwirkend": true
  },
  {
@@ -166,9 +166,9 @@
   "teil": "echt",
   "faktor": "punkte",
   "tage_vorne": 1,
-  "ic_mittel": 0.024,
-  "tage": 6,
-  "anteil_positiv": 0.83,
+  "ic_mittel": 0.012,
+  "tage": 7,
+  "anteil_positiv": 0.71,
   "rueckwirkend": false
  },
  {
@@ -178,9 +178,9 @@
   "teil": "echt",
   "faktor": "punkte",
   "tage_vorne": 5,
-  "ic_mittel": null,
-  "tage": 2,
-  "anteil_positiv": null,
+  "ic_mittel": -0.004,
+  "tage": 3,
+  "anteil_positiv": 0.33,
   "rueckwirkend": false
  },
  {
@@ -190,9 +190,9 @@
   "teil": "echt",
   "faktor": "feinwert",
   "tage_vorne": 1,
-  "ic_mittel": -0.038,
-  "tage": 6,
-  "anteil_positiv": 0.17,
+  "ic_mittel": -0.06,
+  "tage": 7,
+  "anteil_positiv": 0.14,
   "rueckwirkend": false
  },
  {
@@ -202,9 +202,9 @@
   "teil": "echt",
   "faktor": "feinwert",
   "tage_vorne": 5,
-  "ic_mittel": null,
-  "tage": 2,
-  "anteil_positiv": null,
+  "ic_mittel": -0.164,
+  "tage": 3,
+  "anteil_positiv": 0.0,
   "rueckwirkend": false
  }
 ]
