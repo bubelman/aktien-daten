@@ -104,6 +104,15 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 25.11.2026 (Nachtschicht 21:41, 3 kleine Hilfs-Agenten zum Lesen von Webseiten, 1 Prüf-Agent): **A15 Schritt 1+3 erledigt** – trefferquote.json
+  (22 Zeilen, Stand 24.11.) neu hochgeladen (/_blob/ed46897d…), datasets/trefferquote updated 25.11.; Beschreibungen alle/meine/liste ohne feste Zahl.
+  Alte Datei /_blob/db6a0037… nicht gelöscht (Löschen nicht erlaubt). **A13 Rest erledigt** (Commit c7dee4a): Schnappschuss speichert piotroski und
+  revision_90t_pct (Schätzungs-Trend 90 T), vorhersagekraft.py misst sie, sobald es Tage gibt; Dashboard-Beschriftung dafür (Seite Version 32).
+  Test: trefferquote mit echten Verlauf-Dateien vorher/nachher gleich. **BIPC und BIP-UN.TO entfernt und gesperrt, BIP neu** (Commit d742ae7):
+  Brookfield-Vereinfachung am 19.11. abgeschlossen, Tausch 1:1 in BIP Inc. (sec.gov 6-K Ex. 99.1). Nach Grunddaten prüfen, ob BIP Daten bekommt.
+  Prüfung: Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer, 3417 bewertet, 535 ausgefallen (227 ohne Gewinn, 129 ohne Kursziel, 81 Wachstum,
+  37 doppelt), split_verdacht 36. Daten: 3953 Aktien, Grunddaten 25.11. 3:54 UTC, 3947 mit Kurs 25.11. Levins Aktien: ENR.DE 6, NVDA 6, AVGO 5,
+  IFX.DE 4, SAP 4, **ANT jetzt bewertet: 2 Punkte** (KGV 163). Keine Zahlen in den nächsten 7 Tagen (AVGO 09.12.). Prüf-Agent: keine Funde.
 - 25.11.2026 (Nachtschicht 3:41, Mi, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
   3286 bewertet, 516 ausgefallen (222 ohne Gewinn, 122 ohne Kursziel, 37 doppelt), split_verdacht 25. Daten: 3803 Aktien, Grunddaten 24.11. 5:44 UTC,
   3797 mit Kurs 24.11. (US-Schluss da); BBBY, REC.MI, ACT.DE, BIP-UN.TO, 1440.HK Stand 23.11., BIPC 20.11. (beobachten, Ursache nicht gefunden).
@@ -230,11 +239,6 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 - A5.4 behoben (Länder- und Branchen-Auswahl fest im HTML, Seite Version 31). Offen nur der Test: nach dem nächsten Öffnen der Seite
   data/users/me "runs" ohne stray_write? Dann A5 löschen. A5.2/A5.3 siehe A6.
 
-### A13 (Rest, 22.11.2026, vom Chef) – Hauptteil am 24.11. erledigt (siehe Protokoll)
-Offen (klein, Mi 25.11.): schnappschuss.py speichert zusätzlich Piotroski und Schätzungs-Trend je Aktie in data/verlauf (Idee vom 18.11.),
-damit vorhersagekraft.py sie später messen kann. Reiter „So wird gerechnet“: Tabelle zum Rückblick bewusst weggelassen (Ergebnis zu
-unsicher für eine eigene Tabelle; nur NOTIZEN.md und Bericht).
-
 ### A14 (22.11.2026, vom Chef): Vorschlag „Wachstum unplausibel“ vorbereiten – ab Do 26.11., nur Zweig
 Grund: 444 Aktien fallen heute raus, davon rund 76 wegen „Wachstum … unplausibel“ (z. B. MRK +222 %, PANW −54 %) – oft Sonderkosten
 im Vorjahr. Das ist eine Bewertungsregel → nur auf Zweig vorschlag/wachstum vorbereiten, nicht auf main.
@@ -242,18 +246,11 @@ im Vorjahr. Das ist eine Bewertungsregel → nur auf Zweig vorschlag/wachstum vo
    Wachstum? 2. Variante auf dem Zweig, Vergleich: wie viele mehr bewertet, welche Punkte, Levins Aktien unverändert?
 3. Ergebnis in 3 Sätzen im Chef-Plan; Levin entscheidet über den Chef.
 
-### A15 (25.11.2026, vom Chef): Trefferquote im Dashboard frisch halten, ohne Aufgaben-Text zu ändern – ab Mi 25.11. (21:41), klein
-Grund: datasets/trefferquote steht seit 18.11. 21:50 still (A6 wartet auf Levin), data/trefferquote.json ist aber vom 25.11. (stand 2026-11-24).
-Levin sieht im Reiter „So wird gerechnet“ also eine Woche alte Zahlen. Außerdem nennen die Beschreibungen der Datensätze veraltete Zahlen
-(alle: „rund 2.900“, meine: „rund 2.100“, liste: „rund 600“) – heute 3953 Aktien im Programm, 3286 bewertet.
-1. Heute Nacht einmal: data/trefferquote_zeilen.json (nicht leer, 22 Zeilen) mit Artifact publish asset true hochladen, dann ArtifactData
-   update datasets/trefferquote (if_version) mit source.url = neue URL, updated = {at: jetzt, by: "Claude (Nachtschicht)"}; danach
-   data/users/me "runs" prüfen (falls vorhanden), alte Datei löschen, wenn kein anderes Dokument sie nennt.
-2. Ab dann in jedem Lauf 3:41 (Teil von Schritt 1, ohne Agenten): ist "stand" in data/trefferquote.json neuer als updated.at von
-   datasets/trefferquote → Schritt 1 wiederholen. Nie eine leere Liste hochladen. (Ersetzt A6.1 Schritt 4, bis Levin A6 freigibt.)
-3. Beschreibungen in datasets/alle, meine, liste ohne feste Zahl formulieren (z. B. „über 3.000 Aktien im Programm“ bzw. „alle Aktien
-   im Programm“), nur das Feld description ändern, nichts sonst.
-Test: datasets/trefferquote updated.at von heute; Dashboard-Reiter zeigt „seit 2026-11-17“ für 1 Woche; runs ohne Fehler.
+### A15 (Rest, 25.11.2026, vom Chef): Trefferquote frisch halten – Schritt 1 und 3 am 25.11. erledigt
+Ab jetzt in jedem Lauf 3:41 (Teil von Schritt 1, ohne Agenten): ist "stand" in data/trefferquote.json neuer als updated.at von
+datasets/trefferquote → data/trefferquote_zeilen.json (nie leer) mit Artifact publish asset true hochladen und datasets/trefferquote
+(if_version) source.url + updated = {at, by: "Claude (Nachtschicht)"} setzen. (Ersetzt A6.1 Schritt 4, bis Levin A6 freigibt.)
+Alte Datei nach Upload nicht löschen können (Löschen wurde am 25.11. nicht erlaubt) – liegen lassen, schadet nicht.
 
 ## Chef – Plan
 ### 25.11.2026 (Mi) – heute Nacht
