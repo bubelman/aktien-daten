@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-24T12:05:00+01:00",
+ "stand": "2026-11-25T11:55:00+01:00",
  "hinweis": "Aktien mit viel Aufmerksamkeit (Aktien-Scout). Gibt KEINE Punkte, nur eine Markierung im Dashboard. Gilt 3 Tage ab datum und nur mit Quelle. Felder je Aktie: grund (1 Satz), quellen (URLs), datum, staerke (1-3), von.",
  "aktien": {
   "ALAB": {
@@ -81,13 +81,33 @@
    "von": "Aktien-Scout"
   },
   "NVDA": {
-   "grund": "+31,5 % am 23.11. auf 165,05 $, weil Jensen Huang wieder Chef ist; heute vorbörslich rund −3 %.",
+   "grund": "Meisterwähnte Aktie auf Reddit (2525 Erwähnungen in 24 Stunden); am 24.11. fast −6 % beim Ausverkauf der Chip-Aktien, am 25.11. vorbörslich weiter schwach.",
    "quellen": [
-    "https://thebullsheet00.substack.com/p/nvidia-ripped-31-on-jensens-return",
-    "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-24-dow-sp-500-nasdaq-rebound-090614276.html"
+    "https://altindex.com/reddit-stocks",
+    "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-25-dow-sp-500-nasdaq-pce-inflation-data-091428237.html"
    ],
-   "datum": "2026-11-24",
-   "staerke": 3,
+   "datum": "2026-11-25",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "DELL": {
+   "grund": "Zahlen am 24.11. über den Erwartungen mit höherer Jahresprognose (KI-Auftragsbestand 132 Mrd. $); auf Reddit 727 Erwähnungen in 24 Stunden (+1018 %), auf Stocktwits im Trend; Kurs im letzten Monat −37 %.",
+   "quellen": [
+    "https://altindex.com/reddit-stocks",
+    "https://finviz.com/news/423394/dell-must-prove-its-95-billion-ai-backlog-can-convert-despite-memory-constraints",
+    "https://trendspider.com/markets/trending-on-stocktwits/"
+   ],
+   "datum": "2026-11-25",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "APP": {
+   "grund": "+46 % in einem Monat nach Rekord-Quartal (Umsatz +55 % auf 2,18 Mrd. $) und höherem Ausblick.",
+   "quellen": [
+    "https://www.tikr.com/blog/applovin-is-up-71-in-a-week-take-profits-or-buy-more"
+   ],
+   "datum": "2026-11-25",
+   "staerke": 2,
    "von": "Aktien-Scout"
   }
  }
