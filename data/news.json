@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-25T07:00:00+01:00",
+  "stand": "2026-11-25T20:52:47+01:00",
   "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
   "aktien": {
     "NVDA": {
@@ -95,12 +95,12 @@
     },
     "PRGS": {
       "urteil": "neutral",
-      "kurz": "Keine wichtigen Nachrichten gefunden",
-      "grund": "Für den 11.–18.11.2026 gibt es keine wesentlichen Meldungen. Die Domo-Übernahme wurde schon früher abgeschlossen.",
+      "kurz": "Keine neuen Firmenmeldungen",
+      "grund": "Die letzte Firmenmitteilung ist vom 1. Oktober 2026 (neue KI-Funktionen). Seit dem 18. November 2026 gibt es keine neue Meldung.",
       "quellen": [
-        "https://finviz.com/news/394447/progress-software-completes-acquisition-of-domos-ai-and-data-platform-business"
+        "https://investors.progress.com/press-releases"
       ],
-      "datum": "2026-11-18",
+      "datum": "2026-11-25",
       "von": "News-Agenten"
     },
     "JAZZ": {
