@@ -1084,7 +1084,7 @@
       const ap = num(r.anteil_positiv);
       tr.append(
         el('td', '', r.teil === 'echt' ? 'echt (ab 15.11.)' : 'rückwirkend'),
-        el('td', '', r.faktor === 'feinwert' ? 'Feinwert' : 'Punkte'),
+        el('td', '', ({ feinwert: 'Feinwert', piotroski: 'Piotroski (nur Info)', revision_90t_pct: 'Schätzungen 90 Tage (nur Info)' })[r.faktor] || 'Punkte'),
         el('td', '', r.tage_vorne === 1 ? '1 Börsentag' : (r.tage_vorne + ' Börsentage')),
         el('td', 'num ' + (isNaN(ic) ? 'muted' : cls(ic)), isNaN(ic) ? 'zu wenige Tage' : nf(3).format(ic)),
         el('td', 'num', isNaN(num(r.tage)) ? '–' : nf(0).format(num(r.tage))),

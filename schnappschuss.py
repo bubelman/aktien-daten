@@ -12,7 +12,9 @@ import datetime as dt, glob, json, os, subprocess, sys, tempfile
 
 HEUTE = dt.datetime.now(dt.timezone.utc).date()  # nur Ersatz, wenn aktien.json kein "stand" hat
 ORDNER = "data/verlauf"
-FELDER = ["punkte", "feinwert", "kurs_eur", "abstand_pct", "top"]
+FELDER = ["punkte", "feinwert", "kurs_eur", "abstand_pct", "top", "piotroski", "revision_90t_pct"]
+# piotroski (0–9, nur Info) und revision_90t_pct (Schätzungs-Trend 90 Tage, nur Info) seit 25.11.2026 (A13 Rest),
+# damit vorhersagekraft.py sie messen kann. Ältere Dateien haben nur die ersten 5 Felder.
 ZEITRAEUME = (("1 Woche", 7), ("1 Monat", 30), ("3 Monate", 91), ("6 Monate", 182), ("1 Jahr", 365))
 GRUPPEN = ("7–10", "5–6", "3–4", "unter 3")
 AUSREISSER_HOCH = 1.5   # mehr als +150 %: eher Datenfehler (Pence/Pfund) – melden, nicht zählen
@@ -37,8 +39,10 @@ def bewerten(yahoo="data/aktien.json", jetzt=None, news=None, hype=None):
 
 
 def schnappschuss(alle, datum, **extra):
-    """Baut den Schnappschuss {datum, felder, aktien: {Kürzel: [Punkte, Feinwert, Kurs €, Abstand, Top]}}."""
-    snap = {r["ticker"]: [r["punkte"], r["feinwert"], r["kurs_eur"], r["abstand_pct"], bool(r.get("top_bedingungen"))]
+    """Baut den Schnappschuss {datum, felder, aktien: {Kürzel: [Punkte, Feinwert, Kurs €, Abstand, Top, Piotroski,
+    Schätzungs-Trend 90 T]}} (Reihenfolge wie FELDER; fehlt ein Info-Wert: None)."""
+    snap = {r["ticker"]: [r["punkte"], r["feinwert"], r["kurs_eur"], r["abstand_pct"], bool(r.get("top_bedingungen")),
+                          r.get("piotroski"), r.get("revision_90t_pct")]
             for r in alle}
     return {"datum": datum, **extra, "felder": FELDER, "aktien": snap}
 
@@ -69,7 +73,8 @@ def trefferquote(ende):
         a = json.load(open(datei))
         rueck = bool(a.get("rueckwirkend"))
         grp, top = {}, {"ja": [], "nein": []}
-        for t, (p, fw, k0, ab, tp) in a["aktien"].items():
+        for t, werte in a["aktien"].items():
+            p, fw, k0, ab, tp = werte[:5]  # alte Dateien: 5 Felder, ab 25.11.2026: 7
             k1 = (jetzt.get(t) or [None] * 5)[2]
             if not k0 or not k1:  # kein Kurs am Anfang oder am Ende: überspringen
                 continue

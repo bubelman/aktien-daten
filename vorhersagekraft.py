@@ -23,7 +23,10 @@ Regeln:
 import datetime as dt, glob, json, os
 
 ORDNER = "data/verlauf"
-FAKTOREN = ("punkte", "feinwert")  # Piotroski / Schätzungs-Trend stehen nicht in den Verlauf-Dateien
+FAKTOREN = ("punkte", "feinwert", "piotroski", "revision_90t_pct")
+# piotroski und revision_90t_pct (Schätzungs-Trend 90 Tage) stehen erst ab dem Schnappschuss vom 25.11.2026 im Verlauf;
+# solange es für sie keinen einzigen Tag gibt, erscheinen sie nicht (keine leeren Zeilen im Dashboard).
+NUR_MIT_DATEN = ("piotroski", "revision_90t_pct")
 HORIZONTE = (1, 5)
 AUSREISSER_HOCH, AUSREISSER_TIEF = 1.5, -0.75  # wie schnappschuss.py
 MIN_AKTIEN = 30   # weniger Aktien an einem Tag: kein IC für diesen Tag
@@ -92,7 +95,8 @@ def berechnen(ordner=ORDNER):
     erg = {"hinweis": HINWEIS, "handelstage": [t.isoformat() for t in folge],
            "regeln": dict(min_aktien_je_tag=MIN_AKTIEN, min_tage=MIN_TAGE, ausreisser_pct=[-75, 150],
                           faktoren=list(FAKTOREN),
-                          weggelassen="Piotroski und Schätzungs-Trend: nicht in data/verlauf gespeichert"),
+                          hinweis_faktoren="piotroski und revision_90t_pct (Schätzungs-Trend) erst ab 25.11.2026 im Verlauf; "
+                                           "Piotroski teils aus weniger als 9 Prüfpunkten"),
            "teile": {}, "zeilen": [], "fuenftel_zeilen": []}
     sammel = {}  # (teil, faktor, h) → {"ic": [(tag, ic, n)], "q": {1..5: [Tagesmittel]}}
     for t, teil, a, fe in tage:
@@ -130,6 +134,8 @@ def berechnen(ordner=ORDNER):
         for fak in FAKTOREN:
             for h in HORIZONTE:
                 s = sammel.get((teil, fak, h), {"ic": [], "q": {}})
+                if fak in NUR_MIT_DATEN and not s["ic"]:
+                    continue
                 ics = [x[1] for x in s["ic"]]
                 genug = len(ics) >= MIN_TAGE
                 eintrag = {
