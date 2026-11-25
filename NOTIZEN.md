@@ -242,7 +242,29 @@ im Vorjahr. Das ist eine Bewertungsregel → nur auf Zweig vorschlag/wachstum vo
    Wachstum? 2. Variante auf dem Zweig, Vergleich: wie viele mehr bewertet, welche Punkte, Levins Aktien unverändert?
 3. Ergebnis in 3 Sätzen im Chef-Plan; Levin entscheidet über den Chef.
 
+### A15 (25.11.2026, vom Chef): Trefferquote im Dashboard frisch halten, ohne Aufgaben-Text zu ändern – ab Mi 25.11. (21:41), klein
+Grund: datasets/trefferquote steht seit 18.11. 21:50 still (A6 wartet auf Levin), data/trefferquote.json ist aber vom 25.11. (stand 2026-11-24).
+Levin sieht im Reiter „So wird gerechnet“ also eine Woche alte Zahlen. Außerdem nennen die Beschreibungen der Datensätze veraltete Zahlen
+(alle: „rund 2.900“, meine: „rund 2.100“, liste: „rund 600“) – heute 3953 Aktien im Programm, 3286 bewertet.
+1. Heute Nacht einmal: data/trefferquote_zeilen.json (nicht leer, 22 Zeilen) mit Artifact publish asset true hochladen, dann ArtifactData
+   update datasets/trefferquote (if_version) mit source.url = neue URL, updated = {at: jetzt, by: "Claude (Nachtschicht)"}; danach
+   data/users/me "runs" prüfen (falls vorhanden), alte Datei löschen, wenn kein anderes Dokument sie nennt.
+2. Ab dann in jedem Lauf 3:41 (Teil von Schritt 1, ohne Agenten): ist "stand" in data/trefferquote.json neuer als updated.at von
+   datasets/trefferquote → Schritt 1 wiederholen. Nie eine leere Liste hochladen. (Ersetzt A6.1 Schritt 4, bis Levin A6 freigibt.)
+3. Beschreibungen in datasets/alle, meine, liste ohne feste Zahl formulieren (z. B. „über 3.000 Aktien im Programm“ bzw. „alle Aktien
+   im Programm“), nur das Feld description ändern, nichts sonst.
+Test: datasets/trefferquote updated.at von heute; Dashboard-Reiter zeigt „seit 2026-11-17“ für 1 Woche; runs ohne Fehler.
+
 ## Chef – Plan
+### 25.11.2026 (Mi) – heute Nacht
+Lage: 3953 Aktien im Programm, alle mit Kurs (Stand 25.11. 19:19 UTC), 3286 bewertet, 516 ausgefallen; Fehlercode 0, pruefung leer.
+Seit So erledigt: A11 (Notizen), A12 (Splits automatisch), A13 Hauptteil (Trend-Rückblick: richtige Richtung, schwach), A7 (Kurse vor 6:30).
+Alle Aufgaben zuletzt SUCCEEDED (Meine Aktien: Datensätze 25.11. 13:35 aktuell). Trefferquote 1 Woche (seit 17.11.): alle Gruppen −1,5 bis
+−1,8 % → kein Unterschied zwischen vielen und wenigen Punkten, nach 1 Woche aber ohne Aussage. Thanksgiving Do 26.11.: US-Börse zu.
+Heute Nacht (21:41, je klein): 1. A13 Rest (Piotroski + Schätzungs-Trend in data/verlauf) – Erfolg: vorhersagekraft.py kann sie ab nächstem
+Schnappschuss messen. 2. A15 (Trefferquote im Dashboard frisch, Beschreibungen) – Erfolg: Datensatz von heute.
+Danach wie geplant: A14 Wachstum (Do–Fr, Zweig). Offen bei Levin: A6 (Aufgaben-Texte), Londoner Fonds sperren.
+
 ### 22.11.2026 (So) – Plan für die nächsten 2 Wochen (Budget Nachtschicht 7 % je Nacht, 21:41 je 1 Auftrag)
 Lage: 3502 Aktien im Programm (alle mit Kurs), 3057 bewertet (Testlauf 22.11. 20:35 mit den 150 neuen von So), Fehlercode 0, pruefung leer,
 kuerzel_verdacht leer. Woche: +~1050 Kürzel (2454 am 16.11. → 3502), Screener hat noch 1685 Kandidaten (~11 Abende). Japan schon 286 .T
