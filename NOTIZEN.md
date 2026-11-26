@@ -104,6 +104,12 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 26.11.2026 (Nachtschicht 3:41, Do, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
+  3417 bewertet, 534 ausgefallen (226 ohne Gewinn, 129 ohne Kursziel, 37 doppelt), split_verdacht 36. Daten: 3952 Aktien = tickers.txt, alle mit Kurs,
+  3949 Stand 25.11. (US-Schluss da; NVDA 149,30 $ und AVGO 300,86 $ = Twelve Data); BBBY, REC.MI, ACT.DE weiter 1 Tag zurück. Kein Kurssprung > 30 %.
+  **BIP hat Daten**, fällt aber raus („KGV 262 unplausibel“, Schätzung +1y 0,17 $) – kein Kürzel-Fehler. Trefferquote: Stand 24.11., Datensatz 25.11. → nichts hochzuladen (A15).
+  Levins Aktien: ENR.DE 6, NVDA 6, AVGO 5, IFX.DE 4, SAP 4, ANT 2 Punkte. Keine Zahlen am Vorabend; heute Thanksgiving (US-Börse zu). IFX.DE-Kursziel bei
+  Twelve Data nur mit teurem Tarif → zweite Quelle weiter offen. runs fehlt weiter.
 - 25.11.2026 (Nachtschicht 21:41, 3 kleine Hilfs-Agenten zum Lesen von Webseiten, 1 Prüf-Agent): **A15 Schritt 1+3 erledigt** – trefferquote.json
   (22 Zeilen, Stand 24.11.) neu hochgeladen (/_blob/ed46897d…), datasets/trefferquote updated 25.11.; Beschreibungen alle/meine/liste ohne feste Zahl.
   Alte Datei /_blob/db6a0037… nicht gelöscht (Löschen nicht erlaubt). **A13 Rest erledigt** (Commit c7dee4a): Schnappschuss speichert piotroski und
