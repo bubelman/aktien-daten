@@ -208,6 +208,9 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   Kurs 14,78 € und Kursziel 13,1 € → DCF prüfen, Auftrag für Nachtschicht). Hype-Liste: 9 Aktien (neu KYMR, ALAB, CRWV, CMG; erneuert NVDA).
 - 25.11.2026 (Scout 11:48): keine neue Aktie (Hochstufungen 24.11. alle schon in tickers.txt; SHLS Börsenwert unklar). Gemeldet: 1980.T, BDT.TO,
   PDD, TAL, DIA.MC. Ausgelassen: AF.PA (unplausibel, wie 24.11.). Hype-Liste: 11 Aktien (neu DELL; erneuert APP, NVDA).
+- 26.11.2026 (Scout 11:48): keine neue Aktie (Hochstufungen 17./18.11. alle schon in tickers.txt; MPTI zu klein). Gemeldet: VU.PA, EMR.AX,
+  1910.HK, WAF.AX, SAX.DE. Ausgelassen: AF.PA, KTB (wie bisher), 9201.T (Fluglinie, faire Mitte 114 % über Kurs bei Kursziel ≈ Kurs, gleiches
+  Muster wie AF.PA). Hype-Liste: 10 Aktien (neu SAN.PA, HPQ, CHTR; ANT, GAP, GPN, INSM entfernt, Obergrenze 10).
 
 ## Gegenprüfung mit dem Internet (Nachtschicht, reihum)
 - ENR.DE: 15.11.2026 – Kurs 131,28 €, Kursziel-Durchschnitt 192,21 € (28 Analysten), Gewinn GJ 2028 8,48 € – alles gleich wie
