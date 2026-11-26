@@ -227,6 +227,7 @@ def schaetz_faktor(y, e1, f):
     return f
 
 
+WACHSTUM_NEUTRAL = True  # Vorschlag A14 (nur Zweig vorschlag/wachstum, braucht Levins Ja)
 DCF_ZINS, DCF_ENDWACHSTUM = 0.09, 0.025  # Abzinsung 9 % pro Jahr, ewiges Wachstum 2,5 %
 
 
@@ -357,7 +358,9 @@ def texte(z, x):
     if z["analysten"] < 5:
         dagegen.append(f"nur {z['analysten']} Analysten")
     # ohne Abzug, erklärt aber fehlende Punkte
-    if peg >= 1:
+    if x.get("wachstum_roh") is not None:
+        dagegen.append(f"Gewinnsprung zum Folgejahr ({pz(x['wachstum_roh'] * 100)}) wohl durch Sondereffekte – Wachstum nicht gewertet")
+    elif peg >= 1:
         g0 = round(gp)
         dagegen.append(f"KGV {de(kgv)} bei nur {de(gp, 0)} % erwartetem Gewinnwachstum" if g0 > 0
                        else "Gewinn soll kaum wachsen" if g0 == 0 else f"Gewinn soll sinken ({pz(gp)})")
@@ -502,8 +505,15 @@ def bewerte(y, fx, alt_by, heute=None):
     wachstum = e1 / e0 - 1
     if not (1 <= kgv <= 200):
         return None, f"KGV {kgv:.0f} unplausibel"
+    wachstum_roh = None
     if not (-0.5 <= wachstum <= 2.0):
-        return None, f"Wachstum {wachstum*100:.0f} % unplausibel"
+        if not WACHSTUM_NEUTRAL or wachstum < 0:
+            # Gewinnrückgang über 50 % ist oft echt (z. B. Tanker nach dem Spitzenjahr) → weiter auslassen
+            return None, f"Wachstum {wachstum*100:.0f} % unplausibel"
+        # Vorschlag A14: Sprung über +200 % zum Folgejahr meist durch Sondereffekte (z. B. Sonderkosten im laufenden
+        # Jahr, Merck). Statt die Aktie auszulassen: Wachstum nicht werten (0 % → keine PEG-Punkte, faires KGV 12,
+        # DCF ohne Wachstum).
+        wachstum_roh, wachstum = wachstum, 0.0
     gp = wachstum * 100
     peg = kgv / gp if gp > 0 else 99.0
     zyk = t in ZYKLIKER
@@ -555,6 +565,8 @@ def bewerte(y, fx, alt_by, heute=None):
     punkte = min(10, bew + qual + trend_pkt + rev_pkt + kurz_pkt + news_pkt)
 
     haken = []
+    if wachstum_roh is not None:
+        haken.append(f"Gewinnsprung {pz(wachstum_roh * 100)} unplausibel, Wachstum nicht gewertet")
     if news_pkt < 0:
         haken.append(("sehr negative Nachrichten" if news_pkt <= -2 else "negative Nachrichten") + (": " + str(nw["kurz"]).replace(", ", " und ").replace(",", " ") if nw.get("kurz") else ""))
     if trend == "fallend":
@@ -623,7 +635,7 @@ def bewerte(y, fx, alt_by, heute=None):
         hoch_52w_eur=None if not hoch52 else r2(hoch52 / q), tief_52w_eur=None if not tief52 else r2(tief52 / q),
         veraenderung_6m_pct=pct(y.get("veraenderung_6m")),
     )
-    zeile["warum"], zeile["finanzen"] = texte(zeile, dict(peg=peg, hoch=hoch, roe=roe, fcf=fcf, nde=nde, zyk=zyk,
+    zeile["warum"], zeile["finanzen"] = texte(zeile, dict(peg=peg, hoch=hoch, wachstum_roh=wachstum_roh, roe=roe, fcf=fcf, nde=nde, zyk=zyk,
                                                           news_kurz=(nw or {}).get("kurz"), heute=heute,
                                                           finanz=y.get("sektor") == "Financial Services"))
     # Rohwerte für die Feinwertung (werden vor dem Speichern entfernt)
