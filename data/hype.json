@@ -1,5 +1,5 @@
 {
- "stand": "2026-11-25T11:55:00+01:00",
+ "stand": "2026-11-26T12:05:00+01:00",
  "hinweis": "Aktien mit viel Aufmerksamkeit (Aktien-Scout). Gibt KEINE Punkte, nur eine Markierung im Dashboard. Gilt 3 Tage ab datum und nur mit Quelle. Felder je Aktie: grund (1 Satz), quellen (URLs), datum, staerke (1-3), von.",
  "aktien": {
   "ALAB": {
@@ -10,16 +10,6 @@
    ],
    "datum": "2026-11-24",
    "staerke": 1,
-   "von": "Aktien-Scout"
-  },
-  "ANT": {
-   "grund": "Nach dem Börsengang zwei Tage im Minus (Freitag −9 % auf 88,30 $), am 23.11. vorbörslich +3 %; auf Reddit und Stocktwits unter den meisterwähnten Aktien.",
-   "quellen": [
-    "https://finance.yahoo.com/markets/live/stock-market-today-monday-november-23-dow-sp-500-nasdaq-091118583.html",
-    "https://altindex.com/stocktwits-stocks"
-   ],
-   "datum": "2026-11-23",
-   "staerke": 3,
    "von": "Aktien-Scout"
   },
   "CMG": {
@@ -39,35 +29,6 @@
    ],
    "datum": "2026-11-24",
    "staerke": 1,
-   "von": "Aktien-Scout"
-  },
-  "GAP": {
-   "grund": "+11,4 % am 20.11. nach Quartalsgewinn über Erwartung (0,82 $ statt 0,78 $), obwohl die Jahresprognose gesenkt wurde.",
-   "quellen": [
-    "https://raspberrytrades.com/stock-market-today",
-    "https://www.newsquawk.com/headlines/gap-gap-q3-2026-usd-adj-eps-082-exp-078-revenue-4bln-exp-402bln"
-   ],
-   "datum": "2026-11-23",
-   "staerke": 2,
-   "von": "Aktien-Scout"
-  },
-  "GPN": {
-   "grund": "+9,9 % am 20.11. nach Berichten, dass der Finanzinvestor GTCR eine Übernahme prüft (laut Bloomberg bis 50 Mrd. $); im November schon einmal geplatzt.",
-   "quellen": [
-    "https://raspberrytrades.com/stock-market-today",
-    "https://www.newsquawk.com/headlines/gap-gap-q3-2026-usd-adj-eps-082-exp-078-revenue-4bln-exp-402bln"
-   ],
-   "datum": "2026-11-23",
-   "staerke": 2,
-   "von": "Aktien-Scout"
-  },
-  "INSM": {
-   "grund": "+16,1 % am 19.11. nach Bericht, Sanofi prüfe ein Übernahmeangebot; rund +49 % in einem Monat.",
-   "quellen": [
-    "https://www.quiverquant.com/news/Insmed+gains+after+takeover+report+adds+to+momentum+from+strong+recent+execution"
-   ],
-   "datum": "2026-11-23",
-   "staerke": 2,
    "von": "Aktien-Scout"
   },
   "KYMR": {
@@ -107,6 +68,34 @@
     "https://www.tikr.com/blog/applovin-is-up-71-in-a-week-take-profits-or-buy-more"
    ],
    "datum": "2026-11-25",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "SAN.PA": {
+   "grund": "+32 % in einem Monat nach Quartalszahlen über den Erwartungen, Kurs auf Mehrwochenhoch.",
+   "quellen": [
+    "https://en.ilsole24ore.com/art/sanofi-soars-on-the-paris-stock-exchange-as-results-beat-expectations-AJVWiCzB",
+    "https://tradingeconomics.com/san:fp/news/570410"
+   ],
+   "datum": "2026-11-26",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "HPQ": {
+   "grund": "+11,5 % am 25.11. nach Quartalszahlen (Umsatz 16,0 Mrd. $, +9,3 %).",
+   "quellen": [
+    "https://www.stocktitan.net/articles/stock-market-today-live-november-25-2026"
+   ],
+   "datum": "2026-11-26",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "CHTR": {
+   "grund": "+40 % in einem Monat, dabei +11 % an einem Tag nach einem Rückkaufangebot für Anleihen über 1,5 Mrd. $.",
+   "quellen": [
+    "https://www.tikr.com/blog/charter-soars-11-on-1-5-billion-tender-offer-for-long-dated-notes"
+   ],
+   "datum": "2026-11-26",
    "staerke": 2,
    "von": "Aktien-Scout"
   }
