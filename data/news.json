@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-26T06:51:37+01:00",
+  "stand": "2026-11-26T20:55:00+01:00",
   "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
   "aktien": {
     "NVDA": {
@@ -66,11 +66,12 @@
     "FSG.L": {
       "urteil": "neutral",
       "kurz": "Nur Aktienrückkäufe gemeldet",
-      "grund": "In den letzten 7 Tagen nur Meldungen zu Aktienrückkäufen. Das Halbjahres-Update kam schon am 08.10.2026.",
+      "grund": "In den letzten 7 Tagen meldete Foresight nur Aktienrückkäufe. Die Halbjahreszahlen kamen schon am 8. Oktober 2026 (verwaltetes Vermögen stabil bei 13,0 Mrd. Pfund).",
       "quellen": [
+        "https://www.lse.co.uk/rns/FSG/transaction-in-own-shares-xr6mzah2b5ukmj9.html",
         "https://www.rttnews.com/3697460/foresight-group-h1-fum-up-aum-flat-sequentially-sees-core-ebitda-growth-shares-down.aspx"
       ],
-      "datum": "2026-11-20",
+      "datum": "2026-11-26",
       "von": "News-Agenten"
     },
     "SEZL": {
