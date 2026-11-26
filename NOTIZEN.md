@@ -104,6 +104,16 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 26.11.2026 (Nachtschicht 21:41, 1 Hilfs-Agent Gegenprüfung, 1 Prüf-Agent): **A14 erledigt (nur Zweig vorschlag/wachstum, Commit dort)** –
+  Yahoo liefert nur Schätzungen für dieses und nächstes Jahr (eps_0y, eps_+1y), kein +2y → Variante „+1y→+2y“ nicht möglich. Stattdessen:
+  Gewinnsprung über +200 % → Aktie nicht auslassen, sondern Wachstum nicht werten (0 %: keine PEG-Punkte, faires KGV 12, DCF ohne Wachstum),
+  Hinweis in haken/warum. Rückgänge unter −50 % bleiben ausgelassen (Test mit beiden Seiten: Tanker DHT/TNK/INSW bekämen sonst 5–6 Punkte trotz
+  echtem Gewinnrückgang). Test: 3541 → 3593 bewertet (+52), 0 Punkte/faire Mitten bisheriger Aktien geändert, Feinwert max ±0,5, Levins Aktien gleich;
+  neu ab 4 Punkten: RF.PA 5, LQDA, SPCX, MMED, HGTY, XHR 4; MRK 0 Punkte. Rückblick-Test nicht möglich (keine alten Schätzungen). Wartet auf Levins Ja.
+  **BIPC.TO und EIT-UN.TO entfernt und gesperrt** (BIPC.TO wie BIPC, Kurs nur bis 20.11.; EIT-UN.TO ist ein Fonds). Prüfung: Fehlercode 0, "pruefung" leer,
+  3541 bewertet, 560 ausgefallen (235 ohne Gewinn, 141 ohne Kursziel, 85 Wachstum, 37 doppelt), split_verdacht 37. Daten: 4102 Aktien, alle mit Grunddaten
+  26.11., Kurse 26.11. 20:20 UTC (Thanksgiving: US-Kurse vom 25.11.). Screener 26.11.: 150 neu, alle mit Daten, 123 bewertet. Levins Aktien: ENR.DE 6,
+  NVDA 6, AVGO 5, SAP 4, IFX.DE 4, ANT 2 Punkte. Keine Zahlen in den nächsten 7 Tagen (AVGO 09.12.). runs fehlt weiter.
 - 26.11.2026 (Nachtschicht 3:41, Do, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
   3417 bewertet, 534 ausgefallen (226 ohne Gewinn, 129 ohne Kursziel, 37 doppelt), split_verdacht 36. Daten: 3952 Aktien = tickers.txt, alle mit Kurs,
   3949 Stand 25.11. (US-Schluss da; NVDA 149,30 $ und AVGO 300,86 $ = Twelve Data); BBBY, REC.MI, ACT.DE weiter 1 Tag zurück. Kein Kurssprung > 30 %.
@@ -222,7 +232,13 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   Kursziel-Durchschnitt Yahoo 284,50 $ (12 Analysten, ADR) = 259 € / marketscreener 243,54 € (29 Analysten) → +6 %, unter 10 %. Gewinnschätzung dort nicht lesbar (Login).
 - IFX.DE: 21.11.2026 – Yahoo Kurs 45,44 € (20.11.), Kursziel-Mittel 80,79 € (24 Analysten), Gewinn +1y 3,88 €. Zweite Quelle für den
   Durchschnitt nicht gefunden (FMP nur US; Suche brachte nur Einzelziele, z. B. Jefferies 74 €). → noch offen.
-- Als Nächstes: IFX.DE (zweite Quelle), dann ENR.DE.
+- IFX.DE: 26.11.2026 – Kursziel-Mittel Yahoo 80,16 € (25 Analysten) = marketscreener 80,16 € (25, Stand 26.11.;
+  marketscreener.com/quote/stock/INFINEON-TECHNOLOGIES-AG-436299/). Gewinn eps_0y 2,87 € = GJ 2027 (Infineon-Konsens Vara 02.11.: 2,84 € bereinigt,
+  infineon.com/assets/row/public/documents/corporate/investors/analyst-consensus/vara-consensus-on-infineon-as-of-2026-11-02-v01-00-en.pdf);
+  eps_+1y 3,89 € = GJ 2028 (keine zweite Quelle). Achtung wie ENR.DE: +1y ist das GJ in ~2 Jahren.
+- ENR.DE: 26.11.2026 – Kursziel-Mittel 191,53 € (28) = marketscreener (uk.marketscreener.com/quote/stock/SIEMENS-ENERGY-AG-113013151/consensus/);
+  Gewinn GJ 2028 Yahoo 8,665 € = marketscreener 8,665 € (…/finances/). Alles gleich.
+- Als Nächstes: SAP, dann AVGO.
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
@@ -248,13 +264,6 @@ Wer es mit Levin im Chat macht: danach diesen Auftrag löschen.
 - A5.4 behoben (Länder- und Branchen-Auswahl fest im HTML, Seite Version 31). Offen nur der Test: nach dem nächsten Öffnen der Seite
   data/users/me "runs" ohne stray_write? Dann A5 löschen. A5.2/A5.3 siehe A6.
 
-### A14 (22.11.2026, vom Chef): Vorschlag „Wachstum unplausibel“ vorbereiten – ab Do 26.11., nur Zweig
-Grund: 444 Aktien fallen heute raus, davon rund 76 wegen „Wachstum … unplausibel“ (z. B. MRK +222 %, PANW −54 %) – oft Sonderkosten
-im Vorjahr. Das ist eine Bewertungsregel → nur auf Zweig vorschlag/wachstum vorbereiten, nicht auf main.
-1. Liste aller Fälle mit Gewinn letztes Jahr, Schätzung +1y, +2y; wie viele hätten mit Wachstum aus +1y→+2y (statt Ist→+1y) ein plausibles
-   Wachstum? 2. Variante auf dem Zweig, Vergleich: wie viele mehr bewertet, welche Punkte, Levins Aktien unverändert?
-3. Ergebnis in 3 Sätzen im Chef-Plan; Levin entscheidet über den Chef.
-
 ### A15 (Rest, 25.11.2026, vom Chef): Trefferquote frisch halten – Schritt 1 und 3 am 25.11. erledigt
 Ab jetzt in jedem Lauf 3:41 (Teil von Schritt 1, ohne Agenten): ist "stand" in data/trefferquote.json neuer als updated.at von
 datasets/trefferquote → data/trefferquote_zeilen.json (nie leer) mit Artifact publish asset true hochladen und datasets/trefferquote
@@ -262,6 +271,10 @@ datasets/trefferquote → data/trefferquote_zeilen.json (nie leer) mit Artifact 
 Alte Datei nach Upload nicht löschen können (Löschen wurde am 25.11. nicht erlaubt) – liegen lassen, schadet nicht.
 
 ## Chef – Plan
+### A14 Ergebnis (26.11.2026, Nachtschicht, für den Chef)
+Ein Wachstum „+1y→+2y“ geht nicht, Yahoo hat keine Schätzung für +2y. Vorschlag auf Zweig vorschlag/wachstum: Gewinnsprünge über +200 % (meist
+Sonderkosten im laufenden Jahr, z. B. Merck) nicht mehr auslassen, sondern ohne Wachstum rechnen – dann 52 Aktien mehr bewertet, keine bisherige
+Aktie ändert ihre Punkte, Levins Aktien gleich. Levin wurde im Bericht 26.11. gefragt.
 ### 25.11.2026 (Mi) – heute Nacht
 Lage: 3953 Aktien im Programm, alle mit Kurs (Stand 25.11. 19:19 UTC), 3286 bewertet, 516 ausgefallen; Fehlercode 0, pruefung leer.
 Seit So erledigt: A11 (Notizen), A12 (Splits automatisch), A13 Hauptteil (Trend-Rückblick: richtige Richtung, schwach), A7 (Kurse vor 6:30).
