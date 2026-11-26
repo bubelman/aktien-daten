@@ -359,7 +359,7 @@ def texte(z, x):
         dagegen.append(f"nur {z['analysten']} Analysten")
     # ohne Abzug, erklärt aber fehlende Punkte
     if x.get("wachstum_roh") is not None:
-        dagegen.append(f"Gewinnsprung zum Folgejahr ({pz(x['wachstum_roh'] * 100)}) wohl durch Sondereffekte – Wachstum nicht gewertet")
+        dagegen.insert(0, f"Gewinnsprung zum Folgejahr ({pz(x['wachstum_roh'] * 100)}) wohl durch Sondereffekte – Wachstum nicht gewertet")
     elif peg >= 1:
         g0 = round(gp)
         dagegen.append(f"KGV {de(kgv)} bei nur {de(gp, 0)} % erwartetem Gewinnwachstum" if g0 > 0
