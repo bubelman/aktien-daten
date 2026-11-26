@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-25T20:52:47+01:00",
+  "stand": "2026-11-26T06:51:37+01:00",
   "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
   "aktien": {
     "NVDA": {
@@ -105,12 +105,12 @@
     },
     "JAZZ": {
       "urteil": "neutral",
-      "kurz": "Nur Konferenzauftritte im Zeitraum",
-      "grund": "Jazz trat am 17.11.2026 auf der Jefferies-Konferenz in London auf. Weitere Auftritte folgen am 02.12.2026. Keine neuen Zahlen oder Prognosen.",
+      "kurz": "Nur Konferenzauftritte angekündigt",
+      "grund": "In den letzten 7 Tagen meldete Jazz nur Auftritte auf Investorenkonferenzen. Die Q3-Zahlen liegen vor dem Zeitraum.",
       "quellen": [
         "https://finviz.com/news/414811/jazz-pharmaceuticals-to-participate-in-upcoming-investor-conferences"
       ],
-      "datum": "2026-11-24",
+      "datum": "2026-11-26",
       "von": "News-Agenten"
     },
     "NBIX": {
@@ -123,16 +123,6 @@
       "datum": "2026-11-25",
       "von": "News-Agenten"
     },
-    "CNX": {
-      "urteil": "neutral",
-      "kurz": "Keine wichtigen Nachrichten gefunden",
-      "grund": "Die Q3-Zahlen kamen am 30.10.2026. Für den 11.–18.11.2026 gibt es nichts Wesentliches.",
-      "quellen": [
-        "https://www.webull.com/news/15639705115362304"
-      ],
-      "datum": "2026-11-18",
-      "von": "News-Agenten"
-    },
     "HTWS.L": {
       "urteil": "neutral",
       "kurz": "Keine neuen wichtigen Meldungen",
@@ -141,16 +131,6 @@
         "https://www.hl.co.uk/shares/stock-market-news/company--news/helios-towers-hails-record-tenancy-additions,-tightens-fy-guidance-upwards"
       ],
       "datum": "2026-11-23",
-      "von": "News-Agenten"
-    },
-    "XYZ": {
-      "urteil": "neutral",
-      "kurz": "Q3 und DOJ-Vergleich vor Zeitraum",
-      "grund": "Block hat am 04.11.2026 den Gewinnausblick angehoben und einen vorläufigen Vergleich mit dem US-Justizministerium erreicht. Im Zeitraum 11.–18.11.2026 gibt es nichts Wesentliches.",
-      "quellen": [
-        "https://www.thestar.com.my/tech/tech-news/2026/11/04/block-lifts-profit-outlook-on-cash-app-strength-reaches-preliminary-doj-settlement"
-      ],
-      "datum": "2026-11-18",
       "von": "News-Agenten"
     },
     "YOU": {
@@ -203,16 +183,6 @@
       "datum": "2026-11-19",
       "von": "News-Agenten"
     },
-    "SONO": {
-      "urteil": "neutral",
-      "kurz": "Umsatz stark aber Margendruck",
-      "grund": "Sonos hat am 10.11.2026 leicht bessere Q4-Zahlen gemeldet, warnt für Q1 aber wegen hoher Speicherkosten vor einem starken Rückgang der Bruttomarge. Gute Zahlen und schwacher Ausblick gleichen sich aus.",
-      "quellen": [
-        "https://finviz.com/news/420706/sonos-beats-on-accelerating-sales-but-memory-costs-push-gross-margin-toward-a-steep-first-quarter-drop"
-      ],
-      "datum": "2026-11-18",
-      "von": "News-Agenten"
-    },
     "SAGA.L": {
       "urteil": "neutral",
       "kurz": "Keine wichtigen Meldungen",
@@ -251,26 +221,6 @@
         "https://finviz.com/news/420488/resideo-announces-third-quarter-2026-financial-results-and-updates-2026-outlook"
       ],
       "datum": "2026-11-20",
-      "von": "News-Agenten"
-    },
-    "CSU.TO": {
-      "urteil": "neutral",
-      "kurz": "Keine wichtigen Nachrichten gefunden",
-      "grund": "Die Q3-Zahlen kamen am 06.11.2026, vor dem Zeitraum. Für den 11.–18.11.2026 gibt es keine wesentliche Meldung.",
-      "quellen": [
-        "https://www.morningstar.com/news/dow-jones/2026110612836/constellation-software-reports-higher-3q-profit-boosted-by-acquisitions"
-      ],
-      "datum": "2026-11-18",
-      "von": "News-Agenten"
-    },
-    "4568.T": {
-      "urteil": "neutral",
-      "kurz": "EU-Zulassung Enhertu vor Zeitraum",
-      "grund": "Die EU-Zulassung von Enhertu und eine Meilensteinzahlung von AstraZeneca wurden um den 10.11.2026 gemeldet. Die Jahresprognose bleibt bestätigt.",
-      "quellen": [
-        "https://www.webull.com/news/15897324524269568"
-      ],
-      "datum": "2026-11-18",
       "von": "News-Agenten"
     },
     "HAUTO.OL": {
@@ -408,13 +358,13 @@
     },
     "PDD": {
       "urteil": "neutral",
-      "kurz": "Umsatz flach aber Betriebsgewinn höher",
-      "grund": "PDD meldete am 19.11.2026 Zahlen zum 3. Quartal: Umsatz kaum verändert bei 108,3 Mrd. Yuan, Betriebsgewinn +25 %. Das Geschäft mit Transaktionsgebühren schrumpfte um 12 %, einen Ausblick gab es nicht.",
+      "kurz": "Gewinn stark aber Umsatz schwächer",
+      "grund": "Am 19.11.2026 meldete PDD für Q3 einen bereinigten Gewinn von 31 Mrd. Yuan, der Umsatz von 108,3 Mrd. Yuan lag aber unter der Erwartung von 115,3 Mrd. Gute und schlechte Punkte gleichen sich aus.",
       "quellen": [
-        "https://www.panabee.com/news/pdd-earnings-q3-2026",
-        "https://www.rttnews.com/3596196/pdd-holdings-inc-q3-profit-increases-beats-estimates.aspx"
+        "https://www.newsquawk.com/headlines/pdd-holdings-inc-pdd-q3-2026-cny-adj-net-income-31bln-revenue-1083bln-exp-1153bln",
+        "https://www.quiverquant.com/news/PDD+Holdings+Reports+Third+Quarter+2026+Unaudited+Financial+Results"
       ],
-      "datum": "2026-11-24",
+      "datum": "2026-11-26",
       "von": "News-Agenten"
     },
     "WGX.AX": {
@@ -455,6 +405,26 @@
         "https://www.bolsamania.com/noticias_amp/empresas/tecnicas-reunidas-adjudica-gestion-gran-complejo-amoniaco-kazajistan--24139840.html"
       ],
       "datum": "2026-11-25",
+      "von": "News-Agenten"
+    },
+    "VU.PA": {
+      "urteil": "neutral",
+      "kurz": "Ziele 2030 am Kapitalmarkttag",
+      "grund": "Am 18.11.2026 nannte Vusion Ziele für 2030 (rund 3 Mrd. Euro Umsatz, 0,7 Mrd. Euro EBITDA). Das liegt etwas mehr als 7 Tage zurück, danach keine wichtigen neuen Meldungen gefunden.",
+      "quellen": [
+        "https://www.finanznachrichten.de/nachrichten-2026-11/70161523-vusion-unveils-its-strategic-ambitions-for-2030-650.htm"
+      ],
+      "datum": "2026-11-26",
+      "von": "News-Agenten"
+    },
+    "EMR.AX": {
+      "urteil": "neutral",
+      "kurz": "Keine wichtigen Nachrichten gefunden",
+      "grund": "Für die letzten 7 Tage (bis 26.11.2026) wurden keine wichtigen Meldungen von Emerald Resources gefunden.",
+      "quellen": [
+        "https://www.investsmart.com.au/security/asx/emr/emerald-resources-nl/announcements"
+      ],
+      "datum": "2026-11-26",
       "von": "News-Agenten"
     }
   }
