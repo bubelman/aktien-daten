@@ -104,6 +104,13 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 27.11.2026 (Nachtschicht 3:41, Fr, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
+  3541 bewertet, 558 ausgefallen (235 ohne Gewinn, 139 ohne Kursziel, 85 Wachstum), split_verdacht 37. Daten: 4100 Aktien = tickers.txt, alle mit Kurs
+  (2157 Stand 26.11., 1942 Stand 25.11. = US wegen Thanksgiving; REC.MI 24.11.). Screener und Schnappschuss 26.11. noch nicht gelaufen (GitHub spät).
+  **A15:** trefferquote.json (Stand 25.11., 22 Zeilen) neu hochgeladen (/_blob/a6ed6605…), datasets/trefferquote Version 5. Kurssprünge > 30 % zum 25.11.:
+  6810.HK (Sunmi) −31,8 % (189,9 → 129,6 HKD, bewertet mit 1 Punkt; Ursache nicht gefunden, beobachten) und 2020.OL (2020 Bulkers) +32 % (19,94 → 26,32 NOK;
+  nicht bewertet, keine Gewinnschätzung; 52-W-Hoch 131, Tief 2,8, Kursziel 145 passen nicht zum Kurs → Kürzel/Daten bei Gelegenheit prüfen).
+  Levins Aktien: ENR.DE 6, NVDA 6, AVGO 5, SAP 4, IFX.DE 4, ANT 2 Punkte. Keine Zahlen am Vorabend, heute keine Termine (US-Börse kurz). runs fehlt weiter.
 - 26.11.2026 (Nachtschicht 21:41, 1 Hilfs-Agent Gegenprüfung, 1 Prüf-Agent): **A14 erledigt (nur Zweig vorschlag/wachstum, Commit dort)** –
   Yahoo liefert nur Schätzungen für dieses und nächstes Jahr (eps_0y, eps_+1y), kein +2y → Variante „+1y→+2y“ nicht möglich. Stattdessen:
   Gewinnsprung über +200 % → Aktie nicht auslassen, sondern Wachstum nicht werten (0 %: keine PEG-Punkte, faires KGV 12, DCF ohne Wachstum),
@@ -238,7 +245,8 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   eps_+1y 3,89 € = GJ 2028 (keine zweite Quelle). Achtung wie ENR.DE: +1y ist das GJ in ~2 Jahren.
 - ENR.DE: 26.11.2026 – Kursziel-Mittel 191,53 € (28) = marketscreener (uk.marketscreener.com/quote/stock/SIEMENS-ENERGY-AG-113013151/consensus/);
   Gewinn GJ 2028 Yahoo 8,665 € = marketscreener 8,665 € (…/finances/). Alles gleich.
-- Als Nächstes: SAP, dann AVGO.
+- SAP: 27.11.2026 – Kurs 209,37 $ (Schluss 25.11.) = Twelve Data 209,37 $ (NYSE). Kursziel nicht neu geprüft (zuletzt 21.11.).
+- Als Nächstes: AVGO, dann NVDA.
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
