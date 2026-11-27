@@ -1,5 +1,5 @@
 {
-  "stand": "2026-11-27T06:54:53+01:00",
+  "stand": "2026-11-27T20:53:48+01:00",
   "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
   "aktien": {
     "NVDA": {
@@ -15,12 +15,13 @@
     },
     "UCG.MI": {
       "urteil": "neutral",
-      "kurz": "Keine wichtigen neuen Nachrichten",
-      "grund": "Vom 16. bis 23.11.2026 nichts Wichtiges gefunden. Das Rekordquartal mit höherem Gewinnziel kam am 09.11., vor dem Zeitraum.",
+      "kurz": "Commerzbank-Kontrolle genehmigt Orcel wird Chefaufseher",
+      "grund": "Am 26.11.2026 meldete UniCredit, dass alle Genehmigungen für die Kontrolle über die Commerzbank vorliegen. CEO Orcel soll Aufsichtsratschef der Commerzbank werden, Vollzug bis 07.12.2026 geplant.",
       "quellen": [
-        "https://en.ilsole24ore.com/art/unicredit-revises-its-forecasts-and-raises-its-target-for-commerzbank-AJrHn59B"
+        "https://www.handelsblatt.com/finanzen/banken-versicherungen/banken/commerzbank-bundesregierung-stellt-sich-hinter-orcels-plaene-fuer-den-aufsichtsrat/100273270.html",
+        "https://kfgo.com/2026/11/26/unicredit-pushes-for-commerzbank-management-shake-up-with-ceo-orcel-as-chair/"
       ],
-      "datum": "2026-11-23",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "SAP": {
@@ -66,13 +67,13 @@
     },
     "FSG.L": {
       "urteil": "neutral",
-      "kurz": "Nur Aktienrückkäufe gemeldet",
-      "grund": "In den letzten 7 Tagen meldete Foresight nur Aktienrückkäufe. Die Halbjahreszahlen kamen schon am 8. Oktober 2026 (verwaltetes Vermögen stabil bei 13,0 Mrd. Pfund).",
+      "kurz": "Halbjahr solide Dividende plus elf Prozent",
+      "grund": "Am 26.11.2026 meldete Foresight für das Halbjahr 10 % mehr Umsatz und 11 % mehr Zwischendividende. Die Zahlen lagen im Rahmen der Erwartungen, ohne Prognoseanhebung.",
       "quellen": [
-        "https://www.lse.co.uk/rns/FSG/transaction-in-own-shares-xr6mzah2b5ukmj9.html",
-        "https://www.rttnews.com/3697460/foresight-group-h1-fum-up-aum-flat-sequentially-sees-core-ebitda-growth-shares-down.aspx"
+        "https://www.investing.com/news/company-news/foresight-group-h1-fy27-slides-revenue-up-10-dividend-raised-11-93CH-5052309",
+        "https://www.nasdaq.com/articles/foresight-h1-core-ebitda-pre-sbp-line-management-expectations"
       ],
-      "datum": "2026-11-26",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "SEZL": {
@@ -108,12 +109,12 @@
     },
     "JAZZ": {
       "urteil": "neutral",
-      "kurz": "Nur Konferenzauftritte angekündigt",
-      "grund": "In den letzten 7 Tagen meldete Jazz nur Auftritte auf Investorenkonferenzen. Die Q3-Zahlen liegen vor dem Zeitraum.",
+      "kurz": "Keine wesentlichen neuen Nachrichten",
+      "grund": "Zwischen dem 20. und 27.11.2026 kündigte Jazz nur die Teilnahme an Investorenkonferenzen an. Die Q3-Zahlen von Anfang November liegen außerhalb des Fensters.",
       "quellen": [
         "https://finviz.com/news/414811/jazz-pharmaceuticals-to-participate-in-upcoming-investor-conferences"
       ],
-      "datum": "2026-11-26",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "NBIX": {
@@ -128,12 +129,12 @@
     },
     "HTWS.L": {
       "urteil": "neutral",
-      "kurz": "Keine neuen wichtigen Meldungen",
-      "grund": "Stand 23.11.2026 keine wichtigen neuen Meldungen gefunden. Die Q3-Zahlen mit angehobener Prognose lagen vor dem Zeitraum.",
+      "kurz": "Keine wesentlichen neuen Nachrichten",
+      "grund": "Seit dem 20.11.2026 gab es keine neue Unternehmensmeldung. Q3-Zahlen mit leicht angehobener Prognose und Rückkaufprogramm kamen Anfang November 2026.",
       "quellen": [
         "https://www.hl.co.uk/shares/stock-market-news/company--news/helios-towers-hails-record-tenancy-additions,-tightens-fy-guidance-upwards"
       ],
-      "datum": "2026-11-23",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "YOU": {
@@ -339,32 +340,34 @@
     },
     "TRE.MC": {
       "urteil": "neutral",
-      "kurz": "Keine neuen Großaufträge",
-      "grund": "Vom 18. bis 25.11.2026 nichts Wesentliches. Am 12.11.2026 wurde ein Auftrag für einen Ammoniak-Komplex in Kasachstan bekannt.",
+      "kurz": "Keine sicher datierten neuen Nachrichten",
+      "grund": "Vom 20. bis 27.11.2026 fand sich keine sicher datierte wesentliche Meldung. Die 9M-Zahlen mit Rekord-Auftragsbestand kamen bereits Mitte November 2026.",
       "quellen": [
-        "https://www.bolsamania.com/noticias_amp/empresas/tecnicas-reunidas-adjudica-gestion-gran-complejo-amoniaco-kazajistan--24139840.html"
+        "https://www.democrata.es/en/economy/tecnicas-reunidas-increases-its-profit-by-12-by-september-and-resumes-the-interim-dividend-after-marking-a-record-order-book/"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "VU.PA": {
       "urteil": "neutral",
-      "kurz": "Ziele 2030 am Kapitalmarkttag",
-      "grund": "Am 18.11.2026 nannte Vusion Ziele für 2030 (rund 3 Mrd. Euro Umsatz, 0,7 Mrd. Euro EBITDA). Das liegt etwas mehr als 7 Tage zurück, danach keine wichtigen neuen Meldungen gefunden.",
+      "kurz": "Pricer-Übernahme und Vusion-2030-Ziele",
+      "grund": "Am 17.11.2026 kündigte Vusion ein empfohlenes Übernahmeangebot für Pricer an. Am 18.11.2026 folgte der Kapitalmarkttag mit dem Ziel von ca. 3 Mrd. € Umsatz bis 2030; danach nichts Wesentliches.",
       "quellen": [
+        "https://www.actusnews.com/en/vusiongroup/pr/2026/11/17/vusion-announces-a-recommended-public-takeover-offer-to-the-shareholders-of-pricer",
+        "https://www.marketscreener.com/news/vusiongroup-vusion-announces-a-recommended-public-takeover-offer-to-the-shareholders-of-pricer-ce785edfde80fe25",
         "https://www.finanznachrichten.de/nachrichten-2026-11/70161523-vusion-unveils-its-strategic-ambitions-for-2030-650.htm"
       ],
-      "datum": "2026-11-26",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "EMR.AX": {
       "urteil": "neutral",
-      "kurz": "Keine wichtigen Nachrichten gefunden",
-      "grund": "Für die letzten 7 Tage (bis 26.11.2026) wurden keine wichtigen Meldungen von Emerald Resources gefunden.",
+      "kurz": "Keine wesentlichen neuen Nachrichten",
+      "grund": "Zwischen dem 20. und 27.11.2026 fand sich keine wesentliche Meldung. Zuletzt stufte Canaccord Genuity am 06.11.2026 auf Buy hoch.",
       "quellen": [
-        "https://www.investsmart.com.au/security/asx/emr/emerald-resources-nl/announcements"
+        "https://www.ad-hoc-news.de/boerse/news/nebenwerte/emerald-resources-stock-gets-buy-upgrade-despite-okvau-slowdown/70501536"
       ],
-      "datum": "2026-11-26",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "CHA": {
@@ -373,6 +376,16 @@
       "grund": "Am 12.11.2026 kündigte Chagee eine Sonderdividende von rund 1,95 USD je ADS an (Stichtag 23.11., Zahlung um den 04.12.2026) und eine Dividendenpolitik ab 2027.",
       "quellen": [
         "https://finviz.com/news/421406/chagee-announces-declaration-of-special-cash-dividend-and-three-year-annual-dividend-policy"
+      ],
+      "datum": "2026-11-27",
+      "von": "News-Agenten"
+    },
+    "TAL": {
+      "urteil": "neutral",
+      "kurz": "Keine wesentlichen neuen Nachrichten",
+      "grund": "In den letzten 7 Tagen (bis 27.11.2026) fand sich keine wesentliche Meldung. Die schwachen Quartalszahlen vom 29.10.2026 liegen außerhalb des Fensters.",
+      "quellen": [
+        "https://www.investing.com/news/stock-market-news/why-is-tal-education-stock-sliding-today-93CH-4982106"
       ],
       "datum": "2026-11-27",
       "von": "News-Agenten"
