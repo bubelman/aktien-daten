@@ -27,3 +27,4 @@ BIPC 25.11.2026 Brookfield-Vereinfachung am 19.11.2026 abgeschlossen: BIPC-Aktie
 BIP-UN.TO 25.11.2026 wie BIPC: BIP-Einheiten am 19.11.2026 1:1 in BIP Inc. getauscht (neues Kürzel BIP an NYSE und TSX; Kurs von BIP-UN.TO nur bis 24.11.) – gleiche Quellen
 BIPC.TO 26.11.2026 wie BIPC (Toronto-Listing derselben Firma): Brookfield-Vereinfachung 19.11.2026, Tausch 1:1 in BIP Inc.; seit 20.11. kein Kurs – gleiche Quellen wie BIPC
 EIT-UN.TO 26.11.2026 Canoe EIT Income Fund ist ein geschlossener Investmentfonds, keine Firma (kein Kursziel, keine Gewinnschätzung) – stockanalysis.com/quote/tsx/EIT.UN/company
+UTZ 27.11.2026 Übernahme durch Intersnack am 20.11.2026 abgeschlossen, Aktie an der NYSE nicht mehr gehandelt (sec.gov/Archives/edgar/data/0001739566/000119312526470261/d165801dex991.htm); Kurs nur bis 19.11.

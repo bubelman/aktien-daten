@@ -104,6 +104,12 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 27.11.2026 (Nachtschicht 21:41, Fr, 1 Hilfs-Agent zum Lesen einer Webseite): **UTZ entfernt und gesperrt** (Übernahme durch Intersnack am 20.11. abgeschlossen,
+  NYSE-Handel eingestellt; sec.gov/Archives/edgar/data/0001739566/000119312526470261/d165801dex991.htm; kuerzel_verdacht meldete „kein Kurs seit 19.11.“).
+  Prüfung: Fehlercode 0, "pruefung" leer, 3628 bewertet, 621 ausgefallen (273 ohne Gewinn, 152 ohne Kursziel, 37 doppelt, 17 Währung unklar), split_verdacht 31.
+  Daten: 4250 Aktien, Grunddaten 27.11. 5:32 UTC, 4244 mit Kurs 27.11. Keine Code-Änderung (keine sauber prüfbare Verbesserung gefunden; „Währung unklar“
+  sind meist ADRs aus Brasilien/Argentinien/Türkei mit Schätzung in Heimatwährung und unbekanntem ADR-Verhältnis → bleiben ausgelassen).
+  Levins Aktien: ENR.DE 6, NVDA 5 (News negativ: Behördenermittlungen, News-Agenten 27.11.), AVGO 5, SAP 4, IFX.DE 4, ANT 2 Punkte. Keine Zahlen in den nächsten 7 Tagen (AVGO 09.12.).
 - 27.11.2026 (Nachtschicht 3:41, Fr, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
   3541 bewertet, 558 ausgefallen (235 ohne Gewinn, 139 ohne Kursziel, 85 Wachstum), split_verdacht 37. Daten: 4100 Aktien = tickers.txt, alle mit Kurs
   (2157 Stand 26.11., 1942 Stand 25.11. = US wegen Thanksgiving; REC.MI 24.11.). Screener und Schnappschuss 26.11. noch nicht gelaufen (GitHub spät).
@@ -248,7 +254,9 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 - ENR.DE: 26.11.2026 – Kursziel-Mittel 191,53 € (28) = marketscreener (uk.marketscreener.com/quote/stock/SIEMENS-ENERGY-AG-113013151/consensus/);
   Gewinn GJ 2028 Yahoo 8,665 € = marketscreener 8,665 € (…/finances/). Alles gleich.
 - SAP: 27.11.2026 – Kurs 209,37 $ (Schluss 25.11.) = Twelve Data 209,37 $ (NYSE). Kursziel nicht neu geprüft (zuletzt 21.11.).
-- Als Nächstes: AVGO, dann NVDA.
+- AVGO: 27.11.2026 – Kurs 312,34 $ = Twelve Data 312,24 $ (Schluss 27.11.). Kursziel/Gewinn: Twelve Data und FMP nur mit teurem Tarif (zuletzt 19.11. geprüft).
+- NVDA: 27.11.2026 – Kurs 150,49 $ / Twelve Data 150,62 $ (Schluss 27.11.) → passt.
+- Als Nächstes: IFX.DE, dann ENR.DE (Kursziel und Gewinn).
 
 ## Offene Aufträge von Levin (die Nachtschicht erledigt sie zuerst, danach ins Protokoll verschieben)
 
