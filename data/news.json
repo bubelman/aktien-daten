@@ -1,16 +1,16 @@
 {
-  "stand": "2026-11-26T20:55:00+01:00",
+  "stand": "2026-11-27T06:54:53+01:00",
   "hinweis": "Einschätzung der News-Agenten je Aktie. Gilt 7 Tage ab datum und nur mit Quelle. urteil: positiv (+1), neutral (0), negativ (-1), sehr negativ (-2).",
   "aktien": {
     "NVDA": {
-      "urteil": "neutral",
-      "kurz": "Starke Zahlen aber SEC-Untersuchung",
-      "grund": "Die Q3-Zahlen vom 17.11.2026 lagen klar über der Erwartung. Dagegen steht der Abgang von Chef Jensen Huang vor gut zwei Wochen; laut WSJ (zitiert am 18.11.) untersucht die SEC Nvidia. Beides ist älter als 7 Tage, daher neutral.",
+      "urteil": "negativ",
+      "kurz": "Huang zurück aber Behördenermittlungen laufen",
+      "grund": "Am 23.11.2026 setzte Nvidia Jensen Huang wieder als Chef ein. In derselben Mitteilung bestätigt Nvidia laufende Ermittlungen von Behörden und eine interne Prüfung wegen eines möglichen ausländischen Geheimdienst-Versuchs; Gegenpunkt: die US-Regierung sieht laut Nvidia kein Sicherheitsrisiko.",
       "quellen": [
-        "https://www.staradvertiser.com/2026/11/18/breaking-news/nvidia-retreats-as-strong-outlook-fails-to-dispel-uncertainty/",
-        "https://stocktwits.com/news-articles/markets/equity/nvidia-board-chairman-harvey-jones-confirms-huang-will-not-be-reinstated-nvidia-outlook-beats/cNbO96fR9hW"
+        "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000090/nov23pressrelease.htm",
+        "https://www.koreajoongangdaily.com/business/huang-pitches-nvidia-comeback-wsj-reports-sec-probing-the-chipmaker/12978169"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "UCG.MI": {
@@ -25,42 +25,43 @@
     },
     "SAP": {
       "urteil": "neutral",
-      "kurz": "Keine wichtigen Neuigkeiten diese Woche",
-      "grund": "Vom 18. bis 25.11.2026 gab es keine wichtige Meldung. Die Übernahme von TechWolf ist laut Börse Express (16.11.) abgeschlossen.",
+      "kurz": "Keine kursrelevanten Pflichtmeldungen",
+      "grund": "Seit dem 20.11.2026 nur kleinere Meldungen: Übernahme von TechWolf abgeschlossen (ca. 24.11.) und unbestätigte Berichte über Stellenabbau (26.11.). Die JPMorgan-Hochstufung vom 09.11. ist älter als 7 Tage.",
       "quellen": [
-        "https://www.boerse-express.com/news/articles/sap-aktie-techwolf-ist-jetzt-an-bord-963674"
+        "https://www.boerse-express.com/news/articles/sap-aktie-jpmorgan-dreht-auf-overweight-961221"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "AVGO": {
       "urteil": "neutral",
-      "kurz": "Keine eigene Firmennachricht",
-      "grund": "In den letzten 7 Tagen gab es keine eigene Firmennachricht. Am 12.11.2026 stieg die Aktie nach dem Chefwechsel bei Nvidia um rund 5 Prozent.",
+      "kurz": "Keine wichtigen neuen Nachrichten",
+      "grund": "Ab dem 20.11.2026 nichts Wesentliches gefunden. Die Abstufung durch Rothschild Redburn um den 13.11. ist älter als 7 Tage, Zahlen kommen im Dezember.",
       "quellen": [
-        "https://stockstory.org/us/stocks/nasdaq/avgo/news/why-up-down/why-are-broadcom-shares-soaring-today"
+        "https://fool.com/investing/2026/11/13/why-broadcom-stock-dove-today"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "IFX.DE": {
       "urteil": "neutral",
-      "kurz": "Nichts Neues seit Jahreszahlen",
-      "grund": "Die Jahreszahlen vom 10.11.2026 lagen laut Jefferies weitgehend im Rahmen der Erwartungen. In der Woche bis 25.11. gab es nichts Neues.",
+      "kurz": "Kurszielsenkungen ohne Abstufungen",
+      "grund": "Am 26.11.2026 senkte die Deutsche Bank ihr Kursziel, Abstufungen gab es nicht. Am 25.11. schloss Infineon den Aktienrückkauf ab.",
       "quellen": [
-        "https://www.cash.ch/news/infineon-verdient-dank-ki-boom-deutlich-mehr-wachstum-soll-anziehen-983971"
+        "https://www.boerse-express.com/news/articles/infineon-aktie-ki-strom-treibt-rebound-961433"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "ENR.DE": {
       "urteil": "neutral",
-      "kurz": "Ziele angehoben aber älter",
-      "grund": "Die höheren Ziele für 2030 und der Aktienrückkauf kamen am 11.11.2026, also vor dem 7-Tage-Zeitraum. Am 17.11. hob Santander das Kursziel auf 221 Euro.",
+      "kurz": "Kursschwäche ohne neue Firmennachrichten",
+      "grund": "Ab dem 20.11.2026 keine neue wesentliche Meldung; die Aktie fiel nach KI-Sorgen. Die höheren Ziele für 2030 und der Rückkauf vom 10./11.11. sind älter als 7 Tage.",
       "quellen": [
-        "https://www.boerse-express.com/news/articles/siemens-energy-aktie-es-wird-wild-963993"
+        "https://www.boerse-express.com/news/articles/siemens-energy-aktie-hier-geht-alles-963642",
+        "https://www.pressetext.com/news/20261110036"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "FSG.L": {
@@ -76,22 +77,23 @@
     },
     "SEZL": {
       "urteil": "neutral",
-      "kurz": "Keine neuen Meldungen seit Quartalszahlen",
-      "grund": "Seit dem 18.11.2026 gab es keine wichtige Meldung. Die starken Q3-Zahlen mit höherer Prognose kamen am 04.11.2026.",
+      "kurz": "Keine neuen wichtigen Nachrichten",
+      "grund": "Seit dem 20.11.2026 gab es keine wesentlichen Meldungen. Die starken Q3-Zahlen und der angehobene Ausblick vom 04.11.2026 sind älter als 7 Tage.",
       "quellen": [
         "https://finviz.com/news/415777/sezzle-reports-third-quarter-2026-results"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "QNST": {
       "urteil": "neutral",
-      "kurz": "Nur Teilnahme an Konferenz",
-      "grund": "In den letzten 7 Tagen nur die Teilnahme an der Stephens-Konferenz. Die Rekordzahlen kamen am 04.11.2026.",
+      "kurz": "Nur Konferenzteilnahme angekündigt",
+      "grund": "Zuletzt kam nur die Ankündigung der Teilnahme an der Stephens-Konferenz (November 2026). Die Rekordzahlen mit angehobenem Ausblick vom 04.11.2026 sind älter als 7 Tage.",
       "quellen": [
-        "https://finviz.com/news/423193/quinstreet-to-participate-at-stephens-annual-investment-conference"
+        "https://finviz.com/news/423193/quinstreet-to-participate-at-stephens-annual-investment-conference",
+        "https://www.morningstar.com/news/business-wire/20261104023267/quinstreet-reports-record-fiscal-first-quarter-2027-results"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "PRGS": {
@@ -116,12 +118,12 @@
     },
     "NBIX": {
       "urteil": "neutral",
-      "kurz": "Nur Konferenzteilnahmen",
-      "grund": "In den letzten 7 Tagen nur Konferenzmeldungen. Die Q3-Zahlen kamen Anfang November 2026.",
+      "kurz": "Nur Konferenz- und Kongressauftritte",
+      "grund": "Zuletzt kamen nur Ankündigungen zur Jefferies-Konferenz und zum NEI-Kongress (November 2026). Die Q3-Zahlen von Anfang November sind älter als 7 Tage.",
       "quellen": [
         "https://finviz.com/news/420450/neurocrine-biosciences-to-present-at-the-2026-jefferies-global-healthcare-conference"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "HTWS.L": {
@@ -136,72 +138,32 @@
     },
     "YOU": {
       "urteil": "neutral",
-      "kurz": "Nur Produkt- und Marketingmeldungen",
-      "grund": "Seit dem 18.11.2026 keine kursrelevante Meldung. Die starken Q3-Zahlen kamen am 04.11.2026.",
+      "kurz": "Keine neuen wichtigen Nachrichten",
+      "grund": "Seit dem 20.11.2026 gab es keine wesentlichen Meldungen. Die Q3-Zahlen mit angehobenem Ausblick kamen Anfang November 2026 und zählen nicht mehr.",
       "quellen": [
         "https://finviz.com/news/415116/clear-announces-third-quarter-2026-financial-results"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "EPAC": {
       "urteil": "neutral",
-      "kurz": "Nur Auftritt auf Baird-Konferenz",
-      "grund": "In den letzten 7 Tagen nur ein angekündigter Konferenzauftritt. Der Investorentag war am 04.11.2026.",
+      "kurz": "Nur Konferenzteilnahme angekündigt",
+      "grund": "Zuletzt kündigte Enerpac nur einen Auftritt auf der Baird-Konferenz an (November 2026). Der Investor Day vom 04.11.2026 ist älter als 7 Tage.",
       "quellen": [
         "https://finviz.com/news/419007/enerpac-tool-group-to-present-at-the-baird-global-industrial-conference"
       ],
-      "datum": "2026-11-25",
-      "von": "News-Agenten"
-    },
-    "KTB": {
-      "urteil": "neutral",
-      "kurz": "Q3-Zahlen vor dem Zeitraum",
-      "grund": "Q3-Zahlen mit höherem Ausblick und 450 Mio. Dollar Rückkauf kamen am 05.11.2026, also vor dem 7-Tage-Zeitraum. Seitdem keine wichtige neue Meldung.",
-      "quellen": [
-        "https://finviz.com/news/416667/kontoor-brands-reports-2026-third-quarter-results-and-strengthens-earnings-outlook-expects-to-repurchase-450-million-of-shares-following-the-successful-completion-of-the-divestiture-of-lee-provides-initial-2027-outlook"
-      ],
-      "datum": "2026-11-19",
-      "von": "News-Agenten"
-    },
-    "CORT": {
-      "urteil": "neutral",
-      "kurz": "Keine neuen Meldungen im Zeitraum",
-      "grund": "Vom 12. bis 19.11.2026 keine wesentliche Nachricht. Die Q3-Zahlen kamen Anfang November.",
-      "quellen": [
-        "https://finviz.com/news/414782/corcept-therapeutics-announces-third-quarter-financial-results-and-provides-corporate-update"
-      ],
-      "datum": "2026-11-19",
-      "von": "News-Agenten"
-    },
-    "PRG": {
-      "urteil": "neutral",
-      "kurz": "Keine neuen Meldungen im Zeitraum",
-      "grund": "Vom 12. bis 19.11.2026 keine wesentliche Nachricht. Die Q3-Zahlen kamen vor dem Zeitraum.",
-      "quellen": [
-        "https://finimize.com/content/prog-holdings-slipped-after-missing-q3-estimates"
-      ],
-      "datum": "2026-11-19",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "SAGA.L": {
       "urteil": "neutral",
-      "kurz": "Keine wichtigen Meldungen",
-      "grund": "Vom 18. bis 25.11.2026 nichts Wesentliches. Am 16.11.2026 kündigte Saga eine Anleihe an.",
+      "kurz": "Anleiheemission angekündigt",
+      "grund": "Am 16.11.2026 kündigte Saga eine Anleiheemission an (Pflichtmitteilung). Neuere wesentliche Meldungen wurden nicht gefunden.",
       "quellen": [
         "https://www.londonstockexchange.com/en/news/article/SAGA/saga-announces-proposed-bond-offering/30d6-16-ba-0e-ee-4de6bd"
       ],
-      "datum": "2026-11-25",
-      "von": "News-Agenten"
-    },
-    "CUBI": {
-      "urteil": "neutral",
-      "kurz": "Auszeichnung und Konferenzauftritt",
-      "grund": "Im November 2026 als guter Arbeitgeber ausgezeichnet und Konferenzauftritt des Chefs angekündigt. Nichts Kursrelevantes.",
-      "quellen": [
-        "https://finviz.com/news/423602/customers-bank-ceo-sam-sidhu-to-present-at-td-cowen-2026-financials-fintech-conference"
-      ],
-      "datum": "2026-11-19",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "SBH": {
@@ -237,43 +199,22 @@
     },
     "U": {
       "urteil": "neutral",
-      "kurz": "Keine neuen Meldungen nach Q3",
-      "grund": "Seit dem 18.11.2026 keine wichtige Meldung. Die starken Q3-Zahlen kamen Anfang November 2026.",
+      "kurz": "Keine neuen wichtigen Nachrichten",
+      "grund": "Seit dem 20.11.2026 gab es keine wesentlichen Meldungen. Die starken Q3-Zahlen von Anfang November 2026 sind älter als 7 Tage.",
       "quellen": [
-        "https://stockstory.org/us/stocks/nyse/u/news/earnings/unity-nyseu-reports-upbeat-q3-2026-stock-jumps-228percent"
+        "https://www.trefis.com/stock/u/articles/625296/why-is-unity-stock-going-up/2026-11-16"
       ],
-      "datum": "2026-11-25",
-      "von": "News-Agenten"
-    },
-    "3808.HK": {
-      "urteil": "neutral",
-      "kurz": "Keine wichtigen Nachrichten im Zeitraum",
-      "grund": "In den letzten 7 Tagen (12.–19.11.2026) keine wesentliche Firmenmeldung gefunden. Die Schließung der Tochter Sinotruk Finance ab 10.11. ist älter und klein.",
-      "quellen": [
-        "https://hk.marketscreener.com/quote/stock/SINOTRUK-HONG-KONG-LIMITE-6171041/",
-        "https://www.etnet.com.hk/mobile/tc/stocks/quote_news.php?code=03808"
-      ],
-      "datum": "2026-11-19",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "ANT": {
       "urteil": "neutral",
-      "kurz": "Rekord-Börsengang an der Nasdaq",
-      "grund": "Anthropic platzierte am 18.11.2026 Aktien zu 83 Dollar, über der Preisspanne. Am 19.11. eröffnete die Aktie bei 111,50 Dollar und gab dann etwa 17 Prozent ab.",
+      "kurz": "Börsengang knapp vor Zeitraum",
+      "grund": "Anthropic ging am 19.11.2026 zu 83 Dollar je Aktie an die Nasdaq. Danach keine weiteren wesentlichen Meldungen gefunden.",
       "quellen": [
-        "https://www.nasdaq.com/articles/why-anthropic-stock-and-down-today"
+        "https://www.aljazeera.com/economy/2026/11/19/anthropic-starts-trading-in-the-us-after-blockbuster-ipo"
       ],
-      "datum": "2026-11-25",
-      "von": "News-Agenten"
-    },
-    "6857.T": {
-      "urteil": "neutral",
-      "kurz": "Kursrutsch ohne Firmennachricht",
-      "grund": "Am 16.11.2026 fiel die Aktie mit anderen Tokioter Chipwerten vor den Nvidia-Zahlen. Eine Firmennachricht steckte nicht dahinter.",
-      "quellen": [
-        "https://www.advantest.com/en/news/2026/20261112.html"
-      ],
-      "datum": "2026-11-19",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "YMM": {
@@ -289,12 +230,12 @@
     },
     "6655.HK": {
       "urteil": "neutral",
-      "kurz": "Brasilien-Übernahme vor zwei Wochen",
-      "grund": "In den letzten 7 Tagen nichts Wichtiges. Am 07.11.2026 vereinbarte Huaxin den Kauf von CSN Cimentos Brasil für 9 Mrd. BRL.",
+      "kurz": "CSN-Cimentos-Kauf bereits älter",
+      "grund": "Der Kauf von CSN Cimentos in Brasilien wurde um den 09.11.2026 gemeldet und ist älter als 7 Tage. Neuere wichtige Meldungen wurden nicht gefunden.",
       "quellen": [
-        "https://www.yicaiglobal.com/news/chinas-huaxin-building-materials-tumbles-on-usd16-billion-deal-to-take-over-brazilian-cement-giant"
+        "https://chinaglobalsouth.com/2026/11/09/china-huaxin-brazil-csn-cement-acquisition/"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "ATAT": {
@@ -320,11 +261,11 @@
     "NOBA.ST": {
       "urteil": "neutral",
       "kurz": "Routinemäßige Anleiheemission",
-      "grund": "Am 18.11.2026 platzierte NOBA Anleihen über 200 Mio. SEK. Das ist Routinefinanzierung.",
+      "grund": "Am 18.11.2026 platzierte NOBA vorrangige Anleihen, das ist Routinefinanzierung. Neuere wichtige Meldungen wurden nicht gefunden.",
       "quellen": [
         "https://mfn.se/a/noba/noba-bank-group-ab-publ-has-successfully-issued-senior-preferred-bonds-7"
       ],
-      "datum": "2026-11-25",
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "CPA": {
@@ -380,12 +321,10 @@
     },
     "1980.T": {
       "urteil": "neutral",
-      "kurz": "Nichts Neues nach Halbjahreszahlen",
-      "grund": "Seit dem 18.11.2026 keine wichtige Meldung. Die Halbjahreszahlen vom 11.11.2026 zeigten 34,4 Prozent mehr ordentlichen Gewinn.",
-      "quellen": [
-        "https://minkabu.jp/news/4657488"
-      ],
-      "datum": "2026-11-25",
+      "kurz": "Keine wichtigen Nachrichten gefunden",
+      "grund": "Für Dai-Dan wurden seit dem 20.11.2026 keine wesentlichen Meldungen in seriösen Quellen gefunden.",
+      "quellen": [],
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     },
     "BDT.TO": {
@@ -426,6 +365,16 @@
         "https://www.investsmart.com.au/security/asx/emr/emerald-resources-nl/announcements"
       ],
       "datum": "2026-11-26",
+      "von": "News-Agenten"
+    },
+    "CHA": {
+      "urteil": "neutral",
+      "kurz": "Sonderdividende Stichtag 23.11.",
+      "grund": "Am 12.11.2026 kündigte Chagee eine Sonderdividende von rund 1,95 USD je ADS an (Stichtag 23.11., Zahlung um den 04.12.2026) und eine Dividendenpolitik ab 2027.",
+      "quellen": [
+        "https://finviz.com/news/421406/chagee-announces-declaration-of-special-cash-dividend-and-three-year-annual-dividend-policy"
+      ],
+      "datum": "2026-11-27",
       "von": "News-Agenten"
     }
   }
