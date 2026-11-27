@@ -1,46 +1,7 @@
 {
- "stand": "2026-11-26T12:05:00+01:00",
+ "stand": "2026-11-27T12:10:00+01:00",
  "hinweis": "Aktien mit viel Aufmerksamkeit (Aktien-Scout). Gibt KEINE Punkte, nur eine Markierung im Dashboard. Gilt 3 Tage ab datum und nur mit Quelle. Felder je Aktie: grund (1 Satz), quellen (URLs), datum, staerke (1-3), von.",
  "aktien": {
-  "ALAB": {
-   "grund": "+23 % am 23.11. mit der Erholung der Chip-Aktien.",
-   "quellen": [
-    "https://www.trefis.com/stock/spy/articles/628237/market-movers-winners-nvda-kymr-axti-losers-swrd-tron-agl/2026-11-24",
-    "https://www.tikr.com/blog/astera-labs-soars-16-in-a-week-as-chips-rebound-scorpio-x-eyes-a-1-billion-run-rate"
-   ],
-   "datum": "2026-11-24",
-   "staerke": 1,
-   "von": "Aktien-Scout"
-  },
-  "CMG": {
-   "grund": "+32 % in einem Monat nach Zahlen mit wieder mehr Gästen.",
-   "quellen": [
-    "https://www.tikr.com/blog/chipotle-soars-16-in-a-week-as-traffic-grows-again-lower-income-cohort-outperformed",
-    "https://www.trefis.com/stock/cmg/articles/623205/a-7-day-winning-streak-has-chipotle-mexican-grill-stock-up-27/2026-11-06"
-   ],
-   "datum": "2026-11-24",
-   "staerke": 1,
-   "von": "Aktien-Scout"
-  },
-  "CRWV": {
-   "grund": "+22 % am 23.11. mit der KI-Erholung nach Huangs Rückkehr.",
-   "quellen": [
-    "https://www.trefis.com/stock/spy/articles/628237/market-movers-winners-nvda-kymr-axti-losers-swrd-tron-agl/2026-11-24"
-   ],
-   "datum": "2026-11-24",
-   "staerke": 1,
-   "von": "Aktien-Scout"
-  },
-  "KYMR": {
-   "grund": "+30 % am 23.11., +36 % in einem Monat; Daten der Ekzem-Studie sollen früher kommen.",
-   "quellen": [
-    "https://www.trefis.com/stock/spy/articles/628237/market-movers-winners-nvda-kymr-axti-losers-swrd-tron-agl/2026-11-24",
-    "https://www.ibtimes.com.au/kymera-therapeutics-stock-soars-early-trial-enrollment-1871320"
-   ],
-   "datum": "2026-11-24",
-   "staerke": 2,
-   "von": "Aktien-Scout"
-  },
   "NVDA": {
    "grund": "Meisterwähnte Aktie auf Reddit (2525 Erwähnungen in 24 Stunden); am 24.11. fast −6 % beim Ausverkauf der Chip-Aktien, am 25.11. vorbörslich weiter schwach.",
    "quellen": [
@@ -63,11 +24,12 @@
    "von": "Aktien-Scout"
   },
   "APP": {
-   "grund": "+46 % in einem Monat nach Rekord-Quartal (Umsatz +55 % auf 2,18 Mrd. $) und höherem Ausblick.",
+   "grund": "+44 % in einem Monat nach Rekord-Quartal (Umsatz +55 % auf 2,18 Mrd. $) und höherem Ausblick.",
    "quellen": [
-    "https://www.tikr.com/blog/applovin-is-up-71-in-a-week-take-profits-or-buy-more"
+    "https://www.tikr.com/blog/applovin-is-up-71-in-a-week-take-profits-or-buy-more",
+    "https://stockanalysis.com/news/applovin-q3-2026-earnings/"
    ],
-   "datum": "2026-11-25",
+   "datum": "2026-11-27",
    "staerke": 2,
    "von": "Aktien-Scout"
   },
@@ -96,6 +58,46 @@
     "https://www.tikr.com/blog/charter-soars-11-on-1-5-billion-tender-offer-for-long-dated-notes"
    ],
    "datum": "2026-11-26",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "INSM": {
+   "grund": "+79 % in einem Monat; nach starken Verkaufszahlen kam ein Bericht über Übernahmeinteresse dazu.",
+   "quellen": [
+    "https://www.quiverquant.com/news/Insmed+gains+after+takeover+report+adds+to+momentum+from+strong+recent+execution",
+    "https://zacks.com/stock/news/3019743/insm-q3-earnings-miss-stock-soars-on-sales-beat-raised-guidance"
+   ],
+   "datum": "2026-11-27",
+   "staerke": 3,
+   "von": "Aktien-Scout"
+  },
+  "GKOS": {
+   "grund": "+43 % in einem Monat nach Rekord-Quartal und Ziel von 1 Mrd. $ Umsatz für 2027.",
+   "quellen": [
+    "https://www.tikr.com/blog/glaukos-soars-26-on-exceptional-quarter-and-1-billion-2027-sales-outlook",
+    "https://www.ocbj.com/healthcare/glaukos-sets-1b-revenue-target-after-record-q3/"
+   ],
+   "datum": "2026-11-27",
+   "staerke": 2,
+   "von": "Aktien-Scout"
+  },
+  "SPCX": {
+   "grund": "Am 27.11. vorbörslich +6 %, unter den größten Bewegern des Tages, als KI-Aktien nach Thanksgiving wieder zulegten.",
+   "quellen": [
+    "https://seekingalpha.com/news/4676966-biggest-stock-movers-friday-spcx-phar-vrtx-alvo-and-more",
+    "https://www.tokenpost.com/news/investing/63476"
+   ],
+   "datum": "2026-11-27",
+   "staerke": 1,
+   "von": "Aktien-Scout"
+  },
+  "KYMR": {
+   "grund": "+48 % in einem Monat; Daten der Ekzem-Studie sollen früher kommen.",
+   "quellen": [
+    "https://www.ibtimes.com.au/kymera-therapeutics-stock-soars-early-trial-enrollment-1871320",
+    "https://www.trefis.com/stock/spy/articles/628237/market-movers-winners-nvda-kymr-axti-losers-swrd-tron-agl/2026-11-24"
+   ],
+   "datum": "2026-11-27",
    "staerke": 2,
    "von": "Aktien-Scout"
   }
