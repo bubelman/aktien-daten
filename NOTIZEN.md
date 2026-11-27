@@ -228,6 +228,8 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
 - 26.11.2026 (Scout 11:48): keine neue Aktie (Hochstufungen 17./18.11. alle schon in tickers.txt; MPTI zu klein). Gemeldet: VU.PA, EMR.AX,
   1910.HK, WAF.AX, SAX.DE. Ausgelassen: AF.PA, KTB (wie bisher), 9201.T (Fluglinie, faire Mitte 114 % über Kurs bei Kursziel ≈ Kurs, gleiches
   Muster wie AF.PA). Hype-Liste: 10 Aktien (neu SAN.PA, HPQ, CHTR; ANT, GAP, GPN, INSM entfernt, Obergrenze 10).
+- 27.11.2026 (Scout 11:48): keine neue Aktie (Hochstufungen 17.–26.11. alle schon in tickers.txt). Gemeldet: TRE.MC, CHA, GCT, 1177.HK, CHYM.
+  Ausgelassen: AF.PA und 9201.T (Fluglinien-Muster), KTB (Lee-Verkauf, Zahlen im Umbruch). Hype-Liste: 10 Aktien (neu INSM, GKOS, SPCX; erneuert APP, KYMR; ALAB, CMG, CRWV entfernt).
 
 ## Gegenprüfung mit dem Internet (Nachtschicht, reihum)
 - ENR.DE: 15.11.2026 – Kurs 131,28 €, Kursziel-Durchschnitt 192,21 € (28 Analysten), Gewinn GJ 2028 8,48 € – alles gleich wie
