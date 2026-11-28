@@ -104,6 +104,13 @@ nötigen Stellen der Datei lesen. Interaktive Karte: graphify-out/graph.html.
   z. B. Zahlen, Nachrichten und unabhängige Gegenprüfung getrennt. Ihre Funde immer selbst nachprüfen.
 
 ## Entscheidungen (Protokoll)
+- 28.11.2026 (Nachtschicht 3:41, Sa, ohne Agenten): nur Prüfung, keine Code-Änderung. bewertung.py Fehlercode 0, "pruefung" leer, kuerzel_verdacht leer,
+  3628 bewertet, 620 ausgefallen (273 ohne Gewinn, 152 ohne Kursziel, 94 Wachstum), split_verdacht 31. Daten: 4249 Aktien = tickers.txt, 4245 mit Kurs 27.11.
+  (US-Schluss Fr da: NVDA 150,49 $, AVGO 312,34 $, SAP 213,65 $, ANT 91,88 $); REC.MI weiter 24.11. Screener 27.11. abends noch nicht gelaufen.
+  **A15:** trefferquote.json (Stand 26.11., 24 Zeilen) neu hochgeladen (/_blob/426be35d…), datasets/trefferquote Version 6.
+  Kurssprünge > 30 %: 9630.HK +34,7 % und 2020.OL +30 % (beide nicht bewertet, keine Schätzung; 2020.OL-Daten wirken unstimmig: 1,2 Mrd. Aktien, 52-W-Tief 2,8 → beobachten).
+  Levins Aktien: ENR.DE 6, NVDA 5, AVGO 5, SAP 4, IFX.DE 4, ANT 2 Punkte. Keine Zahlen am Vorabend, heute Samstag keine Termine (AVGO 09.12.).
+  IFX.DE-Kurs bei Twelve Data nur mit teurem Tarif. runs fehlt weiter.
 - 27.11.2026 (Nachtschicht 21:41, Fr, 1 Hilfs-Agent zum Lesen einer Webseite): **UTZ entfernt und gesperrt** (Übernahme durch Intersnack am 20.11. abgeschlossen,
   NYSE-Handel eingestellt; sec.gov/Archives/edgar/data/0001739566/000119312526470261/d165801dex991.htm; kuerzel_verdacht meldete „kein Kurs seit 19.11.“).
   Prüfung: Fehlercode 0, "pruefung" leer, 3628 bewertet, 621 ausgefallen (273 ohne Gewinn, 152 ohne Kursziel, 37 doppelt, 17 Währung unklar), split_verdacht 31.
