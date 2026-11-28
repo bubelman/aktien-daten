@@ -1,58 +1,58 @@
 [
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-19",
+  "seit": "2026-11-20",
   "gruppe": "7–10 Punkte",
-  "anzahl": 48,
-  "schnitt_pct": -0.3,
+  "anzahl": 41,
+  "schnitt_pct": 6.0,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-19",
+  "seit": "2026-11-20",
   "gruppe": "5–6 Punkte",
-  "anzahl": 481,
-  "schnitt_pct": 0.0,
+  "anzahl": 449,
+  "schnitt_pct": 4.4,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-19",
+  "seit": "2026-11-20",
   "gruppe": "3–4 Punkte",
-  "anzahl": 1015,
-  "schnitt_pct": 0.5,
+  "anzahl": 1042,
+  "schnitt_pct": 4.7,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-19",
+  "seit": "2026-11-20",
   "gruppe": "unter 3 Punkte",
-  "anzahl": 1134,
-  "schnitt_pct": 1.1,
+  "anzahl": 1260,
+  "schnitt_pct": 5.0,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-19",
+  "seit": "2026-11-20",
   "gruppe": "alle Aktien",
-  "anzahl": 2678,
-  "schnitt_pct": 0.6,
+  "anzahl": 2792,
+  "schnitt_pct": 4.8,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-19",
+  "seit": "2026-11-20",
   "gruppe": "Top-Bedingungen erfüllt",
-  "anzahl": 533,
-  "schnitt_pct": 0.9,
+  "anzahl": 525,
+  "schnitt_pct": 4.1,
   "rueckwirkend": false
  },
  {
   "zeitraum": "1 Woche",
-  "seit": "2026-11-19",
+  "seit": "2026-11-20",
   "gruppe": "Top-Bedingungen nicht erfüllt",
-  "anzahl": 2145,
-  "schnitt_pct": 0.6,
+  "anzahl": 2267,
+  "schnitt_pct": 5.0,
   "rueckwirkend": false
  },
  {
@@ -60,7 +60,7 @@
   "seit": "2026-10-30",
   "gruppe": "7–10 Punkte",
   "anzahl": 3,
-  "schnitt_pct": -16.4,
+  "schnitt_pct": -12.2,
   "rueckwirkend": true
  },
  {
@@ -68,7 +68,7 @@
   "seit": "2026-10-30",
   "gruppe": "5–6 Punkte",
   "anzahl": 50,
-  "schnitt_pct": -6.9,
+  "schnitt_pct": -4.8,
   "rueckwirkend": true
  },
  {
@@ -76,7 +76,7 @@
   "seit": "2026-10-30",
   "gruppe": "3–4 Punkte",
   "anzahl": 78,
-  "schnitt_pct": -2.6,
+  "schnitt_pct": -0.6,
   "rueckwirkend": true
  },
  {
@@ -84,7 +84,7 @@
   "seit": "2026-10-30",
   "gruppe": "unter 3 Punkte",
   "anzahl": 38,
-  "schnitt_pct": 0.7,
+  "schnitt_pct": 3.0,
   "rueckwirkend": true
  },
  {
@@ -92,7 +92,7 @@
   "seit": "2026-10-30",
   "gruppe": "alle Aktien",
   "anzahl": 169,
-  "schnitt_pct": -3.4,
+  "schnitt_pct": -1.2,
   "rueckwirkend": true
  },
  {
@@ -100,7 +100,7 @@
   "seit": "2026-10-30",
   "gruppe": "Top-Bedingungen erfüllt",
   "anzahl": 17,
-  "schnitt_pct": -12.9,
+  "schnitt_pct": -10.9,
   "rueckwirkend": true
  },
  {
@@ -108,7 +108,7 @@
   "seit": "2026-10-30",
   "gruppe": "Top-Bedingungen nicht erfüllt",
   "anzahl": 152,
-  "schnitt_pct": -2.3,
+  "schnitt_pct": -0.2,
   "rueckwirkend": true
  },
  {
@@ -166,9 +166,9 @@
   "teil": "echt",
   "faktor": "punkte",
   "tage_vorne": 1,
-  "ic_mittel": -0.003,
-  "tage": 9,
-  "anteil_positiv": 0.56,
+  "ic_mittel": -0.002,
+  "tage": 10,
+  "anteil_positiv": 0.6,
   "rueckwirkend": false
  },
  {
@@ -178,9 +178,9 @@
   "teil": "echt",
   "faktor": "punkte",
   "tage_vorne": 5,
-  "ic_mittel": -0.028,
-  "tage": 5,
-  "anteil_positiv": 0.2,
+  "ic_mittel": -0.029,
+  "tage": 6,
+  "anteil_positiv": 0.17,
   "rueckwirkend": false
  },
  {
@@ -190,9 +190,9 @@
   "teil": "echt",
   "faktor": "feinwert",
   "tage_vorne": 1,
-  "ic_mittel": -0.054,
-  "tage": 9,
-  "anteil_positiv": 0.22,
+  "ic_mittel": -0.027,
+  "tage": 10,
+  "anteil_positiv": 0.3,
   "rueckwirkend": false
  },
  {
@@ -202,9 +202,9 @@
   "teil": "echt",
   "faktor": "feinwert",
   "tage_vorne": 5,
-  "ic_mittel": -0.172,
-  "tage": 5,
-  "anteil_positiv": 0.0,
+  "ic_mittel": -0.138,
+  "tage": 6,
+  "anteil_positiv": 0.17,
   "rueckwirkend": false
  },
  {
@@ -215,7 +215,7 @@
   "faktor": "piotroski",
   "tage_vorne": 1,
   "ic_mittel": null,
-  "tage": 1,
+  "tage": 2,
   "anteil_positiv": null,
   "rueckwirkend": false
  },
@@ -227,7 +227,7 @@
   "faktor": "revision_90t_pct",
   "tage_vorne": 1,
   "ic_mittel": null,
-  "tage": 1,
+  "tage": 2,
   "anteil_positiv": null,
   "rueckwirkend": false
  }
